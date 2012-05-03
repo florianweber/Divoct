@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  DictVocTrainer
+
+ Copyright (C) 2012  Florian Weber
+ 
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+"SETUP"                                 = "Setting up the application for the first time. This may take up to 1 minute ...";
+"SETUP_INFO"                            = "If you need help, tap with two fingers anywhere on the screen. Additional help can be found under Settings -> Help & Tricks.";
+"SEARCHED"                              = "Searched";
+"VOCABULARY_COLLECTION_TITLE"           = "Vocabulary collections";
+"VOCABULARY_COLLECTION_TITLE_NONEYET"   = "No vocabulary collections";
+"VOCABULARY_COLLECTION_CREATE"          = "Create collection ...";
+"UNKNOWN"                               = "Unknown";
+"DELETE"                                = "Delete";
+"SELECTALL"                             = "Select all";
+"DESELECTALL"                           = "Deselect all";
+"WORDS_IN_LIST_P1"                      = "There are";
+"WORDS_IN_LIST_P2"                      = "words in this collection";
+"WORDS_IN_LIST_P3"                      = "You can add new words using search";
+"WORDS_IN_LIST_RECENT_AUTO"             = "Every word you select in Search will be added automatically";
+"WORDS_IN_LIST_NO"                      = "There are no words in this collection";
+"TITLE_TOO_LONG_P1"                     = "The title must be within";
+"TITLE_TOO_LONG_P2"                     = "characters";
+"TITLE_NAME_GIVEN"                      = "Another collection with this title already exists.";
+"TITLE_NOT_EMPTY"                       = "The collection title may not be empty.";
+"DESC_TOO_LONG_P1"                      = "The description must be within";
+"DESC_TOO_LONG_P2"                      = "characters";
+"EDIT_COLLECTION"                       = "Edit Collection";
+"RECENTS_TITLE"                         = "Recents";
+"RECENTS_DESC"                          = "History of searched words";
+"TRAINING"                              = "Training";
+"TRAINING_TRANS_EDIT_BUTTON_TEXT"       = "Edit Answers for Training";
+"TRANSLATIONS_EDIT_MIN_ONE"             = "You must have at least one translation.";
+"HELP_LOADINGVIEW"                      = "Info messages like this will be shown to help you with the application if you tap with two fingers anywhere.";
+"HELP_TRANSLATIONS_EDIT_BUTTON"         = "Tap here to select correct translation answers for your trainings.\n\nBy default, every translation will be correct.\n\nThe selection will also appear by double tapping anywhere on the screen.";
+"HELP_TRANSLATIONS_EDIT_SELECTOR"       = "Select every translation you want as a correct answer in your training. You can do so be touching the checkmarks and the words.";
+"HELP_VOCDETAIL_FOLDER"                 = "Press this button to add this vocabulary to a collection.";
+"HELP_SEARCH"                           = "Type in any word you are looking for in the search bar, no matter if it is English or German.\n\nPress the search button to search. The search will also begin automatically when a search term has reached 4 characters.\n\nYou can shake the device to get back to this search from anywhere in the application.";
+"LICENSE_FILENAME"                      = "license_en";
+"HELP_FILENAME"                         = "help_en";
+"HELP_COLLECTION_CHOOSER"               = "Select any collection you want this vocabulary to be a member of.\n\nYou can create a new collection using the + button in the upper right corner.";
+"HELP_COLLECTION_DETAIL_EDIT"           = "Edit the title and description (optional) of this collection.\n\nPress Cancel to discard any changes or press Finish to save them.";
+"HELP_COLLECTION_DETAIL_CREATE"         = "Give the collection a title and a description (optional).\n\nPress cancel to return to the previous menu without creating the collection or press Finish to create it.";
+"HELP_EXERCISES"                        = "This list shows all words in the selected collection. You can delete single words by swiping left or right over them or edit the whole list using the pencil icon.\n\nTo train all vocabularies in this list, press the graduate hat icon.";
+"HELP_EXERCISES_EMPTY"                  = "This list shows all words in the selected collection. You can add new words using search (look for a word, open the details and press the organize button in the top right corner of the vocabulary details view).";
+"HELP_RECENTS"                          = "Recents shows you a list of all words you looked up recently. You can delete single words by swiping left over them or edit the whole list using the pencil icon.\n\nTo train all recent vocabularies, press the graduate hat icon.";
+"HELP_RECENTS_EMPTY"                    = "Recents shows you a list of all words you looked up recently. So far, you don't have any recent words as you did not search anything yet or deleted your history. By searching any words, the recents list will fill up with the words you looked up.";
+"HELP_COLLECTIONS_EMPTY"                = "You have no vocabulary collections yet. You can create one by pressing this button.";
+"HELP_COLLECTIONS_FILLED"               = "Here you see all vocabulary collections you created. You can delete collections by swiping left or right over them or using the pencil button. Select a collection to see all vocabularies assigned to it.";
+"HELP_COLLECTIONS_EDIT"                 = "Press the title of a collection to edit its details.";
+"HELP_TRAINING_QUESTIONS"               = "At least one of these four answers is correct for the word shown above. Always try to press a correct answer button.";
+"HELP_TRAINING_RESULTS"                 = "This is your training result. You can repeat the training by pressing the \"retry\" button in the top right corner.";
+"HELP_SETTINGS_MAIN"                    = "Here is where you can edit app settings, get some help and general information about this app.";
+"HELP_HELP"                             = "Info messages like this will be shown to help you with the application if you tap with two fingers anywhere.";
+"HELP_LICENSE"                          = "This is where you can read all about the license terms of this app and all works of other authors used in this app.";
+"HELP_ABOUT"                            = "Information about the name, version, author and support mail address of this app.";

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Collection" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastTrained" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Exercise" inverseName="collections" inverseEntity="Exercise" syncable="YES"/>
+        <relationship name="trainer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Trainer" inverseName="collections" inverseEntity="Trainer" syncable="YES"/>
+    </entity>
+    <entity name="Exercise" syncable="YES">
+        <attribute name="countCorrect" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="countWrong" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseCount" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastExercised" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastTimeCorrect" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastTimeWrong" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="collections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Collection" inverseName="exercises" inverseEntity="Collection" syncable="YES"/>
+        <relationship name="currentTraining" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="exercise" inverseEntity="Training" syncable="YES"/>
+        <relationship name="recent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recent" inverseName="exercise" inverseEntity="Recent" syncable="YES"/>
+        <relationship name="word" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="exercises" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="Recent" syncable="YES">
+        <attribute name="lastLookedUp" attributeType="Date" syncable="YES"/>
+        <attribute name="lookupCount" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="exercise" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="recent" inverseEntity="Exercise" syncable="YES"/>
+    </entity>
+    <entity name="Settings" syncable="YES">
+        <attribute name="defaultExerciseType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseCountPerTraining" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exerciseMaxWrong" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Trainer" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" defaultValueString="Default" syncable="YES"/>
+        <relationship name="collections" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Collection" inverseName="trainer" inverseEntity="Collection" syncable="YES"/>
+    </entity>
+    <entity name="Training" syncable="YES">
+        <attribute name="countCorrect" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="countWrong" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="exercise" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="currentTraining" inverseEntity="Exercise" syncable="YES"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="language" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="word" inverseEntity="Exercise" syncable="YES"/>
+        <relationship name="similars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="similarTo" inverseEntity="Word" syncable="YES"/>
+        <relationship name="similarTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="similars" inverseEntity="Word" syncable="YES"/>
+        <relationship name="synonyms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="synonymTo" inverseEntity="Word" syncable="YES"/>
+        <relationship name="synonymTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="synonyms" inverseEntity="Word" syncable="YES"/>
+        <relationship name="translations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="translationTo" inverseEntity="Word" syncable="YES"/>
+        <relationship name="translationTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="translations" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Word" positionX="268" positionY="111" width="128" height="180"/>
+        <element name="Recent" positionX="-119" positionY="207" width="128" height="90"/>
+        <element name="Exercise" positionX="45" positionY="-27" width="128" height="195"/>
+        <element name="Collection" positionX="-144" positionY="36" width="128" height="120"/>
+        <element name="Trainer" positionX="-326" positionY="36" width="128" height="75"/>
+        <element name="Training" positionX="216" positionY="-108" width="128" height="90"/>
+        <element name="Settings" positionX="-315" positionY="243" width="128" height="90"/>
+    </elements>
+</model>

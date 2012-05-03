@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  DictVocTrainer
+
+ Copyright (C) 2012  Florian Weber
+ 
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+"SETUP"                                 = "Divoct wird für die erste Verwendung vorbereitet. Dies kann bis zu einer Minute dauern ...";
+"SETUP_INFO"                            = "Wenn Du einmal Hilfe brauchst, drücke kurz mit zwei Fingern auf den Bildschirm. Weitere Hilfe und einige Tricks findest Du unter Einstellungen -> Hilfe & Tipps.";
+"SEARCHED"                              = "Gesucht";
+"VOCABULARY_COLLECTION_TITLE"           = "Vokabel Ordner";
+"VOCABULARY_COLLECTION_TITLE_NONEYET"   = "Keine Vokabel Ordner";
+"VOCABULARY_COLLECTION_CREATE"          = "Ordner anlegen ...";
+"UNKNOWN"                               = "Unbekannt";
+"DELETE"                                = "Lösche";
+"SELECTALL"                             = "Alle";
+"DESELECTALL"                           = "Keine";
+"WORDS_IN_LIST_P1"                      = "Es gibt";
+"WORDS_IN_LIST_P2"                      = "Wort(e) in diesem Ordner";
+"WORDS_IN_LIST_P3"                      = "Unter Suche können neue Worte hinzugefügt werden";
+"WORDS_IN_LIST_RECENT_AUTO"             = "Gesuchte Worte werden automatisch hinzugefügt";
+"WORDS_IN_LIST_NO"                      = "Es gibt keine Worte in diesem Ordner";
+"TITLE_TOO_LONG_P1"                     = "Der Titel darf maximal";
+"TITLE_TOO_LONG_P2"                     = "Zeichen beinhalten";
+"TITLE_NAME_GIVEN"                      = "Es gibt schon einen Ordner mit diesem Namen.";
+"TITLE_NOT_EMPTY"                       = "Der Titel darf nicht leer sein.";
+"DESC_TOO_LONG_P1"                      = "Die Beschreibung darf maximal";
+"DESC_TOO_LONG_P2"                      = "Zeichen beinhalten";
+"EDIT_COLLECTION"                       = "Bearbeiten";
+"RECENTS_TITLE"                         = "Verlauf";
+"RECENTS_DESC"                          = "Zuletzt gesuchte Worte";
+"TRAINING"                              = "Training";
+"TRAINING_TRANS_EDIT_BUTTON_TEXT"       = "Antworten für Training bearbeiten";
+"TRANSLATIONS_EDIT_MIN_ONE"             = "Es muss mindestens eine Übersetzung geben.";
+"HELP_LOADINGVIEW"                      = "Ein Hilfsfenster wie dieses hier wird angezeigt, wenn Du irgendwo in der Anwendung mit zwei Fingern gleichzeitig den Bildschirm kurz berührst.";
+"HELP_TRANSLATIONS_EDIT_BUTTON"         = "Drücke hier, um die Übersetzungen für Deine Trainings einzuschränken.\n\nStandardmäßig werden alle Übersetzungen trainiert.\n\nDu erreichst dieses Menü auch, indem Du irgendwo auf dem Bildschirm doppelt drückst.";
+"HELP_TRANSLATIONS_EDIT_SELECTOR"       = "Selektiere alle Übersetzungen, die im Training als korrekte Antwort gelten sollen. Du kannst dazu entweder auf die grünen Häkchen oder auf das Wort drücken.";
+"HELP_VOCDETAIL_FOLDER"                 = "Hiermit kannst Du diese Vokabel in einen Ordner einsortieren";
+"HELP_SEARCH"                           = "Gib einen beliebigen Begriff in die Suchbar ein, egal ob Deutsch oder Englisch.\n\nMit \"Suchen\" kannst Du die Suche beginnen. Die Suche beginnt auch automatisch ab einer Wortlänge von 4 Zeichen.\n\nWenn Du in irgendeiner anderen Anzeige bist und das Gerät kurz schüttelst, gelangst Du automatisch zu dieser Suche zurück.";
+"LICENSE_FILENAME"                      = "license_de";
+"HELP_FILENAME"                         = "help_de";
+"HELP_COLLECTION_CHOOSER"               = "Wähle alle Ordner aus, zu denen die Vokabel zugeordnet sein soll.\n\nDu kannst auch direkt einen neuen Ordner anlegen, indem Du den + Knopf rechts oben benutzt.";
+"HELP_COLLECTION_DETAIL_EDIT"           = "Bearbeite den Titel und die Beschreibung (optional) dieses Ordners.\n\nDrücke Abbrechen, um die Änderungen zu verwerfen.\nDrücke Fertig, um die Änderungen zu speichern.";
+"HELP_COLLECTION_DETAIL_CREATE"         = "Vergib einen Titel und optional auch eine Beschreibung für den Ordner\n\nDrücke Abbrechen, um zurück zum letzten Menü zu gelangen oder drücke Fertig, um den neuen Ordner anzulegen.";
+"HELP_EXERCISES"                        = "Diese Liste zeigt Dir alle Vokabeln in dem ausgewählten Ordner. Wenn Du über einen Eintrag nach rechts oder links wischt, kannst Du ihn löschen. Die gesamte Liste kannst Du bearbeiten, indem Du auf das Stift Symbol drückst.\n\nMit dem Absolventenhut kannst Du diesen Vokabelordner trainieren.";
+"HELP_EXERCISES_EMPTY"                  = "Diese Liste zeigt Dir alle Vokabeln in dem ausgewählten Ordner. Bisher hast Du diesem Ordner keine Vokabeln zugeordnet. Du kannst diesem Ordner Vokabeln zuordnen, indem Du über die Suche gehst (suche ein Wort, lass Dir die Details anzeigen und drücke dann den \"Organisieren\" Knopf rechts oben).";
+"HELP_RECENTS"                          = "Im Verlauf siehst Du alle Vokabeln, die Du zuletzt gesucht hast. Wenn Du über einen Eintrag nach rechts oder links wischt, kannst Du ihn löschen. Die gesamte Liste kannst Du bearbeiten, indem Du auf das Stift Symbol drückst.\n\nMit dem Absolventenhut kannst Du alle Vokabeln des Verlaufs trainieren.";
+"HELP_RECENTS_EMPTY"                    = "Im Verlauf siehst Du alle Vokabeln, die Du zuletzt gesucht hast. Bis jetzt sind keine Einträge vorhanden, d.h. Du hast noch nichts gesucht oder hast die den Verlauf geleert. Mit jedem Wort, das Du ab jetzt suchst, wird sich diese Liste füllen.";
+"HELP_COLLECTIONS_EMPTY"                = "Du hast bisher noch keine Vokabelordner. Drücke hier oder den + Knopf links oben, um einen neuen Vokabelordner anzulegen.";
+"HELP_COLLECTIONS_FILLED"               = "Hier siehst Du alle Vokabelordner, die Du angelegt hast. Wischt Du nach rechts oder links über einen Ordner, kannst Du ihn löschen. Drücke den Bearbeiten Knopf (Stift rechts oben), um die Details der Ordner zu bearbeiten.\n\nSelektiere einen Ordner, um dessen Vokabeln zu bearbeiten oder den Ordner zu trainieren.";
+"HELP_COLLECTIONS_EDIT"                 = "Wenn Du auf den Titel eines Ordners drückst, kannst Du dessen Details bearbeiten.";
+"HELP_TRAINING_QUESTIONS"               = "Mindestens eine dieser vier Antworten ist die richtige Übersetzung zum gezeigten Wort. Versuche, immer eine richtige Antwort anzutippen.";
+"HELP_TRAINING_RESULTS"                 = "Dies ist Dein Trainingsergebnis. Mit dem \"nochmal\" Knopf rechts oben kannst Du das Training wiederholen.";
+"HELP_SETTINGS_MAIN"                    = "Hier kannst Du allgemeine Einstellungen vornehmen, Hilfe bekommen und erhältst Informationen über diese App.";
+"HELP_HELP"                             = "Ein Hilfsfenster wie dieses hier wird angezeigt, wenn Du irgendwo in der Anwendung mit zwei Fingern gleichzeitig den Bildschirm kurz berührst.";
+"HELP_LICENSE"                          = "Hier erhältst Du Lizenzinformationen über diese App und allen darin enthaltenen Werken anderer Autoren sowie deren Lizenzbestimmungen.";
+"HELP_ABOUT"                            = "Informationen über diese App, wie Version, Copyrightholder und Support E-Mail.";

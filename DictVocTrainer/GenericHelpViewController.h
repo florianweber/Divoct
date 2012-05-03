@@ -1,5 +1,5 @@
 /*
-GenericHelpViewController.h
+ GenericHelpViewController.h
  DictVocTrainer
  
  Copyright (C) 2012  Florian Weber

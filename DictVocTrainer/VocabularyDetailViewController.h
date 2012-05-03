@@ -1,5 +1,5 @@
 /*
-VocabularyDetailViewController.h
+ VocabularyDetailViewController.h
  DictVocTrainer
  
  Copyright (C) 2012  Florian Weber

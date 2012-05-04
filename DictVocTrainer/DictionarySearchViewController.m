@@ -218,6 +218,8 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
 -(void)showHelp 
 {
     [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_SEARCH", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES pointingToView:self.searchBar fromDirection:FWToastViewPointingFromDirectionBottom];
+    [self.tableView scrollRectToVisible:self.view.frame animated:YES];
+    
 }
 
 

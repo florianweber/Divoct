@@ -112,9 +112,9 @@ CGRect editBarFrameStore;
     if ([self.collections count] <= 0) {
         [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTIONS_EMPTY", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES pointingToView:[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] fromDirection:FWToastViewPointingFromDirectionBottom];
     } else if (self.tableView.editing) {
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTIONS_EDIT", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.navigationController.view withText:NSLocalizedString(@"HELP_COLLECTIONS_EDIT", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
     } else {    
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTIONS_FILLED", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.navigationController.view withText:NSLocalizedString(@"HELP_COLLECTIONS_FILLED", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
     }
 }
 

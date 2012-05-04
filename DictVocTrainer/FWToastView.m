@@ -255,7 +255,7 @@ static NSMutableArray *toasts;
         
         //-- main View -----------------------------------------------------------------------------------------------
         //size and position own frame
-        self.frame = CGRectMake(parentView.center.x - (xMax / 2), parentView.center.y - (yMax / 2) - 30, xMax, yMax);
+        self.frame = CGRectMake(parentView.center.x - (xMax / 2), parentView.center.y - (yMax / 2), xMax, yMax);
         self.frame = CGRectIntegral(self.frame);
         self.alpha = 0.0f;
         
@@ -281,9 +281,6 @@ static NSMutableArray *toasts;
                 self.messageView.frame = CGRectMake(self.triangleView.frame.size.width, 0, self.messageView.frame.size.width + self.triangleView.frame.size.width, self.messageView.frame.size.height);
             }
         }
-        
-
-		
 	}
 	
 	return self;

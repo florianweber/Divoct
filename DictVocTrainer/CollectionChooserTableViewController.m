@@ -97,7 +97,7 @@ CollectionChooserTableViewController.m
 
 -(void)showHelp 
 {
-    [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTION_CHOOSER", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+    [FWToastView toastInView:self.navigationController.view withText:NSLocalizedString(@"HELP_COLLECTION_CHOOSER", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
 }
 
 #pragma mark - Notifications

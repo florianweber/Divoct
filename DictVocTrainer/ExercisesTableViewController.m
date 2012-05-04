@@ -332,13 +332,13 @@ CGRect tableViewFrameStore;
 -(void)showHelp 
 {
     if (self.loadRecents && ([self.exercises count] > 0)) {
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_RECENTS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.navigationController.view withText:NSLocalizedString(@"HELP_RECENTS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
     } else if (self.loadRecents && ([self.exercises count] <= 0)) {
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_RECENTS_EMPTY", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.navigationController.view withText:NSLocalizedString(@"HELP_RECENTS_EMPTY", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
     } else if ([self.exercises count] > 0) {
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_EXERCISES", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.navigationController.view withText:NSLocalizedString(@"HELP_EXERCISES", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
     } else {
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_EXERCISES_EMPTY", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.navigationController.view withText:NSLocalizedString(@"HELP_EXERCISES_EMPTY", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
     }
 }
 

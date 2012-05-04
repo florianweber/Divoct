@@ -44,6 +44,20 @@ LicenseViewController.m
     return YES;
 }
 
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        [[self navigationController] popViewControllerAnimated:YES];
+    }
+}
+
+-(void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *rightSwiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
+                                                                                      action:@selector(handleSwipeFrom:)];
+    rightSwiper.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:rightSwiper];
+}
+
 -(void)showHelp 
 {
     [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_LICENSE", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
@@ -54,6 +68,8 @@ LicenseViewController.m
     [super viewDidLoad];
     self.webView.delegate = self;
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"LICENSE_FILENAME", nil) ofType:@"html"]isDirectory:NO]]];
+    [self addSwipeGestureRecognizer];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

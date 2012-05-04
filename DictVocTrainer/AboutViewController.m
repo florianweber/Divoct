@@ -25,9 +25,29 @@
 
 @implementation AboutViewController
 
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        [[self navigationController] popViewControllerAnimated:YES];
+    }
+}
+
+-(void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *rightSwiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
+                                                                                      action:@selector(handleSwipeFrom:)];
+    rightSwiper.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:rightSwiper];
+}
+
 -(void)showHelp 
 {
     [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_ABOUT", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self addSwipeGestureRecognizer];
 }
 
 @end

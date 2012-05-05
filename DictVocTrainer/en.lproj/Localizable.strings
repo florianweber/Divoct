@@ -41,6 +41,7 @@
 "DESC_TOO_LONG_P2"                      = "characters";
 "EDIT_COLLECTION"                       = "Edit Collection";
 "RECENTS_TITLE"                         = "Recents";
+"RECENTS_DISPLAY_TITLE"                 = "Recents";
 "RECENTS_DESC"                          = "History of searched words";
 "TRAINING"                              = "Training";
 "TRAINING_TRANS_EDIT_BUTTON_TEXT"       = "Edit Answers for Training";

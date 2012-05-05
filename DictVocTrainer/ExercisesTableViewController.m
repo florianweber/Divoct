@@ -101,7 +101,6 @@ CGRect tableViewFrameStore;
         self.exercises = [self.collection.exercises mutableCopy];
         
         [self updateCountDependentElementsLabel:YES];
-        self.title = self.collection.name;
 //        if (self.viewsHaveBeenSized) {
 //            [self updateTitleLabelWithText:self.collection.name];
 //        }
@@ -111,8 +110,10 @@ CGRect tableViewFrameStore;
             [self.exercises sortUsingComparator:^NSComparisonResult(Exercise *exercise1, Exercise *exercise2){
                 return [exercise2.lastLookedUp compare:exercise1.lastLookedUp];
             }];
+            self.title = NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil);
             //[self.collection setExercises:self.exercises];
-
+        } else {
+           self.title = self.collection.name; 
         }
         
         [self.tableView reloadData];
@@ -256,9 +257,14 @@ CGRect tableViewFrameStore;
 {
     if (self.collection) {
         int entryCount = [self.exercises count];
-        [self updateTitleLabelWithText:self.collection.name];
+        if (self.loadRecents) {
+            [self updateTitleLabelWithText:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
+        } else {
+            [self updateTitleLabelWithText:self.collection.name];
+        }
+        
         if (entryCount) {
-            if ((entryCount == 1) && updateNavigationItem) {
+            if (((entryCount == 1) && updateNavigationItem) || ((entryCount >= 1) && !self.navigationItem.rightBarButtonItem)) {
                 [self initRightNavigationItemBar];
             }
             
@@ -477,7 +483,11 @@ CGRect tableViewFrameStore;
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [self updateTitleLabelWithText:self.collection.name];
+    if (self.loadRecents) {
+        [self updateTitleLabelWithText:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
+    } else {
+        [self updateTitleLabelWithText:self.collection.name];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -611,7 +621,11 @@ CGRect tableViewFrameStore;
     }
     
     if (![self.titleLabel.text length]) {
-        [self updateTitleLabelWithText:self.collection.name];
+        if (self.loadRecents) {
+            [self updateTitleLabelWithText:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
+        } else {
+            [self updateTitleLabelWithText:self.collection.name];
+        }
     }
     
     if (self.needsReload) {

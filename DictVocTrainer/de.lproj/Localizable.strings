@@ -40,7 +40,8 @@
 "DESC_TOO_LONG_P1"                      = "Die Beschreibung darf maximal";
 "DESC_TOO_LONG_P2"                      = "Zeichen beinhalten";
 "EDIT_COLLECTION"                       = "Bearbeiten";
-"RECENTS_TITLE"                         = "Verlauf";
+"RECENTS_TITLE"                         = "Recents";
+"RECENTS_DISPLAY_TITLE"                 = "Verlauf";
 "RECENTS_DESC"                          = "Zuletzt gesuchte Worte";
 "TRAINING"                              = "Training";
 "TRAINING_TRANS_EDIT_BUTTON_TEXT"       = "Antworten für Training bearbeiten";

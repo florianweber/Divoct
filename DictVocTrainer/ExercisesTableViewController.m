@@ -162,6 +162,15 @@ CGRect tableViewFrameStore;
     [self.navigationItem.titleView addGestureRecognizer:tapGestureRecognizer];
 }
 
+-(void)updateTitleLabelWithCollectionName
+{
+    if (self.loadRecents) {
+        [self updateTitleLabelWithText:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
+    } else {
+        [self updateTitleLabelWithText:self.collection.name];
+    }
+}
+
 -(void)observeDBChanges:(BOOL)observe
 {
     if (observe) {
@@ -257,11 +266,7 @@ CGRect tableViewFrameStore;
 {
     if (self.collection) {
         int entryCount = [self.exercises count];
-        if (self.loadRecents) {
-            [self updateTitleLabelWithText:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
-        } else {
-            [self updateTitleLabelWithText:self.collection.name];
-        }
+        [self updateTitleLabelWithCollectionName];
         
         if (entryCount) {
             if (((entryCount == 1) && updateNavigationItem) || ((entryCount >= 1) && !self.navigationItem.rightBarButtonItem)) {
@@ -483,11 +488,7 @@ CGRect tableViewFrameStore;
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (self.loadRecents) {
-        [self updateTitleLabelWithText:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
-    } else {
-        [self updateTitleLabelWithText:self.collection.name];
-    }
+    [self updateTitleLabelWithCollectionName];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -621,20 +622,12 @@ CGRect tableViewFrameStore;
     }
     
     if (![self.titleLabel.text length]) {
-        if (self.loadRecents) {
-            [self updateTitleLabelWithText:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
-        } else {
-            [self updateTitleLabelWithText:self.collection.name];
-        }
+        [self updateTitleLabelWithCollectionName];
     }
     
     if (self.needsReload) {
         //reload
-        if (self.loadRecents) {
-            self.collection = [[DictVocTrainer instance] collectionWithName:NSLocalizedString(@"RECENTS_TITLE", nil)];
-        } else {
-            self.collection = self.collection;
-        }
+        [self updateTitleLabelWithCollectionName];
         //[self initRightNavigationItemBar];
         self.needsReload = NO;
     }

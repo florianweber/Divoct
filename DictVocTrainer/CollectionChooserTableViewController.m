@@ -219,9 +219,15 @@ CollectionChooserTableViewController.m
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     Collection *collection = [self.collections objectAtIndex:indexPath.row];
-    cell.textLabel.text = collection.name; 
-    cell.detailTextLabel.text = collection.desc; 
     
+    if ([collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
+        cell.textLabel.text = NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil); 
+        cell.detailTextLabel.text = NSLocalizedString(@"RECENTS_DESC", nil);
+    } else {
+        cell.textLabel.text = collection.name; 
+        cell.detailTextLabel.text = collection.desc;
+    }
+
     NSNumber *wordIsAssignedToThisCollectionAsNumber = [self.wordAssignments objectForKey:collection.name];
     
     if (!wordIsAssignedToThisCollectionAsNumber) {

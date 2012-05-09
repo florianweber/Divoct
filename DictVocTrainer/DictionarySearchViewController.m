@@ -323,10 +323,11 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
             
-            //todo: this strangely doesn't work if we are in the current view scrolled down a bit
-            [self.tableView scrollRectToVisible:self.view.frame animated:YES];
-            self.searchBar.text = @"";
-            [self.searchBar becomeFirstResponder];
+            if (!self.searchBar.isFirstResponder) {
+                [self.tableView scrollRectToVisible:self.view.frame animated:YES];
+                self.searchBar.text = @"";
+                [self.searchBar becomeFirstResponder];
+            }
             
         } else if (self.histeresisExcited && !L0AccelerationIsShaking(self.lastAcceleration, acceleration, 0.2)) {
             self.histeresisExcited = NO;

@@ -28,8 +28,10 @@
 "DELETE"                                = "Delete";
 "SELECTALL"                             = "Select all";
 "DESELECTALL"                           = "Deselect all";
-"WORDS_IN_LIST_P1"                      = "There are";
-"WORDS_IN_LIST_P2"                      = "words in this collection";
+"WORDS_IN_LIST_P1_SL"                   = "There is";
+"WORDS_IN_LIST_P1_PL"                   = "There are";
+"WORDS_IN_LIST_P2_SL"                   = "word in this collection";
+"WORDS_IN_LIST_P2_PL"                   = "words in this collection";
 "WORDS_IN_LIST_P3"                      = "You can add new words using search";
 "WORDS_IN_LIST_RECENT_AUTO"             = "Every word you select in Search will be added automatically";
 "WORDS_IN_LIST_NO"                      = "There are no words in this collection";

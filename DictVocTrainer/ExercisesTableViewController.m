@@ -273,7 +273,12 @@ CGRect tableViewFrameStore;
                 [self initRightNavigationItemBar];
             }
             
-            self.tableBottomLabel.text = [NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"WORDS_IN_LIST_P1", nil), [self.exercises count], NSLocalizedString(@"WORDS_IN_LIST_P2", nil)];
+            if (entryCount == 1) {
+                self.tableBottomLabel.text = [NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"WORDS_IN_LIST_P1_SL", nil), [self.exercises count], NSLocalizedString(@"WORDS_IN_LIST_P2_SL", nil)];
+            } else {
+                self.tableBottomLabel.text = [NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"WORDS_IN_LIST_P1_PL", nil), [self.exercises count], NSLocalizedString(@"WORDS_IN_LIST_P2_PL", nil)];
+            }
+            
         } else {
             if (self.loadRecents) {
                 self.tableBottomLabel.text = [NSString stringWithFormat:@"%@.\n%@.", NSLocalizedString(@"WORDS_IN_LIST_NO", nil), NSLocalizedString(@"WORDS_IN_LIST_RECENT_AUTO", nil)];

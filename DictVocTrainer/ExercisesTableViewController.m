@@ -627,8 +627,12 @@ CGRect tableViewFrameStore;
     
     if (self.needsReload) {
         //reload
-        [self updateTitleLabelWithCollectionName];
-        //[self initRightNavigationItemBar];
+        if (self.loadRecents) {
+            self.collection = [[DictVocTrainer instance] collectionWithName:NSLocalizedString(@"RECENTS_TITLE", nil)];
+        } else {
+            self.collection = self.collection;
+        }
+
         self.needsReload = NO;
     }
 }

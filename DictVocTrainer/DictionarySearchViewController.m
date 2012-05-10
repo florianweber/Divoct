@@ -257,7 +257,9 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     
     NSString *searchString = [searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([searchString length]) {
-        [self searchWordsBeginningWithTerm:searchString];
+        if (![searchString isEqualToString:self.currentSearchTerm]) {
+            [self searchWordsBeginningWithTerm:searchString];
+        }
     } else {
         [self resetSearchResults];
     }

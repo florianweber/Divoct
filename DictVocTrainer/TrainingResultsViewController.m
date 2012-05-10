@@ -201,7 +201,11 @@ TrainingResultsViewController.m
     [super viewWillAppear:animated];
     
     if (!self.finishedDisplayingResults) {
-        self.titleLabel.text = [self.trainingResult.collection.name stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+        if ([self.trainingResult.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
+            self.titleLabel.text = [NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil) stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+        } else {
+            self.titleLabel.text = [self.trainingResult.collection.name stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+        }
     }
 }
 

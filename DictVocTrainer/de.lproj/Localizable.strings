@@ -30,8 +30,8 @@
 "DESELECTALL"                           = "Keine";
 "WORDS_IN_LIST_P1_SL"                   = "Es gibt";
 "WORDS_IN_LIST_P1_PL"                   = "Es gibt";
-"WORDS_IN_LIST_P2_SL"                   = "Wort in diesem Ordner.";
-"WORDS_IN_LIST_P2_PL"                   = "Worte in diesem Ordner.";
+"WORDS_IN_LIST_P2_SL"                   = "Wort in diesem Ordner";
+"WORDS_IN_LIST_P2_PL"                   = "Worte in diesem Ordner";
 "WORDS_IN_LIST_P3"                      = "Unter Suche können neue Worte hinzugefügt werden";
 "WORDS_IN_LIST_RECENT_AUTO"             = "Gesuchte Worte werden automatisch hinzugefügt";
 "WORDS_IN_LIST_NO"                      = "Es gibt keine Worte in diesem Ordner";

@@ -18,7 +18,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-"SETUP"                                 = "Divoct wird für die erste Verwendung vorbereitet. Dies kann bis zu einer Minute dauern ...";
+"SETUP"                                 = "Divoct wird für die erste Verwendung vorbereitet. Dies dauert etwa eine Minute ...";
 "SETUP_INFO"                            = "Wenn Du einmal Hilfe brauchst, drücke kurz mit zwei Fingern auf den Bildschirm. Weitere Hilfe und einige Tricks findest Du unter Einstellungen -> Hilfe & Tipps.";
 "SEARCHED"                              = "Gesucht";
 "VOCABULARY_COLLECTION_TITLE"           = "Vokabel Ordner";

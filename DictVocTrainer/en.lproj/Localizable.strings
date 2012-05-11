@@ -18,7 +18,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-"SETUP"                                 = "Setting up the application for the first time. This may take up to 1 minute ...";
+"SETUP"                                 = "Setting up the application for the first time. This may take about 1 minute ...";
 "SETUP_INFO"                            = "If you need help, tap with two fingers anywhere on the screen. Additional help can be found under Settings -> Help & Tricks.";
 "SEARCHED"                              = "Searched";
 "VOCABULARY_COLLECTION_TITLE"           = "Vocabulary collections";

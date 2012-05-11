@@ -110,7 +110,6 @@
 		17D6872314FC1166001DB847 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6872214FC1166001DB847 /* main.m */; };
 		17D6872714FC1166001DB847 /* DictVocTrainerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6872614FC1166001DB847 /* DictVocTrainerAppDelegate.m */; };
 		17D6872A14FC1166001DB847 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D6872814FC1166001DB847 /* MainStoryboard_iPhone.storyboard */; };
-		17D6872D14FC1166001DB847 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D6872B14FC1166001DB847 /* MainStoryboard_iPad.storyboard */; };
 		17D6873E14FC13D6001DB847 /* DictionarySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6873D14FC13D6001DB847 /* DictionarySearchViewController.m */; };
 		17D6876014FC1795001DB847 /* ClassTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 17D6875F14FC1795001DB847 /* ClassTemplate */; };
 		17D6876614FD3297001DB847 /* DictVocDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6876514FD3297001DB847 /* DictVocDictionary.m */; };
@@ -283,7 +282,6 @@
 		17D6872514FC1166001DB847 /* DictVocTrainerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DictVocTrainerAppDelegate.h; sourceTree = "<group>"; };
 		17D6872614FC1166001DB847 /* DictVocTrainerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DictVocTrainerAppDelegate.m; sourceTree = "<group>"; };
 		17D6872914FC1166001DB847 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		17D6872C14FC1166001DB847 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		17D6873614FC11B6001DB847 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
 		17D6873C14FC13D6001DB847 /* DictionarySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySearchViewController.h; sourceTree = "<group>"; };
 		17D6873D14FC13D6001DB847 /* DictionarySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySearchViewController.m; sourceTree = "<group>"; };
@@ -560,7 +558,6 @@
 				17D6873A14FC1356001DB847 /* View Controllers */,
 				1794AF5B14FEAFAE00C76BB9 /* Custom Views */,
 				17D6872814FC1166001DB847 /* MainStoryboard_iPhone.storyboard */,
-				17D6872B14FC1166001DB847 /* MainStoryboard_iPad.storyboard */,
 				17D6871D14FC1166001DB847 /* Supporting Files */,
 			);
 			path = DictVocTrainer;
@@ -698,7 +695,6 @@
 			files = (
 				17D6872114FC1166001DB847 /* InfoPlist.strings in Resources */,
 				17D6872A14FC1166001DB847 /* MainStoryboard_iPhone.storyboard in Resources */,
-				17D6872D14FC1166001DB847 /* MainStoryboard_iPad.storyboard in Resources */,
 				17D6876014FC1795001DB847 /* ClassTemplate in Resources */,
 				1782512114FFB4F900D95D57 /* magnifyingglass@2x~iphone.png in Resources */,
 				17EAF36F15134BD100D531D2 /* gradhat~iphone.png in Resources */,
@@ -852,14 +848,6 @@
 				17D200DE151C840B00285A21 /* de */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		17D6872B14FC1166001DB847 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				17D6872C14FC1166001DB847 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

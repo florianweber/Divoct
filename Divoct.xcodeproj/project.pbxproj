@@ -121,10 +121,10 @@
 		17EAF3791513818800D531D2 /* CollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF3781513818700D531D2 /* CollectionDetailsViewController.m */; };
 		17EAF37D1514086900D531D2 /* CollectionChooserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF37C1514086900D531D2 /* CollectionChooserTableViewController.m */; };
 		17EFE98E1501ADC60024A977 /* NormalizedStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE98A1501ADC50024A977 /* NormalizedStringTransformer.m */; };
-		17EFE9E4150925350024A977 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EFE9E3150925350024A977 /* libsqlite3.dylib */; };
 		17EFE9E715092C280024A977 /* SQLiteWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE9E615092C280024A977 /* SQLiteWord.m */; };
 		17EFE9EA150B26B00024A977 /* VocabularyDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE9E9150B26B00024A977 /* VocabularyDetailView.m */; };
 		17EFE9ED150B27110024A977 /* VocabularyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE9EC150B27110024A977 /* VocabularyDetailViewController.m */; };
+		17FE2D7715AEE2A800857A07 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EFE9E3150925350024A977 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,12 +311,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17FE2D7715AEE2A800857A07 /* libsqlite3.dylib in Frameworks */,
 				177E2B4B150DE01D00B8AEE3 /* QuartzCore.framework in Frameworks */,
 				17D6876914FD3894001DB847 /* CoreData.framework in Frameworks */,
 				17D6871714FC1166001DB847 /* UIKit.framework in Frameworks */,
 				17D6871914FC1166001DB847 /* Foundation.framework in Frameworks */,
 				17D6871B14FC1166001DB847 /* CoreGraphics.framework in Frameworks */,
-				17EFE9E4150925350024A977 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

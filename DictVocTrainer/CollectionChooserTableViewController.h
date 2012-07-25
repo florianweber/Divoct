@@ -28,6 +28,7 @@ CollectionChooserTableViewController.h
 @interface CollectionChooserTableViewController : GenericHelpTableViewController
 
 @property (nonatomic, strong) SQLiteWord *word;
+@property (nonatomic, strong) NSArray *exercisesToAssign;
 @property (nonatomic, strong) Collection *hideCollection;
 
 

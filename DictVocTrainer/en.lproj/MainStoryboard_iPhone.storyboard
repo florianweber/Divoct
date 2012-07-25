@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E2620" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -311,6 +311,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Assign to..." id="LWT-qR-etu">
+                        <barButtonItem key="backBarButtonItem" title="back" id="6y6-TL-MOt"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2ys-Cv-xlU">
                             <connections>
                                 <segue destination="mhc-TP-hpt" kind="modal" identifier="Add Collection" modalTransitionStyle="partialCurl" id="M3C-aw-Ko8"/>
@@ -761,7 +762,7 @@ divocthelp@googlemail.com</string>
         <scene sceneID="cFt-ve-eVE">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjj-V9-S0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Jj7-4T-7wm" customClass="ExercisesTableViewController" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Jj7-4T-7wm" customClass="ExercisesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3qb-eD-xol">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -843,6 +844,7 @@ divocthelp@googlemail.com</string>
                         <outlet property="tableBottomLabel" destination="Qqg-bW-WS4" id="rgo-HO-tJQ"/>
                         <segue destination="imS-Q2-gKR" kind="push" identifier="Show Vocabulary Details" id="zni-li-EDg"/>
                         <segue destination="DBP-Ez-FgH" kind="push" identifier="Show Training" id="4CF-xO-S9t"/>
+                        <segue destination="0R9-TW-tRG" kind="push" identifier="Organize in Collections" customClass="CustomSegueForMultipleAssignments" id="wbh-Jw-qgU"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -1154,6 +1156,7 @@ divocthelp@googlemail.com</string>
                         <outlet property="tableBottomLabel" destination="dJu-ND-pRd" id="sxs-JS-oou"/>
                         <segue destination="imS-Q2-gKR" kind="push" identifier="Show Vocabulary Details" id="0n3-c0-Qed"/>
                         <segue destination="DBP-Ez-FgH" kind="push" identifier="Show Training" id="Jbp-Jl-tW5"/>
+                        <segue destination="0R9-TW-tRG" kind="push" identifier="Organize in Collections" id="Ofl-UN-peV"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -1296,6 +1299,7 @@ divocthelp@googlemail.com</string>
     <inferredMetricsTieBreakers>
         <segue reference="4CF-xO-S9t"/>
         <segue reference="zni-li-EDg"/>
-        <segue reference="UvO-6m-vgP"/>
+        <segue reference="wbh-Jw-qgU"/>
+        <segue reference="M3C-aw-Ko8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,7 +19,7 @@ RecentsTableViewController.m
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-
+#import <QuartzCore/QuartzCore.h>
 #import "ExercisesTableViewController.h"
 #import "SQLiteWord.h"
 #import "DictVocTrainer.h"
@@ -31,6 +31,7 @@ RecentsTableViewController.m
 #import "LoadingViewController.h"
 #import "FWToastView.h"
 #import "TrainingViewController.h"
+#import "CollectionChooserTableViewController.h"
 
 @interface ExercisesTableViewController () <LoadingViewControllerDelegate, UITextFieldDelegate>
 
@@ -38,12 +39,18 @@ RecentsTableViewController.m
 @property (nonatomic, strong) NSDateFormatter *dateFormat;
 @property (weak, nonatomic) IBOutlet UILabel *tableBottomLabel;
 @property (nonatomic, strong) UIToolbar *editActionBar;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
 @property (nonatomic, strong) UIBarButtonItem *deleteButton;
+@property (nonatomic, strong) UIBarButtonItem *assignButton;
 @property (nonatomic, strong) UIView *titleViewStore;
 @property (nonatomic) BOOL needsReload;
 @property (nonatomic) BOOL viewsHaveBeenSized;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIToolbar *rightNavigationItemToolbar;
+@property (nonatomic) BOOL repairEditActionToolbar;
+@property (nonatomic) NSArray *selectedRowsStore;
+@property (nonatomic) CGRect editBarFrameStore;
+@property (nonatomic) CGRect tableViewFrameStore;
 
 -(void)updateCountDependentElementsLabel:(BOOL)updateNavigationItem;
 -(void)updateTitleLabelWithText:(NSString *)text;
@@ -56,15 +63,17 @@ RecentsTableViewController.m
 @synthesize dateFormat = _dateFormat;
 @synthesize tableBottomLabel = _tableBottomLabel;
 @synthesize editActionBar = _editActionBar;
+@synthesize editButton = _editButton;
 @synthesize deleteButton = _deleteButton;
+@synthesize assignButton = _assignButton;
 @synthesize loadRecents = _loadRecents;
 @synthesize titleViewStore = _titleViewStore;
 @synthesize needsReload = _needsReload;
 @synthesize viewsHaveBeenSized = _viewsHaveBeenSized;
 @synthesize titleLabel = _titleLabel;
 @synthesize rightNavigationItemToolbar = _rightNavigationItemToolbar;
-CGRect editBarFrameStore;
-CGRect tableViewFrameStore;
+@synthesize repairEditActionToolbar = _repairEditActionToolbar;
+@synthesize selectedRowsStore = _selectedRowsStore;
 
 #pragma mark - Init
 
@@ -200,11 +209,11 @@ CGRect tableViewFrameStore;
 
         //Edit Button
         UIImage *editImage = [UIImage imageNamed:@"pencilangled.png"];
-        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:editImage style:UIBarButtonItemStylePlain target:self action:@selector(editButtonPressed:)];
+        self.editButton = [[UIBarButtonItem alloc] initWithImage:editImage style:UIBarButtonItemStylePlain target:self action:@selector(editButtonPressed:)];
         if (self.tableView.editing) {
-            editButton.tintColor = [UIColor blueColor];
+            self.editButton.tintColor = [UIColor blueColor];
         }
-        [buttons addObject:editButton];
+        [buttons addObject:self.editButton];
         toolbarContentWidth += 32;
         
         UIBarButtonItem *fixedSpacerItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -234,7 +243,11 @@ CGRect tableViewFrameStore;
 {
     if (!self.editActionBar) {
         NSMutableArray *itemsForToolbar = [[NSMutableArray alloc] init];
-        self.editActionBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height, self.tableView.frame.size.width, 44)];
+        if (self.editBarFrameStore.size.width > 0) {
+            self.editActionBar = [[UIToolbar alloc] initWithFrame:self.editBarFrameStore];
+        } else {
+            self.editActionBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height, self.tableView.frame.size.width, 44)];
+        }
         self.editActionBar.tintColor = [UIColor blackColor];
         
         //Delete
@@ -242,6 +255,12 @@ CGRect tableViewFrameStore;
         self.deleteButton.tintColor = [UIColor redColor];
         self.deleteButton.enabled = NO;
         [itemsForToolbar addObject:self.deleteButton];
+        
+        //Assign
+        self.assignButton = [[UIBarButtonItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ (0)", NSLocalizedString(@"ASSIGNSELECTED", nil)] style:UIBarButtonItemStyleBordered target:self action:@selector(assignSelectedRows:)];
+        self.assignButton.tintColor = [UIColor blueColor];
+        self.assignButton.enabled = NO;
+        [itemsForToolbar addObject:self.assignButton];
         
         //Flex Spacer
         UIBarButtonItem *flexSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -294,6 +313,12 @@ CGRect tableViewFrameStore;
     }
 }
 
+-(void)updateSelectedDependentButtons
+{
+    [self updateAssignButton];
+    [self updateDeleteButton];
+}
+
 -(void)updateDeleteButton
 {
     int selectedEntriesCount =  [self.tableView.indexPathsForSelectedRows count];
@@ -303,6 +328,18 @@ CGRect tableViewFrameStore;
         self.deleteButton.enabled = YES;
     } else {
         self.deleteButton.enabled = NO;
+    }
+}
+
+-(void)updateAssignButton
+{
+    int selectedEntriesCount =  [self.tableView.indexPathsForSelectedRows count];
+    self.assignButton.title = [NSString stringWithFormat:@"%@ (%i)", NSLocalizedString(@"ASSIGNSELECTED", nil), selectedEntriesCount];
+    
+    if (selectedEntriesCount) {
+        self.assignButton.enabled = YES;
+    } else {
+        self.assignButton.enabled = NO;
     }
 }
 
@@ -331,8 +368,8 @@ CGRect tableViewFrameStore;
     if (!show) {
         [self.editActionBar removeFromSuperview];
     }
-    editBarFrameStore = self.editActionBar.frame;
-    tableViewFrameStore = self.tableView.frame;
+    self.editBarFrameStore = self.editActionBar.frame;
+    self.tableViewFrameStore = self.tableView.frame;
 }
 
 -(void)furtherViewDidLoadSetup
@@ -408,6 +445,7 @@ CGRect tableViewFrameStore;
         sender.tintColor = [UIColor blueColor];
         [self showActionBar:YES];
         [self updateCountDependentElementsLabel:YES];
+        [self updateSelectedDependentButtons];
     }
 }
 
@@ -430,9 +468,14 @@ CGRect tableViewFrameStore;
     [self.tableView endUpdates];
     
     [self updateCountDependentElementsLabel:YES];
-    [self updateDeleteButton];
+    [self updateSelectedDependentButtons];
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:self.collection]];
+}
+
+-(IBAction)assignSelectedRows:(id)sender
+{
+    [self performSegueWithIdentifier:@"Organize in Collections" sender:nil];
 }
 
 -(IBAction)selectAllRows:(id)sender
@@ -446,7 +489,7 @@ CGRect tableViewFrameStore;
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     }
     
-    [self updateDeleteButton];
+    [self updateSelectedDependentButtons];
 }
 
 -(IBAction)deselectAllRows:(id)sender
@@ -460,7 +503,7 @@ CGRect tableViewFrameStore;
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
-    [self updateDeleteButton];
+    [self updateSelectedDependentButtons];
 }
 
 -(void)titleDoubleTap:(UITapGestureRecognizer *)recognizer
@@ -542,8 +585,22 @@ CGRect tableViewFrameStore;
     if ([segue.identifier isEqualToString:@"Show Vocabulary Details"]) {
         [segue.destinationViewController setExercise:[self.exercises objectAtIndex:((NSIndexPath *)sender).row]];
         [segue.destinationViewController setEditTrainingTranslationsButtonEnabled:YES];
+        
     } else if ([segue.identifier isEqualToString:@"Show Training"]) {
         [segue.destinationViewController setCollection:self.collection];
+        
+    } else if ([segue.identifier isEqualToString:@"Organize in Collections"]) {
+        
+        NSMutableArray *selectedExercises = [[NSMutableArray alloc] initWithCapacity:[self.tableView.indexPathsForSelectedRows count]];
+        for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
+            Exercise *exercise = [self.exercises objectAtIndex:indexPath.row];
+            [selectedExercises addObject:exercise];
+        }
+        self.selectedRowsStore = self.tableView.indexPathsForSelectedRows;
+        
+        [segue.destinationViewController setHideCollection:self.collection];
+        [segue.destinationViewController setExercisesToAssign:selectedExercises];
+        self.repairEditActionToolbar = YES;
     }
 }
 
@@ -645,15 +702,32 @@ CGRect tableViewFrameStore;
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    if (editBarFrameStore.size.width > 0) {
-        self.editActionBar.frame = editBarFrameStore;
-        self.tableView.frame = tableViewFrameStore;
+    if (self.editBarFrameStore.size.width > 0) {
+        self.editActionBar.frame = self.editBarFrameStore;
+        self.tableView.frame = self.tableViewFrameStore;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.repairEditActionToolbar) {
+        self.repairEditActionToolbar = NO;
+        [self.tableView.superview addSubview:self.editActionBar];
+        self.editActionBar.frame = self.editBarFrameStore;
+        self.tableView.frame = self.tableViewFrameStore;
+        
+        for (NSIndexPath *indexPath in self.selectedRowsStore) {
+            [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:NO];
+        }
+        self.selectedRowsStore = nil;
+        [self updateSelectedDependentButtons];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewWillDisappear:NO];
     self.viewsHaveBeenSized = NO;
     [self observeDBChanges:YES];
 }
@@ -707,7 +781,6 @@ CGRect tableViewFrameStore;
         }
         
     }
-
     
     return cell;
 }
@@ -737,7 +810,7 @@ CGRect tableViewFrameStore;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.tableView.editing) {
-        [self updateDeleteButton];
+        [self updateSelectedDependentButtons];
     } else {
         [self performSegueWithIdentifier:@"Show Vocabulary Details" sender:indexPath];
     }
@@ -746,7 +819,7 @@ CGRect tableViewFrameStore;
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.tableView.editing) {
-        [self updateDeleteButton];
+        [self updateSelectedDependentButtons];
     }
 }
 

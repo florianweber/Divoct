@@ -440,7 +440,7 @@ VocabularyDetailViewController.m
     
     if (sender.selected) {
         if ([self.exercise.trainingTranslations count] == 1) {
-            [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:[NSString stringWithFormat:@"%@", NSLocalizedString(@"TRANSLATIONS_EDIT_MIN_ONE", nil)]] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
+            [FWToastView toastInView:self.view.superview withText:NSLocalizedString(@"TRANSLATIONS_EDIT_MIN_ONE", nil) icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
         } else {
             sender.selected = NO;
             [translation removeExercisesObject:self.exercise];

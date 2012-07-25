@@ -19,7 +19,7 @@ CollectionChooserTableViewController.m
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-
+#import <QuartzCore/QuartzCore.h>
 #import "CollectionChooserTableViewController.h"
 #import "DictVocTrainer.h"
 #import "Logging.h"
@@ -37,18 +37,47 @@ CollectionChooserTableViewController.m
 @end
 
 @implementation CollectionChooserTableViewController
+@synthesize exercisesToAssign = _exercisesToAssign;
 @synthesize word = _word;
 @synthesize collections = _collections;
 @synthesize wordAssignments = _wordAssignments;
 @synthesize hideCollection = _hideCollection;
 @synthesize needsReload = _needsReload;
 
+
 #pragma mark - My Messages
+
+- (void)addToCollection:(Collection *)collection
+{
+    if (self.word) {
+        [self addWordToCollection:collection];
+    } else if (self.exercisesToAssign) {
+        [self addExercisesToCollection:collection];
+    }
+}
+
+- (void)removeFromCollection:(Collection *)collection
+{
+    if (self.word) {
+        [self removeWordFromCollection:collection];
+    } else if (self.exercisesToAssign) {
+        [self removeExercisesFromCollection:collection];
+    }
+}
+
 
 - (void)addWordToCollection:(Collection *)collection
 {
     Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:self.word.uniqueId];
     [exercise addCollectionsObject:collection];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
+}
+
+- (void)addExercisesToCollection:(Collection *)collection
+{
+    for (Exercise *exercise in self.exercisesToAssign) {
+         [exercise addCollectionsObject:collection];
+    }
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
 }
 
@@ -59,15 +88,27 @@ CollectionChooserTableViewController.m
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
 }
 
+- (void)removeExercisesFromCollection:(Collection *)collection
+{
+    for (Exercise *exercise in self.exercisesToAssign) {
+        [[DictVocTrainer instance] deleteExercise:exercise fromCollection:collection];
+    }
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
+}
+
 - (void)loadWordAssignments
 {
     int collectionCount = [self.collections count];
     self.wordAssignments = [[NSMutableDictionary dictionaryWithCapacity:collectionCount] mutableCopy];
     
     if(collectionCount > 0) {
-        for (Collection *collection in self.collections) {
-            BOOL inThisCollection = [[DictVocTrainer instance] isWordWithUniqueId:self.word.uniqueId partOfCollection:(Collection *)collection];
-            [self.wordAssignments setObject:[NSNumber numberWithBool:inThisCollection] forKey:collection.name];
+        if (self.word) {
+            for (Collection *collection in self.collections) {
+                BOOL inThisCollection = [[DictVocTrainer instance] isWordWithUniqueId:self.word.uniqueId partOfCollection:(Collection *)collection];
+                [self.wordAssignments setObject:[NSNumber numberWithBool:inThisCollection] forKey:collection.name];
+            }
+        } else if (self.exercisesToAssign) {
+            //todo
         }
     }
 }
@@ -127,7 +168,7 @@ CollectionChooserTableViewController.m
 -(void)collectionDetailViewController:(CollectionDetailViewController *)sender finishedCreatingCollection:(Collection *)collection
 {
     [self dismissModalViewControllerAnimated:YES];
-    [self addWordToCollection:collection]; //real assignment
+    [self addToCollection:collection]; //real assignment
     [self.collections addObject:collection]; //for this view only
     [self.wordAssignments setObject:[NSNumber numberWithBool:YES] forKey:collection.name];
     
@@ -251,10 +292,10 @@ CollectionChooserTableViewController.m
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
-        [self addWordToCollection:[self.collections objectAtIndex:indexPath.row]];
+        [self addToCollection:[self.collections objectAtIndex:indexPath.row]];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        [self removeWordFromCollection:[self.collections objectAtIndex:indexPath.row]];
+        [self removeFromCollection:[self.collections objectAtIndex:indexPath.row]];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }

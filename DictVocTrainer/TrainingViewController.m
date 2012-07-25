@@ -130,7 +130,7 @@ TrainingViewController.m
         self.openExercises = [collection.exercises mutableCopy];
         self.countDone = [NSNumber numberWithInt:0];
         self.exerciseCount = [NSNumber numberWithInt:[self.openExercises count]];
-        self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount];
+        self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount.intValue];
         
         if ([self.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
             self.title = [NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil) stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];

@@ -214,12 +214,12 @@ CreateCollectionViewController.m
         NSUInteger newLength = [textView.text length] + [text length] - range.length;
         if ([textView isEqual:self.titleInputBox]) {
             if (newLength > DVT_MAX_COLLECTION_NAME_LENGTH) {
-                [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"TITLE_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_NAME_LENGTH, NSLocalizedString(@"TITLE_TOO_LONG_P2", nil)]] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
+                [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"TITLE_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_NAME_LENGTH, NSLocalizedString(@"TITLE_TOO_LONG_P2", nil)] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
                 return NO;
             }
         } else if ([textView isEqual:self.descriptionInputBox]) {
             if (newLength > DVT_MAX_COLLECTION_DESC_LENGTH) {
-                [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"DESC_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_DESC_LENGTH, NSLocalizedString(@"DESC_TOO_LONG_P2", nil)]] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
+                [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"DESC_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_DESC_LENGTH, NSLocalizedString(@"DESC_TOO_LONG_P2", nil)] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
                 return NO;
             }
         }

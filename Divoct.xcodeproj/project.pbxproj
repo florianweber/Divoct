@@ -660,7 +660,7 @@
 		17D6870914FC1165001DB847 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = IBM;
 			};
 			buildConfigurationList = 17D6870C14FC1165001DB847 /* Build configuration list for PBXProject "Divoct" */;

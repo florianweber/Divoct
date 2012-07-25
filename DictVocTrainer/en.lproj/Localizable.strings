@@ -26,8 +26,9 @@
 "VOCABULARY_COLLECTION_CREATE"          = "Create collection ...";
 "UNKNOWN"                               = "Unknown";
 "DELETE"                                = "Delete";
-"SELECTALL"                             = "Select all";
-"DESELECTALL"                           = "Deselect all";
+"ASSIGNSELECTED"                        = "Assign";
+"SELECTALL"                             = "All";
+"DESELECTALL"                           = "None";
 "WORDS_IN_LIST_P1_SL"                   = "There is";
 "WORDS_IN_LIST_P1_PL"                   = "There are";
 "WORDS_IN_LIST_P2_SL"                   = "word in this collection";

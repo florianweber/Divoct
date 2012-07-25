@@ -26,6 +26,7 @@
 "VOCABULARY_COLLECTION_CREATE"          = "Ordner anlegen ...";
 "UNKNOWN"                               = "Unbekannt";
 "DELETE"                                = "Lösche";
+"ASSIGNSELECTED"                        = "Zuordnen";
 "SELECTALL"                             = "Alle";
 "DESELECTALL"                           = "Keine";
 "WORDS_IN_LIST_P1_SL"                   = "Es gibt";

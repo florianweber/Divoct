@@ -30,7 +30,7 @@ RecentsTableViewController.m
 #import "Logging.h"
 #import "LoadingViewController.h"
 #import "FWToastView.h"
-#import "TrainingViewController.h"
+#import "TrainingSettingsViewController.h"
 #import "CollectionChooserTableViewController.h"
 
 @interface ExercisesTableViewController () <LoadingViewControllerDelegate, UITextFieldDelegate>

@@ -43,6 +43,7 @@
 		1785641E152CCB5C0076BE5C /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1785641D152CCB5B0076BE5C /* TriangleView.m */; };
 		17856420152DC44A0076BE5C /* gradhat@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1785641F152DC4480076BE5C /* gradhat@2x~iphone.png */; };
 		17856423152E0CBC0076BE5C /* GenericHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17856422152E0CBB0076BE5C /* GenericHelpViewController.m */; };
+		1790E97915C1CCC3001DC301 /* graycolor.png in Resources */ = {isa = PBXBuildFile; fileRef = 1790E97815C1CCC3001DC301 /* graycolor.png */; };
 		1791464B15C1544300344282 /* DivoctSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1791464A15C1544300344282 /* DivoctSegue.m */; };
 		17A5DAD21546A64F00802696 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DAD11546A64F00802696 /* Default.png */; };
 		17A5DAD41546A65600802696 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DAD31546A65600802696 /* Default@2x.png */; };
@@ -113,6 +114,7 @@
 		17D6876014FC1795001DB847 /* ClassTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 17D6875F14FC1795001DB847 /* ClassTemplate */; };
 		17D6876614FD3297001DB847 /* DictVocDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6876514FD3297001DB847 /* DictVocDictionary.m */; };
 		17D6876914FD3894001DB847 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D6876814FD3894001DB847 /* CoreData.framework */; };
+		17D95FAA15C182EA00DEC4F2 /* TrainingSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D95FA915C182EA00DEC4F2 /* TrainingSettingsViewController.m */; };
 		17E87BC21518BA9000C7C526 /* flagGermany.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E87BC01518BA9000C7C526 /* flagGermany.png */; };
 		17E87BC31518BA9000C7C526 /* flagGermany@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E87BC11518BA9000C7C526 /* flagGermany@2x.png */; };
 		17E87BC71518C16700C7C526 /* flagUK.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E87BC51518C16700C7C526 /* flagUK.png */; };
@@ -176,6 +178,7 @@
 		1785641F152DC4480076BE5C /* gradhat@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradhat@2x~iphone.png"; sourceTree = "<group>"; };
 		17856421152E0CBA0076BE5C /* GenericHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericHelpViewController.h; sourceTree = "<group>"; };
 		17856422152E0CBB0076BE5C /* GenericHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericHelpViewController.m; sourceTree = "<group>"; };
+		1790E97815C1CCC3001DC301 /* graycolor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graycolor.png; sourceTree = "<group>"; };
 		1791464915C1544300344282 /* DivoctSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivoctSegue.h; sourceTree = "<group>"; };
 		1791464A15C1544300344282 /* DivoctSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivoctSegue.m; sourceTree = "<group>"; };
 		17A5DAD11546A64F00802696 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 		17D6876514FD3297001DB847 /* DictVocDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictVocDictionary.m; sourceTree = "<group>"; };
 		17D6876714FD333B001DB847 /* GlobalDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefinitions.h; sourceTree = "<group>"; };
 		17D6876814FD3894001DB847 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		17D95FA815C182EA00DEC4F2 /* TrainingSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSettingsViewController.h; sourceTree = "<group>"; };
+		17D95FA915C182EA00DEC4F2 /* TrainingSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSettingsViewController.m; sourceTree = "<group>"; };
 		17E87BC01518BA9000C7C526 /* flagGermany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flagGermany.png; sourceTree = "<group>"; };
 		17E87BC11518BA9000C7C526 /* flagGermany@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagGermany@2x.png"; sourceTree = "<group>"; };
 		17E87BC51518C16700C7C526 /* flagUK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flagUK.png; sourceTree = "<group>"; };
@@ -331,6 +336,7 @@
 		1782511D14FFB4AE00D95D57 /* Multimedia */ = {
 			isa = PBXGroup;
 			children = (
+				1790E97815C1CCC3001DC301 /* graycolor.png */,
 				1705664C15528149007A1D50 /* swipe_en.png */,
 				1705663F15528083007A1D50 /* de-05-changeTranslations.png */,
 				1705664015528083007A1D50 /* de-shake.png */,
@@ -607,6 +613,8 @@
 				17EAF37C1514086900D531D2 /* CollectionChooserTableViewController.m */,
 				17AEA08E1514F9D2000091BD /* SettingsTableViewController.h */,
 				17AEA08F1514F9D2000091BD /* SettingsTableViewController.m */,
+				17D95FA815C182EA00DEC4F2 /* TrainingSettingsViewController.h */,
+				17D95FA915C182EA00DEC4F2 /* TrainingSettingsViewController.m */,
 				17D200DF151D1B5A00285A21 /* TrainingViewController.h */,
 				17D200E0151D1B5A00285A21 /* TrainingViewController.m */,
 				17D200F3151F958500285A21 /* TrainingResultsViewController.h */,
@@ -759,6 +767,7 @@
 				1705664A15528083007A1D50 /* en-tap.png in Resources */,
 				1705664D15528149007A1D50 /* swipe_en.png in Resources */,
 				173579C715BD5C8D00C27D7D /* Icon-144.png in Resources */,
+				1790E97915C1CCC3001DC301 /* graycolor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +833,7 @@
 				17A5DAFB1549845300802696 /* HelpViewController.m in Sources */,
 				17A5DB0C15501BB000802696 /* AboutViewController.m in Sources */,
 				1791464B15C1544300344282 /* DivoctSegue.m in Sources */,
+				17D95FAA15C182EA00DEC4F2 /* TrainingSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

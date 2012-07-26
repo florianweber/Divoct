@@ -27,7 +27,9 @@ TrainingViewController.h
 
 @interface TrainingViewController : GenericHelpViewController
 
-@property (nonatomic, strong) Collection *collection;
+@property (nonatomic, strong) Collection *collection;               //set either a collection or exercises and trainingTitle, not both!
+@property (nonatomic, strong) NSMutableArray *exercisesInput;       //set either a collection or exercises and trainingTitle, not both!
+@property (nonatomic, strong) NSString *trainingTitle;              //set either a collection or exercises and trainingTitle, not both!
 @property (nonatomic, strong) NSManagedObjectID *trainingResultsObjectId;
 
 - (void)setStopButtonTitle:(NSString *)title;

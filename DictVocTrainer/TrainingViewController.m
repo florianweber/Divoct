@@ -84,6 +84,8 @@ TrainingViewController.m
 @synthesize optionThreeButton;
 @synthesize optionFourButton;
 @synthesize collection = _collection;
+@synthesize exercisesInput = _exercisesInput;
+@synthesize trainingTitle = _trainingTitle;
 @synthesize openExercises = _openExercises;
 @synthesize countDone = _countDone;
 @synthesize exerciseCount = _exerciseCount;
@@ -123,6 +125,7 @@ TrainingViewController.m
     }
 }
 
+//if a whole collection should be trained
 -(void)setCollection:(Collection *)collection
 {
     if (collection) {
@@ -139,6 +142,28 @@ TrainingViewController.m
         }
     }
 }
+
+//if a subset of a collection should be trained
+-(void)setExercisesInput:(NSMutableArray *)exercisesInput
+{
+    if (exercisesInput) {
+        _exercisesInput = exercisesInput;
+        self.openExercises = [exercisesInput mutableCopy];
+        self.countDone = [NSNumber numberWithInt:0];
+        self.exerciseCount = [NSNumber numberWithInt:[self.openExercises count]];
+        self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount.intValue];
+    }
+}
+
+//if a subset of a collection should be trained
+-(void)setTrainingTitle:(NSString *)trainingTitle
+{
+    if (trainingTitle) {
+        _trainingTitle = trainingTitle;
+        self.title = [trainingTitle stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+    }
+}
+
 
 -(void)setAnswerButtons:(NSArray *)answerButtons
 {
@@ -316,6 +341,11 @@ TrainingViewController.m
 {
     TrainingResultsViewController *resultsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training Results"];
     resultsVC.trainingResult = trainingResult;
+    
+    if (!self.collection) {
+        resultsVC.exercises = self.exercisesInput;
+        resultsVC.trainingTitle = self.trainingTitle;
+    }
     
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[[self navigationController] viewControllers]];
     [viewControllers removeLastObject];

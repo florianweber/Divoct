@@ -28,5 +28,7 @@ TrainingResultsViewController.h
 @interface TrainingResultsViewController : GenericHelpViewController
 
 @property (nonatomic, strong) TrainingResult *trainingResult;
+@property (nonatomic, strong) NSMutableArray *exercises;
+@property (nonatomic, strong) NSString *trainingTitle;
 
 @end

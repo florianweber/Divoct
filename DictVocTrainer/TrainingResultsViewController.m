@@ -50,6 +50,8 @@ TrainingResultsViewController.m
 @synthesize titleLabel;
 @synthesize trainingResult = _trainingResult;
 @synthesize finishedDisplayingResults = _finishedDisplayingResults;
+@synthesize exercises;
+@synthesize trainingTitle;
 
 #pragma mark - Init
 
@@ -159,7 +161,12 @@ TrainingResultsViewController.m
 #pragma mark - Target / Action
 - (IBAction)retryButtonPressed:(UIBarButtonItem *)sender {
     TrainingViewController *trainingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training"];
-    trainingVC.collection = self.trainingResult.collection;
+    if (self.exercises) {
+        trainingVC.exercisesInput = self.exercises;
+        trainingVC.trainingTitle = self.trainingTitle;
+    } else {
+        trainingVC.collection = self.trainingResult.collection;
+    }
     
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[[self navigationController] viewControllers]];
     [viewControllers removeLastObject];
@@ -201,10 +208,14 @@ TrainingResultsViewController.m
     [super viewWillAppear:animated];
     
     if (!self.finishedDisplayingResults) {
-        if ([self.trainingResult.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
-            self.titleLabel.text = [NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil) stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+        if (self.exercises) {
+            self.titleLabel.text = [self.trainingTitle stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
         } else {
-            self.titleLabel.text = [self.trainingResult.collection.name stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+            if ([self.trainingResult.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
+                self.titleLabel.text = [NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil) stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+            } else {
+                self.titleLabel.text = [self.trainingResult.collection.name stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+            }
         }
     }
 }

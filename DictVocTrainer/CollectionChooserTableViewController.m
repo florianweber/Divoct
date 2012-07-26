@@ -108,7 +108,16 @@ CollectionChooserTableViewController.m
                 [self.wordAssignments setObject:[NSNumber numberWithBool:inThisCollection] forKey:collection.name];
             }
         } else if (self.exercisesToAssign) {
-            //todo
+            for (Collection *collection in self.collections) {
+                BOOL allInThisCollection = YES;
+                for (Exercise *exercise in self.exercisesToAssign) {
+                    if (![[DictVocTrainer instance] isWordWithUniqueId:exercise.wordUniqueId partOfCollection:(Collection *)collection]) {
+                        allInThisCollection = NO;
+                        break;
+                    }
+                }
+                [self.wordAssignments setObject:[NSNumber numberWithBool:allInThisCollection] forKey:collection.name];
+            }
         }
     }
 }
@@ -232,7 +241,22 @@ CollectionChooserTableViewController.m
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    if (self.exercisesToAssign) {
+        if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+            // back button was pressed.  We know this is true because self is no longer
+            // in the navigation stack.
+            CATransition *transition = [CATransition animation];
+            [transition setDuration:0.5];
+            [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+            [transition setType:@"oglFlip"];
+            [transition setSubtype:kCATransitionFromRight];
+            [transition setDelegate:self];
+            [self.navigationController.view.layer addAnimation:transition forKey:nil];
+        }
+    }
+
     [super viewWillDisappear:animated];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionInserted:) name:DVT_COLLECTION_NOTIFICATION_INSERTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionDeleted:) name:DVT_COLLECTION_NOTIFICATION_DELETED object:nil];
 }

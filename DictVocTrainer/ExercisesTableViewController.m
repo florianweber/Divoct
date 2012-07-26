@@ -711,6 +711,8 @@ RecentsTableViewController.m
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    //there seems to be a bug with the animations and my toolbar, so this is a workaround
     if (self.repairEditActionToolbar) {
         self.repairEditActionToolbar = NO;
         [self.tableView.superview addSubview:self.editActionBar];

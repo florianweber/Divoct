@@ -43,6 +43,7 @@
 		1785641E152CCB5C0076BE5C /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1785641D152CCB5B0076BE5C /* TriangleView.m */; };
 		17856420152DC44A0076BE5C /* gradhat@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1785641F152DC4480076BE5C /* gradhat@2x~iphone.png */; };
 		17856423152E0CBC0076BE5C /* GenericHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17856422152E0CBB0076BE5C /* GenericHelpViewController.m */; };
+		1791464B15C1544300344282 /* DivoctSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1791464A15C1544300344282 /* DivoctSegue.m */; };
 		17A5DAD21546A64F00802696 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DAD11546A64F00802696 /* Default.png */; };
 		17A5DAD41546A65600802696 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DAD31546A65600802696 /* Default@2x.png */; };
 		17A5DAE41547C7B500802696 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DADD1547C7B500802696 /* Icon-72.png */; };
@@ -175,6 +176,8 @@
 		1785641F152DC4480076BE5C /* gradhat@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradhat@2x~iphone.png"; sourceTree = "<group>"; };
 		17856421152E0CBA0076BE5C /* GenericHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericHelpViewController.h; sourceTree = "<group>"; };
 		17856422152E0CBB0076BE5C /* GenericHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericHelpViewController.m; sourceTree = "<group>"; };
+		1791464915C1544300344282 /* DivoctSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivoctSegue.h; sourceTree = "<group>"; };
+		1791464A15C1544300344282 /* DivoctSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivoctSegue.m; sourceTree = "<group>"; };
 		17A5DAD11546A64F00802696 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		17A5DAD31546A65600802696 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		17A5DADD1547C7B500802696 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -372,6 +375,15 @@
 			name = Multimedia;
 			sourceTree = "<group>";
 		};
+		1791464715C1541100344282 /* Custom Segues */ = {
+			isa = PBXGroup;
+			children = (
+				1791464915C1544300344282 /* DivoctSegue.h */,
+				1791464A15C1544300344282 /* DivoctSegue.m */,
+			);
+			name = "Custom Segues";
+			sourceTree = "<group>";
+		};
 		1794AF5B14FEAFAE00C76BB9 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,6 +562,7 @@
 				17B82B9A14FE6B8A00BE3F34 /* External Classes */,
 				17D6873B14FC1363001DB847 /* Models */,
 				17D6873A14FC1356001DB847 /* View Controllers */,
+				1791464715C1541100344282 /* Custom Segues */,
 				1794AF5B14FEAFAE00C76BB9 /* Custom Views */,
 				17D6872814FC1166001DB847 /* MainStoryboard_iPhone.storyboard */,
 				17D6871D14FC1166001DB847 /* Supporting Files */,
@@ -810,6 +823,7 @@
 				17A5DAF815497F3500802696 /* LicenseViewController.m in Sources */,
 				17A5DAFB1549845300802696 /* HelpViewController.m in Sources */,
 				17A5DB0C15501BB000802696 /* AboutViewController.m in Sources */,
+				1791464B15C1544300344282 /* DivoctSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +865,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -866,6 +881,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -877,6 +894,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -886,6 +904,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -895,7 +915,7 @@
 		17D6873414FC1166001DB847 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EXCLUDED_SOURCE_FILE_NAMES = 65cd942e004108702ab4b94f896553334bc614;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DictVocTrainer/Divoct-Prefix.pch";
@@ -911,7 +931,7 @@
 		17D6873514FC1166001DB847 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EXCLUDED_SOURCE_FILE_NAMES = 65cd942e004108702ab4b94f896553334bc614;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DictVocTrainer/Divoct-Prefix.pch";

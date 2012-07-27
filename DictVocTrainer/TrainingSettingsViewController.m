@@ -85,6 +85,37 @@
     [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
+-(void)createExercises:(int)count
+{
+    //create ten array indexes
+    int ints[count];
+    for (int i=0; i<count; i++) {
+        int randomInt;
+        
+        bool taken = true;
+        while (taken) {
+            randomInt = arc4random_uniform(self.collection.exercises.count-1);
+            taken = false;
+            for (int j=0; j<i; j++) {
+                if (randomInt == ints[j]) {
+                    taken = true;
+                }
+            }
+        }
+        
+        ints[i] = randomInt;
+    }
+    
+    //copy these indexes to exercises
+    self.exercises = [NSMutableArray arrayWithCapacity:count];
+    for (int i=0; i<count; i++) {
+        [self.exercises addObject:[self.collection.exercises objectAtIndex:ints[i]]];
+    }
+    
+    //set training title
+    self.trainingTitle = self.collection.name;
+}
+
 -(void)showHelp
 {
     //todo
@@ -99,34 +130,9 @@
 
 - (IBAction)trainTenWordsButtonPressed:(id)sender {
     
+    //create exercises (if necessary)
     if (self.collection.exercises.count > 10) {
-        //create ten array indexes
-        int ints[10];
-        for (int i=0; i<10; i++) {
-            int randomInt;
-            
-            bool taken = true;
-            while (taken) {
-                randomInt = arc4random_uniform(self.collection.exercises.count-1);
-                taken = false;
-                for (int j=0; j<i; j++) {
-                    if (randomInt == ints[j]) {
-                        taken = true;
-                    }
-                }
-            }
-            
-            ints[i] = randomInt;
-        }
-        
-        //copy these indexes to exercises
-        self.exercises = [NSMutableArray arrayWithCapacity:10];
-        for (int i=0; i<10; i++) {
-            [self.exercises addObject:[self.collection.exercises objectAtIndex:ints[i]]];
-        }
-        
-        //set training title
-        self.trainingTitle = self.collection.name;
+        [self createExercises:10];
     }
     
     //start training
@@ -134,34 +140,10 @@
 }
 
 - (IBAction)trainTwentyFiveWordsButtonPressed:(id)sender {
+
+    //create exercises (if necessary)
     if (self.collection.exercises.count > 25) {
-        //create twenty array indexes
-        int ints[25];
-        for (int i=0; i<25; i++) {
-            int randomInt;
-            
-            bool taken = true;
-            while (taken) {
-                randomInt = arc4random_uniform(self.collection.exercises.count-1);
-                taken = false;
-                for (int j=0; j<i; j++) {
-                    if (randomInt == ints[j]) {
-                        taken = true;
-                    }
-                }
-            }
-            
-            ints[i] = randomInt;
-        }
-        
-        //copy these indexes to exercises
-        self.exercises = [NSMutableArray arrayWithCapacity:25];
-        for (int i=0; i<25; i++) {
-            [self.exercises addObject:[self.collection.exercises objectAtIndex:ints[i]]];
-        }
-        
-        //set training title
-        self.trainingTitle = self.collection.name;
+        [self createExercises:25];
     }
     
     //start training
@@ -169,34 +151,10 @@
 }
 
 - (IBAction)trainFiftyWordsButtonPressed:(id)sender {
+
+    //create exercises (if necessary)
     if (self.collection.exercises.count > 50) {
-        //create twenty array indexes
-        int ints[50];
-        for (int i=0; i<50; i++) {
-            int randomInt;
-            
-            bool taken = true;
-            while (taken) {
-                randomInt = arc4random_uniform(self.collection.exercises.count-1);
-                taken = false;
-                for (int j=0; j<i; j++) {
-                    if (randomInt == ints[j]) {
-                        taken = true;
-                    }
-                }
-            }
-            
-            ints[i] = randomInt;
-        }
-        
-        //copy these indexes to exercises
-        self.exercises = [NSMutableArray arrayWithCapacity:50];
-        for (int i=0; i<50; i++) {
-            [self.exercises addObject:[self.collection.exercises objectAtIndex:ints[i]]];
-        }
-        
-        //set training title
-        self.trainingTitle = self.collection.name;
+        [self createExercises:50];
     }
     
     //start training
@@ -204,7 +162,17 @@
 }
 
 - (IBAction)trainRandomNumberOfWordsButtonPressed:(id)sender {
-    //todo
+    int randomCount = arc4random_uniform(self.collection.exercises.count - 1);
+    
+    if (randomCount <= 0) {
+        randomCount = 1;
+    }
+    
+    //create exercises (if necessary)
+    [self createExercises:randomCount];
+    
+    //start training
+    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:4]];
 }
 
 

@@ -33,6 +33,7 @@ TrainingViewController.m
 #import "TrainingResultsViewController.h"
 #import "Translation.h"
 #import "FWToastView.h"
+#import "Logging.h"
 
 @interface TrainingViewController () <UIScrollViewDelegate>
 
@@ -426,6 +427,9 @@ TrainingViewController.m
             //remove solved exercise from open list
             [self.openExercises removeObject:self.currentExercise];
             
+            //update success rate
+            self.currentExercise.countCorrect = [NSNumber numberWithInt:self.currentExercise.countCorrect.intValue + 1];
+            
             //update progress
             [self updateProgress];
             
@@ -443,9 +447,22 @@ TrainingViewController.m
             }
             self.currentExerciseWrong = YES;
             
+            //update success rate
+            self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
+            
             //paint button red to show the answer was wrong
             [sender setBackgroundImage:[UIImage imageNamed:@"redcolor.png"] forState:UIControlStateNormal];
         }
+        
+        //increase exerciseCount
+        self.currentExercise.exerciseCount = [NSNumber numberWithInt:self.currentExercise.exerciseCount.intValue + 1];
+        
+        //save to database (countWrong, countCorrect, ...)
+        [[DictVocTrainer instance] saveDictVocTrainerDBUsingBlock:^(NSError *error) {
+            if (error) {
+                LogError(@"Error saving success rate of word");
+            }
+        }];
     }
 }
 

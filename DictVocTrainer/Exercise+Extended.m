@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 @implementation Exercise (Extended)
 @dynamic word;
+@dynamic successRate;
 
 -(SQLiteWord *)word
 {
@@ -32,6 +33,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     return [[DictVocDictionary instance] wordByUniqueId:self.wordUniqueId];
 }
 
+-(NSNumber *)successRate
+{
+    NSNumber *successRate = [NSNumber numberWithFloat:0.0];
+    
+    if ((self.countWrong.floatValue > 0.0) && (self.countCorrect.floatValue > 0.0))
+    {
+        successRate = [NSNumber numberWithFloat:(self.countCorrect.floatValue / self.countWrong.floatValue)];
+        
+    } else if (self.countWrong.floatValue > 0.0 && self.countCorrect.floatValue <= 0.0) {
+        successRate = [NSNumber numberWithFloat:(0.0 - self.countWrong.floatValue)];
+        
+    } else if (self.countWrong.floatValue <= 0 && self.countCorrect.floatValue > 0) {
+        successRate = self.countCorrect;
+        
+    } else {
+        successRate = [NSNumber numberWithFloat:0.0];
+    }
+    
+    
+    return successRate;
+}
 
 
 @end

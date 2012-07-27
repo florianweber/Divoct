@@ -175,6 +175,37 @@
     [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:4]];
 }
 
+- (IBAction)trainDifficultWordsButtonPressed:(id)sender {
+    
+    NSNumber *sumOfSuccessRates = [NSNumber numberWithFloat:0.0];
+    NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:self.collection.exercises.count];
+    for (Exercise *exercise in self.collection.exercises) {
+        sumOfSuccessRates = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue + exercise.successRate.floatValue)];
+    }
+    NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
+    
+    self.exercises = [NSMutableArray array];
+    if (average.floatValue < 1.0) {
+        //if average is lower than 1.0, exercise all words with successrate <= 1.0
+        for (Exercise *exercise in self.collection.exercises) {
+            if (exercise.successRate.floatValue <= 1.0) {
+                [self.exercises addObject:exercise];
+            }
+        }
+    } else {
+        //if average is higher than or equal to 1.0, exercise all words with successrate <= the average
+        for (Exercise *exercise in self.collection.exercises) {
+            if (exercise.successRate.floatValue <= average.floatValue) {
+                [self.exercises addObject:exercise];
+            }
+        }
+    }
+    
+    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:5]];
+    
+}
+
+
 
 #pragma mark - Search Bar delegate
 

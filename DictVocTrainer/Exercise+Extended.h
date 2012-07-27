@@ -25,5 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 @interface Exercise (Extended)
 
 @property (nonatomic, strong) SQLiteWord *word;
+@property (nonatomic, strong) NSNumber *successRate;
+
 
 @end

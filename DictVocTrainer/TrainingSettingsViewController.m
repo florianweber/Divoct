@@ -87,29 +87,20 @@
 
 -(void)createExercises:(int)count
 {
-    //create ten array indexes
-    int ints[count];
-    for (int i=0; i<count; i++) {
-        int randomInt;
-        
-        bool taken = true;
-        while (taken) {
-            randomInt = arc4random_uniform(self.collection.exercises.count-1);
-            taken = false;
-            for (int j=0; j<i; j++) {
-                if (randomInt == ints[j]) {
-                    taken = true;
-                }
-            }
-        }
-        
-        ints[i] = randomInt;
-    }
-    
-    //copy these indexes to exercises
+    //create self.exercises
     self.exercises = [NSMutableArray arrayWithCapacity:count];
-    for (int i=0; i<count; i++) {
-        [self.exercises addObject:[self.collection.exercises objectAtIndex:ints[i]]];
+    
+    //copy all available exercises and reduce this new array by the amount of count
+    NSMutableArray *availableExercises = [self.collection.exercises mutableCopy];
+    
+    int randomIndex;
+    int upperBoundIndex;
+    while (count > 0) {
+        upperBoundIndex = [availableExercises count] - 1;
+        randomIndex = arc4random_uniform(upperBoundIndex);
+        [self.exercises addObject:[availableExercises objectAtIndex:randomIndex]];
+        [availableExercises removeObjectAtIndex:randomIndex];
+        count--;
     }
     
     //set training title

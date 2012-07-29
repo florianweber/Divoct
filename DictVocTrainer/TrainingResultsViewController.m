@@ -50,8 +50,9 @@ TrainingResultsViewController.m
 @synthesize titleLabel;
 @synthesize trainingResult = _trainingResult;
 @synthesize finishedDisplayingResults = _finishedDisplayingResults;
-@synthesize exercises;
-@synthesize trainingTitle;
+@synthesize exercises = _exercises;
+@synthesize trainingTitle = _trainingTitle;
+@synthesize trainingMode = _trainingMode;
 
 #pragma mark - Init
 
@@ -161,6 +162,8 @@ TrainingResultsViewController.m
 #pragma mark - Target / Action
 - (IBAction)retryButtonPressed:(UIBarButtonItem *)sender {
     TrainingViewController *trainingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training"];
+    trainingVC.trainingMode = self.trainingMode;
+    
     if (self.exercises) {
         trainingVC.exercisesInput = self.exercises;
         trainingVC.trainingTitle = self.trainingTitle;

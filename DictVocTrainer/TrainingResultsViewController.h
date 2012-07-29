@@ -24,11 +24,13 @@ TrainingResultsViewController.h
 #import "Collection.h"
 #import "TrainingResult.h"
 #import "GenericHelpViewController.h"
+#import "GlobalDefinitions.h"
 
 @interface TrainingResultsViewController : GenericHelpViewController
 
 @property (nonatomic, strong) TrainingResult *trainingResult;
 @property (nonatomic, strong) NSMutableArray *exercises;
 @property (nonatomic, strong) NSString *trainingTitle;
+@property (nonatomic) TrainingMode trainingMode;
 
 @end

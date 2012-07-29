@@ -45,5 +45,10 @@
 
 typedef enum {
     DictionarySearchMode_TermBeginsWithCaseSensitive = 0,
-    DictionarySearchMode_TermBeginsWithCaseInsensitive = 1,
+    DictionarySearchMode_TermBeginsWithCaseInsensitive = 1
 } DictionarySearchMode;
+
+typedef enum {
+    TrainingMode_Buttons = 0,
+    TrainingMode_TextInput = 1
+} TrainingMode;

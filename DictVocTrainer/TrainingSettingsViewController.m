@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *tenButton;
 @property (weak, nonatomic) IBOutlet UIButton *twentyFiveButton;
 @property (weak, nonatomic) IBOutlet UIButton *fiftyButton;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelectionControl;
 
 @end
 
@@ -34,6 +35,7 @@
 @synthesize tenButton = _TenButton;
 @synthesize twentyFiveButton = _TwentyFiveButton;
 @synthesize fiftyButton = _FiftyButton;
+@synthesize modeSelectionControl = _modeSelectionControl;
 
 
 #pragma mark - Init
@@ -107,6 +109,20 @@
     self.trainingTitle = self.collection.name;
 }
 
+-(void)startTraining:(NSNumber *)trainingCode
+{
+    NSNumber *trainingMode;
+    if (self.modeSelectionControl.selectedSegmentIndex == 0) {
+        trainingMode = [NSNumber numberWithInt:TrainingMode_Buttons];
+    } else if (self.modeSelectionControl.selectedSegmentIndex == 1) {
+        trainingMode = [NSNumber numberWithInt:TrainingMode_TextInput];
+    }
+    
+    NSDictionary *trainingSettings = [NSDictionary dictionaryWithObjectsAndKeys:trainingMode, @"trainingMode", trainingCode, @"trainingCode", nil];
+    
+    [self performSegueWithIdentifier:@"Show Training" sender:trainingSettings];
+}
+
 -(void)showHelp
 {
     //todo
@@ -116,7 +132,7 @@
 #pragma mark - Target / Action
 
 - (IBAction)trainCompleteCollectionButtonPressed:(id)sender {
-    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:0]];
+    [self startTraining:[NSNumber numberWithInt:0]];
 }
 
 - (IBAction)trainTenWordsButtonPressed:(id)sender {
@@ -127,7 +143,7 @@
     }
     
     //start training
-    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:1]];
+    [self startTraining:[NSNumber numberWithInt:1]];
 }
 
 - (IBAction)trainTwentyFiveWordsButtonPressed:(id)sender {
@@ -138,7 +154,7 @@
     }
     
     //start training
-    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:2]];
+    [self startTraining:[NSNumber numberWithInt:2]];
 }
 
 - (IBAction)trainFiftyWordsButtonPressed:(id)sender {
@@ -149,7 +165,7 @@
     }
     
     //start training
-    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:3]];
+    [self startTraining:[NSNumber numberWithInt:3]];
 }
 
 - (IBAction)trainRandomNumberOfWordsButtonPressed:(id)sender {
@@ -163,7 +179,7 @@
     [self createExercises:randomCount];
     
     //start training
-    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:4]];
+    [self startTraining:[NSNumber numberWithInt:4]];
 }
 
 - (IBAction)trainDifficultWordsButtonPressed:(id)sender {
@@ -206,7 +222,14 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Training"]) {
-        if (((NSNumber *)sender).intValue == 0) {
+        int trainingCode = ((NSNumber *)[((NSDictionary *)sender) objectForKey:@"trainingCode"]).intValue;
+        TrainingMode trainingMode = ((NSNumber *)[((NSDictionary *)sender) objectForKey:@"trainingMode"]).intValue;
+        
+        //set training mode (buttons or text input atm)
+        [segue.destinationViewController setTrainingMode:trainingMode];
+        
+        //depending on training code, set whole collection or exercises
+        if (trainingCode == 0) {
             //full collection
             [segue.destinationViewController setCollection:self.collection];
             
@@ -233,6 +256,7 @@
 
 - (void)viewDidUnload
 {
+    [self setModeSelectionControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

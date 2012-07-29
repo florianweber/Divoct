@@ -31,6 +31,7 @@ TrainingViewController.h
 @property (nonatomic, strong) NSMutableArray *exercisesInput;       //set either a collection or exercises and trainingTitle, not both!
 @property (nonatomic, strong) NSString *trainingTitle;              //set either a collection or exercises and trainingTitle, not both!
 @property (nonatomic, strong) NSManagedObjectID *trainingResultsObjectId;
+@property (nonatomic) TrainingMode trainingMode;
 
 - (void)setStopButtonTitle:(NSString *)title;
 

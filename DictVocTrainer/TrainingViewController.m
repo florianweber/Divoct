@@ -35,7 +35,7 @@ TrainingViewController.m
 #import "FWToastView.h"
 #import "Logging.h"
 
-@interface TrainingViewController () <UIScrollViewDelegate>
+@interface TrainingViewController () <UIScrollViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *stopButton;
 
@@ -52,6 +52,7 @@ TrainingViewController.m
 @property (weak, nonatomic) IBOutlet UIButton *optionThreeButton;
 @property (weak, nonatomic) IBOutlet UIButton *optionFourButton;
 @property (nonatomic, strong) NSArray *answerButtons;
+@property (weak, nonatomic) IBOutlet UITextField *answerTextField;
 
 @property (nonatomic, strong) NSMutableArray *openExercises;
 @property (nonatomic, strong) NSNumber *countDone;
@@ -92,6 +93,7 @@ TrainingViewController.m
 @synthesize exerciseCount = _exerciseCount;
 @synthesize currentQuestionCorrectAnswerButtons = _currentQuestionCorrectAnswerButtons;
 @synthesize answerButtons = _answerButtons;
+@synthesize answerTextField = _answerTextField;
 @synthesize currentExercise = _currentExercise;
 @synthesize currentWord = _currentWord;
 @synthesize questionViewOriginalFrame = _questionViewOriginalFrame;
@@ -101,6 +103,7 @@ TrainingViewController.m
 @synthesize trainingResultsObjectId = _trainingResultsObjectId;
 @synthesize timer = _timer;
 @synthesize currentTranslations = _currentTranslations;
+@synthesize trainingMode = _trainingMode;
 
 #pragma mark - Init
 
@@ -342,6 +345,7 @@ TrainingViewController.m
 {
     TrainingResultsViewController *resultsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training Results"];
     resultsVC.trainingResult = trainingResult;
+    resultsVC.trainingMode = self.trainingMode;
     
     if (!self.collection) {
         resultsVC.exercises = self.exercisesInput;
@@ -381,7 +385,79 @@ TrainingViewController.m
     [self showResults:trainingResult];
 }
 
--(void)showHelp 
+-(void)updateTextInputForNewQuestion
+{
+    self.answerTextField.text = @"";
+    self.answerTextField.backgroundColor = [UIColor whiteColor];
+    [self.answerTextField becomeFirstResponder];
+}
+
+-(void)processTextInputAnswer
+{
+    bool answerIsCorrect = false;
+    
+    NSString *normalizedAnswer = [self.answerTextField.text lowercaseString];
+    for (SQLiteWord *answerWord in self.currentWord.translations) {
+        if ([[answerWord.name lowercaseString] isEqualToString:normalizedAnswer] ||
+            [[answerWord.nameWithoutContextInfo lowercaseString] isEqualToString:normalizedAnswer]) {
+            answerIsCorrect = true;
+            break;
+        }
+    }
+    
+    if (answerIsCorrect) {
+        self.answerTextField.backgroundColor = [UIColor greenColor];
+        
+        //add to done
+        self.countDone = [NSNumber numberWithInt:([self.countDone intValue] + 1)];
+        
+        //add 1 one the correct answers
+        if (!self.currentExerciseWrong) {
+            self.countCorrect = [NSNumber numberWithInt:([self.countCorrect intValue] + 1)];
+        }
+        
+        //remove solved exercise from open list
+        [self.openExercises removeObject:self.currentExercise];
+        
+        //update success rate
+        self.currentExercise.countCorrect = [NSNumber numberWithInt:self.currentExercise.countCorrect.intValue + 1];
+        
+        //update progress
+        [self updateProgress];
+        
+        //go to next exercise after 1 second
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:DVT_WAITSECONDS_FOR_TRAINING_NEXT
+                                                      target:self
+                                                    selector:@selector(nextExercise:)
+                                                    userInfo:nil
+                                                     repeats:NO];
+        
+    } else {
+        self.answerTextField.backgroundColor = [UIColor redColor];
+        
+        if (!self.currentExerciseWrong) {
+            self.countWrong = [NSNumber numberWithInt:([self.countWrong intValue] + 1)];
+        }
+        self.currentExerciseWrong = YES;
+        
+        //update success rate
+        self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
+        
+        [self.answerTextField becomeFirstResponder];
+    }
+    
+    //increase exerciseCount
+    self.currentExercise.exerciseCount = [NSNumber numberWithInt:self.currentExercise.exerciseCount.intValue + 1];
+    
+    //save to database (countWrong, countCorrect, ...)
+    [[DictVocTrainer instance] saveDictVocTrainerDBUsingBlock:^(NSError *error) {
+        if (error) {
+            LogError(@"Error saving success rate of word");
+        }
+    }];
+}
+
+-(void)showHelp
 {
     [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAINING_QUESTIONS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES pointingToView:optionOneButton fromDirection:FWToastViewPointingFromDirectionTop];
 }
@@ -406,7 +482,12 @@ TrainingViewController.m
         self.currentWord = self.currentExercise.word;
         [self updateFlagIcon];
         [self updateQuestion];
-        [self updateButtons];
+        
+        if (self.trainingMode == TrainingMode_Buttons) {
+            [self updateButtons];
+        } else if (self.trainingMode == TrainingMode_TextInput) {
+            [self updateTextInputForNewQuestion];
+        }
     }
 }
 
@@ -467,6 +548,31 @@ TrainingViewController.m
 }
 
 
+#pragma mark - UITextFieldDelegate
+
+//if the user pressed "done" it will resign, so the user cannot add enters into the text
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([self.timer isValid]) {
+        return FALSE;
+    }
+    
+    //return if done pressed
+    if ([string isEqualToString:@"\n"]) {
+        
+        [textField resignFirstResponder];
+        return FALSE;
+    }
+    
+    return TRUE;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self processTextInputAnswer];
+}
+
+
 #pragma mark - Scroll View delegate
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -490,12 +596,23 @@ TrainingViewController.m
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupProgressBar]; 
+    [self setupProgressBar];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //trainingMode
+    if (self.trainingMode == TrainingMode_Buttons) {
+        self.answerTextField.hidden = YES;
+        self.answerTextField.enabled = NO;
+    } else if (self.trainingMode == TrainingMode_TextInput) {
+        for (UIButton *answerButton in self.answerButtons) {
+            answerButton.hidden = YES;
+            self.answerTextField.enabled = YES;
+        }
+    }
     
     [self updateProgress];
     
@@ -504,6 +621,14 @@ TrainingViewController.m
         [self nextExercise:self];
     }
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.view endEditing:YES];
+    self.answerTextField.enabled = NO;
+    
+    [super viewWillDisappear:animated];
 }
 
 -(void)viewDidUnload
@@ -520,6 +645,7 @@ TrainingViewController.m
     [self setQuestionFlagIconImageView:nil];
     [self setProgessView:nil];
     [self setStopButton:nil];
+    [self setAnswerTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -859,7 +859,7 @@ divocthelp@googlemail.com</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="swO-7M-jX8">
-                                <rect key="frame" x="20" y="56" width="135" height="37"/>
+                                <rect key="frame" x="20" y="143" width="135" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="All">
@@ -874,7 +874,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ThB-9t-z7u">
-                                <rect key="frame" x="20" y="101" width="86" height="37"/>
+                                <rect key="frame" x="20" y="188" width="86" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="10">
@@ -889,7 +889,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vuc-Uy-lv0">
-                                <rect key="frame" x="117" y="101" width="86" height="37"/>
+                                <rect key="frame" x="117" y="188" width="86" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="25">
@@ -903,15 +903,22 @@ divocthelp@googlemail.com</string>
                                     <action selector="trainTwentyFiveWordsButtonPressed:" destination="TOt-ck-TK1" eventType="touchUpInside" id="9wv-ei-fhx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How many words do you want to exercise?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DHo-Ob-1aq">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="With how many words?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DHo-Ob-1aq">
+                                <rect key="frame" x="20" y="107" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How would you like to exercise?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HtA-go-hqz">
                                 <rect key="frame" x="20" y="20" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hmx-wn-bhi">
-                                <rect key="frame" x="214" y="101" width="86" height="37"/>
+                                <rect key="frame" x="214" y="188" width="86" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="50">
@@ -926,7 +933,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sAs-FT-bgc">
-                                <rect key="frame" x="165" y="56" width="135" height="37"/>
+                                <rect key="frame" x="165" y="143" width="135" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Random">
@@ -941,7 +948,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jrx-7v-ZKd">
-                                <rect key="frame" x="20" y="146" width="280" height="37"/>
+                                <rect key="frame" x="20" y="233" width="280" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Difficult words only">
@@ -955,12 +962,21 @@ divocthelp@googlemail.com</string>
                                     <action selector="trainDifficultWordsButtonPressed:" destination="TOt-ck-TK1" eventType="touchUpInside" id="eMr-Le-Lyf"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ugz-eA-MDS">
+                                <rect key="frame" x="20" y="50" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Multiple Choice"/>
+                                    <segment title="Short Answer"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.94117647058823528" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Training Settings" id="ao4-fe-as5"/>
                     <connections>
                         <outlet property="fiftyButton" destination="hmx-wn-bhi" id="cvl-H7-J55"/>
+                        <outlet property="modeSelectionControl" destination="ugz-eA-MDS" id="3RA-vd-bS6"/>
                         <outlet property="tenButton" destination="ThB-9t-z7u" id="Dtf-1v-AiX"/>
                         <outlet property="twentyFiveButton" destination="Vuc-Uy-lv0" id="wy7-VP-HIJ"/>
                         <segue destination="DBP-Ez-FgH" kind="push" identifier="Show Training" id="bc7-6e-O7A"/>
@@ -1075,6 +1091,15 @@ divocthelp@googlemail.com</string>
                                             </view>
                                         </subviews>
                                     </scrollView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" textAlignment="center" minimumFontSize="17" id="Ovi-5R-Jc5">
+                                        <rect key="frame" x="20" y="159" width="280" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="DBP-Ez-FgH" id="MmQ-z2-ABO"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234716892242432" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1089,6 +1114,7 @@ divocthelp@googlemail.com</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="answerTextField" destination="Ovi-5R-Jc5" id="PyI-wL-0qz"/>
                         <outlet property="completionLabel" destination="Tuj-HT-umM" id="hak-bC-AYU"/>
                         <outlet property="optionFourButton" destination="c8T-aE-5cD" id="OYN-cF-FEt"/>
                         <outlet property="optionOneButton" destination="MHd-1e-7pq" id="THD-MG-cUY"/>
@@ -1387,6 +1413,7 @@ divocthelp@googlemail.com</string>
                 <relationship kind="action" name="trainTenWordsButtonPressed:"/>
                 <relationship kind="action" name="trainTwentyFiveWordsButtonPressed:"/>
                 <relationship kind="outlet" name="fiftyButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tenButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="twentyFiveButton" candidateClass="UIButton"/>
             </relationships>
@@ -1400,9 +1427,7 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="optionOneButton" candidateClass="UIButton"/>
@@ -1437,9 +1462,9 @@ divocthelp@googlemail.com</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Ofl-UN-peV"/>
-        <segue reference="4n2-FM-HKU"/>
-        <segue reference="0n3-c0-Qed"/>
+        <segue reference="wbh-Jw-qgU"/>
+        <segue reference="CWd-FU-N7h"/>
         <segue reference="M3C-aw-Ko8"/>
+        <segue reference="0n3-c0-Qed"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,6 +25,7 @@
 #define DVT_DB_FILE_NAME @"dvtDatabase.sqlite"
 #define DVT_TRAINER_DB_FILE_NAME @"trainerDatabase.coredata"
 #define DVT_NSUSERDEFAULTS_SEARCHMODE @"dvt_searchmode"
+#define DVT_NSUSERDEFAULTS_TRAININGMODE @"dvt_trainingmode"
 #define DVT_MAX_COLLECTION_NAME_LENGTH 30
 #define DVT_MAX_COLLECTION_DESC_LENGTH 90
 #define DVT_WAITSECONDS_FOR_USER_INPUT 0.3

@@ -120,6 +120,14 @@
     [self performSegueWithIdentifier:@"Show Training" sender:trainingSettings];
 }
 
+-(void)loadPreviousTrainingMode
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *trainingModeKey = DVT_NSUSERDEFAULTS_TRAININGMODE;
+    NSNumber *userDefaultsTrainingMode = (NSNumber *)[defaults objectForKey:trainingModeKey];
+    [self.modeSelectionControl setSelectedSegmentIndex:userDefaultsTrainingMode.integerValue];
+}
+
 -(void)showHelp
 {
     //todo
@@ -209,9 +217,14 @@
     
 }
 
-
-
-#pragma mark - Search Bar delegate
+- (IBAction)trainingModeChanged:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *trainingModeKey = DVT_NSUSERDEFAULTS_TRAININGMODE;
+    
+    [defaults setObject:[NSNumber numberWithInt:self.modeSelectionControl.selectedSegmentIndex] forKey:trainingModeKey];
+    
+    [defaults synchronize];
+}
 
 
 #pragma mark - Navigation Controller Delegate
@@ -249,6 +262,8 @@
 {
     [super viewWillAppear:animated];
     [self configureButtons];
+    [self loadPreviousTrainingMode];
+    [self.modeSelectionControl addTarget:self action:@selector(trainingModeChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewDidUnload

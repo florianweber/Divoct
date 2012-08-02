@@ -47,7 +47,9 @@
                 return YES;
             }
         } else if ([[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController] isKindOfClass:[TrainingResultsViewController class]]){
-            return YES;
+            if (((TrainingResultsViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).trainingMode == TrainingMode_TextInput) {
+                return YES;
+            }
         }
     }
     return NO;

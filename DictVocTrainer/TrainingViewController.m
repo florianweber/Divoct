@@ -426,10 +426,15 @@ TrainingViewController.m
     
     NSString *normalizedAnswer = [[self.answerTextField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for (SQLiteWord *answerWord in self.currentWord.translations) {
-        if ([[answerWord.name lowercaseString] isEqualToString:normalizedAnswer] ||
-            [[answerWord.nameWithoutContextInfo lowercaseString] isEqualToString:normalizedAnswer]) {
-            answerIsCorrect = true;
-            break;
+        
+        float lengthOfAnswerWord = answerWord.nameWithoutContextInfo.length;
+        float lengthOfUserAnswer = normalizedAnswer.length;
+        
+        if (lengthOfUserAnswer / lengthOfAnswerWord >= DVT_MIN_WORDLENGTH_CORRECT_PERCENTAGE) {
+            if ([[answerWord.nameWithoutContextInfo lowercaseString] rangeOfString:normalizedAnswer].location != NSNotFound) {
+                answerIsCorrect = true;
+                break;
+            }
         }
     }
     

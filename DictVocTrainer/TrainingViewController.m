@@ -235,11 +235,12 @@ TrainingViewController.m
     //Start point top left
     CGPoint descStart;
     descStart.x = 0;
-    descStart.y = 10;
+    descStart.y = 0;
     
     //Title (searched word)
     UILabel *questionLabel = [[UILabel alloc] init];
     questionLabel.text = self.currentWord.name;
+    questionLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     questionLabel.font = [UIFont boldSystemFontOfSize:22];
     questionLabel.textAlignment = UITextAlignmentCenter;
     questionLabel.backgroundColor = [UIColor clearColor];
@@ -255,8 +256,7 @@ TrainingViewController.m
     
     [self.questionView addSubview:questionLabel];
     
-    //change vocabularyDetailView.frame to fit the subviews' size
-    CGFloat contentHeight = descStart.y + questionFrame.size.height + 20;
+    CGFloat contentHeight = descStart.y + questionFrame.size.height + 0; //+ 20
     if (contentHeight > self.questionScrollView.frame.size.height) {
         CGSize sizeFittingSubviews = CGSizeMake(self.questionView.frame.size.width, contentHeight);
         
@@ -396,7 +396,7 @@ TrainingViewController.m
 {
     bool answerIsCorrect = false;
     
-    NSString *normalizedAnswer = [self.answerTextField.text lowercaseString];
+    NSString *normalizedAnswer = [[self.answerTextField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for (SQLiteWord *answerWord in self.currentWord.translations) {
         if ([[answerWord.name lowercaseString] isEqualToString:normalizedAnswer] ||
             [[answerWord.nameWithoutContextInfo lowercaseString] isEqualToString:normalizedAnswer]) {
@@ -599,6 +599,23 @@ TrainingViewController.m
     [self setupProgressBar];
 }
 
+-(void)layoutViewsToOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        self.answerTextField.frame = CGRectMake(20, 70, 440, 30);
+        self.questionScrollView.frame = CGRectMake(20, 35, 440, 31);
+    }
+    else
+    {
+        self.answerTextField.frame = CGRectMake(20, 160, 280, 30);
+        self.questionScrollView.frame = CGRectMake(20, 44, 280, 116);
+    }
+    
+    //self.questionScrollView.backgroundColor = [UIColor redColor]; //for debugging
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -621,6 +638,7 @@ TrainingViewController.m
         [self nextExercise:self];
     }
     
+    [self layoutViewsToOrientation:self.interfaceOrientation];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -650,9 +668,19 @@ TrainingViewController.m
     // Release any retained subviews of the main view.
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self layoutViewsToOrientation:toInterfaceOrientation];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    self.questionViewOriginalFrame = self.questionView.frame;
+}
+
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 @end

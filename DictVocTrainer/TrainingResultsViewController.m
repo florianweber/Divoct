@@ -26,13 +26,14 @@ TrainingResultsViewController.m
 #import "TrainingViewController.h"
 #import "FWToastView.h"
 
-#define MAX_BAR_HEIGHT 237
-#define NORMAL_PIXEL_STEPS 10
+#define BAR_WIDTH 90
 
 @interface TrainingResultsViewController ()
 
 @property (weak, nonatomic) IBOutlet TrainingResultsDiagramView *diagramView;
+@property (weak, nonatomic) IBOutlet UILabel *redBarLabel;
 @property (weak, nonatomic) IBOutlet UIView *redBarView;
+@property (weak, nonatomic) IBOutlet UILabel *greenBarLabel;
 @property (weak, nonatomic) IBOutlet UIView *greenBarView;
 @property (weak, nonatomic) IBOutlet UILabel *wrongCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *correctCountLabel;
@@ -43,7 +44,9 @@ TrainingResultsViewController.m
 
 @implementation TrainingResultsViewController
 @synthesize diagramView;
+@synthesize redBarLabel;
 @synthesize redBarView;
+@synthesize greenBarLabel;
 @synthesize greenBarView;
 @synthesize wrongCountLabel;
 @synthesize correctCountLabel;
@@ -72,16 +75,11 @@ TrainingResultsViewController.m
 
 -(void)setupBarViews
 {
-    //red bar
-    CGRect redBarViewFrame = self.redBarView.frame;
-    redBarViewFrame.size.height = NORMAL_PIXEL_STEPS;
-    self.redBarView.frame = redBarViewFrame;
+    int redBarMidX = self.redBarLabel.center.x;
+    int greenBarMidX = self.greenBarLabel.center.x;
     
-    //green bar
-    CGRect greenBarViewFrame = self.greenBarView.frame;
-    greenBarViewFrame.size.height = NORMAL_PIXEL_STEPS;
-    self.greenBarView.frame = greenBarViewFrame;
-    
+    self.redBarView.center = CGPointMake(redBarMidX, self.redBarView.center.y);
+    self.greenBarView.center = CGPointMake(greenBarMidX, self.greenBarView.center.y);
 }
 
 -(void)growBars
@@ -92,11 +90,13 @@ TrainingResultsViewController.m
     correctCountLabel.text = [NSString stringWithFormat:@"%i",countCorrectInt];
     wrongCountLabel.text = [NSString stringWithFormat:@"%i",countWrongInt];
     
-    //bars
-    int pixelStepIncrease = NORMAL_PIXEL_STEPS;
+    //calculate bar max height and step increase in points (pixel on normal screen)
+    int maxHeight = self.redBarView.frame.origin.y - (titleLabel.center.y + (titleLabel.frame.size.height / 2)) - 15;
+    int pixelStepIncrease = maxHeight / (UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 10 : 20);
     
-    if ((MAX(countCorrectInt, countWrongInt) * NORMAL_PIXEL_STEPS) > MAX_BAR_HEIGHT) {
-        pixelStepIncrease = (MAX_BAR_HEIGHT / MAX(countCorrectInt, countWrongInt)); 
+    //bars
+    if ((MAX(countCorrectInt, countWrongInt) * pixelStepIncrease) > maxHeight) {
+        pixelStepIncrease = (maxHeight / MAX(countCorrectInt, countWrongInt));
     }
     
     int wrongBarHeight = self.redBarView.frame.size.height + (countWrongInt * pixelStepIncrease);
@@ -115,22 +115,20 @@ TrainingResultsViewController.m
         greenBarViewFrame.origin.y = greenBarViewFrame.origin.y - correctBarHeight + self.greenBarView.frame.size.height;
     }
     
-    //count labels
-    CGRect correctCountLabelFrame = self.correctCountLabel.frame;
-    correctCountLabelFrame.origin.y = greenBarViewFrame.origin.y - 5 - correctCountLabelFrame.size.height;
-    
-    CGRect wrongCountLabelFrame = self.wrongCountLabel.frame;
-    wrongCountLabelFrame.origin.y = redBarViewFrame.origin.y - 5 - wrongCountLabelFrame.size.height;
-    
     [UIView animateWithDuration:1 animations:^{
         redBarView.frame = redBarViewFrame; 
         greenBarView.frame = greenBarViewFrame;
     } completion:^(BOOL finished) {
-        self.correctCountLabel.frame = correctCountLabelFrame;
-        self.wrongCountLabel.frame = wrongCountLabelFrame;
+        [self positionCountLabels];
         correctCountLabel.hidden = NO;
         wrongCountLabel.hidden = NO;
     }];
+}
+
+-(void)positionCountLabels
+{
+    self.correctCountLabel.center = CGPointMake(self.greenBarLabel.center.x, self.greenBarView.frame.origin.y - 5 - (self.correctCountLabel.frame.size.height / 2));
+    self.wrongCountLabel.center = CGPointMake(self.redBarLabel.center.x, self.redBarView.frame.origin.y - 5 - (self.wrongCountLabel.frame.size.height / 2));
 }
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
@@ -210,6 +208,8 @@ TrainingResultsViewController.m
 {
     [super viewWillAppear:animated];
     
+    [self setupBarViews];
+    
     if (!self.finishedDisplayingResults) {
         if (self.exercises) {
             self.titleLabel.text = [self.trainingTitle stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
@@ -240,12 +240,21 @@ TrainingResultsViewController.m
     [self setWrongCountLabel:nil];
     [self setCorrectCountLabel:nil];
     [self setTitleLabel:nil];
+    [self setRedBarLabel:nil];
+    [self setGreenBarLabel:nil];
     [super viewDidUnload];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self setupBarViews];
+    [self positionCountLabels];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);;
 }
+
 
 @end

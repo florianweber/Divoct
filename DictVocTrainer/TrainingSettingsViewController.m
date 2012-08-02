@@ -14,16 +14,20 @@
 #import "DictVocDictionary.h"
 #import "DictVocTrainer.h"
 #import "FWToastView.h"
+#import "MOGlassButton.h"
 #include <stdlib.h>
 
 @interface TrainingSettingsViewController ()
 
 @property (nonatomic, strong) NSMutableArray *exercises;
 @property (nonatomic, strong) NSString *trainingTitle;
-@property (weak, nonatomic) IBOutlet UIButton *tenButton;
-@property (weak, nonatomic) IBOutlet UIButton *twentyFiveButton;
-@property (weak, nonatomic) IBOutlet UIButton *fiftyButton;
+@property (weak, nonatomic) IBOutlet MOGlassButton *tenButton;
+@property (weak, nonatomic) IBOutlet MOGlassButton *twentyFiveButton;
+@property (weak, nonatomic) IBOutlet MOGlassButton *fiftyButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelectionControl;
+@property (weak, nonatomic) IBOutlet MOGlassButton *allButton;
+@property (weak, nonatomic) IBOutlet MOGlassButton *randomButton;
+@property (weak, nonatomic) IBOutlet MOGlassButton *difficultButton;
 
 @end
 
@@ -36,6 +40,9 @@
 @synthesize twentyFiveButton = _TwentyFiveButton;
 @synthesize fiftyButton = _FiftyButton;
 @synthesize modeSelectionControl = _modeSelectionControl;
+@synthesize allButton = _allButton;
+@synthesize randomButton = _randomButton;
+@synthesize difficultButton = _difficultButton;
 
 
 #pragma mark - Init
@@ -48,43 +55,29 @@
 
 - (void)configureButtons
 {
-    //Ten Button
+    [self.allButton setupAsDarkGrayButton];
+    [self.randomButton setupAsDarkGrayButton];
+    [self.difficultButton setupAsDarkGrayButton];
+    
+    [self.tenButton setupAsDarkGrayButton];
+    [self.twentyFiveButton setupAsDarkGrayButton];
+    [self.fiftyButton setupAsDarkGrayButton];
+    
+    
     if (self.collection.exercises.count < 10) {
         self.tenButton.enabled = NO;
-        [self grayOutButton:self.tenButton];
-        
         self.twentyFiveButton.enabled = NO;
-        [self grayOutButton:self.twentyFiveButton];
-        
         self.fiftyButton.enabled = NO;
-        [self grayOutButton:self.fiftyButton];
-        
     } else if ((self.collection.exercises.count >= 10) && (self.collection.exercises.count < 25)) {
         self.twentyFiveButton.enabled = NO;
-        [self grayOutButton:self.twentyFiveButton];
-        
         self.fiftyButton.enabled = NO;
-        [self grayOutButton:self.fiftyButton];
-        
     } else if ((self.collection.exercises.count >= 25) && (self.collection.exercises.count < 50)) {
-        self.fiftyButton.enabled = NO;
-        [self grayOutButton:self.fiftyButton];
-        
+        self.fiftyButton.enabled = NO;  
     } else {
         self.tenButton.enabled = YES;
         self.twentyFiveButton.enabled = YES;
         self.fiftyButton.enabled = YES;
     }
-}
-
--(void)grayOutButton:(UIButton *)button
-{
-    [button.layer setMasksToBounds:YES];
-    button.layer.cornerRadius = 6;
-    button.layer.borderColor=[UIColor grayColor].CGColor;//[UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:1].CGColor;
-    button.layer.borderWidth=1.0f;
-    [button setBackgroundImage:[UIImage imageNamed:@"graycolor.png"] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 -(void)createExercises:(int)count
@@ -104,13 +97,17 @@
         [availableExercises removeObjectAtIndex:randomIndex];
         count--;
     }
-    
-    //set training title
-    self.trainingTitle = self.collection.name;
 }
 
 -(void)startTraining:(NSNumber *)trainingCode
 {
+    //set training title
+    if ([self.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
+        self.trainingTitle = NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil);
+    } else {
+        self.trainingTitle = self.collection.name;
+    }
+    
     NSNumber *trainingMode;
     if (self.modeSelectionControl.selectedSegmentIndex == 0) {
         trainingMode = [NSNumber numberWithInt:TrainingMode_Buttons];
@@ -208,7 +205,7 @@
         }
     }
     
-    [self performSegueWithIdentifier:@"Show Training" sender:[NSNumber numberWithInt:5]];
+    [self startTraining:[NSNumber numberWithInt:5]];
     
 }
 
@@ -257,6 +254,9 @@
 - (void)viewDidUnload
 {
     [self setModeSelectionControl:nil];
+    [self setAllButton:nil];
+    [self setRandomButton:nil];
+    [self setDifficultButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

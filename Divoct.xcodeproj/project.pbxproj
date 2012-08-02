@@ -128,6 +128,9 @@
 		17EFE9E715092C280024A977 /* SQLiteWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE9E615092C280024A977 /* SQLiteWord.m */; };
 		17EFE9EA150B26B00024A977 /* VocabularyDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE9E9150B26B00024A977 /* VocabularyDetailView.m */; };
 		17EFE9ED150B27110024A977 /* VocabularyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE9EC150B27110024A977 /* VocabularyDetailViewController.m */; };
+		17FB4C2715CA9C1900FC4EFE /* RotatingUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FB4C2615CA9C1900FC4EFE /* RotatingUITabBarController.m */; };
+		17FB4C3615CAD05F00FC4EFE /* MOButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FB4C3315CAD05F00FC4EFE /* MOButton.m */; };
+		17FB4C3715CAD05F00FC4EFE /* MOGlassButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FB4C3515CAD05F00FC4EFE /* MOGlassButton.m */; };
 		17FE2D7715AEE2A800857A07 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EFE9E3150925350024A977 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
@@ -314,6 +317,12 @@
 		17EFE9E9150B26B00024A977 /* VocabularyDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabularyDetailView.m; sourceTree = "<group>"; };
 		17EFE9EB150B27110024A977 /* VocabularyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VocabularyDetailViewController.h; sourceTree = "<group>"; };
 		17EFE9EC150B27110024A977 /* VocabularyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabularyDetailViewController.m; sourceTree = "<group>"; };
+		17FB4C2515CA9C1900FC4EFE /* RotatingUITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingUITabBarController.h; sourceTree = "<group>"; };
+		17FB4C2615CA9C1900FC4EFE /* RotatingUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingUITabBarController.m; sourceTree = "<group>"; };
+		17FB4C3215CAD05F00FC4EFE /* MOButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOButton.h; sourceTree = "<group>"; };
+		17FB4C3315CAD05F00FC4EFE /* MOButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOButton.m; sourceTree = "<group>"; };
+		17FB4C3415CAD05F00FC4EFE /* MOGlassButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOGlassButton.h; sourceTree = "<group>"; };
+		17FB4C3515CAD05F00FC4EFE /* MOGlassButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOGlassButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +435,7 @@
 		17B82B9A14FE6B8A00BE3F34 /* External Classes */ = {
 			isa = PBXGroup;
 			children = (
+				17FB4C3115CAD03500FC4EFE /* MOButton */,
 				17B82B9C14FE6BA100BE3F34 /* ZipUnzip */,
 			);
 			name = "External Classes";
@@ -625,6 +635,8 @@
 				17A5DAFA1549845300802696 /* HelpViewController.m */,
 				17A5DB0A15501BAC00802696 /* AboutViewController.h */,
 				17A5DB0B15501BAE00802696 /* AboutViewController.m */,
+				17FB4C2515CA9C1900FC4EFE /* RotatingUITabBarController.h */,
+				17FB4C2615CA9C1900FC4EFE /* RotatingUITabBarController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -653,6 +665,17 @@
 				177E2B4D150E814F00B8AEE3 /* DictVocTrainer.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		17FB4C3115CAD03500FC4EFE /* MOButton */ = {
+			isa = PBXGroup;
+			children = (
+				17FB4C3215CAD05F00FC4EFE /* MOButton.h */,
+				17FB4C3315CAD05F00FC4EFE /* MOButton.m */,
+				17FB4C3415CAD05F00FC4EFE /* MOGlassButton.h */,
+				17FB4C3515CAD05F00FC4EFE /* MOGlassButton.m */,
+			);
+			name = MOButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -834,6 +857,9 @@
 				17A5DB0C15501BB000802696 /* AboutViewController.m in Sources */,
 				1791464B15C1544300344282 /* DivoctSegue.m in Sources */,
 				17D95FAA15C182EA00DEC4F2 /* TrainingSettingsViewController.m in Sources */,
+				17FB4C2715CA9C1900FC4EFE /* RotatingUITabBarController.m in Sources */,
+				17FB4C3615CAD05F00FC4EFE /* MOButton.m in Sources */,
+				17FB4C3715CAD05F00FC4EFE /* MOGlassButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

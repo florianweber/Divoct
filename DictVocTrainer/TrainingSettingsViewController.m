@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet MOGlassButton *twentyFiveButton;
 @property (weak, nonatomic) IBOutlet MOGlassButton *fiftyButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelectionControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *wrongAnswerHandlingControl;
 @property (weak, nonatomic) IBOutlet MOGlassButton *allButton;
 @property (weak, nonatomic) IBOutlet MOGlassButton *randomButton;
 @property (weak, nonatomic) IBOutlet MOGlassButton *difficultButton;
@@ -37,6 +38,7 @@
 @synthesize twentyFiveButton = _TwentyFiveButton;
 @synthesize fiftyButton = _FiftyButton;
 @synthesize modeSelectionControl = _modeSelectionControl;
+@synthesize wrongAnswerHandlingControl = _wrongAnswerHandlingControl;
 @synthesize allButton = _allButton;
 @synthesize randomButton = _randomButton;
 @synthesize difficultButton = _difficultButton;
@@ -107,10 +109,18 @@
 
 -(void)startTraining:(NSNumber *)trainingCode
 {
+    //Answer Input Mode Selection
     if (self.modeSelectionControl.selectedSegmentIndex == 0) {
         self.training.trainingAnswerInputMode = TrainingAnswerInputMode_MultipleChoice;
     } else if (self.modeSelectionControl.selectedSegmentIndex == 1) {
         self.training.trainingAnswerInputMode = TrainingAnswerInputMode_TextInput;
+    }
+    
+    //Wrong Answer Handling Mode Selection
+    if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 0) {
+        self.training.trainingWrongAnswerHandlingMode = TrainingWrongAnswerHandlingMode_Repeat;
+    } else if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 1) {
+        self.training.trainingWrongAnswerHandlingMode = TrainingWrongAnswerHandlingMode_Dismiss;
     }
     
     self.training.trainingResult = nil;
@@ -119,12 +129,26 @@
     [self performSegueWithIdentifier:@"Show Training" sender:self];
 }
 
+-(void)loadSavedSettings
+{
+    [self loadPreviousTrainingMode];
+    
+}
+
 -(void)loadPreviousTrainingMode
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *trainingModeKey = DVT_NSUSERDEFAULTS_TRAININGMODE;
     NSNumber *userDefaultsTrainingMode = (NSNumber *)[defaults objectForKey:trainingModeKey];
     [self.modeSelectionControl setSelectedSegmentIndex:userDefaultsTrainingMode.integerValue];
+}
+
+-(void)loadPreviousWrongAnswerHandlingMode
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *wrongAnswerHandlingModeKey = DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE;
+    NSNumber *userDefaultsWrongAnswerHandlingMode = (NSNumber *)[defaults objectForKey:wrongAnswerHandlingModeKey];
+    [self.wrongAnswerHandlingControl setSelectedSegmentIndex:userDefaultsWrongAnswerHandlingMode.integerValue];
 }
 
 -(void)showHelp
@@ -226,6 +250,16 @@
     [defaults synchronize];
 }
 
+- (IBAction)wrongAnswerHandlingModeChanged:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *trainingModeKey = DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE;
+    
+    [defaults setObject:[NSNumber numberWithInt:self.wrongAnswerHandlingControl.selectedSegmentIndex] forKey:trainingModeKey];
+    
+    [defaults synchronize];
+}
+
+
 
 #pragma mark - Navigation Controller Delegate
 
@@ -249,7 +283,9 @@
     [super viewWillAppear:animated];
     [self configureButtons];
     [self loadPreviousTrainingMode];
+    [self loadPreviousWrongAnswerHandlingMode];
     [self.modeSelectionControl addTarget:self action:@selector(trainingModeChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.wrongAnswerHandlingControl addTarget:self action:@selector(wrongAnswerHandlingModeChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewDidUnload
@@ -258,6 +294,7 @@
     [self setAllButton:nil];
     [self setRandomButton:nil];
     [self setDifficultButton:nil];
+    [self setWrongAnswerHandlingControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -859,7 +859,7 @@ divocthelp@googlemail.com</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="swO-7M-jX8" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="181" width="135" height="37"/>
+                                <rect key="frame" x="20" y="264" width="135" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37647062540054321" green="0.37647062540054321" blue="0.37647062540054321" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -875,7 +875,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ThB-9t-z7u" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="226" width="86" height="37"/>
+                                <rect key="frame" x="20" y="309" width="86" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="10">
@@ -890,7 +890,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vuc-Uy-lv0" customClass="MOGlassButton">
-                                <rect key="frame" x="117" y="226" width="86" height="37"/>
+                                <rect key="frame" x="117" y="309" width="86" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="25">
@@ -904,8 +904,8 @@ divocthelp@googlemail.com</string>
                                     <action selector="trainTwentyFiveWordsButtonPressed:" destination="TOt-ck-TK1" eventType="touchUpInside" id="9wv-ei-fhx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="With how many words? (hit and go)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DHo-Ob-1aq">
-                                <rect key="frame" x="20" y="107" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How many words do you want to exercise?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DHo-Ob-1aq">
+                                <rect key="frame" x="20" y="190" width="290" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -919,7 +919,7 @@ divocthelp@googlemail.com</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hmx-wn-bhi" customClass="MOGlassButton">
-                                <rect key="frame" x="214" y="226" width="86" height="37"/>
+                                <rect key="frame" x="214" y="309" width="86" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="50">
@@ -934,7 +934,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sAs-FT-bgc" customClass="MOGlassButton">
-                                <rect key="frame" x="165" y="181" width="135" height="37"/>
+                                <rect key="frame" x="165" y="264" width="135" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="Random">
@@ -949,7 +949,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jrx-7v-ZKd" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="136" width="280" height="37"/>
+                                <rect key="frame" x="20" y="219" width="280" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="Only Difficult Words">
@@ -964,11 +964,27 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ugz-eA-MDS">
-                                <rect key="frame" x="20" y="50" width="280" height="30"/>
+                                <rect key="frame" x="20" y="47" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Multiple Choice"/>
                                     <segment title="Type Answer"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="What should happen on wrong answers?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="0wl-jh-b6G">
+                                <rect key="frame" x="20" y="104" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="yCg-by-YWn">
+                                <rect key="frame" x="20" y="132" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Repeat Question"/>
+                                    <segment title="Dismiss question"/>
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
@@ -984,6 +1000,7 @@ divocthelp@googlemail.com</string>
                         <outlet property="randomButton" destination="sAs-FT-bgc" id="6vA-90-BLc"/>
                         <outlet property="tenButton" destination="ThB-9t-z7u" id="Dtf-1v-AiX"/>
                         <outlet property="twentyFiveButton" destination="Vuc-Uy-lv0" id="wy7-VP-HIJ"/>
+                        <outlet property="wrongAnswerHandlingControl" destination="yCg-by-YWn" id="kQC-A9-ZrA"/>
                         <segue destination="DBP-Ez-FgH" kind="push" identifier="Show Training" id="bc7-6e-O7A"/>
                     </connections>
                 </viewController>
@@ -1323,6 +1340,172 @@ divocthelp@googlemail.com</string>
         <image name="preferences~iphone.png" width="26" height="26"/>
         <image name="tapTwoFinger.png" width="100" height="100"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="CollectionChooserTableViewController" superclassName="GenericHelpTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionChooserTableViewController.h"/>
+        </class>
+        <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="finishButtonPressed:"/>
+                <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="descriptionInputBox" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="errorMessageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="titleInputBox" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="DictionarySearchViewController" superclassName="GenericHelpTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DictionarySearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchModeButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="assignSelectedRows:"/>
+                <relationship kind="action" name="deleteSelectedRows:"/>
+                <relationship kind="action" name="deselectAllRows:"/>
+                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="selectAllRows:"/>
+                <relationship kind="action" name="startTraining:"/>
+                <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="GenericHelpTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GenericHelpTableViewController.h"/>
+        </class>
+        <class className="GenericHelpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GenericHelpViewController.h"/>
+        </class>
+        <class className="HelpViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="LicenseViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LicenseViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="LoadingViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="infoMessageView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="MOButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MOButton.h"/>
+        </class>
+        <class className="MOGlassButton" superclassName="MOButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MOGlassButton.h"/>
+        </class>
+        <class className="QuestionView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuestionView.h"/>
+        </class>
+        <class className="RotatingUITabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingUITabBarController.h"/>
+        </class>
+        <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
+        </class>
+        <class className="TrainingResultsDiagramView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>
+        </class>
+        <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="displayResults:"/>
+                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
+                <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="greenBarView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="redBarLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redBarView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="wrongCountLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TrainingSettingsViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="trainCompleteCollectionButtonPressed:"/>
+                <relationship kind="action" name="trainDifficultWordsButtonPressed:"/>
+                <relationship kind="action" name="trainFiftyWordsButtonPressed:"/>
+                <relationship kind="action" name="trainRandomNumberOfWordsButtonPressed:"/>
+                <relationship kind="action" name="trainTenWordsButtonPressed:"/>
+                <relationship kind="action" name="trainTwentyFiveWordsButtonPressed:"/>
+                <relationship kind="action" name="trainingModeChanged:"/>
+                <relationship kind="outlet" name="allButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="difficultButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="fiftyButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="randomButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="tenButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="twentyFiveButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="wrongAnswerHandlingControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="TrainingStatusView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingStatusView.h"/>
+        </class>
+        <class className="TrainingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingView.h"/>
+        </class>
+        <class className="TrainingViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButtonPressed:"/>
+                <relationship kind="action" name="nextExercise:"/>
+                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="optionOneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="optionThreeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="optionTwoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="progessView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="questionFlagIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="questionScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="questionView" candidateClass="QuestionView"/>
+                <relationship kind="outlet" name="stopButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="trainingStatusView" candidateClass="TrainingStatusView"/>
+                <relationship kind="outlet" name="trainingView" candidateClass="TrainingView"/>
+            </relationships>
+        </class>
+        <class className="VocabularyDetailView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailView.h"/>
+        </class>
+        <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="organizeButtonPressed:"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="vocabularyDetailView" candidateClass="VocabularyDetailView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

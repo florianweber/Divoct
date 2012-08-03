@@ -195,6 +195,10 @@ TrainingViewController.m
     }
 }
 
+/*************************************
+ Text Input Mode
+ Layout views depending on orientation
+ *************************************/
 -(void)layoutViewsToOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
@@ -216,6 +220,10 @@ TrainingViewController.m
     [self layoutQuestionView];
 }
 
+/*************************************
+ Mode independent
+ Layout the view showing the question
+ *************************************/
 -(void)layoutQuestionView
 {
     CGSize maxFrameSize = CGSizeMake(self.questionView.frame.size.width - 10, 20000);
@@ -246,6 +254,10 @@ TrainingViewController.m
     self.questionScrollView.contentSize = self.questionView.frame.size;
 }
 
+/*************************************
+ Mode independent
+ Update question with new one
+ *************************************/
 -(void)updateQuestion
 {
     //remove all subviews in case this viewController instance has been used before
@@ -267,6 +279,10 @@ TrainingViewController.m
     [self.questionView addSubview:self.questionLabel];
 }
 
+/*************************************
+ Multiple Choice Mode
+ Update all buttons with new answers
+ *************************************/
 -(void)updateButtons
 {
     //clear button colors
@@ -332,6 +348,10 @@ TrainingViewController.m
     } 
 }
 
+/*************************************
+ Mode independent
+ Update progress bar on top
+ *************************************/
 -(void)updateProgress
 {
     self.completionLabel.text = [NSString stringWithFormat:@"%i / %i", [self.countDone intValue], [self.exerciseCount intValue]];
@@ -339,6 +359,10 @@ TrainingViewController.m
     [self.progessView setProgress:([self.countDone floatValue] / [self.exerciseCount floatValue]) animated:YES];
 }
 
+/*************************************
+ Mode independent
+ Create and show results
+ *************************************/
 -(void)showResults
 {
     TrainingResultsViewController *resultsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training Results"];
@@ -360,6 +384,10 @@ TrainingViewController.m
     
 }
 
+/*************************************
+ Mode independent
+ Finish training (no more exercises)
+ *************************************/
 -(void)completeTraining
 {
     for (UIButton *button in self.answerButtons) {
@@ -376,6 +404,10 @@ TrainingViewController.m
     [self showResults];
 }
 
+/*************************************
+ Text Input Mode
+ Reset text input for a new answer
+ *************************************/
 -(void)updateTextInputForNewQuestion
 {
     self.answerTextField.textColor = [UIColor blackColor];
@@ -386,10 +418,15 @@ TrainingViewController.m
     [self.answerTextField becomeFirstResponder];
 }
 
+
+/*************************************
+ Text Input Mode
+ Answer Handling
+ *************************************/
 -(void)processTextInputAnswer
 {
+    //determine if answer is correct or wrong
     bool answerIsCorrect = false;
-    
     NSString *normalizedAnswer = [[self.answerTextField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for (SQLiteWord *answerWord in self.currentWord.translations) {
         
@@ -404,53 +441,34 @@ TrainingViewController.m
         }
     }
     
+    //handle result
     if (answerIsCorrect) {
+        /*****************************************
+         Special hanling for text input mode
+         *****************************************/
         self.answerTextField.backgroundColor = [UIColor greenColor];
-        
-        //add to done
-        self.countDone = [NSNumber numberWithInt:([self.countDone intValue] + 1)];
-        
-        //add 1 one the correct answers
-        if (!self.currentExerciseWrong) {
-            self.countCorrect = [NSNumber numberWithInt:([self.countCorrect intValue] + 1)];
-        }
-        
-        //reset countCurrentAnswerWrong
+        [self.answerTextField becomeFirstResponder];
         self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
         
-        //remove solved exercise from open list
-        [self.openExercises removeObject:self.currentExercise];
-        
-        //update success rate
-        self.currentExercise.countCorrect = [NSNumber numberWithInt:self.currentExercise.countCorrect.intValue + 1];
-        
-        //update progress
-        [self updateProgress];
-        
-        //go to next exercise after 1 second
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:DVT_WAITSECONDS_FOR_TRAINING_NEXT
-                                                      target:self
-                                                    selector:@selector(nextExercise:)
-                                                    userInfo:nil
-                                                     repeats:NO];
-        
-        [self.answerTextField becomeFirstResponder];
+        /*****************************************
+         General correct answer handling
+         *****************************************/
+        [self processCorrectAnswerGeneral];
         
     } else {
-        //Save one more wrong for stats
-        if (!self.currentExerciseWrong) {
-            self.countWrong = [NSNumber numberWithInt:([self.countWrong intValue] + 1)];
-        }
-        self.currentExerciseWrong = YES;
+        /*****************************************
+         General wrong answer handling
+         *****************************************/
+        [self processWrongAnswerGeneral];
         
-        //update success rate
-        self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
-        
+        /*****************************************
+         Special hanling for text input mode
+         *****************************************/
         //Save one more wrong for current answers
         self.countCurrentAnswerWrong = [NSNumber numberWithInt:([self.countCurrentAnswerWrong intValue] + 1)];
         
         if (self.countCurrentAnswerWrong.intValue >= 2) {
-            //todo show correct answer and go on
+            //show correct answer and go on
             int countAvailableCorrectAnswers = [self.currentWord.translations count];
             int randomIndexOfACorrectAnswer = arc4random_uniform(countAvailableCorrectAnswers - 1);
             
@@ -460,14 +478,17 @@ TrainingViewController.m
             self.answerTextField.enabled = NO;
             self.answerTextField.backgroundColor = [UIColor lightGrayColor];
             
-            //add to done
-            self.countDone = [NSNumber numberWithInt:([self.countDone intValue] + 1)];
-            
             //reset countCurrentAnswerWrong
             self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
-            
-            //remove solved exercise from open list
-            [self.openExercises removeObject:self.currentExercise];
+
+            //only remove this word from current training if training mode is set to dismiss (not repeat)
+            if (self.training.trainingWrongAnswerHandlingMode == TrainingWrongAnswerHandlingMode_Dismiss) {
+                //remove solved exercise from open list
+                [self.openExercises removeObject:self.currentExercise];
+                
+                //add to done
+                self.countDone = [NSNumber numberWithInt:([self.countDone intValue] + 1)];
+            }
             
             //update progress
             [self updateProgress];
@@ -497,6 +518,59 @@ TrainingViewController.m
     }];
 }
 
+/*************************************
+ Mode Independent
+ Answer Handling (correct answer)
+ *************************************/
+-(void)processCorrectAnswerGeneral
+{
+    //add 1 one the correct answers
+    if (!self.currentExerciseWrong) {
+        self.countCorrect = [NSNumber numberWithInt:([self.countCorrect intValue] + 1)];
+    }
+    
+    //only remove this word from current training if it was correct or wrong and training mode is set to dismiss (not repeat)
+    if (!self.currentExerciseWrong ||
+        (self.currentExerciseWrong && (self.training.trainingWrongAnswerHandlingMode == TrainingWrongAnswerHandlingMode_Dismiss))) {
+        //add to done
+        self.countDone = [NSNumber numberWithInt:([self.countDone intValue] + 1)];
+        
+        //remove solved exercise from open list
+        [self.openExercises removeObject:self.currentExercise];
+    }
+    
+    //update success rate
+    self.currentExercise.countCorrect = [NSNumber numberWithInt:self.currentExercise.countCorrect.intValue + 1];
+    
+    //update progress
+    [self updateProgress];
+    
+    //go to next exercise after 1 second
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:DVT_WAITSECONDS_FOR_TRAINING_NEXT
+                                                  target:self
+                                                selector:@selector(nextExercise:)
+                                                userInfo:nil
+                                                 repeats:NO];
+}
+
+/*************************************
+ Mode Independent
+ Answer Handling (wrong answer)
+ *************************************/
+-(void)processWrongAnswerGeneral
+{
+    //Save one more wrong for stats
+    if (!self.currentExerciseWrong) {
+        self.countWrong = [NSNumber numberWithInt:([self.countWrong intValue] + 1)];
+    }
+    
+    //state that this answer was wrong
+    self.currentExerciseWrong = YES;
+    
+    //update success rate
+    self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
+}
+
 -(void)showHelp
 {
     [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAINING_QUESTIONS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES pointingToView:optionOneButton fromDirection:FWToastViewPointingFromDirectionTop];
@@ -509,7 +583,10 @@ TrainingViewController.m
     [self completeTraining];
 }
 
-
+/*************************************
+ Mode independent
+ Next Exercise
+ *************************************/
 -(IBAction)nextExercise:(id)sender
 {
     self.currentExerciseWrong = NO;
@@ -531,48 +608,29 @@ TrainingViewController.m
     }
 }
 
+
+/*************************************
+ Multiple Choice Mode
+ Answer Handling
+ *************************************/
 -(IBAction)optionButtonPressed:(UIButton *)sender 
 {
     if (![self.timer isValid]) {
         //answer correct
         if ([self.currentQuestionCorrectAnswerButtons containsObject:sender]) {
-            if (!self.currentExerciseWrong) {
-                self.countCorrect = [NSNumber numberWithInt:([self.countCorrect intValue] + 1)];
-            }
-            
-            self.countDone = [NSNumber numberWithInt:([self.countDone intValue] + 1)];
             
             //paint button green to show the answer was correct
             [sender setBackgroundImage:[UIImage imageNamed:@"greencolor.png"] forState:UIControlStateNormal];
             
-            //remove solved exercise from open list
-            [self.openExercises removeObject:self.currentExercise];
-            
-            //update success rate
-            self.currentExercise.countCorrect = [NSNumber numberWithInt:self.currentExercise.countCorrect.intValue + 1];
-            
-            //update progress
-            [self updateProgress];
-            
-            //go to next exercise after 1 second
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:DVT_WAITSECONDS_FOR_TRAINING_NEXT 
-                                                                target:self 
-                                                              selector:@selector(nextExercise:)  
-                                                              userInfo:nil 
-                                                               repeats:NO];
+            [self processCorrectAnswerGeneral];
             
         //answer wrong
         } else {
-            if (!self.currentExerciseWrong) {
-                self.countWrong = [NSNumber numberWithInt:([self.countWrong intValue] + 1)];
-            }
-            self.currentExerciseWrong = YES;
-            
-            //update success rate
-            self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
-            
+
             //paint button red to show the answer was wrong
             [sender setBackgroundImage:[UIImage imageNamed:@"redcolor.png"] forState:UIControlStateNormal];
+            
+            [self processWrongAnswerGeneral];
         }
         
         //increase exerciseCount

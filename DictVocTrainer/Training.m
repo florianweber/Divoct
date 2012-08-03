@@ -15,6 +15,7 @@
 @synthesize title = _title;
 
 @synthesize trainingAnswerInputMode = _trainingAnswerInputMode;
+@synthesize trainingWrongAnswerHandlingMode = _trainingWrongAnswerHandlingMode;
 @synthesize trainingCode = _trainingCode;
 
 @synthesize trainingResult = _trainingResult;

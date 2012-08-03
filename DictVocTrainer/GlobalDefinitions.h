@@ -24,8 +24,9 @@
 
 #define DVT_DB_FILE_NAME @"dvtDatabase.sqlite"
 #define DVT_TRAINER_DB_FILE_NAME @"trainerDatabase.coredata"
-#define DVT_NSUSERDEFAULTS_SEARCHMODE @"dvt_searchmode"
-#define DVT_NSUSERDEFAULTS_TRAININGMODE @"dvt_trainingmode"
+#define DVT_NSUSERDEFAULTS_SEARCHMODE @"dvt_searchMode"
+#define DVT_NSUSERDEFAULTS_TRAININGMODE @"dvt_trainingMode"
+#define DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE @"dvt_wrongAnswerHandlingMode"
 #define DVT_MAX_COLLECTION_NAME_LENGTH 30
 #define DVT_MAX_COLLECTION_DESC_LENGTH 90
 #define DVT_WAITSECONDS_FOR_USER_INPUT 0.3
@@ -55,6 +56,11 @@ typedef enum {
     TrainingAnswerInputMode_MultipleChoice = 0,
     TrainingAnswerInputMode_TextInput = 1
 } TrainingAnswerInputMode;
+
+typedef enum {
+    TrainingWrongAnswerHandlingMode_Repeat = 0,
+    TrainingWrongAnswerHandlingMode_Dismiss = 1
+} TrainingWrongAnswerHandlingMode;
 
 typedef enum {
     TrainingCode_Collection = 0,

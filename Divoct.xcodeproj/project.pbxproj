@@ -43,6 +43,7 @@
 		1785641E152CCB5C0076BE5C /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1785641D152CCB5B0076BE5C /* TriangleView.m */; };
 		17856420152DC44A0076BE5C /* gradhat@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1785641F152DC4480076BE5C /* gradhat@2x~iphone.png */; };
 		17856423152E0CBC0076BE5C /* GenericHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17856422152E0CBB0076BE5C /* GenericHelpViewController.m */; };
+		178D8E8215CBDFCB00A87394 /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = 178D8E8115CBDFCB00A87394 /* Training.m */; };
 		1790E97915C1CCC3001DC301 /* graycolor.png in Resources */ = {isa = PBXBuildFile; fileRef = 1790E97815C1CCC3001DC301 /* graycolor.png */; };
 		1791464B15C1544300344282 /* DivoctSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1791464A15C1544300344282 /* DivoctSegue.m */; };
 		17A5DAD21546A64F00802696 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DAD11546A64F00802696 /* Default.png */; };
@@ -181,6 +182,8 @@
 		1785641F152DC4480076BE5C /* gradhat@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradhat@2x~iphone.png"; sourceTree = "<group>"; };
 		17856421152E0CBA0076BE5C /* GenericHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericHelpViewController.h; sourceTree = "<group>"; };
 		17856422152E0CBB0076BE5C /* GenericHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericHelpViewController.m; sourceTree = "<group>"; };
+		178D8E8015CBDFCB00A87394 /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
+		178D8E8115CBDFCB00A87394 /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
 		1790E97815C1CCC3001DC301 /* graycolor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graycolor.png; sourceTree = "<group>"; };
 		1791464915C1544300344282 /* DivoctSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivoctSegue.h; sourceTree = "<group>"; };
 		1791464A15C1544300344282 /* DivoctSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivoctSegue.m; sourceTree = "<group>"; };
@@ -663,6 +666,8 @@
 				17D6876514FD3297001DB847 /* DictVocDictionary.m */,
 				177E2B4C150E814F00B8AEE3 /* DictVocTrainer.h */,
 				177E2B4D150E814F00B8AEE3 /* DictVocTrainer.m */,
+				178D8E8015CBDFCB00A87394 /* Training.h */,
+				178D8E8115CBDFCB00A87394 /* Training.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -860,6 +865,7 @@
 				17FB4C2715CA9C1900FC4EFE /* RotatingUITabBarController.m in Sources */,
 				17FB4C3615CAD05F00FC4EFE /* MOButton.m in Sources */,
 				17FB4C3715CAD05F00FC4EFE /* MOGlassButton.m in Sources */,
+				178D8E8215CBDFCB00A87394 /* Training.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

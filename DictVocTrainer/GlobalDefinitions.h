@@ -30,6 +30,7 @@
 #define DVT_MAX_COLLECTION_DESC_LENGTH 90
 #define DVT_WAITSECONDS_FOR_USER_INPUT 0.3
 #define DVT_WAITSECONDS_FOR_TRAINING_NEXT 1
+#define DVT_WAITSECONDS_FOR_TRAINING_NEXT_IF_WRONG 3
 #define DVT_BACKGROUND_FETCH_PRIORITY 0.3
 #define DVT_STARTSEARCH_WITH_LENGTH 4
 #define DVT_DEFAULTSEARCHMODE 1 //you also need to change the default button title in storyboard if you change this value
@@ -51,6 +52,15 @@ typedef enum {
 } DictionarySearchMode;
 
 typedef enum {
-    TrainingMode_Buttons = 0,
-    TrainingMode_TextInput = 1
-} TrainingMode;
+    TrainingAnswerInputMode_MultipleChoice = 0,
+    TrainingAnswerInputMode_TextInput = 1
+} TrainingAnswerInputMode;
+
+typedef enum {
+    TrainingCode_Collection = 0,
+    TrainingCode_Ten = 1,
+    TrainingCode_TwentyFive = 2,
+    TrainingCode_Fifty = 3,
+    TrainingCode_Random = 4,
+    TrainingCode_Difficult = 5
+}TrainingCode;

@@ -51,24 +51,13 @@ TrainingResultsViewController.m
 @synthesize wrongCountLabel;
 @synthesize correctCountLabel;
 @synthesize titleLabel;
-@synthesize trainingResult = _trainingResult;
 @synthesize finishedDisplayingResults = _finishedDisplayingResults;
-@synthesize exercises = _exercises;
-@synthesize trainingTitle = _trainingTitle;
-@synthesize trainingMode = _trainingMode;
+@synthesize training = _training;
 
 #pragma mark - Init
 
 
 #pragma mark - Getter / Setter
-
--(void)setTrainingResult:(TrainingResult *)trainingResult
-{
-    if(trainingResult != _trainingResult) {
-        _trainingResult = trainingResult;
-        
-    }
-}
 
 
 #pragma mark - My messages
@@ -84,8 +73,8 @@ TrainingResultsViewController.m
 
 -(void)growBars
 {
-    int countCorrectInt = [self.trainingResult.countCorrect intValue];
-    int countWrongInt = [self.trainingResult.countWrong intValue];
+    int countCorrectInt = [self.training.trainingResult.countCorrect intValue];
+    int countWrongInt = [self.training.trainingResult.countWrong intValue];
     
     correctCountLabel.text = [NSString stringWithFormat:@"%i",countCorrectInt];
     wrongCountLabel.text = [NSString stringWithFormat:@"%i",countWrongInt];
@@ -159,15 +148,12 @@ TrainingResultsViewController.m
 
 #pragma mark - Target / Action
 - (IBAction)retryButtonPressed:(UIBarButtonItem *)sender {
-    TrainingViewController *trainingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training"];
-    trainingVC.trainingMode = self.trainingMode;
     
-    if (self.exercises) {
-        trainingVC.exercisesInput = self.exercises;
-        trainingVC.trainingTitle = self.trainingTitle;
-    } else {
-        trainingVC.collection = self.trainingResult.collection;
-    }
+    self.training.trainingResult = nil;
+    self.training.trainingResultsObjectId = nil;
+    
+    TrainingViewController *trainingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training"];
+    trainingVC.training = self.training;
     
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[[self navigationController] viewControllers]];
     [viewControllers removeLastObject];
@@ -211,15 +197,7 @@ TrainingResultsViewController.m
     [self setupBarViews];
     
     if (!self.finishedDisplayingResults) {
-        if (self.exercises) {
-            self.titleLabel.text = [self.trainingTitle stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
-        } else {
-            if ([self.trainingResult.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
-                self.titleLabel.text = [NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil) stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
-            } else {
-                self.titleLabel.text = [self.trainingResult.collection.name stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
-            }
-        }
+        self.titleLabel.text = self.training.title;
     }
 }
 

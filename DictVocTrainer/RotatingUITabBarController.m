@@ -10,6 +10,7 @@
 #import "TrainingViewController.h"
 #import "TrainingResultsViewController.h"
 #import "GlobalDefinitions.h"
+#import "Training.h"
 
 @interface RotatingUITabBarController ()
 
@@ -43,11 +44,11 @@
     //only rotate in TrainingViewController and TrainingResultsViewController
     if((self.selectedIndex == 1) || (self.selectedIndex == 2)) {
         if([[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController] isKindOfClass:[TrainingViewController class]]) {
-            if (((TrainingViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).trainingMode == TrainingMode_TextInput) {
+            if (((TrainingViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
                 return YES;
             }
         } else if ([[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController] isKindOfClass:[TrainingResultsViewController class]]){
-            if (((TrainingResultsViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).trainingMode == TrainingMode_TextInput) {
+            if (((TrainingResultsViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
                 return YES;
             }
         }

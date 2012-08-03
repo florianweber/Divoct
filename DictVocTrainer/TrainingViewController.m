@@ -65,6 +65,7 @@ TrainingViewController.m
 @property (nonatomic, strong) NSMutableArray *currentTranslations;
 @property (nonatomic) BOOL currentExerciseWrong;
 @property (nonatomic, strong) UILabel *questionLabel;
+@property (nonatomic, strong) NSNumber *countCurrentAnswerWrong;
 
 @property (nonatomic, strong) NSTimer *timer;
 
@@ -86,9 +87,6 @@ TrainingViewController.m
 @synthesize optionTwoButton;
 @synthesize optionThreeButton;
 @synthesize optionFourButton;
-@synthesize collection = _collection;
-@synthesize exercisesInput = _exercisesInput;
-@synthesize trainingTitle = _trainingTitle;
 @synthesize openExercises = _openExercises;
 @synthesize countDone = _countDone;
 @synthesize exerciseCount = _exerciseCount;
@@ -101,11 +99,11 @@ TrainingViewController.m
 @synthesize countCorrect = _countCorrect;
 @synthesize countWrong = _countWrong;
 @synthesize currentExerciseWrong = _currentExerciseWrong;
-@synthesize trainingResultsObjectId = _trainingResultsObjectId;
 @synthesize timer = _timer;
 @synthesize currentTranslations = _currentTranslations;
-@synthesize trainingMode = _trainingMode;
 @synthesize questionLabel = _questionLabel;
+@synthesize countCurrentAnswerWrong = _countCurrentAnswerWrong;
+@synthesize training = _training;
 
 #pragma mark - Init
 
@@ -131,42 +129,14 @@ TrainingViewController.m
     }
 }
 
-//if a whole collection should be trained
--(void)setCollection:(Collection *)collection
+-(void)setTraining:(Training *)training
 {
-    if (collection) {
-        _collection = collection;
-        self.openExercises = [collection.exercises mutableCopy];
+    if (training) {
+        _training = training;
+        self.openExercises = [training.exercises mutableCopy];
         self.countDone = [NSNumber numberWithInt:0];
         self.exerciseCount = [NSNumber numberWithInt:[self.openExercises count]];
         self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount.intValue];
-        
-        if ([self.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
-            self.title = [NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil) stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
-        } else {
-            self.title = [collection.name stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
-        }
-    }
-}
-
-//if a subset of a collection should be trained
--(void)setExercisesInput:(NSMutableArray *)exercisesInput
-{
-    if (exercisesInput) {
-        _exercisesInput = exercisesInput;
-        self.openExercises = [exercisesInput mutableCopy];
-        self.countDone = [NSNumber numberWithInt:0];
-        self.exerciseCount = [NSNumber numberWithInt:[self.openExercises count]];
-        self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount.intValue];
-    }
-}
-
-//if a subset of a collection should be trained
--(void)setTrainingTitle:(NSString *)trainingTitle
-{
-    if (trainingTitle) {
-        _trainingTitle = trainingTitle;
-        self.title = [trainingTitle stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
     }
 }
 
@@ -369,16 +339,10 @@ TrainingViewController.m
     [self.progessView setProgress:([self.countDone floatValue] / [self.exerciseCount floatValue]) animated:YES];
 }
 
--(void)showResults:(TrainingResult *)trainingResult
+-(void)showResults
 {
     TrainingResultsViewController *resultsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Training Results"];
-    resultsVC.trainingResult = trainingResult;
-    resultsVC.trainingMode = self.trainingMode;
-    
-    if (!self.collection) {
-        resultsVC.exercises = self.exercisesInput;
-        resultsVC.trainingTitle = self.trainingTitle;
-    }
+    resultsVC.training = self.training;
     
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[[self navigationController] viewControllers]];
     [viewControllers removeLastObject];
@@ -402,19 +366,21 @@ TrainingViewController.m
         button.enabled = NO;
     }
     
-    TrainingResult *trainingResult = nil;
-    if (self.trainingResultsObjectId) {
-        trainingResult = [[DictVocTrainer instance] trainingResultWithObjectId:self.trainingResultsObjectId];
+    if (self.training.trainingResultsObjectId) {
+        self.training.trainingResult = [[DictVocTrainer instance] trainingResultWithObjectId:self.training.trainingResultsObjectId];
     }
     
-    if (!trainingResult) {
-        trainingResult = [[DictVocTrainer instance] insertTrainingResultWithCountWrong:self.countWrong countCorrect:self.countCorrect countWords:self.exerciseCount collection:self.collection trainingDate:[NSDate date]];
+    if (!self.training.trainingResult) {
+        self.training.trainingResult = [[DictVocTrainer instance] insertTrainingResultWithCountWrong:self.countWrong countCorrect:self.countCorrect countWords:self.exerciseCount collection:self.training.collection trainingDate:[NSDate date]];
     }
-    [self showResults:trainingResult];
+    [self showResults];
 }
 
 -(void)updateTextInputForNewQuestion
 {
+    self.answerTextField.textColor = [UIColor blackColor];
+    self.answerTextField.font = [UIFont systemFontOfSize:17.0];
+    self.answerTextField.enabled = YES;
     self.answerTextField.text = @"";
     self.answerTextField.backgroundColor = [UIColor whiteColor];
     [self.answerTextField becomeFirstResponder];
@@ -449,6 +415,9 @@ TrainingViewController.m
             self.countCorrect = [NSNumber numberWithInt:([self.countCorrect intValue] + 1)];
         }
         
+        //reset countCurrentAnswerWrong
+        self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
+        
         //remove solved exercise from open list
         [self.openExercises removeObject:self.currentExercise];
         
@@ -465,9 +434,10 @@ TrainingViewController.m
                                                     userInfo:nil
                                                      repeats:NO];
         
-    } else {
-        self.answerTextField.backgroundColor = [UIColor redColor];
+        [self.answerTextField becomeFirstResponder];
         
+    } else {
+        //Save one more wrong for stats
         if (!self.currentExerciseWrong) {
             self.countWrong = [NSNumber numberWithInt:([self.countWrong intValue] + 1)];
         }
@@ -475,6 +445,43 @@ TrainingViewController.m
         
         //update success rate
         self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
+        
+        //Save one more wrong for current answers
+        self.countCurrentAnswerWrong = [NSNumber numberWithInt:([self.countCurrentAnswerWrong intValue] + 1)];
+        
+        if (self.countCurrentAnswerWrong.intValue >= 2) {
+            //todo show correct answer and go on
+            int countAvailableCorrectAnswers = [self.currentWord.translations count];
+            int randomIndexOfACorrectAnswer = arc4random_uniform(countAvailableCorrectAnswers - 1);
+            
+            self.answerTextField.text = ((SQLiteWord *)[self.currentWord.translations objectAtIndex:randomIndexOfACorrectAnswer]).nameWithoutContextInfo;
+            self.answerTextField.textColor = [UIColor blueColor];
+            self.answerTextField.font = [UIFont boldSystemFontOfSize:17.0];
+            self.answerTextField.enabled = NO;
+            self.answerTextField.backgroundColor = [UIColor lightGrayColor];
+            
+            //add to done
+            self.countDone = [NSNumber numberWithInt:([self.countDone intValue] + 1)];
+            
+            //reset countCurrentAnswerWrong
+            self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
+            
+            //remove solved exercise from open list
+            [self.openExercises removeObject:self.currentExercise];
+            
+            //update progress
+            [self updateProgress];
+            
+            //go to next exercise after 2 second
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:DVT_WAITSECONDS_FOR_TRAINING_NEXT_IF_WRONG
+                                                          target:self
+                                                        selector:@selector(nextExercise:)
+                                                        userInfo:nil
+                                                         repeats:NO];
+            
+        } else {
+            self.answerTextField.backgroundColor = [UIColor redColor];
+        }
         
         [self.answerTextField becomeFirstResponder];
     }
@@ -516,9 +523,9 @@ TrainingViewController.m
         [self updateFlagIcon];
         [self updateQuestion];
         
-        if (self.trainingMode == TrainingMode_Buttons) {
+        if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_MultipleChoice) {
             [self updateButtons];
-        } else if (self.trainingMode == TrainingMode_TextInput) {
+        } else if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
             [self updateTextInputForNewQuestion];
         }
     }
@@ -619,7 +626,7 @@ TrainingViewController.m
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Results"]) {
-        [segue.destinationViewController setTrainingResult:(TrainingResult *)sender];
+        [segue.destinationViewController setTraining:self.training];
          
     }
 }
@@ -637,10 +644,10 @@ TrainingViewController.m
     [super viewWillAppear:animated];
     
     //trainingMode
-    if (self.trainingMode == TrainingMode_Buttons) {
+    if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_MultipleChoice) {
         self.answerTextField.hidden = YES;
         self.answerTextField.enabled = NO;
-    } else if (self.trainingMode == TrainingMode_TextInput) {
+    } else if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
         for (UIButton *answerButton in self.answerButtons) {
             answerButton.hidden = YES;
             self.answerTextField.enabled = YES;

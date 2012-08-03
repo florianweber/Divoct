@@ -15,12 +15,11 @@
 #import "DictVocTrainer.h"
 #import "FWToastView.h"
 #import "MOGlassButton.h"
+#import "Training.h"
 #include <stdlib.h>
 
 @interface TrainingSettingsViewController ()
 
-@property (nonatomic, strong) NSMutableArray *exercises;
-@property (nonatomic, strong) NSString *trainingTitle;
 @property (weak, nonatomic) IBOutlet MOGlassButton *tenButton;
 @property (weak, nonatomic) IBOutlet MOGlassButton *twentyFiveButton;
 @property (weak, nonatomic) IBOutlet MOGlassButton *fiftyButton;
@@ -28,14 +27,12 @@
 @property (weak, nonatomic) IBOutlet MOGlassButton *allButton;
 @property (weak, nonatomic) IBOutlet MOGlassButton *randomButton;
 @property (weak, nonatomic) IBOutlet MOGlassButton *difficultButton;
+@property (nonatomic, strong) Training *training;
 
 @end
 
 @implementation TrainingSettingsViewController
 
-@synthesize collection = _collection;
-@synthesize exercises = _exercises;
-@synthesize trainingTitle = _trainingTitle;
 @synthesize tenButton = _TenButton;
 @synthesize twentyFiveButton = _TwentyFiveButton;
 @synthesize fiftyButton = _FiftyButton;
@@ -43,12 +40,21 @@
 @synthesize allButton = _allButton;
 @synthesize randomButton = _randomButton;
 @synthesize difficultButton = _difficultButton;
+@synthesize training = _training;
 
 
 #pragma mark - Init
 
 
 #pragma mark - Getter / Setter
+
+-(void)setCollection:(Collection *)collection
+{
+    if(collection) {
+        self.training = [[Training alloc] init];
+        self.training.collection = collection;
+    }
+}
 
 
 #pragma mark - My messages
@@ -64,14 +70,14 @@
     [self.fiftyButton setupAsDarkGrayButton];
     
     
-    if (self.collection.exercises.count < 10) {
+    if (self.training.collection.exercises.count < 10) {
         self.tenButton.enabled = NO;
         self.twentyFiveButton.enabled = NO;
         self.fiftyButton.enabled = NO;
-    } else if ((self.collection.exercises.count >= 10) && (self.collection.exercises.count < 25)) {
+    } else if ((self.training.collection.exercises.count >= 10) && (self.training.collection.exercises.count < 25)) {
         self.twentyFiveButton.enabled = NO;
         self.fiftyButton.enabled = NO;
-    } else if ((self.collection.exercises.count >= 25) && (self.collection.exercises.count < 50)) {
+    } else if ((self.training.collection.exercises.count >= 25) && (self.training.collection.exercises.count < 50)) {
         self.fiftyButton.enabled = NO;  
     } else {
         self.tenButton.enabled = YES;
@@ -83,17 +89,17 @@
 -(void)createExercises:(int)count
 {
     //create self.exercises
-    self.exercises = [NSMutableArray arrayWithCapacity:count];
+    self.training.exercises = [NSMutableArray arrayWithCapacity:count];
     
     //copy all available exercises and reduce this new array by the amount of count
-    NSMutableArray *availableExercises = [self.collection.exercises mutableCopy];
+    NSMutableArray *availableExercises = [self.training.collection.exercises mutableCopy];
     
     int randomIndex;
     int upperBoundIndex;
     while (count > 0) {
         upperBoundIndex = [availableExercises count] - 1;
         randomIndex = arc4random_uniform(upperBoundIndex);
-        [self.exercises addObject:[availableExercises objectAtIndex:randomIndex]];
+        [self.training.exercises addObject:[availableExercises objectAtIndex:randomIndex]];
         [availableExercises removeObjectAtIndex:randomIndex];
         count--;
     }
@@ -101,23 +107,16 @@
 
 -(void)startTraining:(NSNumber *)trainingCode
 {
-    //set training title
-    if ([self.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
-        self.trainingTitle = NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil);
-    } else {
-        self.trainingTitle = self.collection.name;
-    }
-    
-    NSNumber *trainingMode;
     if (self.modeSelectionControl.selectedSegmentIndex == 0) {
-        trainingMode = [NSNumber numberWithInt:TrainingMode_Buttons];
+        self.training.trainingAnswerInputMode = TrainingAnswerInputMode_MultipleChoice;
     } else if (self.modeSelectionControl.selectedSegmentIndex == 1) {
-        trainingMode = [NSNumber numberWithInt:TrainingMode_TextInput];
+        self.training.trainingAnswerInputMode = TrainingAnswerInputMode_TextInput;
     }
     
-    NSDictionary *trainingSettings = [NSDictionary dictionaryWithObjectsAndKeys:trainingMode, @"trainingMode", trainingCode, @"trainingCode", nil];
-    
-    [self performSegueWithIdentifier:@"Show Training" sender:trainingSettings];
+    self.training.trainingResult = nil;
+    self.training.trainingResultsObjectId = nil;
+
+    [self performSegueWithIdentifier:@"Show Training" sender:self];
 }
 
 -(void)loadPreviousTrainingMode
@@ -137,13 +136,14 @@
 #pragma mark - Target / Action
 
 - (IBAction)trainCompleteCollectionButtonPressed:(id)sender {
+    self.training.exercises = [NSMutableArray arrayWithArray:self.training.collection.exercises.array];
     [self startTraining:[NSNumber numberWithInt:0]];
 }
 
 - (IBAction)trainTenWordsButtonPressed:(id)sender {
     
     //create exercises (if necessary)
-    if (self.collection.exercises.count > 10) {
+    if (self.training.collection.exercises.count > 10) {
         [self createExercises:10];
     }
     
@@ -154,7 +154,7 @@
 - (IBAction)trainTwentyFiveWordsButtonPressed:(id)sender {
 
     //create exercises (if necessary)
-    if (self.collection.exercises.count > 25) {
+    if (self.training.collection.exercises.count > 25) {
         [self createExercises:25];
     }
     
@@ -165,7 +165,7 @@
 - (IBAction)trainFiftyWordsButtonPressed:(id)sender {
 
     //create exercises (if necessary)
-    if (self.collection.exercises.count > 50) {
+    if (self.training.collection.exercises.count > 50) {
         [self createExercises:50];
     }
     
@@ -174,7 +174,7 @@
 }
 
 - (IBAction)trainRandomNumberOfWordsButtonPressed:(id)sender {
-    int randomCount = arc4random_uniform(self.collection.exercises.count - 1);
+    int randomCount = arc4random_uniform(self.training.collection.exercises.count - 1);
     
     if (randomCount <= 0) {
         randomCount = 1;
@@ -190,25 +190,25 @@
 - (IBAction)trainDifficultWordsButtonPressed:(id)sender {
     
     NSNumber *sumOfSuccessRates = [NSNumber numberWithFloat:0.0];
-    NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:self.collection.exercises.count];
-    for (Exercise *exercise in self.collection.exercises) {
+    NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:self.training.collection.exercises.count];
+    for (Exercise *exercise in self.training.collection.exercises) {
         sumOfSuccessRates = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue + exercise.successRate.floatValue)];
     }
     NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
     
-    self.exercises = [NSMutableArray array];
+    self.training.exercises = [NSMutableArray array];
     if (average.floatValue < 1.0) {
         //if average is lower than 1.0, exercise all words with successrate <= 1.0
-        for (Exercise *exercise in self.collection.exercises) {
+        for (Exercise *exercise in self.training.collection.exercises) {
             if (exercise.successRate.floatValue <= 1.0) {
-                [self.exercises addObject:exercise];
+                [self.training.exercises addObject:exercise];
             }
         }
     } else {
         //if average is higher than or equal to 1.0, exercise all words with successrate <= the average
-        for (Exercise *exercise in self.collection.exercises) {
+        for (Exercise *exercise in self.training.collection.exercises) {
             if (exercise.successRate.floatValue <= average.floatValue) {
-                [self.exercises addObject:exercise];
+                [self.training.exercises addObject:exercise];
             }
         }
     }
@@ -232,22 +232,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Training"]) {
-        int trainingCode = ((NSNumber *)[((NSDictionary *)sender) objectForKey:@"trainingCode"]).intValue;
-        TrainingMode trainingMode = ((NSNumber *)[((NSDictionary *)sender) objectForKey:@"trainingMode"]).intValue;
-        
-        //set training mode (buttons or text input atm)
-        [segue.destinationViewController setTrainingMode:trainingMode];
-        
-        //depending on training code, set whole collection or exercises
-        if (trainingCode == 0) {
-            //full collection
-            [segue.destinationViewController setCollection:self.collection];
-            
-        } else {
-            //only part of collection
-            [segue.destinationViewController setExercisesInput:self.exercises];
-            [segue.destinationViewController setTrainingTitle:self.trainingTitle];
-        }
+        //set training 
+        [segue.destinationViewController setTraining:self.training];
     }
 }
 

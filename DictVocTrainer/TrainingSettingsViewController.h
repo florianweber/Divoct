@@ -12,6 +12,6 @@
 
 @interface TrainingSettingsViewController : GenericHelpViewController
 
-@property (nonatomic, strong) Collection *collection;
+-(void)setCollection:(Collection *)collection;
 
 @end

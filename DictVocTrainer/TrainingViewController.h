@@ -24,14 +24,11 @@ TrainingViewController.h
 #import "GlobalDefinitions.h"
 #import "Collection.h"
 #import "GenericHelpViewController.h"
+#import "Training.h"
 
 @interface TrainingViewController : GenericHelpViewController
 
-@property (nonatomic, strong) Collection *collection;               //set either a collection or exercises and trainingTitle, not both!
-@property (nonatomic, strong) NSMutableArray *exercisesInput;       //set either a collection or exercises and trainingTitle, not both!
-@property (nonatomic, strong) NSString *trainingTitle;              //set either a collection or exercises and trainingTitle, not both!
-@property (nonatomic, strong) NSManagedObjectID *trainingResultsObjectId;
-@property (nonatomic) TrainingMode trainingMode;
+@property (nonatomic, strong) Training *training;
 
 - (void)setStopButtonTitle:(NSString *)title;
 

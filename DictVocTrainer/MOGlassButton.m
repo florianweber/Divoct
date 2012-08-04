@@ -115,9 +115,9 @@
 - (void)setupForStandardButtons {
 	[self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[self setTitleColor:MO_RGBCOLOR(205, 212, 220) forState:UIControlStateDisabled];
-	self.titleLabel.shadowOffset = CGSizeMake(0, -1);
-	self.titleLabel.shadowColor = MO_RGBCOLOR(192, 73, 84);
-	//self.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+	//self.titleLabel.shadowOffset = CGSizeMake(0, -1);
+	//self.titleLabel.shadowColor = MO_RGBCOLOR(192, 73, 84);
+	//self.titleLabel.font = [UIFont boldSystemFontOfSize:14];
 }
 
 
@@ -144,9 +144,9 @@
 }
 
 - (void)setupAsDarkGrayButton {
-    [self setBackgroundColor:MO_RGBCOLOR(90, 90, 90) forState:UIControlStateNormal];
-	[self setBackgroundColor:MO_RGBCOLOR(42, 42, 42) forState:UIControlStateHighlighted];
-	[self setBackgroundColor:MO_RGBCOLOR(199, 199, 199) forState:UIControlStateDisabled];
+    [self setBackgroundColor:MO_RGBCOLOR(60, 60, 60) forState:UIControlStateNormal];
+	[self setBackgroundColor:MO_RGBCOLOR(30, 30, 30) forState:UIControlStateHighlighted];
+	[self setBackgroundColor:MO_RGBCOLOR(170, 170, 170) forState:UIControlStateDisabled];
 	[self setupForStandardButtons];
 }
 

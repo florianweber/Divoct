@@ -38,6 +38,7 @@ typedef enum {
 @property (nonatomic, strong) NSNumber *uniqueId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *nameWithoutContextInfo;
+@property (nonatomic, strong) NSString *nameWithoutBracketInfo;
 @property (nonatomic, strong) NSString *grammarInfo;
 @property (nonatomic, strong) NSString *contextInfo;
 @property (nonatomic, strong) NSString *language;

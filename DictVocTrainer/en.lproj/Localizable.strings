@@ -72,3 +72,4 @@
 "HELP_HELP"                             = "Info messages like this will be shown to help you with the application if you tap with two fingers anywhere.";
 "HELP_LICENSE"                          = "This is where you can read all about the license terms of this app and all works of other authors used in this app.";
 "HELP_ABOUT"                            = "Information about the name, version, author and support mail address of this app.";
+"HELP_TRAININGSETTINGS"                 = "Configure your training according to your needs.\n\nHere are some hints for you:\n- Rotate your device in the \"Type answer\" mode to disburden typing.\n- Some buttons in here will be disabled automatically, depending on the amount of words in your collection.\n- \"Only Difficult Words\" will dynamically contain all words you answered wrong more often than others.";

@@ -67,8 +67,11 @@ TrainingResultsViewController.m
     int redBarMidX = self.redBarLabel.center.x;
     int greenBarMidX = self.greenBarLabel.center.x;
     
-    self.redBarView.center = CGPointMake(redBarMidX, self.redBarView.center.y);
-    self.greenBarView.center = CGPointMake(greenBarMidX, self.greenBarView.center.y);
+    self.redBarView.center = CGPointMake(redBarMidX, self.redBarLabel.frame.origin.y);
+    self.greenBarView.center = CGPointMake(greenBarMidX, self.greenBarLabel.frame.origin.y);
+    
+    self.redBarView.frame = CGRectMake(self.redBarView.frame.origin.x, self.redBarLabel.frame.origin.y - 7, self.redBarView.frame.size.width, 2);
+    self.greenBarView.frame = CGRectMake(self.greenBarView.frame.origin.x, self.greenBarLabel.frame.origin.y - 7, self.greenBarView.frame.size.width, 2);
 }
 
 -(void)growBars
@@ -80,7 +83,7 @@ TrainingResultsViewController.m
     wrongCountLabel.text = [NSString stringWithFormat:@"%i",countWrongInt];
     
     //calculate bar max height and step increase in points (pixel on normal screen)
-    int maxHeight = self.redBarView.frame.origin.y - (titleLabel.center.y + (titleLabel.frame.size.height / 2)) - 15;
+    int maxHeight = self.redBarView.frame.origin.y - (titleLabel.center.y + (titleLabel.frame.size.height / 2)) - 25;
     int pixelStepIncrease = maxHeight / (UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 10 : 20);
     
     //bars
@@ -226,7 +229,7 @@ TrainingResultsViewController.m
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self setupBarViews];
-    [self positionCountLabels];
+    [self displayResults:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

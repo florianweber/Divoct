@@ -859,9 +859,8 @@ divocthelp@googlemail.com</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="swO-7M-jX8" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="264" width="135" height="37"/>
+                                <rect key="frame" x="20" y="264" width="135" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.37647062540054321" green="0.37647062540054321" blue="0.37647062540054321" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="All">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -875,7 +874,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ThB-9t-z7u" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="309" width="86" height="37"/>
+                                <rect key="frame" x="20" y="309" width="86" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="10">
@@ -890,7 +889,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vuc-Uy-lv0" customClass="MOGlassButton">
-                                <rect key="frame" x="117" y="309" width="86" height="37"/>
+                                <rect key="frame" x="117" y="309" width="86" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="25">
@@ -919,7 +918,7 @@ divocthelp@googlemail.com</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hmx-wn-bhi" customClass="MOGlassButton">
-                                <rect key="frame" x="214" y="309" width="86" height="37"/>
+                                <rect key="frame" x="214" y="309" width="86" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="50">
@@ -934,7 +933,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sAs-FT-bgc" customClass="MOGlassButton">
-                                <rect key="frame" x="165" y="264" width="135" height="37"/>
+                                <rect key="frame" x="165" y="264" width="135" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="Random">
@@ -949,7 +948,7 @@ divocthelp@googlemail.com</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jrx-7v-ZKd" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="219" width="280" height="37"/>
+                                <rect key="frame" x="20" y="219" width="280" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="Only Difficult Words">
@@ -1350,8 +1349,6 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="finishButtonPressed:"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionInputBox" candidateClass="UITextView"/>
@@ -1370,12 +1367,6 @@ divocthelp@googlemail.com</string>
         <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="assignSelectedRows:"/>
-                <relationship kind="action" name="deleteSelectedRows:"/>
-                <relationship kind="action" name="deselectAllRows:"/>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="selectAllRows:"/>
-                <relationship kind="action" name="startTraining:"/>
                 <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1420,12 +1411,15 @@ divocthelp@googlemail.com</string>
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="newButtonPressed:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="TrainingResultsDiagramView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>
@@ -1433,8 +1427,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="displayResults:"/>
-                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
                 <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
@@ -1455,6 +1447,7 @@ divocthelp@googlemail.com</string>
                 <relationship kind="action" name="trainTenWordsButtonPressed:"/>
                 <relationship kind="action" name="trainTwentyFiveWordsButtonPressed:"/>
                 <relationship kind="action" name="trainingModeChanged:"/>
+                <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
                 <relationship kind="outlet" name="allButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="difficultButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="fiftyButton" candidateClass="MOGlassButton"/>
@@ -1474,9 +1467,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
@@ -1498,7 +1488,12 @@ divocthelp@googlemail.com</string>
         <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="organizeButtonPressed:"/>
+                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>
@@ -1512,9 +1507,9 @@ divocthelp@googlemail.com</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="wbh-Jw-qgU"/>
-        <segue reference="CWd-FU-N7h"/>
-        <segue reference="M3C-aw-Ko8"/>
+        <segue reference="4n2-FM-HKU"/>
         <segue reference="0n3-c0-Qed"/>
+        <segue reference="wbh-Jw-qgU"/>
+        <segue reference="M3C-aw-Ko8"/>
     </inferredMetricsTieBreakers>
 </document>

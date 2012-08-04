@@ -53,7 +53,7 @@
             }
         }
     }
-    return NO;
+   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

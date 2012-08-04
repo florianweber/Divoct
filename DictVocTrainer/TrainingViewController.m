@@ -71,6 +71,8 @@ TrainingViewController.m
 
 @property (nonatomic) CGRect questionViewOriginalFrame;
 
+@property (nonatomic) BOOL currentExerciseAnswered;
+
 
 @end
 
@@ -137,6 +139,7 @@ TrainingViewController.m
         self.countDone = [NSNumber numberWithInt:0];
         self.exerciseCount = [NSNumber numberWithInt:[self.openExercises count]];
         self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount.intValue];
+        self.title = self.training.title;
     }
 }
 
@@ -425,12 +428,14 @@ TrainingViewController.m
  *************************************/
 -(void)processTextInputAnswer
 {
+
+    
     //determine if answer is correct or wrong
     bool answerIsCorrect = false;
     NSString *normalizedAnswer = [[self.answerTextField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for (SQLiteWord *answerWord in self.currentWord.translations) {
         
-        float lengthOfAnswerWord = answerWord.nameWithoutContextInfo.length;
+        float lengthOfAnswerWord = answerWord.nameWithoutBracketInfo.length;
         float lengthOfUserAnswer = normalizedAnswer.length;
         
         if (lengthOfUserAnswer / lengthOfAnswerWord >= DVT_MIN_WORDLENGTH_CORRECT_PERCENTAGE) {
@@ -454,11 +459,13 @@ TrainingViewController.m
          General correct answer handling
          *****************************************/
         [self processCorrectAnswerGeneral];
+        self.currentExerciseAnswered = YES;
         
     } else {
         /*****************************************
          General wrong answer handling
          *****************************************/
+        [self.answerTextField becomeFirstResponder];
         [self processWrongAnswerGeneral];
         
         /*****************************************
@@ -473,10 +480,10 @@ TrainingViewController.m
             int randomIndexOfACorrectAnswer = arc4random_uniform(countAvailableCorrectAnswers - 1);
             
             self.answerTextField.text = ((SQLiteWord *)[self.currentWord.translations objectAtIndex:randomIndexOfACorrectAnswer]).nameWithoutContextInfo;
-            self.answerTextField.textColor = [UIColor blueColor];
+            self.answerTextField.textColor = [UIColor whiteColor];
             self.answerTextField.font = [UIFont boldSystemFontOfSize:17.0];
             self.answerTextField.enabled = NO;
-            self.answerTextField.backgroundColor = [UIColor lightGrayColor];
+            self.answerTextField.backgroundColor = [UIColor redColor];//colorWithWhite:0.8 alpha:1.0];
             
             //reset countCurrentAnswerWrong
             self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
@@ -493,6 +500,8 @@ TrainingViewController.m
             //update progress
             [self updateProgress];
             
+            self.currentExerciseAnswered = YES;
+            
             //go to next exercise after 2 second
             self.timer = [NSTimer scheduledTimerWithTimeInterval:DVT_WAITSECONDS_FOR_TRAINING_NEXT_IF_WRONG
                                                           target:self
@@ -500,11 +509,11 @@ TrainingViewController.m
                                                         userInfo:nil
                                                          repeats:NO];
             
+            
         } else {
             self.answerTextField.backgroundColor = [UIColor redColor];
+            self.currentExerciseAnswered = NO;
         }
-        
-        [self.answerTextField becomeFirstResponder];
     }
     
     //increase exerciseCount
@@ -603,6 +612,7 @@ TrainingViewController.m
         if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_MultipleChoice) {
             [self updateButtons];
         } else if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
+            self.currentExerciseAnswered = NO;
             [self updateTextInputForNewQuestion];
         }
     }
@@ -667,7 +677,9 @@ TrainingViewController.m
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [self processTextInputAnswer];
+    if (!self.currentExerciseAnswered) {
+        [self processTextInputAnswer];
+    }
 }
 
 
@@ -724,8 +736,9 @@ TrainingViewController.m
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self.view endEditing:YES];
-    self.answerTextField.enabled = NO;
+    if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
+        [self.view endEditing:YES];
+    }
     
     [super viewWillDisappear:animated];
 }

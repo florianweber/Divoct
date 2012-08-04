@@ -72,3 +72,4 @@
 "HELP_HELP"                             = "Ein Hilfsfenster wie dieses hier wird angezeigt, wenn Du irgendwo in der Anwendung mit zwei Fingern gleichzeitig den Bildschirm kurz berührst.";
 "HELP_LICENSE"                          = "Hier erhältst Du Lizenzinformationen über diese App und allen darin enthaltenen Werken anderer Autoren sowie deren Lizenzbestimmungen.";
 "HELP_ABOUT"                            = "Informationen über diese App, wie Version, Copyrightholder und Support E-Mail.";
+"HELP_TRAININGSETTINGS"                 = "Hier kannst Du Art und Umfang Deines Vokabeltrainings individuell gestalten.\n\nHier noch ein paar Hinweise, bevor es los geht:\n- Bei der Direkteingabe kannst Du Dein Handy auch quer nehmen.\n- Einige Buttons werden automatisch deaktiviert, wenn nicht genügend Vokabeln in Deinem Ordner sind.\n- \"Nur schwierige Worte\" trainiert nur die Worte, welche Du öfter als andere falsch übersetzt hast.";

@@ -92,6 +92,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     return _nameWithoutContextInfo;
 }
 
+-(NSString *)nameWithoutBracketInfo
+{
+    if (!_nameWithoutBracketInfo) {
+        NSError *error;
+        NSRegularExpression *contentOfBrackets = [NSRegularExpression regularExpressionWithPattern:@"[\\(\\{\\[].*?[\\)\\}\\]]"
+                                                                                                options:NSRegularExpressionCaseInsensitive
+                                                                                                  error:&error];
+        
+        _nameWithoutBracketInfo = [[contentOfBrackets stringByReplacingMatchesInString:self.name options:0 range:NSMakeRange(0, [self.name length])  withTemplate:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
+    return _nameWithoutBracketInfo;
+}
+
 -(NSArray *)translations
 {
     if (!_translations) {

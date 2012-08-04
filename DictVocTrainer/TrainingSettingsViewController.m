@@ -151,10 +151,23 @@
     [self.wrongAnswerHandlingControl setSelectedSegmentIndex:userDefaultsWrongAnswerHandlingMode.integerValue];
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        [[self navigationController] popViewControllerAnimated:YES];
+    }
+}
+
+-(void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *rightSwiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                      action:@selector(handleSwipeFrom:)];
+    rightSwiper.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:rightSwiper];
+}
+
 -(void)showHelp
 {
-    //todo
-    //[FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAINING_QUESTIONS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+    [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAININGSETTINGS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
 }
 
 #pragma mark - Target / Action
@@ -286,6 +299,7 @@
     [self loadPreviousWrongAnswerHandlingMode];
     [self.modeSelectionControl addTarget:self action:@selector(trainingModeChanged:) forControlEvents:UIControlEventValueChanged];
     [self.wrongAnswerHandlingControl addTarget:self action:@selector(wrongAnswerHandlingModeChanged:) forControlEvents:UIControlEventValueChanged];
+    [self addSwipeGestureRecognizer];
 }
 
 - (void)viewDidUnload

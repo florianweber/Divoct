@@ -66,10 +66,11 @@
 "HELP_COLLECTIONS_EMPTY"                = "Du hast bisher noch keine Vokabelordner. Drücke hier oder den + Knopf links oben, um einen neuen Vokabelordner anzulegen.";
 "HELP_COLLECTIONS_FILLED"               = "Hier siehst Du alle Vokabelordner, die Du angelegt hast. Wischt Du nach rechts oder links über einen Ordner, kannst Du ihn löschen. Drücke den Bearbeiten Knopf (Stift rechts oben), um die Details der Ordner zu bearbeiten.\n\nSelektiere einen Ordner, um dessen Vokabeln zu bearbeiten oder den Ordner zu trainieren.";
 "HELP_COLLECTIONS_EDIT"                 = "Wenn Du auf den Titel eines Ordners drückst, kannst Du dessen Details bearbeiten.";
-"HELP_TRAINING_QUESTIONS"               = "Mindestens eine dieser vier Antworten ist die richtige Übersetzung zum gezeigten Wort. Versuche, immer eine richtige Antwort anzutippen.";
-"HELP_TRAINING_RESULTS"                 = "Dies ist Dein Trainingsergebnis. Mit dem \"nochmal\" Knopf rechts oben kannst Du das Training wiederholen.";
 "HELP_SETTINGS_MAIN"                    = "Hier kannst Du allgemeine Einstellungen vornehmen, Hilfe bekommen und erhältst Informationen über diese App.";
 "HELP_HELP"                             = "Ein Hilfsfenster wie dieses hier wird angezeigt, wenn Du irgendwo in der Anwendung mit zwei Fingern gleichzeitig den Bildschirm kurz berührst.";
 "HELP_LICENSE"                          = "Hier erhältst Du Lizenzinformationen über diese App und allen darin enthaltenen Werken anderer Autoren sowie deren Lizenzbestimmungen.";
 "HELP_ABOUT"                            = "Informationen über diese App, wie Version, Copyrightholder und Support E-Mail.";
 "HELP_TRAININGSETTINGS"                 = "Hier kannst Du Art und Umfang Deines Vokabeltrainings individuell gestalten.\n\nHier noch ein paar Hinweise, bevor es los geht:\n- Bei der Direkteingabe kannst Du Dein Handy auch quer nehmen.\n- Einige Buttons werden automatisch deaktiviert, wenn nicht genügend Vokabeln in Deinem Ordner sind.\n- \"Nur schwierige Worte\" trainiert nur die Worte, welche Du öfter als andere falsch übersetzt hast.";
+"HELP_TRAINING_MULTIPLE_CHOICE"         = "Mindestens eine dieser vier Antworten ist die richtige Übersetzung zum gezeigten Wort. Versuche, immer eine richtige Antwort anzutippen.";
+"HELP_TRAINING_TYPE_ANSWER"             = "Gib hier die Antwort ein. Groß- und Kleinschreibung spielen keine Rolle. Es reichen 70% des Wortes ohne das, was evtl. in Klammern steht.";
+"HELP_TRAINING_RESULTS"                 = "Dies ist Dein Trainingsergebnis. Mit dem \"nochmal\" Knopf rechts oben kannst Du das Training wiederholen.";

@@ -229,31 +229,58 @@ TrainingViewController.m
  *************************************/
 -(void)layoutQuestionView
 {
-    CGSize maxFrameSize = CGSizeMake(self.questionView.frame.size.width - 10, 20000);
-    
-    //Start point top left
-    CGPoint descStart;
-    descStart.x = 0;
-    descStart.y = 0;
-    
-    CGRect questionFrame = self.questionLabel.frame;
-    questionFrame.origin = descStart;
-    questionFrame.size = [self.questionLabel.text sizeWithFont:self.questionLabel.font constrainedToSize:maxFrameSize lineBreakMode:UILineBreakModeWordWrap];
-    questionFrame.size.width = self.questionViewOriginalFrame.size.width;
-    
-    self.questionLabel.frame = questionFrame;
-    
-    CGFloat contentHeight = descStart.y + questionFrame.size.height + 0; //+ 20
-    if (contentHeight > self.questionScrollView.frame.size.height) {
-        CGSize sizeFittingSubviews = CGSizeMake(self.questionView.frame.size.width, contentHeight);
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        //there is only enough space for one line in landscape mode
+        self.questionLabel.numberOfLines = 1;
         
-        CGRect newFrame = self.questionView.frame;
-        newFrame.size = sizeFittingSubviews;
-        self.questionView.frame = newFrame;
+        CGSize maxFrameSize = CGSizeMake(20000, self.questionScrollView.frame.size.height);
+        
+        CGRect questionFrame = self.questionLabel.frame;
+        questionFrame.origin = CGPointMake(0, 0);
+        questionFrame.size = [self.questionLabel.text sizeWithFont:self.questionLabel.font constrainedToSize:maxFrameSize lineBreakMode:UILineBreakModeWordWrap];
+        
+        //Width must be at least the value of the scroll view
+        if (questionFrame.size.width < self.questionScrollView.frame.size.width) {
+            questionFrame.size.width = self.questionScrollView.frame.size.width;
+        }
+        
+        //Height must be at always the value of the scroll view
+        questionFrame.size.height = self.questionScrollView.frame.size.height;
+        
+        self.questionLabel.frame = questionFrame;
+        self.questionView.frame = questionFrame;
+        
     } else {
-        self.questionView.frame = self.questionViewOriginalFrame;
+        //there is basically infinite horizontal space
+        self.questionLabel.numberOfLines = 0;
+        
+        CGSize maxFrameSize = CGSizeMake(self.questionScrollView.frame.size.width - 10, 20000);
+        CGRect questionFrame = self.questionLabel.frame;
+        questionFrame.size = [self.questionLabel.text sizeWithFont:self.questionLabel.font constrainedToSize:maxFrameSize lineBreakMode:UILineBreakModeWordWrap];
+        
+        //Width must be at least the value of the scroll view
+        if (questionFrame.size.width < self.questionScrollView.frame.size.width) {
+            questionFrame.size.width = self.questionScrollView.frame.size.width;
+        }
+        
+        //position the question a little bit more from the top if not much text
+        if (questionFrame.size.height < (self.questionScrollView.frame.size.height + 20)) {
+            questionFrame.origin = CGPointMake(0, 10);
+        } else {
+            questionFrame.origin = CGPointMake(0, 0);
+        }
+        
+        //assign frame of the text label
+        self.questionLabel.frame = questionFrame;
+        
+        //the surrounding question view frame should start at 0,0 no matter what
+        questionFrame.origin = CGPointMake(0, 0);
+        
+        //assign frame of question view
+        self.questionView.frame = questionFrame;
     }
     
+        
     self.questionScrollView.contentSize = self.questionView.frame.size;
 }
 
@@ -275,7 +302,6 @@ TrainingViewController.m
     self.questionLabel.font = [UIFont boldSystemFontOfSize:22];
     self.questionLabel.textAlignment = UITextAlignmentCenter;
     self.questionLabel.backgroundColor = [UIColor clearColor];
-    self.questionLabel.numberOfLines = 0;
     self.questionLabel.lineBreakMode = UILineBreakModeWordWrap;
     
     [self layoutQuestionView];
@@ -433,6 +459,7 @@ TrainingViewController.m
     //determine if answer is correct or wrong
     bool answerIsCorrect = false;
     NSString *normalizedAnswer = [[self.answerTextField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    SQLiteWord *fullAnswerWord = nil;
     for (SQLiteWord *answerWord in self.currentWord.translations) {
         
         float lengthOfAnswerWord = answerWord.nameWithoutBracketInfo.length;
@@ -440,6 +467,7 @@ TrainingViewController.m
         
         if (lengthOfUserAnswer / lengthOfAnswerWord >= DVT_MIN_WORDLENGTH_CORRECT_PERCENTAGE) {
             if ([[answerWord.nameWithoutContextInfo lowercaseString] rangeOfString:normalizedAnswer].location != NSNotFound) {
+                fullAnswerWord = answerWord;
                 answerIsCorrect = true;
                 break;
             }
@@ -452,7 +480,15 @@ TrainingViewController.m
          Special hanling for text input mode
          *****************************************/
         self.answerTextField.backgroundColor = [UIColor greenColor];
+        self.answerTextField.text = fullAnswerWord.name;
         [self.answerTextField becomeFirstResponder];
+        
+        //scroll to the left (this is a workaround moving the cursor to the very left)
+        UITextRange *selectedRange = self.answerTextField.selectedTextRange;
+        UITextPosition *newPosition = [self.answerTextField positionFromPosition:selectedRange.start offset:(0 - self.answerTextField.text.length)];
+        UITextRange *newRange = [self.answerTextField textRangeFromPosition:newPosition toPosition:newPosition];
+        [self.answerTextField setSelectedTextRange:newRange];
+        
         self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
         
         /*****************************************
@@ -484,6 +520,12 @@ TrainingViewController.m
             self.answerTextField.font = [UIFont boldSystemFontOfSize:17.0];
             self.answerTextField.enabled = NO;
             self.answerTextField.backgroundColor = [UIColor redColor];//colorWithWhite:0.8 alpha:1.0];
+            
+            //scroll to the left (this is a workaround moving the cursor to the very left)
+            UITextRange *selectedRange = self.answerTextField.selectedTextRange;
+            UITextPosition *newPosition = [self.answerTextField positionFromPosition:selectedRange.start offset:(0 - self.answerTextField.text.length)];
+            UITextRange *newRange = [self.answerTextField textRangeFromPosition:newPosition toPosition:newPosition];
+            [self.answerTextField setSelectedTextRange:newRange];
             
             //reset countCurrentAnswerWrong
             self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
@@ -582,7 +624,11 @@ TrainingViewController.m
 
 -(void)showHelp
 {
-    [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAINING_QUESTIONS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES pointingToView:optionOneButton fromDirection:FWToastViewPointingFromDirectionTop];
+    if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_MultipleChoice) {
+        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAINING_MULTIPLE_CHOICE", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES pointingToView:optionOneButton fromDirection:FWToastViewPointingFromDirectionTop];
+    } else if ((self.training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) && UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAINING_TYPE_ANSWER", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES pointingToView:self.answerTextField fromDirection:FWToastViewPointingFromDirectionTop];
+    }
 }
 
 

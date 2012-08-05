@@ -66,10 +66,11 @@
 "HELP_COLLECTIONS_EMPTY"                = "You have no vocabulary collections yet. You can create one by pressing this button.";
 "HELP_COLLECTIONS_FILLED"               = "Here you see all vocabulary collections you created. You can delete collections by swiping left or right over them or using the pencil button. Select a collection to see all vocabularies assigned to it.";
 "HELP_COLLECTIONS_EDIT"                 = "Press the title of a collection to edit its details.";
-"HELP_TRAINING_QUESTIONS"               = "At least one of these four answers is correct for the word shown above. Always try to press a correct answer button.";
-"HELP_TRAINING_RESULTS"                 = "This is your training result. You can repeat the training by pressing the \"retry\" button in the top right corner.";
 "HELP_SETTINGS_MAIN"                    = "Here is where you can edit app settings, get some help and general information about this app.";
 "HELP_HELP"                             = "Info messages like this will be shown to help you with the application if you tap with two fingers anywhere.";
 "HELP_LICENSE"                          = "This is where you can read all about the license terms of this app and all works of other authors used in this app.";
 "HELP_ABOUT"                            = "Information about the name, version, author and support mail address of this app.";
 "HELP_TRAININGSETTINGS"                 = "Configure your training according to your needs.\n\nHere are some hints for you:\n- Rotate your device in the \"Type answer\" mode to disburden typing.\n- Some buttons in here will be disabled automatically, depending on the amount of words in your collection.\n- \"Only Difficult Words\" will dynamically contain all words you answered wrong more often than others.";
+"HELP_TRAINING_MULTIPLE_CHOICE"         = "At least one of these four answers is correct for the word shown above. Always try to press a correct answer button.";
+"HELP_TRAINING_TYPE_ANSWER"             = "Type in your answer. You don't need to care about capitalization and the part of the answer in brackets. 70% of the correct answer is sufficient.";
+"HELP_TRAINING_RESULTS"                 = "This is your training result. You can repeat the training by pressing the \"retry\" button in the top right corner.";

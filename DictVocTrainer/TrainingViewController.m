@@ -72,6 +72,7 @@ TrainingViewController.m
 @property (nonatomic) CGRect questionViewOriginalFrame;
 
 @property (nonatomic) BOOL currentExerciseAnswered;
+@property (nonatomic) BOOL stopButtonWasPressed;
 
 
 @end
@@ -484,10 +485,7 @@ TrainingViewController.m
         [self.answerTextField becomeFirstResponder];
         
         //scroll to the left (this is a workaround moving the cursor to the very left)
-        UITextRange *selectedRange = self.answerTextField.selectedTextRange;
-        UITextPosition *newPosition = [self.answerTextField positionFromPosition:selectedRange.start offset:(0 - self.answerTextField.text.length)];
-        UITextRange *newRange = [self.answerTextField textRangeFromPosition:newPosition toPosition:newPosition];
-        [self.answerTextField setSelectedTextRange:newRange];
+        [self moveCursorInTextFieldToBeginning:self.answerTextField];
         
         self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
         
@@ -522,10 +520,7 @@ TrainingViewController.m
             self.answerTextField.backgroundColor = [UIColor redColor];//colorWithWhite:0.8 alpha:1.0];
             
             //scroll to the left (this is a workaround moving the cursor to the very left)
-            UITextRange *selectedRange = self.answerTextField.selectedTextRange;
-            UITextPosition *newPosition = [self.answerTextField positionFromPosition:selectedRange.start offset:(0 - self.answerTextField.text.length)];
-            UITextRange *newRange = [self.answerTextField textRangeFromPosition:newPosition toPosition:newPosition];
-            [self.answerTextField setSelectedTextRange:newRange];
+            [self moveCursorInTextFieldToBeginning:self.answerTextField];
             
             //reset countCurrentAnswerWrong
             self.countCurrentAnswerWrong = [NSNumber numberWithInt:0];
@@ -567,6 +562,16 @@ TrainingViewController.m
             LogError(@"Error saving success rate of word");
         }
     }];
+}
+
+-(void)moveCursorInTextFieldToBeginning:(UITextField *)textField
+{
+    if ([self.answerTextField.text sizeWithFont:self.answerTextField.font constrainedToSize:CGSizeMake(20000, 30) lineBreakMode:UILineBreakModeWordWrap].width > (self.answerTextField.frame.size.width - 10)) {
+        UITextRange *selectedRange = textField.selectedTextRange;
+        UITextPosition *newPosition = [textField positionFromPosition:selectedRange.start offset:(0 - textField.text.length)];
+        UITextRange *newRange = [textField textRangeFromPosition:newPosition toPosition:newPosition];
+        [textField setSelectedTextRange:newRange];
+    }
 }
 
 /*************************************
@@ -634,7 +639,8 @@ TrainingViewController.m
 
 #pragma mark - Target / Action
 
-- (IBAction)cancelButtonPressed:(id)sender {
+- (IBAction)stopButtonPressed:(id)sender {
+    self.stopButtonWasPressed = YES;
     [self completeTraining];
 }
 
@@ -721,9 +727,10 @@ TrainingViewController.m
     return TRUE;
 }
 
+//usually called if the user pressed return to check if his answer is correct, but also on ViewWillDisappear!
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (!self.currentExerciseAnswered) {
+    if (!self.currentExerciseAnswered && !([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) && !self.stopButtonWasPressed) {
         [self processTextInputAnswer];
     }
 }
@@ -776,6 +783,8 @@ TrainingViewController.m
     if (!self.currentExercise) {
         [self nextExercise:self];
     }
+    
+    self.stopButtonWasPressed = NO;
     
     [self layoutViewsToOrientation:self.interfaceOrientation];
 }

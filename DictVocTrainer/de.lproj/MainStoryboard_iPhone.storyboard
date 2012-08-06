@@ -799,7 +799,7 @@
                     <navigationItem key="navigationItem" title="COLLECTIONNAME - Training" id="HmG-zs-Ncj">
                         <barButtonItem key="rightBarButtonItem" title="Stop" id="dDF-13-Qnl">
                             <connections>
-                                <action selector="cancelButtonPressed:" destination="dgO-Hg-JLy" id="cAE-A2-ged"/>
+                                <action selector="stopButtonPressed:" destination="dgO-Hg-JLy" id="wXt-Es-ZjA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

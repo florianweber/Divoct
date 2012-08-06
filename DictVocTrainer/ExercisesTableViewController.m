@@ -116,14 +116,16 @@ RecentsTableViewController.m
         
         //special case for recents
         if ([collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
-            [self.exercises sortUsingComparator:^NSComparisonResult(Exercise *exercise1, Exercise *exercise2){
-                return [exercise2.lastLookedUp compare:exercise1.lastLookedUp];
-            }];
             self.title = NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil);
             //[self.collection setExercises:self.exercises];
         } else {
            self.title = self.collection.name; 
         }
+        
+        //sort exercises
+        [self.exercises sortUsingComparator:^NSComparisonResult(Exercise *exercise1, Exercise *exercise2){
+            return [exercise2.lastLookedUp compare:exercise1.lastLookedUp];
+        }];
         
         [self.tableView reloadData];
     }

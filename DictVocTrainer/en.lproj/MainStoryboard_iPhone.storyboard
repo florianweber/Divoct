@@ -1130,7 +1130,7 @@ divocthelp@googlemail.com</string>
                     <navigationItem key="navigationItem" title="COLLECTIONNAME - Training" id="TOm-XQ-2gp">
                         <barButtonItem key="rightBarButtonItem" title="stop" id="7Dh-0Q-s00">
                             <connections>
-                                <action selector="cancelButtonPressed:" destination="DBP-Ez-FgH" id="QGx-H5-QTl"/>
+                                <action selector="stopButtonPressed:" destination="DBP-Ez-FgH" id="brd-2i-5YU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

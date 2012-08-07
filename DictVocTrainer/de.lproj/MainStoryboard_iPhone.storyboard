@@ -1000,7 +1000,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Hilfe und weitere Informationen" footerTitle="Erstellt von Florian Weber" id="MvG-6b-Tx7">
+                            <tableViewSection headerTitle="Hilfe und weitere Informationen" id="MvG-6b-Tx7">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1Op-bG-APk" style="IBUITableViewCellStyleDefault" id="vwo-kL-XhJ">
                                         <rect key="frame" x="0.0" y="138" width="320" height="45"/>
@@ -1064,6 +1064,28 @@
                                         <connections>
                                             <segue destination="tNh-Db-iWl" kind="push" identifier="Show Version" id="euc-VC-KVs"/>
                                         </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Erweitert" footerTitle="Erstellt von Florian Weber" id="Q5o-rq-tXf">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="n02-SF-L42" style="IBUITableViewCellStyleDefault" id="qL3-jz-I4m">
+                                        <rect key="frame" x="0.0" y="318" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Alle Statistiken zurücksetzen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n02-SF-L42">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1355,6 +1377,8 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="finishButtonPressed:"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionInputBox" candidateClass="UITextView"/>
@@ -1373,6 +1397,12 @@ divocthelp@googlemail.com</string>
         <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="assignSelectedRows:"/>
+                <relationship kind="action" name="deleteSelectedRows:"/>
+                <relationship kind="action" name="deselectAllRows:"/>
+                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="selectAllRows:"/>
+                <relationship kind="action" name="startTraining:"/>
                 <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1417,6 +1447,7 @@ divocthelp@googlemail.com</string>
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
@@ -1473,9 +1504,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>

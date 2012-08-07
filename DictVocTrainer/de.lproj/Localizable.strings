@@ -74,3 +74,10 @@
 "HELP_TRAINING_MULTIPLE_CHOICE"         = "Mindestens eine dieser vier Antworten ist die richtige Übersetzung zum gezeigten Wort. Versuche, immer eine richtige Antwort anzutippen.";
 "HELP_TRAINING_TYPE_ANSWER"             = "Gib hier die Antwort ein. Groß- und Kleinschreibung spielen keine Rolle. Es reichen 70% des Wortes ohne das, was evtl. in Klammern steht.";
 "HELP_TRAINING_RESULTS"                 = "Dies ist Dein Trainingsergebnis. Mit dem \"nochmal\" Knopf rechts oben kannst Du das Training wiederholen.";
+"SETTINGS_STATISTICS_RESET_TITLE"       = "Alle Statistiken zurücksetzen?";
+"SETTINGS_STATISTICS_RESET_MESSAGE"     = "Achtung, alle Statistiken (verwendet zur Berechnung schwieriger Vokabeln) werden zurückgesetzt.";
+"SETTINGS_STATISTICS_RESET_CANCEL"      = "Abbrechen";
+"SETTINGS_STATISTICS_RESET_CONFIRM"     = "Fortfahren";
+"SETTINGS_STATISTICS_RESET_CONFIRMATION_TITLE" = "Bestätigung";
+"SETTINGS_STATISTICS_RESET_CONFIRMATION_MESSAGE" = "Alle Statistiken wurden zurückgesetzt.";
+"SETTINGS_STATISTICS_RESET_CONFIRMATION_BUTTON" = "OK";

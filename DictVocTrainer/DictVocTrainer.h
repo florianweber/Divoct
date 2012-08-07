@@ -40,6 +40,7 @@ typedef void (^completion_block_t) (NSError *error);
 -(NSArray *)recentExercises;
 -(Exercise *)exerciseWithWordUniqueId:(NSNumber *)uniqueId;
 -(void)deleteExercise:(Exercise *)exercise fromCollection:(Collection *)collection;
+-(void)resetAllExerciseStatistics;
 -(NSOrderedSet *)exercisesInCollectionWithName:(NSString *)collectionName;
 -(Collection *)collectionWithName:(NSString *)name;
 -(Collection *)readCollectionWithName:(NSString *)name;
@@ -53,6 +54,8 @@ typedef void (^completion_block_t) (NSError *error);
                                             collection:(Collection *)collection
                                           trainingDate:(NSDate *)trainingDate;
 -(TrainingResult *)trainingResultWithObjectId:(NSManagedObjectID *)objectId;
+-(NSArray *)allTrainingResults;
+-(void)deleteAllTrainingResults;
 -(Translation *)translationWithUniqueId:(NSNumber *)wordUniqueId;
 -(void)deleteTranslation:(Translation *)translation;
 

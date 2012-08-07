@@ -553,9 +553,6 @@ TrainingViewController.m
         }
     }
     
-    //increase exerciseCount
-    self.currentExercise.exerciseCount = [NSNumber numberWithInt:self.currentExercise.exerciseCount.intValue + 1];
-    
     //save to database (countWrong, countCorrect, ...)
     [[DictVocTrainer instance] saveDictVocTrainerDBUsingBlock:^(NSError *error) {
         if (error) {
@@ -580,9 +577,11 @@ TrainingViewController.m
  *************************************/
 -(void)processCorrectAnswerGeneral
 {
-    //add 1 one the correct answers
+    //add 1 one the correct answers & success rate
     if (!self.currentExerciseWrong) {
         self.countCorrect = [NSNumber numberWithInt:([self.countCorrect intValue] + 1)];
+        self.currentExercise.countCorrect = [NSNumber numberWithInt:self.currentExercise.countCorrect.intValue + 1];
+        self.currentExercise.exerciseCount = [NSNumber numberWithInt:self.currentExercise.exerciseCount.intValue + 1];
     }
     
     //only remove this word from current training if it was correct or wrong and training mode is set to dismiss (not repeat)
@@ -594,9 +593,6 @@ TrainingViewController.m
         //remove solved exercise from open list
         [self.openExercises removeObject:self.currentExercise];
     }
-    
-    //update success rate
-    self.currentExercise.countCorrect = [NSNumber numberWithInt:self.currentExercise.countCorrect.intValue + 1];
     
     //update progress
     [self updateProgress];
@@ -615,16 +611,15 @@ TrainingViewController.m
  *************************************/
 -(void)processWrongAnswerGeneral
 {
-    //Save one more wrong for stats
+    //Save one more wrong for stats & success rate
     if (!self.currentExerciseWrong) {
         self.countWrong = [NSNumber numberWithInt:([self.countWrong intValue] + 1)];
+        self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
+        self.currentExercise.exerciseCount = [NSNumber numberWithInt:self.currentExercise.exerciseCount.intValue + 1];
     }
     
     //state that this answer was wrong
     self.currentExerciseWrong = YES;
-    
-    //update success rate
-    self.currentExercise.countWrong = [NSNumber numberWithInt:self.currentExercise.countWrong.intValue + 1];
 }
 
 -(void)showHelp
@@ -694,9 +689,6 @@ TrainingViewController.m
             
             [self processWrongAnswerGeneral];
         }
-        
-        //increase exerciseCount
-        self.currentExercise.exerciseCount = [NSNumber numberWithInt:self.currentExercise.exerciseCount.intValue + 1];
         
         //save to database (countWrong, countCorrect, ...)
         [[DictVocTrainer instance] saveDictVocTrainerDBUsingBlock:^(NSError *error) {

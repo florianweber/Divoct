@@ -414,6 +414,21 @@ static DictVocTrainer *singleton;
     [self saveDictVocTrainerDBUsingBlock:^(NSError *error){}];
 }
 
+- (void)resetAllExerciseStatistics
+{
+    NSArray *allExercises =[self allExercises];
+    for (Exercise *exercise in allExercises) {
+        exercise.countCorrect = [NSNumber numberWithInt:0];
+        exercise.countWrong = [NSNumber numberWithInt:0];
+        exercise.exerciseCount = [NSNumber numberWithInt:0];
+        exercise.lastExercised = nil;
+        exercise.lastTimeCorrect = nil;
+        exercise.lastTimeWrong = nil;
+    }
+    
+    [self saveDictVocTrainerDBUsingBlock:^(NSError *error){}];
+}
+
 #pragma mark - My messages - TrainingResult
 
 - (TrainingResult *)insertTrainingResultWithCountWrong:(NSNumber *)countWrong
@@ -438,6 +453,30 @@ static DictVocTrainer *singleton;
     return trainingResult;
 }
 
+- (NSArray *)allTrainingResults
+{
+    NSArray *trainingResults = nil;
+    
+    if (!self.dictVocTrainerDB) {
+        LogError(@"DictVocTrainer DB not initialized yet.");
+    } else {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TrainingResult"];
+        
+        NSError *error = nil;
+        trainingResults = [self.dictVocTrainerDB.managedObjectContext executeFetchRequest:request error:&error];
+        
+        if (!trainingResults) {
+            LogError(@"Error reading trainingResults, error: %@", error);
+        } else if ([trainingResults count] == 0) {
+            LogDebug(@"No exercises found.");
+        } else if ([trainingResults count] > 0) {
+            LogDebug(@"Found %i exercises.", [exercises count]);
+        }
+    }
+    
+    return trainingResults;
+}
+
 //will not create one if not existing
 - (TrainingResult *)trainingResultWithObjectId:(NSManagedObjectID *)objectId
 {
@@ -451,6 +490,16 @@ static DictVocTrainer *singleton;
         }
     }
     return trainingResult;
+}
+
+- (void)deleteAllTrainingResults
+{
+    NSArray *allTrainingResults = [self allTrainingResults];
+    for (TrainingResult *trainingResult in allTrainingResults) {
+        [self.dictVocTrainerDB.managedObjectContext deleteObject:trainingResult];
+    }
+    
+    [self saveDictVocTrainerDBUsingBlock:^(NSError *error){}];
 }
 
 #pragma mark - My messages - Translation

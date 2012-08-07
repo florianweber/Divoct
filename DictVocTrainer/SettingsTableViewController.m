@@ -23,8 +23,10 @@ SettingsTableViewController.m
 #import "SettingsTableViewController.h"
 #import "GlobalDefinitions.h"
 #import "FWToastView.h"
+#import "Logging.h"
+#import "DictVocTrainer.h"
 
-@interface SettingsTableViewController ()
+@interface SettingsTableViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UISwitch *caseSwitch;
 
 @end
@@ -90,6 +92,35 @@ SettingsTableViewController.m
 }
 
 
+#pragma mark - Alert View Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        LogDebug(@"Cancel Button was selected.");
+    }
+    else if (buttonIndex == 1)
+    {
+        LogDebug(@"Confirm Button was selected.");
+        [[DictVocTrainer instance] resetAllExerciseStatistics];
+        [[DictVocTrainer instance] deleteAllTrainingResults];
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_CONFIRMATION_TITLE", nil)
+                                                          message:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_CONFIRMATION_MESSAGE", nil)
+                                                         delegate:self
+                                                cancelButtonTitle:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_CONFIRMATION_BUTTON", nil)
+                                                otherButtonTitles:nil];
+        
+        [message show];
+    }
+    else
+    {
+        LogDebug(@"Unknown Button was selected.");
+    }
+        
+}
+
 #pragma mark - View Lifecycle
 
 
@@ -128,13 +159,16 @@ SettingsTableViewController.m
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if ((indexPath.section == 2) && (indexPath.row == 0)) {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_TITLE", nil)
+                                                          message:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_MESSAGE", nil)
+                                                         delegate:self
+                                                cancelButtonTitle:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_CANCEL", nil)
+                                                otherButtonTitles:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_CONFIRM", nil), nil];
+        
+        [message show];
+
+    }
 }
 
 @end

@@ -476,7 +476,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Help" footerTitle="Created by Florian Weber" id="HKC-c9-dha">
+                            <tableViewSection headerTitle="Help" id="HKC-c9-dha">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="dPH-bI-n0f" style="IBUITableViewCellStyleDefault" id="ESh-vC-XdZ">
                                         <rect key="frame" x="0.0" y="138" width="320" height="45"/>
@@ -540,6 +540,28 @@
                                         <connections>
                                             <segue destination="BwM-kc-DJa" kind="push" identifier="Show Version" id="jV6-5G-iFV"/>
                                         </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Advanced" footerTitle="Created by Florian Weber" id="uhE-nC-hdV">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="mGr-Ai-bxH" style="IBUITableViewCellStyleDefault" id="pyv-pn-2Zq">
+                                        <rect key="frame" x="0.0" y="318" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Reset all statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGr-Ai-bxH">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1488,12 +1510,7 @@ divocthelp@googlemail.com</string>
         <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="organizeButtonPressed:"/>
-                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>

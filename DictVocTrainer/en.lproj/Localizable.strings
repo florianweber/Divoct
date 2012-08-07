@@ -74,3 +74,10 @@
 "HELP_TRAINING_MULTIPLE_CHOICE"         = "At least one of these four answers is correct for the word shown above. Always try to press a correct answer button.";
 "HELP_TRAINING_TYPE_ANSWER"             = "Type in your answer. You don't need to care about capitalization and the part of the answer in brackets. 70% of the correct answer is sufficient.";
 "HELP_TRAINING_RESULTS"                 = "This is your training result. You can repeat the training by pressing the \"retry\" button in the top right corner.";
+"SETTINGS_STATISTICS_RESET_TITLE"       = "Reset all statistics?";
+"SETTINGS_STATISTICS_RESET_MESSAGE"     = "All statistics (used to calculate difficult words) will be reset. Do you want to continue?";
+"SETTINGS_STATISTICS_RESET_CANCEL"      = "Cancel";
+"SETTINGS_STATISTICS_RESET_CONFIRM"     = "Confirm";
+"SETTINGS_STATISTICS_RESET_CONFIRMATION_TITLE" = "Reset confirmation";
+"SETTINGS_STATISTICS_RESET_CONFIRMATION_MESSAGE" = "All statistics have been reset.";
+"SETTINGS_STATISTICS_RESET_CONFIRMATION_BUTTON" = "OK";

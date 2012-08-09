@@ -14,6 +14,7 @@
 		1705664915528083007A1D50 /* en-shake.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705664315528083007A1D50 /* en-shake.png */; };
 		1705664A15528083007A1D50 /* en-tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705664415528083007A1D50 /* en-tap.png */; };
 		1705664D15528149007A1D50 /* swipe_en.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705664C15528149007A1D50 /* swipe_en.png */; };
+		1717D15015D3F0F400E3C1DF /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1717D14F15D3F0F400E3C1DF /* PickerViewController.m */; };
 		173579C715BD5C8D00C27D7D /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 173579C615BD5C8D00C27D7D /* Icon-144.png */; };
 		177E2B49150DE00200B8AEE3 /* FWToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 177E2B48150DE00200B8AEE3 /* FWToastView.m */; };
 		177E2B4B150DE01D00B8AEE3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177E2B4A150DE01D00B8AEE3 /* QuartzCore.framework */; };
@@ -143,6 +144,8 @@
 		1705664315528083007A1D50 /* en-shake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "en-shake.png"; sourceTree = "<group>"; };
 		1705664415528083007A1D50 /* en-tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "en-tap.png"; sourceTree = "<group>"; };
 		1705664C15528149007A1D50 /* swipe_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swipe_en.png; sourceTree = "<group>"; };
+		1717D14E15D3F0F400E3C1DF /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		1717D14F15D3F0F400E3C1DF /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		173579C615BD5C8D00C27D7D /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
 		177E2B48150DE00200B8AEE3 /* FWToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWToastView.m; sourceTree = "<group>"; };
 		177E2B4A150DE01D00B8AEE3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -640,6 +643,8 @@
 				17A5DB0B15501BAE00802696 /* AboutViewController.m */,
 				17FB4C2515CA9C1900FC4EFE /* RotatingUITabBarController.h */,
 				17FB4C2615CA9C1900FC4EFE /* RotatingUITabBarController.m */,
+				1717D14E15D3F0F400E3C1DF /* PickerViewController.h */,
+				1717D14F15D3F0F400E3C1DF /* PickerViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -866,6 +871,7 @@
 				17FB4C3615CAD05F00FC4EFE /* MOButton.m in Sources */,
 				17FB4C3715CAD05F00FC4EFE /* MOGlassButton.m in Sources */,
 				178D8E8215CBDFCB00A87394 /* Training.m in Sources */,
+				1717D15015D3F0F400E3C1DF /* PickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -150,6 +150,13 @@
 	[self setupForStandardButtons];
 }
 
+- (void)setupAsFocusIndicatorBlueButton {
+    [self setBackgroundColor:MO_RGBCOLOR(66, 122, 185) forState:UIControlStateNormal];
+	[self setBackgroundColor:MO_RGBCOLOR(33, 61, 92) forState:UIControlStateHighlighted];
+	[self setBackgroundColor:MO_RGBCOLOR(170, 170, 170) forState:UIControlStateDisabled];
+	[self setupForStandardButtons];
+}
+
 
 - (void)setupAsSmallGreenButton {
 	[self setupAsGreenButton];

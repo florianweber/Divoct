@@ -15,6 +15,8 @@
 		1705664A15528083007A1D50 /* en-tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705664415528083007A1D50 /* en-tap.png */; };
 		1705664D15528149007A1D50 /* swipe_en.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705664C15528149007A1D50 /* swipe_en.png */; };
 		1717D15015D3F0F400E3C1DF /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1717D14F15D3F0F400E3C1DF /* PickerViewController.m */; };
+		1717D15315D45DE700E3C1DF /* AboutBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1717D15115D45DE700E3C1DF /* AboutBackground.png */; };
+		1717D15415D45DE700E3C1DF /* AboutBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1717D15215D45DE700E3C1DF /* AboutBackground@2x.png */; };
 		173579C715BD5C8D00C27D7D /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 173579C615BD5C8D00C27D7D /* Icon-144.png */; };
 		177E2B49150DE00200B8AEE3 /* FWToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 177E2B48150DE00200B8AEE3 /* FWToastView.m */; };
 		177E2B4B150DE01D00B8AEE3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177E2B4A150DE01D00B8AEE3 /* QuartzCore.framework */; };
@@ -68,6 +70,15 @@
 		17A5DB07154C0B5200802696 /* gpl-2.0.htm in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DB06154C0B5200802696 /* gpl-2.0.htm */; };
 		17A5DB09154DAC3100802696 /* swipe_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A5DB08154DAC3000802696 /* swipe_de.png */; };
 		17A5DB0C15501BB000802696 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A5DB0B15501BAE00802696 /* AboutViewController.m */; };
+		17A6044515D53C2D008DF030 /* RoundRectOne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6044415D53C2D008DF030 /* RoundRectOne@2x.png */; };
+		17A6044A15D53DA6008DF030 /* RoundRectTwo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6044815D53DA6008DF030 /* RoundRectTwo@2x.png */; };
+		17A6044E15D53F4B008DF030 /* RoundRectThree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6044D15D53F4B008DF030 /* RoundRectThree@2x.png */; };
+		17A6045515D5407D008DF030 /* RoundRectOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6044F15D5407D008DF030 /* RoundRectOne.png */; };
+		17A6045615D5407D008DF030 /* RoundRectOne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045015D5407D008DF030 /* RoundRectOne@2x.png */; };
+		17A6045715D5407D008DF030 /* RoundRectThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045115D5407D008DF030 /* RoundRectThree.png */; };
+		17A6045815D5407D008DF030 /* RoundRectThree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045215D5407D008DF030 /* RoundRectThree@2x.png */; };
+		17A6045915D5407D008DF030 /* RoundRectTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045315D5407D008DF030 /* RoundRectTwo.png */; };
+		17A6045A15D5407D008DF030 /* RoundRectTwo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045415D5407D008DF030 /* RoundRectTwo@2x.png */; };
 		17AEA08A1514A57F000091BD /* preferences@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AEA0891514A57F000091BD /* preferences@2x~iphone.png */; };
 		17AEA0901514F9D2000091BD /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AEA08F1514F9D2000091BD /* SettingsTableViewController.m */; };
 		17AEA09215161661000091BD /* preferences~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AEA09115161661000091BD /* preferences~iphone.png */; };
@@ -146,6 +157,8 @@
 		1705664C15528149007A1D50 /* swipe_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swipe_en.png; sourceTree = "<group>"; };
 		1717D14E15D3F0F400E3C1DF /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		1717D14F15D3F0F400E3C1DF /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
+		1717D15115D45DE700E3C1DF /* AboutBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutBackground.png; sourceTree = "<group>"; };
+		1717D15215D45DE700E3C1DF /* AboutBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutBackground@2x.png"; sourceTree = "<group>"; };
 		173579C615BD5C8D00C27D7D /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
 		177E2B48150DE00200B8AEE3 /* FWToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWToastView.m; sourceTree = "<group>"; };
 		177E2B4A150DE01D00B8AEE3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -214,6 +227,15 @@
 		17A5DB08154DAC3000802696 /* swipe_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swipe_de.png; sourceTree = "<group>"; };
 		17A5DB0A15501BAC00802696 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		17A5DB0B15501BAE00802696 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		17A6044415D53C2D008DF030 /* RoundRectOne@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RoundRectOne@2x.png"; sourceTree = "<group>"; };
+		17A6044815D53DA6008DF030 /* RoundRectTwo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RoundRectTwo@2x.png"; sourceTree = "<group>"; };
+		17A6044D15D53F4B008DF030 /* RoundRectThree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RoundRectThree@2x.png"; sourceTree = "<group>"; };
+		17A6044F15D5407D008DF030 /* RoundRectOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoundRectOne.png; sourceTree = "<group>"; };
+		17A6045015D5407D008DF030 /* RoundRectOne@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RoundRectOne@2x.png"; sourceTree = "<group>"; };
+		17A6045115D5407D008DF030 /* RoundRectThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoundRectThree.png; sourceTree = "<group>"; };
+		17A6045215D5407D008DF030 /* RoundRectThree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RoundRectThree@2x.png"; sourceTree = "<group>"; };
+		17A6045315D5407D008DF030 /* RoundRectTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoundRectTwo.png; sourceTree = "<group>"; };
+		17A6045415D5407D008DF030 /* RoundRectTwo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RoundRectTwo@2x.png"; sourceTree = "<group>"; };
 		17AEA0891514A57F000091BD /* preferences@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preferences@2x~iphone.png"; sourceTree = "<group>"; };
 		17AEA08E1514F9D2000091BD /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		17AEA08F1514F9D2000091BD /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
@@ -351,6 +373,17 @@
 		1782511D14FFB4AE00D95D57 /* Multimedia */ = {
 			isa = PBXGroup;
 			children = (
+				17A6044F15D5407D008DF030 /* RoundRectOne.png */,
+				17A6045015D5407D008DF030 /* RoundRectOne@2x.png */,
+				17A6045115D5407D008DF030 /* RoundRectThree.png */,
+				17A6045215D5407D008DF030 /* RoundRectThree@2x.png */,
+				17A6045315D5407D008DF030 /* RoundRectTwo.png */,
+				17A6045415D5407D008DF030 /* RoundRectTwo@2x.png */,
+				17A6044D15D53F4B008DF030 /* RoundRectThree@2x.png */,
+				17A6044815D53DA6008DF030 /* RoundRectTwo@2x.png */,
+				17A6044415D53C2D008DF030 /* RoundRectOne@2x.png */,
+				1717D15115D45DE700E3C1DF /* AboutBackground.png */,
+				1717D15215D45DE700E3C1DF /* AboutBackground@2x.png */,
 				1790E97815C1CCC3001DC301 /* graycolor.png */,
 				1705664C15528149007A1D50 /* swipe_en.png */,
 				1705663F15528083007A1D50 /* de-05-changeTranslations.png */,
@@ -801,6 +834,17 @@
 				1705664D15528149007A1D50 /* swipe_en.png in Resources */,
 				173579C715BD5C8D00C27D7D /* Icon-144.png in Resources */,
 				1790E97915C1CCC3001DC301 /* graycolor.png in Resources */,
+				1717D15315D45DE700E3C1DF /* AboutBackground.png in Resources */,
+				1717D15415D45DE700E3C1DF /* AboutBackground@2x.png in Resources */,
+				17A6044515D53C2D008DF030 /* RoundRectOne@2x.png in Resources */,
+				17A6044A15D53DA6008DF030 /* RoundRectTwo@2x.png in Resources */,
+				17A6044E15D53F4B008DF030 /* RoundRectThree@2x.png in Resources */,
+				17A6045515D5407D008DF030 /* RoundRectOne.png in Resources */,
+				17A6045615D5407D008DF030 /* RoundRectOne@2x.png in Resources */,
+				17A6045715D5407D008DF030 /* RoundRectThree.png in Resources */,
+				17A6045815D5407D008DF030 /* RoundRectThree@2x.png in Resources */,
+				17A6045915D5407D008DF030 /* RoundRectTwo.png in Resources */,
+				17A6045A15D5407D008DF030 /* RoundRectTwo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

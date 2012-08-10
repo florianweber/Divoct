@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSArray *pickList;
 @property (nonatomic) NSInteger preselectedRow;
+@property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) id <PickerViewControllerDelegate> delegate;
 
 @end

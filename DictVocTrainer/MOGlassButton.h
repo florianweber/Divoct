@@ -53,5 +53,6 @@
 - (void)setupAsSmallGreenButton;
 - (void)setupAsSmallRedButton;
 - (void)setupAsDarkGrayButton;
+- (void)setupAsFocusIndicatorBlueButton;
 
 @end

@@ -1134,6 +1134,10 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="AboutBackground.png" id="ruW-rQ-EPs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Divoct" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IkP-vR-cWL">
                                 <rect key="frame" x="108" y="49" width="105" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1201,7 +1205,7 @@ divocthelp@googlemail.com</string>
             </objects>
             <point key="canvasLocation" x="1594" y="1792"/>
         </scene>
-        <!--Training Settings View Controller - Trainingseinstellungen-->
+        <!--Training Settings View Controller - Training-->
         <scene sceneID="Wqb-b4-tOa">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQb-zR-Rkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1210,110 +1214,32 @@ divocthelp@googlemail.com</string>
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vqw-e4-Xzy" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="264" width="135" height="36"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="RoundRectOne.png" id="O7P-dc-Kxq">
+                                <rect key="frame" x="207" y="22" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Alle">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="trainCompleteCollectionButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="oi8-7g-Nmt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rMq-Pq-SI5" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="309" width="86" height="36"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.50000000000000011" contentMode="scaleToFill" image="RoundRectTwo.png" id="hf0-B6-5fu">
+                                <rect key="frame" x="58" y="136" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="10">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="trainTenWordsButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="0bN-Oa-bZ1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WUh-NP-XGg" customClass="MOGlassButton">
-                                <rect key="frame" x="117" y="309" width="86" height="36"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.50000000000000011" contentMode="scaleToFill" image="RoundRectThree.png" id="5op-wr-7bH">
+                                <rect key="frame" x="207" y="219" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="25">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="trainTwentyFiveWordsButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="Stq-oa-6nw"/>
-                                </connections>
-                            </button>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Wie viele Worte möchtest Du trainieren?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WC7-kf-bkP">
                                 <rect key="frame" x="20" y="190" width="290" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Wie möchtest Du trainieren?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cHH-m5-K0w">
                                 <rect key="frame" x="20" y="20" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8xL-vj-0Ch" customClass="MOGlassButton">
-                                <rect key="frame" x="214" y="309" width="86" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="50">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="trainFiftyWordsButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="wp4-Io-brT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5jG-Zo-csk" customClass="MOGlassButton">
-                                <rect key="frame" x="165" y="264" width="135" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Zufallsmenge">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="trainRandomNumberOfWordsButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="WSO-X0-duB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8BY-aQ-vtf" customClass="MOGlassButton">
-                                <rect key="frame" x="20" y="219" width="280" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Nur schwierige Worte">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="trainDifficultWordsButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="DMg-XO-k8Q"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="s5Q-4K-TcZ">
                                 <rect key="frame" x="20" y="47" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1326,7 +1252,7 @@ divocthelp@googlemail.com</string>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Was soll bei falschen Antworten passieren?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pQM-lS-s3J">
                                 <rect key="frame" x="20" y="104" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1339,28 +1265,118 @@ divocthelp@googlemail.com</string>
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="An8-Kc-VZW" customClass="MOGlassButton">
+                                <rect key="frame" x="20" y="214" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Count">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseWordCountButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="jj9-ld-fxo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="caj-Tp-ge5" customClass="MOGlassButton">
+                                <rect key="frame" x="20" y="310" width="280" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Starte Training">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTrainingButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="8Gg-3O-78i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Trainingseinstellungen" id="Cid-aq-mki"/>
+                    <navigationItem key="navigationItem" title="Training" id="Cid-aq-mki"/>
                     <connections>
-                        <outlet property="allButton" destination="Vqw-e4-Xzy" id="uLO-oJ-8ly"/>
-                        <outlet property="difficultButton" destination="8BY-aQ-vtf" id="4qY-DC-E6n"/>
-                        <outlet property="fiftyButton" destination="8xL-vj-0Ch" id="9bL-I5-Atr"/>
                         <outlet property="modeSelectionControl" destination="s5Q-4K-TcZ" id="rSc-dn-wgQ"/>
-                        <outlet property="randomButton" destination="5jG-Zo-csk" id="5HQ-aW-Nva"/>
-                        <outlet property="tenButton" destination="rMq-Pq-SI5" id="kPb-ab-9Lp"/>
-                        <outlet property="twentyFiveButton" destination="WUh-NP-XGg" id="L8L-kg-Czc"/>
+                        <outlet property="startTrainingButton" destination="caj-Tp-ge5" id="0iQ-jl-yaC"/>
+                        <outlet property="wordCountButton" destination="An8-Kc-VZW" id="3vl-7O-qPM"/>
                         <outlet property="wrongAnswerHandlingControl" destination="pdF-YW-5zM" id="iHb-Vs-Oym"/>
                         <segue destination="dgO-Hg-JLy" kind="push" identifier="Show Training" id="bWJ-iu-UPh"/>
+                        <segue destination="FEd-zF-U5m" kind="modal" identifier="Show WordCount Picker" id="v7P-0S-VZz"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1566" y="525"/>
         </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="K8f-gW-mzZ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cy-Q7-C9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="FEd-zF-U5m" customClass="PickerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d4s-zu-l2o">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ftA-7a-YJx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Abbrechen" id="ZcI-bH-Rey">
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="FEd-zF-U5m" id="2tD-49-NHY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="re3-Z6-3Qa"/>
+                                    <barButtonItem title="Auswahl" style="plain" id="yaC-nn-ThT"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7tM-Ez-ebe"/>
+                                    <barButtonItem title="Fertig" id="6ft-ol-tdx">
+                                        <connections>
+                                            <action selector="pickButtonPressed:" destination="FEd-zF-U5m" id="BrX-4y-1rS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                            <pickerView contentMode="scaleToFill" id="I5L-hS-tMw">
+                                <rect key="frame" x="0.0" y="244" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Beschreibung" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="FLe-Mw-d2g">
+                                <rect key="frame" x="20" y="72" width="280" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Selection Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="20e-ps-aQo">
+                                <rect key="frame" x="20" y="142" width="280" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="FLe-Mw-d2g" id="FvU-0v-l4U"/>
+                        <outlet property="pickerView" destination="I5L-hS-tMw" id="pHb-uY-plO"/>
+                        <outlet property="selectionDescriptionLabel" destination="20e-ps-aQo" id="lr4-Ho-1BL"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2448" y="1170"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="AboutBackground.png" width="320" height="367"/>
         <image name="LoadingBackground.png" width="320" height="460"/>
+        <image name="RoundRectOne.png" width="50" height="50"/>
+        <image name="RoundRectThree.png" width="50" height="50"/>
+        <image name="RoundRectTwo.png" width="50" height="50"/>
         <image name="flagGermany.png" width="50" height="30"/>
         <image name="folder.png" width="26" height="26"/>
         <image name="magnifyingglass~iphone.png" width="26" height="26"/>
@@ -1438,6 +1454,16 @@ divocthelp@googlemail.com</string>
         <class className="MOGlassButton" superclassName="MOButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MOGlassButton.h"/>
         </class>
+        <class className="PickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButtonPressed:"/>
+                <relationship kind="action" name="pickButtonPressed:"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="QuestionView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QuestionView.h"/>
         </class>
@@ -1464,6 +1490,8 @@ divocthelp@googlemail.com</string>
         <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="displayResults:"/>
+                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
                 <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
@@ -1477,21 +1505,13 @@ divocthelp@googlemail.com</string>
         <class className="TrainingSettingsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="trainCompleteCollectionButtonPressed:"/>
-                <relationship kind="action" name="trainDifficultWordsButtonPressed:"/>
-                <relationship kind="action" name="trainFiftyWordsButtonPressed:"/>
-                <relationship kind="action" name="trainRandomNumberOfWordsButtonPressed:"/>
-                <relationship kind="action" name="trainTenWordsButtonPressed:"/>
-                <relationship kind="action" name="trainTwentyFiveWordsButtonPressed:"/>
+                <relationship kind="action" name="chooseWordCountButtonPressed:"/>
+                <relationship kind="action" name="startTrainingButtonPressed:"/>
                 <relationship kind="action" name="trainingModeChanged:"/>
                 <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
-                <relationship kind="outlet" name="allButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="difficultButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="fiftyButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="randomButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="tenButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="twentyFiveButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="startTrainingButton" candidateClass="MOGlassButton"/>
+                <relationship kind="outlet" name="wordCountButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="wrongAnswerHandlingControl" candidateClass="UISegmentedControl"/>
             </relationships>
         </class>
@@ -1504,6 +1524,9 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
+                <relationship kind="action" name="nextExercise:"/>
+                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="stopButtonPressed:"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
@@ -1525,7 +1548,12 @@ divocthelp@googlemail.com</string>
         <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="organizeButtonPressed:"/>
+                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>
@@ -1539,9 +1567,9 @@ divocthelp@googlemail.com</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0n3-c0-Qed"/>
         <segue reference="vVF-tq-6Ck"/>
-        <segue reference="VgN-lO-4o2"/>
+        <segue reference="zni-li-EDg"/>
+        <segue reference="UPW-Rn-MNf"/>
         <segue reference="M3C-aw-Ko8"/>
     </inferredMetricsTieBreakers>
 </document>

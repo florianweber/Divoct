@@ -11,12 +11,17 @@
 @interface PickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, strong) NSString *pickedItem;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *selectionDescriptionLabel;
 
 @end
 
 @implementation PickerViewController
+@synthesize descriptionLabel = _descriptionLabel;
+@synthesize selectionDescriptionLabel = _selectionDescriptionLabel;
 @synthesize pickList = _pickList;
 @synthesize preselectedRow = _preselectedRow;
+@synthesize description = _description;
 
 #pragma mark - Init
 @synthesize pickerView;
@@ -33,8 +38,41 @@
 
 #pragma mark - Getter / Setter
 
+- (void)setDescription:(NSString *)description
+{
+    if(description) {
+        _description = description;
+        [self.descriptionLabel setText:description];
+    }
+}
 
 #pragma mark - My messages
+
+- (void)updateSelectionDescriptionForRow:(NSInteger)row
+{
+    NSString* selectionTitle = [self pickerView:self.pickerView titleForRow:row forComponent:0];
+    
+    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber *numberOfWords = [numberFormatter numberFromString:selectionTitle];
+    
+    if (numberOfWords) {
+        self.selectionDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ %@", NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DESC_NUM_1", nil), selectionTitle,  NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DESC_NUM_2", nil)];
+    } else {
+        //All
+        if (selectionTitle == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)) {
+            self.selectionDescriptionLabel.text = NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DESC_ALL", nil);
+            //Random
+        } else if (selectionTitle == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)) {
+            self.selectionDescriptionLabel.text = NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DESC_RAND", nil);
+            //Difficult
+        } else if (selectionTitle == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)) {
+            self.selectionDescriptionLabel.text = NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DESC_DIFF", nil);
+        } else {
+            self.selectionDescriptionLabel.text = @"";
+        }
+    }
+}
 
 
 #pragma mark - Target / Action
@@ -45,6 +83,8 @@
 
 
 - (IBAction)pickButtonPressed:(id)sender {
+    NSInteger row = [self.pickerView selectedRowInComponent:0];
+    self.pickedItem = [self.pickList objectAtIndex:row];
     [self.delegate pickerViewController:self pickedValue:self.pickedItem];
 }
 
@@ -66,6 +106,20 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.pickedItem = [self.pickList objectAtIndex:row];
+    [self updateSelectionDescriptionForRow:row];
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* label = (UILabel*)view;
+    if (view == nil){
+        label= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 260, 44)];
+        
+        label.textAlignment = UITextAlignmentCenter;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:16];
+    }
+    label.text = [self.pickList objectAtIndex:row];
+    return label;
 }
 
 
@@ -83,14 +137,19 @@
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
     
-    [self.pickerView selectRow:self.preselectedRow inComponent:0 animated:NO];
+    [self.descriptionLabel setText:self.description];
     
-    self.pickedItem = [self pickerView:self.pickerView titleForRow:[self.pickerView selectedRowInComponent:0] forComponent:0];
+    [self.pickerView selectRow:self.preselectedRow inComponent:0 animated:NO];
+    [self updateSelectionDescriptionForRow:self.preselectedRow];
+    
+    self.pickedItem = [self pickerView:self.pickerView titleForRow:self.preselectedRow forComponent:0];
 }
 
 - (void)viewDidUnload
 {
     [self setPickerView:nil];
+    [self setDescriptionLabel:nil];
+    [self setSelectionDescriptionLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

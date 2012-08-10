@@ -22,38 +22,22 @@
 
 @interface TrainingSettingsViewController () <PickerViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet MOGlassButton *tenButton;
-@property (weak, nonatomic) IBOutlet MOGlassButton *twentyFiveButton;
-@property (weak, nonatomic) IBOutlet MOGlassButton *fiftyButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelectionControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *wrongAnswerHandlingControl;
-@property (weak, nonatomic) IBOutlet MOGlassButton *allButton;
-@property (weak, nonatomic) IBOutlet MOGlassButton *randomButton;
-@property (weak, nonatomic) IBOutlet MOGlassButton *difficultButton;
 @property (nonatomic, strong) Training *training;
-@property (weak, nonatomic) IBOutlet UIButton *wordCountButton;
+@property (weak, nonatomic) IBOutlet MOGlassButton *wordCountButton;
+@property (weak, nonatomic) IBOutlet MOGlassButton *startTrainingButton;
 @property (nonatomic, strong) NSArray *pickList;
 
 @end
 
 @implementation TrainingSettingsViewController
 
-@synthesize tenButton = _TenButton;
-@synthesize twentyFiveButton = _TwentyFiveButton;
-@synthesize fiftyButton = _FiftyButton;
 @synthesize modeSelectionControl = _modeSelectionControl;
 @synthesize wrongAnswerHandlingControl = _wrongAnswerHandlingControl;
-@synthesize allButton = _allButton;
-@synthesize randomButton = _randomButton;
-@synthesize difficultButton = _difficultButton;
 @synthesize training = _training;
 @synthesize wordCountButton = _wordCountButton;
-
-NSString *const DVT_TRAINING_WORDCOUNT_KEY_ALL = @"All";
-NSString *const DVT_TRAINING_WORDCOUNT_KEY_RANDOM = @"Random";
-NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
-
-#pragma mark - Init
+@synthesize startTrainingButton = _startTrainingButton;
 
 
 #pragma mark - Getter / Setter
@@ -71,29 +55,10 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
 
 - (void)configureButtons
 {
-    [self.allButton setupAsDarkGrayButton];
-    [self.randomButton setupAsDarkGrayButton];
-    [self.difficultButton setupAsDarkGrayButton];
+    [self.wordCountButton setupAsDarkGrayButton];
+    [self.wordCountButton setTitle:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil) forState:UIControlStateNormal];
     
-    [self.tenButton setupAsDarkGrayButton];
-    [self.twentyFiveButton setupAsDarkGrayButton];
-    [self.fiftyButton setupAsDarkGrayButton];
-    
-    
-    if (self.training.collection.exercises.count < 10) {
-        self.tenButton.enabled = NO;
-        self.twentyFiveButton.enabled = NO;
-        self.fiftyButton.enabled = NO;
-    } else if ((self.training.collection.exercises.count >= 10) && (self.training.collection.exercises.count < 25)) {
-        self.twentyFiveButton.enabled = NO;
-        self.fiftyButton.enabled = NO;
-    } else if ((self.training.collection.exercises.count >= 25) && (self.training.collection.exercises.count < 50)) {
-        self.fiftyButton.enabled = NO;  
-    } else {
-        self.tenButton.enabled = YES;
-        self.twentyFiveButton.enabled = YES;
-        self.fiftyButton.enabled = YES;
-    }
+    [self.startTrainingButton setupAsFocusIndicatorBlueButton];
 }
 
 -(void)createExercises:(int)count
@@ -128,10 +93,10 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
         [self createExercises:numberOfWords.intValue];
     } else {
         //All
-        if (requestedWordCount == DVT_TRAINING_WORDCOUNT_KEY_ALL) {
+        if (requestedWordCount == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)) {
             self.training.exercises = [NSMutableArray arrayWithArray:self.training.collection.exercises.array];
         //Random
-        } else if (requestedWordCount == DVT_TRAINING_WORDCOUNT_KEY_RANDOM) {
+        } else if (requestedWordCount == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)) {
             int randomCount = arc4random_uniform(self.training.collection.exercises.count - 1);
             
             if (randomCount <= 0) {
@@ -139,7 +104,7 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
             }
             [self createExercises:randomCount];
         //Difficult
-        } else if (requestedWordCount == DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT) {
+        } else if (requestedWordCount == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)) {
             NSNumber *sumOfSuccessRates = [NSNumber numberWithFloat:0.0];
             NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:self.training.collection.exercises.count];
             for (Exercise *exercise in self.training.collection.exercises) {
@@ -215,9 +180,9 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
 -(NSArray *)pickerItemsForWordCount
 {
     NSMutableArray *wordCountPickerItems = [[NSMutableArray alloc] init];
-    [wordCountPickerItems addObject:DVT_TRAINING_WORDCOUNT_KEY_ALL];
-    [wordCountPickerItems addObject:DVT_TRAINING_WORDCOUNT_KEY_RANDOM];
-    [wordCountPickerItems addObject:DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT];
+    [wordCountPickerItems addObject:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)];
+    [wordCountPickerItems addObject:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)];
+    [wordCountPickerItems addObject:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)];
     
     for (int i=10; i<=self.training.collection.exercises.count; i+=10) {
         [wordCountPickerItems addObject:[NSString stringWithFormat:@"%d", i]];
@@ -267,10 +232,10 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
 
 - (IBAction)chooseWordCountButtonPressed:(id)sender {
     
-    [self performSegueWithIdentifier:@"Show Picker" sender:sender];
+    [self performSegueWithIdentifier:@"Show WordCount Picker" sender:sender];
 }
 
-- (IBAction)goButtonPressed:(id)sender {
+- (IBAction)startTrainingButtonPressed:(id)sender {
     [self startTraining];
 }
 
@@ -291,7 +256,7 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
     if ([segue.identifier isEqualToString:@"Show Training"]) {
         //set training
         [segue.destinationViewController setTraining:self.training];
-    } else if ([segue.identifier isEqualToString:@"Show Picker"]) {
+    } else if ([segue.identifier isEqualToString:@"Show WordCount Picker"]) {
         [segue.destinationViewController setDelegate:self];
         
         NSArray *pickerItems = [self pickerItemsForWordCount];
@@ -306,6 +271,8 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
         }
         
         [segue.destinationViewController setPreselectedRow:preselectedIndex];
+        
+        [segue.destinationViewController setDescription:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DESC", nil)];
     }
 }
 
@@ -314,12 +281,13 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureButtons];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self configureButtons];
+    
     [self loadPreviousTrainingMode];
     [self loadPreviousWrongAnswerHandlingMode];
     [self.modeSelectionControl addTarget:self action:@selector(trainingModeChanged:) forControlEvents:UIControlEventValueChanged];
@@ -330,11 +298,9 @@ NSString *const DVT_TRAINING_WORDCOUNT_KEY_DIFFICULT = @"Difficult";
 - (void)viewDidUnload
 {
     [self setModeSelectionControl:nil];
-    [self setAllButton:nil];
-    [self setRandomButton:nil];
-    [self setDifficultButton:nil];
     [self setWrongAnswerHandlingControl:nil];
     [self setWordCountButton:nil];
+    [self setStartTrainingButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

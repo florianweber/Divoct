@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--RotatingUI Tab Bar Controller-->
         <scene sceneID="Hv3-CI-HZU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Scj-44-aRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController definesPresentationContext="YES" id="pHN-4D-A7I" customClass="RotatingUITabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="tbr-ag-GcQ">
@@ -24,13 +22,13 @@
                         <segue destination="4uR-oI-eqT" kind="modal" identifier="Show Loading" modalTransitionStyle="crossDissolve" id="0ug-RL-XWl"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Scj-44-aRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="67" y="233"/>
         </scene>
         <!--Navigation Controller - SearchNC-->
         <scene sceneID="Du0-1W-7HS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CrX-K5-AeP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="SearchNC" title="SearchNC" id="G2O-PN-e3j" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Suche" image="magnifyingglass~iphone.png" id="AoU-Kz-hHo"/>
                     <toolbarItems/>
@@ -44,13 +42,13 @@
                         <segue destination="GTh-7p-2KQ" kind="relationship" relationship="rootViewController" id="c0H-t1-iga"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CrX-K5-AeP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="639" y="-66"/>
         </scene>
         <!--Dictionary Search View Controller - Wörterbuch Suche-->
         <scene sceneID="zMT-jR-Wyk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lZW-Ub-pjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="GTh-7p-2KQ" customClass="DictionarySearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KdX-5h-DPi">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -129,13 +127,13 @@
                         <segue destination="imS-Q2-gKR" kind="push" identifier="Show Vocabulary Details" id="VKl-TW-gIi"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZW-Ub-pjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1090" y="-66"/>
         </scene>
         <!--Vocabulary Detail View Controller - Übersetzung-->
         <scene sceneID="9H0-um-kAz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ppS-PS-l8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="VocabularyDetail" id="imS-Q2-gKR" customClass="VocabularyDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Twx-Br-3CA">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -143,7 +141,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yqo-en-JkA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="310"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="TopLeft" id="a96-VE-9Vx" customClass="VocabularyDetailView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="310"/>
@@ -158,11 +156,11 @@
                             </scrollView>
                             <view contentMode="scaleToFill" id="UBa-BP-9yg">
                                 <rect key="frame" x="0.0" y="308" width="320" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pos-MM-ogQ">
                                         <rect key="frame" x="5" y="11" width="149" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Suche in Wikipedia">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,7 +175,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NB0-9e-xhE">
                                         <rect key="frame" x="162" y="11" width="148" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Suche in Google">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -211,13 +209,13 @@
                         <segue destination="0R9-TW-tRG" kind="push" identifier="Organize in Collections" id="R6I-c5-KDr"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ppS-PS-l8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1566" y="-66"/>
         </scene>
         <!--Collection Chooser Table View Controller - Zuordnen...-->
         <scene sceneID="80u-tG-yXG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l75-EX-S3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="0R9-TW-tRG" customClass="CollectionChooserTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qKV-0h-HVJ">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -263,13 +261,13 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l75-EX-S3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2007" y="-66"/>
         </scene>
         <!--Navigation Controller - RecentsNC-->
         <scene sceneID="25f-w8-2PC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QqS-Vj-S0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="RecentsNC" title="RecentsNC" definesPresentationContext="YES" id="Se4-bO-agy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="recents" id="1y2-ah-e2I"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="Xqx-M8-g9a">
@@ -280,13 +278,13 @@
                         <segue destination="Jj7-4T-7wm" kind="relationship" relationship="rootViewController" id="SNQ-7O-cad"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QqS-Vj-S0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="639" y="525"/>
         </scene>
         <!--Navigation Controller - Ordner-->
         <scene sceneID="YUN-8u-U7k">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EOb-qx-jis" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="BXh-j6-jXs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ordner" image="folder.png" id="ZFv-6c-jsO"/>
                     <toolbarItems/>
@@ -304,13 +302,13 @@
                         <segue destination="yMh-3u-hCR" kind="relationship" relationship="rootViewController" id="3a9-dJ-xmN"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOb-qx-jis" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="639" y="1170"/>
         </scene>
         <!--Trainer Collections Table View Controller - Ordner-->
         <scene sceneID="Esk-mi-Zq5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mod-TB-agn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="yMh-3u-hCR" customClass="TrainerCollectionsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0Jw-kB-i6S">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -386,13 +384,13 @@
                         <segue destination="mhc-TP-hpt" kind="modal" identifier="Show Collection Detail" modalTransitionStyle="partialCurl" id="UvO-6m-vgP"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mod-TB-agn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1090" y="1170"/>
         </scene>
         <!--Navigation Controller - Einstellungen-->
         <scene sceneID="rWx-be-GfW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DOg-hw-00F" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="aGw-cD-xhn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Einstellungen" image="preferences~iphone.png" id="fI6-BN-ZZk"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="0ag-Rr-kTW">
@@ -403,13 +401,13 @@
                         <segue destination="W2g-vd-Md9" kind="relationship" relationship="rootViewController" id="01J-0e-ZYv"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOg-hw-00F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="639" y="2427"/>
         </scene>
         <!--Collection Detail View Controller-->
         <scene sceneID="6qI-iA-HYa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zNV-an-Bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="mhc-TP-hpt" customClass="CollectionDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ld-b5-GOj">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -439,14 +437,14 @@
                                 <rect key="frame" x="20" y="166" width="151" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Beschreibung (optional)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="wUC-OQ-w1Y">
                                 <rect key="frame" x="20" y="239" width="235" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Deine Beschreibung" id="Reu-Uz-u2s">
@@ -477,7 +475,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="bottomBarTitleButton" destination="qd5-FL-9Om" id="hES-Ks-rGo"/>
@@ -488,13 +486,13 @@
                         <outlet property="titleInputBox" destination="gQG-d3-MOL" id="xDY-97-uJJ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNV-an-Bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1090" y="1792"/>
         </scene>
         <!--Exercises Table View Controller - RECENTS-->
         <scene sceneID="cFt-ve-eVE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tjj-V9-S0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Jj7-4T-7wm" customClass="ExercisesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3qb-eD-xol">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -580,13 +578,13 @@
                         <segue destination="Qq0-ie-R87" kind="push" identifier="Show Training" id="UPW-Rn-MNf"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tjj-V9-S0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1090" y="525"/>
         </scene>
         <!--Exercises Table View Controller - COLLECTION-->
         <scene sceneID="TZg-9h-oZ1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XYt-JC-LYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Z7l-5Q-Wxm" customClass="ExercisesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Hem-s8-8JI">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -671,13 +669,13 @@
                         <segue destination="Qq0-ie-R87" kind="push" identifier="Show Training" id="VgN-lO-4o2"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XYt-JC-LYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1566" y="1170"/>
         </scene>
         <!--Training View Controller - COLLECTIONNAME - Training-->
         <scene sceneID="Uqh-6U-S9T">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ll-7a-64f" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Training" id="dgO-Hg-JLy" customClass="TrainingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w6J-Y2-zzI">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -819,13 +817,13 @@
                         <segue destination="isC-1Q-On4" kind="push" identifier="Show Results" id="mD2-tm-LYG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ll-7a-64f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2007" y="525"/>
         </scene>
         <!--Training Results View Controller - Ergebnis-->
         <scene sceneID="4ml-4n-VHZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EL2-IG-cgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Training Results" id="isC-1Q-On4" customClass="TrainingResultsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1bj-si-QnT">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -904,13 +902,13 @@
                         <outlet property="wrongCountLabel" destination="8WR-uc-vgD" id="cBN-8P-iHE"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EL2-IG-cgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2448" y="525"/>
         </scene>
         <!--Loading View Controller - Loading View-->
         <scene sceneID="tpn-Qn-ipb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xeg-cJ-dA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Loading View" title="Loading View" id="4uR-oI-eqT" customClass="LoadingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rLu-Kr-Uca">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -958,13 +956,13 @@
                         <outlet property="textView" destination="WUc-ob-Def" id="mOd-CN-fLc"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xeg-cJ-dA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="67" y="-588"/>
         </scene>
         <!--Settings Table View Controller - Einstellungen-->
         <scene sceneID="6I0-cr-V3y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jy2-SX-86Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="W2g-vd-Md9" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VcC-Tv-YAi">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1096,13 +1094,13 @@
                         <outlet property="caseSwitch" destination="NWg-pZ-rTo" id="XHv-CA-Rn3"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jy2-SX-86Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1090" y="2427"/>
         </scene>
         <!--License View Controller - Lizenz-->
         <scene sceneID="4Gh-8c-QxI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WnE-Jr-nLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="6ds-vr-tDP" customClass="LicenseViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="thF-wS-n10">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1122,13 +1120,13 @@
                         <outlet property="webView" destination="lO9-hn-Ig6" id="Kyx-vR-L4Q"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WnE-Jr-nLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1594" y="2427"/>
         </scene>
         <!--About View Controller - Über-->
         <scene sceneID="fui-2q-352">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R4c-ZW-5pU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="tNh-Db-iWl" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yjE-tT-Hsq">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1176,13 +1174,13 @@ divocthelp@googlemail.com</string>
                     </view>
                     <navigationItem key="navigationItem" title="Über" id="GCQ-d0-LtJ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R4c-ZW-5pU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1594" y="3030"/>
         </scene>
         <!--Help View Controller - Hilfe-->
         <scene sceneID="oYb-la-cmB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SUU-Oq-ZsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="P3o-mi-uvU" customClass="HelpViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sXA-E3-DTI">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -1202,27 +1200,27 @@ divocthelp@googlemail.com</string>
                         <outlet property="webView" destination="erz-Ae-33w" id="ECa-hk-wue"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUU-Oq-ZsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1594" y="1792"/>
         </scene>
         <!--Training Settings View Controller - Training-->
         <scene sceneID="Wqb-b4-tOa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mQb-zR-Rkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Training Settings" id="Qq0-ie-R87" customClass="TrainingSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mb-1z-6Yz">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="RoundRectOne.png" id="O7P-dc-Kxq">
+                            <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectOne.png" id="O7P-dc-Kxq">
                                 <rect key="frame" x="207" y="22" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.50000000000000011" contentMode="scaleToFill" image="RoundRectTwo.png" id="hf0-B6-5fu">
+                            <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectTwo.png" id="hf0-B6-5fu">
                                 <rect key="frame" x="58" y="136" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.50000000000000011" contentMode="scaleToFill" image="RoundRectThree.png" id="5op-wr-7bH">
+                            <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectThree.png" id="5op-wr-7bH">
                                 <rect key="frame" x="207" y="219" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1282,7 +1280,7 @@ divocthelp@googlemail.com</string>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="caj-Tp-ge5" customClass="MOGlassButton">
                                 <rect key="frame" x="20" y="310" width="280" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Starte Training">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1308,13 +1306,13 @@ divocthelp@googlemail.com</string>
                         <segue destination="FEd-zF-U5m" kind="modal" identifier="Show WordCount Picker" id="v7P-0S-VZz"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQb-zR-Rkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1566" y="525"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="K8f-gW-mzZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1cy-Q7-C9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="FEd-zF-U5m" customClass="PickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d4s-zu-l2o">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -1322,7 +1320,7 @@ divocthelp@googlemail.com</string>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ftA-7a-YJx">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <barButtonItem title="Abbrechen" id="ZcI-bH-Rey">
                                         <connections>
@@ -1342,24 +1340,24 @@ divocthelp@googlemail.com</string>
                             </toolbar>
                             <pickerView contentMode="scaleToFill" id="I5L-hS-tMw">
                                 <rect key="frame" x="0.0" y="244" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Beschreibung" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="FLe-Mw-d2g">
                                 <rect key="frame" x="20" y="72" width="280" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Selection Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="20e-ps-aQo">
                                 <rect key="frame" x="20" y="142" width="280" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="FLe-Mw-d2g" id="FvU-0v-l4U"/>
@@ -1367,6 +1365,7 @@ divocthelp@googlemail.com</string>
                         <outlet property="selectionDescriptionLabel" destination="20e-ps-aQo" id="lr4-Ho-1BL"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cy-Q7-C9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2448" y="1170"/>
         </scene>
@@ -1383,193 +1382,15 @@ divocthelp@googlemail.com</string>
         <image name="preferences~iphone.png" width="26" height="26"/>
         <image name="tapTwoFinger.png" width="100" height="100"/>
     </resources>
-    <classes>
-        <class className="AboutViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-        </class>
-        <class className="CollectionChooserTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionChooserTableViewController.h"/>
-        </class>
-        <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="finishButtonPressed:"/>
-                <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="descriptionInputBox" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="errorMessageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="titleInputBox" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="DictionarySearchViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DictionarySearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="searchModeButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="assignSelectedRows:"/>
-                <relationship kind="action" name="deleteSelectedRows:"/>
-                <relationship kind="action" name="deselectAllRows:"/>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="selectAllRows:"/>
-                <relationship kind="action" name="startTraining:"/>
-                <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GenericHelpTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GenericHelpTableViewController.h"/>
-        </class>
-        <class className="GenericHelpViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GenericHelpViewController.h"/>
-        </class>
-        <class className="HelpViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="LicenseViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LicenseViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="LoadingViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="infoMessageView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="MOButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MOButton.h"/>
-        </class>
-        <class className="MOGlassButton" superclassName="MOButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MOGlassButton.h"/>
-        </class>
-        <class className="PickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="pickButtonPressed:"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="QuestionView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuestionView.h"/>
-        </class>
-        <class className="RotatingUITabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingUITabBarController.h"/>
-        </class>
-        <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="newButtonPressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="TrainingResultsDiagramView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>
-        </class>
-        <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="displayResults:"/>
-                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
-                <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="greenBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="redBarLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="redBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="wrongCountLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TrainingSettingsViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="chooseWordCountButtonPressed:"/>
-                <relationship kind="action" name="startTrainingButtonPressed:"/>
-                <relationship kind="action" name="trainingModeChanged:"/>
-                <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
-                <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="startTrainingButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="wordCountButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="wrongAnswerHandlingControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="TrainingStatusView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingStatusView.h"/>
-        </class>
-        <class className="TrainingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingView.h"/>
-        </class>
-        <class className="TrainingViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stopButtonPressed:"/>
-                <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="optionOneButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="optionThreeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="optionTwoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="progessView" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="questionFlagIconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="questionScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="questionView" candidateClass="QuestionView"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="trainingStatusView" candidateClass="TrainingStatusView"/>
-                <relationship kind="outlet" name="trainingView" candidateClass="TrainingView"/>
-            </relationships>
-        </class>
-        <class className="VocabularyDetailView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailView.h"/>
-        </class>
-        <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
-                <relationship kind="action" name="organizeButtonPressed:"/>
-                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="vocabularyDetailView" candidateClass="VocabularyDetailView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vVF-tq-6Ck"/>
         <segue reference="zni-li-EDg"/>
+        <segue reference="UvO-6m-vgP"/>
+        <segue reference="vVF-tq-6Ck"/>
         <segue reference="UPW-Rn-MNf"/>
-        <segue reference="M3C-aw-Ko8"/>
     </inferredMetricsTieBreakers>
 </document>

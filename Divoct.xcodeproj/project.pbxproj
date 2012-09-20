@@ -18,6 +18,7 @@
 		1717D15315D45DE700E3C1DF /* AboutBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1717D15115D45DE700E3C1DF /* AboutBackground.png */; };
 		1717D15415D45DE700E3C1DF /* AboutBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1717D15215D45DE700E3C1DF /* AboutBackground@2x.png */; };
 		173579C715BD5C8D00C27D7D /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 173579C615BD5C8D00C27D7D /* Icon-144.png */; };
+		17544663160BC14100B04CE9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17544662160BC14100B04CE9 /* Default-568h@2x.png */; };
 		177E2B49150DE00200B8AEE3 /* FWToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 177E2B48150DE00200B8AEE3 /* FWToastView.m */; };
 		177E2B4B150DE01D00B8AEE3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177E2B4A150DE01D00B8AEE3 /* QuartzCore.framework */; };
 		177E2B4E150E814F00B8AEE3 /* DictVocTrainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 177E2B4D150E814F00B8AEE3 /* DictVocTrainer.m */; };
@@ -74,11 +75,8 @@
 		17A6044A15D53DA6008DF030 /* RoundRectTwo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6044815D53DA6008DF030 /* RoundRectTwo@2x.png */; };
 		17A6044E15D53F4B008DF030 /* RoundRectThree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6044D15D53F4B008DF030 /* RoundRectThree@2x.png */; };
 		17A6045515D5407D008DF030 /* RoundRectOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6044F15D5407D008DF030 /* RoundRectOne.png */; };
-		17A6045615D5407D008DF030 /* RoundRectOne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045015D5407D008DF030 /* RoundRectOne@2x.png */; };
 		17A6045715D5407D008DF030 /* RoundRectThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045115D5407D008DF030 /* RoundRectThree.png */; };
-		17A6045815D5407D008DF030 /* RoundRectThree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045215D5407D008DF030 /* RoundRectThree@2x.png */; };
 		17A6045915D5407D008DF030 /* RoundRectTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045315D5407D008DF030 /* RoundRectTwo.png */; };
-		17A6045A15D5407D008DF030 /* RoundRectTwo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A6045415D5407D008DF030 /* RoundRectTwo@2x.png */; };
 		17AEA08A1514A57F000091BD /* preferences@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AEA0891514A57F000091BD /* preferences@2x~iphone.png */; };
 		17AEA0901514F9D2000091BD /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AEA08F1514F9D2000091BD /* SettingsTableViewController.m */; };
 		17AEA09215161661000091BD /* preferences~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AEA09115161661000091BD /* preferences~iphone.png */; };
@@ -160,6 +158,7 @@
 		1717D15115D45DE700E3C1DF /* AboutBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutBackground.png; sourceTree = "<group>"; };
 		1717D15215D45DE700E3C1DF /* AboutBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutBackground@2x.png"; sourceTree = "<group>"; };
 		173579C615BD5C8D00C27D7D /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
+		17544662160BC14100B04CE9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		177E2B48150DE00200B8AEE3 /* FWToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWToastView.m; sourceTree = "<group>"; };
 		177E2B4A150DE01D00B8AEE3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		177E2B4C150E814F00B8AEE3 /* DictVocTrainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictVocTrainer.h; sourceTree = "<group>"; };
@@ -571,6 +570,7 @@
 		17D6870714FC1165001DB847 = {
 			isa = PBXGroup;
 			children = (
+				17544662160BC14100B04CE9 /* Default-568h@2x.png */,
 				173579C615BD5C8D00C27D7D /* Icon-144.png */,
 				17A5DAE11547C7B500802696 /* Icon.png */,
 				17A5DAE21547C7B500802696 /* Icon@2x.png */,
@@ -747,7 +747,7 @@
 		17D6870914FC1165001DB847 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = IBM;
 			};
 			buildConfigurationList = 17D6870C14FC1165001DB847 /* Build configuration list for PBXProject "Divoct" */;
@@ -840,11 +840,9 @@
 				17A6044A15D53DA6008DF030 /* RoundRectTwo@2x.png in Resources */,
 				17A6044E15D53F4B008DF030 /* RoundRectThree@2x.png in Resources */,
 				17A6045515D5407D008DF030 /* RoundRectOne.png in Resources */,
-				17A6045615D5407D008DF030 /* RoundRectOne@2x.png in Resources */,
 				17A6045715D5407D008DF030 /* RoundRectThree.png in Resources */,
-				17A6045815D5407D008DF030 /* RoundRectThree@2x.png in Resources */,
 				17A6045915D5407D008DF030 /* RoundRectTwo.png in Resources */,
-				17A6045A15D5407D008DF030 /* RoundRectTwo@2x.png in Resources */,
+				17544663160BC14100B04CE9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

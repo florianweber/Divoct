@@ -814,9 +814,4 @@ TrainingViewController.m
     [self layoutViewsToOrientation:toInterfaceOrientation];
 }
 
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
 @end

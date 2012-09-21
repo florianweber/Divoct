@@ -93,10 +93,10 @@
         [self createExercises:numberOfWords.intValue];
     } else {
         //All
-        if (requestedWordCount == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)) {
+        if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)]) {
             self.training.exercises = [NSMutableArray arrayWithArray:self.training.collection.exercises.array];
         //Random
-        } else if (requestedWordCount == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)) {
+        } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)]) {
             int randomCount = arc4random_uniform(self.training.collection.exercises.count - 1);
             
             if (randomCount <= 0) {
@@ -104,7 +104,7 @@
             }
             [self createExercises:randomCount];
         //Difficult
-        } else if (requestedWordCount == NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)) {
+        } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)]) {
             NSNumber *sumOfSuccessRates = [NSNumber numberWithFloat:0.0];
             NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:self.training.collection.exercises.count];
             for (Exercise *exercise in self.training.collection.exercises) {

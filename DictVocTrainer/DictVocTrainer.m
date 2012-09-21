@@ -470,7 +470,8 @@ static DictVocTrainer *singleton;
         } else if ([trainingResults count] == 0) {
             LogDebug(@"No exercises found.");
         } else if ([trainingResults count] > 0) {
-            LogDebug(@"Found %i exercises.", [exercises count]);
+            //Todo: Doesnt work in iOS6. Find a way to make it work again.
+            //LogDebug(@"Found %i exercises.", [exercises count]);
         }
     }
     

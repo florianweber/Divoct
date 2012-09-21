@@ -461,7 +461,7 @@ VocabularyDetailViewController.m
     } else {
         //load word and exercise
         SQLiteWord *word = [self.word.translations objectAtIndex:[self.translationLabels indexOfObject:sender.view]];
-        Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:word.uniqueId];
+        Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:word.uniqueId updateLastLookedUp:NO];
         [exercise addCollectionsObject:[[DictVocTrainer instance] collectionWithName:NSLocalizedString(@"RECENTS_TITLE", nil)]];
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
 

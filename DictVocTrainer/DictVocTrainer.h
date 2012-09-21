@@ -38,7 +38,7 @@ typedef void (^completion_block_t) (NSError *error);
 
 -(NSArray *)allExercises;
 -(NSArray *)recentExercises;
--(Exercise *)exerciseWithWordUniqueId:(NSNumber *)uniqueId;
+-(Exercise *)exerciseWithWordUniqueId:(NSNumber *)uniqueId updateLastLookedUp:(BOOL)updateLastLookedUp;
 -(void)deleteExercise:(Exercise *)exercise fromCollection:(Collection *)collection;
 -(void)resetAllExerciseStatistics;
 -(NSOrderedSet *)exercisesInCollectionWithName:(NSString *)collectionName;

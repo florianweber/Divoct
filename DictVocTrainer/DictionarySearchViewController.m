@@ -279,7 +279,7 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     if ([segue.identifier isEqualToString:@"Show Vocabulary Details"]) {
         
         SQLiteWord *word = [self.currentSearchResults objectAtIndex:((NSIndexPath *)sender).row];
-        Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:word.uniqueId];
+        Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:word.uniqueId updateLastLookedUp:YES];
         [exercise addCollectionsObject:[[DictVocTrainer instance] collectionWithName:NSLocalizedString(@"RECENTS_TITLE", nil)]];
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
         

@@ -68,7 +68,7 @@ CollectionChooserTableViewController.m
 
 - (void)addWordToCollection:(Collection *)collection
 {
-    Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:self.word.uniqueId];
+    Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:self.word.uniqueId updateLastLookedUp:NO];
     [exercise addCollectionsObject:collection];
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
 }
@@ -83,7 +83,7 @@ CollectionChooserTableViewController.m
 
 - (void)removeWordFromCollection:(Collection *)collection
 {
-    Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:self.word.uniqueId];
+    Exercise *exercise = [[DictVocTrainer instance] exerciseWithWordUniqueId:self.word.uniqueId updateLastLookedUp:NO];
     [[DictVocTrainer instance] deleteExercise:exercise fromCollection:collection];
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:DVT_COLLECTION_NOTIFICATION_CONTENTS_CHANGED object:nil]];
 }

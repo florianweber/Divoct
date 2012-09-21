@@ -333,7 +333,7 @@ static DictVocTrainer *singleton;
 
 #pragma mark - My messages - Exercises
 
-- (Exercise *)exerciseWithWordUniqueId:(NSNumber *)uniqueId
+- (Exercise *)exerciseWithWordUniqueId:(NSNumber *)uniqueId updateLastLookedUp:(BOOL)updateLastLookedUp
 {
     Exercise *exercise = nil;
     if (!self.dictVocTrainerDB) {
@@ -356,8 +356,10 @@ static DictVocTrainer *singleton;
         } else {
             LogDebug(@"Read exercise from database with id: %i", [uniqueId intValue]);
             exercise = [exercises lastObject];
-            exercise.lastLookedUp = [NSDate date];
-            exercise.lookupCount = [NSNumber numberWithInt:[exercise.lookupCount intValue] + 1];
+            if (updateLastLookedUp) {
+                exercise.lastLookedUp = [NSDate date];
+                exercise.lookupCount = [NSNumber numberWithInt:[exercise.lookupCount intValue] + 1];
+            }
         }
         [self saveDictVocTrainerDBUsingBlock:^(NSError *error){}];
     }

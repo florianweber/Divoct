@@ -1500,6 +1500,8 @@ divocthelp@googlemail.com</string>
         <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="displayResults:"/>
+                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
                 <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
@@ -1556,7 +1558,12 @@ divocthelp@googlemail.com</string>
         <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="organizeButtonPressed:"/>
+                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>

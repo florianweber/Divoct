@@ -33,8 +33,9 @@ RecentsTableViewController.m
 #import "TrainingSettingsViewController.h"
 #import "CollectionChooserTableViewController.h"
 
-@interface ExercisesTableViewController () <LoadingViewControllerDelegate, UITextFieldDelegate>
+@interface ExercisesTableViewController () <UITabBarControllerDelegate, LoadingViewControllerDelegate, UITextFieldDelegate>
 
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) NSMutableOrderedSet *exercises;
 @property (nonatomic, strong) NSDateFormatter *dateFormat;
 @property (weak, nonatomic) IBOutlet UILabel *tableBottomLabel;
@@ -58,6 +59,7 @@ RecentsTableViewController.m
 @end
 
 @implementation ExercisesTableViewController
+@synthesize activityIndicator = _activityIndicator;
 @synthesize collection = _collection;
 @synthesize exercises = _exercises;
 @synthesize dateFormat = _dateFormat;
@@ -148,6 +150,14 @@ RecentsTableViewController.m
 }
 
 #pragma mark - My messages
+
+-(UIActivityIndicatorView *)createAndDisplayActivityIndicator {
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.activityIndicator setHidesWhenStopped:YES];
+    [self.activityIndicator stopAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_activityIndicator];
+    return _activityIndicator;
+}
 
 -(void)updateTitleLabelWithText:(NSString *)text
 {
@@ -607,11 +617,23 @@ RecentsTableViewController.m
 }
 
 
+#pragma mark - UITabBarController delegate
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([self.activityIndicator isAnimating]) {
+        return NO;
+    }
+    return YES;
+}
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tabBarController setDelegate:self];
     
     if ([[DictVocDictionary instance] firstTimeSetupRequired]) {
         //show activity view
@@ -646,15 +668,13 @@ RecentsTableViewController.m
         }];
     } else {
         //init spinner
-        __block UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        spinner.hidesWhenStopped = YES;
-        [spinner startAnimating];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        [self createAndDisplayActivityIndicator];
+        [self.activityIndicator startAnimating];
         
         //init dictionary database
         NSError *error = [[DictVocDictionary instance] openDatabaseWithFileName:DVT_DB_FILE_NAME];
         if (error) {
-            spinner = nil;
+            self.activityIndicator = nil;
             LoadingViewController *loadingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Loading View"];
             loadingViewController.text = [error localizedDescription];
             [self.tabBarController presentViewController:loadingViewController animated:YES completion:nil];
@@ -667,10 +687,10 @@ RecentsTableViewController.m
                 loadingViewController.text = [error localizedDescription];
                 [self.tabBarController presentViewController:loadingViewController animated:YES completion:nil];
             } else {
+                [self.activityIndicator stopAnimating];
+                self.activityIndicator = nil;
                 [self furtherViewDidLoadSetup];
             }
-            [spinner stopAnimating];
-            spinner = nil;
         }];
     }
 }

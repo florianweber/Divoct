@@ -135,7 +135,7 @@
 		17EAF36F15134BD100D531D2 /* gradhat~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EAF36E15134BD100D531D2 /* gradhat~iphone.png */; };
 		17EAF3721513588800D531D2 /* pencilangled@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EAF3711513588800D531D2 /* pencilangled@2x~iphone.png */; };
 		17EAF37415137A3D00D531D2 /* pencilangled~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EAF37315137A3D00D531D2 /* pencilangled~iphone.png */; };
-		17EAF3791513818800D531D2 /* CollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF3781513818700D531D2 /* CollectionDetailsViewController.m */; };
+		17EAF3791513818800D531D2 /* CollectionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF3781513818700D531D2 /* CollectionDetailViewController.m */; };
 		17EAF37D1514086900D531D2 /* CollectionChooserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF37C1514086900D531D2 /* CollectionChooserTableViewController.m */; };
 		17EFE98E1501ADC60024A977 /* NormalizedStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE98A1501ADC50024A977 /* NormalizedStringTransformer.m */; };
 		17EFE9E715092C280024A977 /* SQLiteWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EFE9E615092C280024A977 /* SQLiteWord.m */; };
@@ -336,7 +336,7 @@
 		17EAF3711513588800D531D2 /* pencilangled@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencilangled@2x~iphone.png"; sourceTree = "<group>"; };
 		17EAF37315137A3D00D531D2 /* pencilangled~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencilangled~iphone.png"; sourceTree = "<group>"; };
 		17EAF3771513818700D531D2 /* CollectionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionDetailViewController.h; sourceTree = "<group>"; };
-		17EAF3781513818700D531D2 /* CollectionDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionDetailsViewController.m; sourceTree = "<group>"; };
+		17EAF3781513818700D531D2 /* CollectionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionDetailViewController.m; sourceTree = "<group>"; };
 		17EAF37B1514086900D531D2 /* CollectionChooserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionChooserTableViewController.h; sourceTree = "<group>"; };
 		17EAF37C1514086900D531D2 /* CollectionChooserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionChooserTableViewController.m; sourceTree = "<group>"; };
 		17EFE9891501ADC50024A977 /* NormalizedStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalizedStringTransformer.h; sourceTree = "<group>"; };
@@ -663,7 +663,7 @@
 				1782511A14FF8CFE00D95D57 /* LoadingViewController.h */,
 				1782511B14FF8CFE00D95D57 /* LoadingViewController.m */,
 				17EAF3771513818700D531D2 /* CollectionDetailViewController.h */,
-				17EAF3781513818700D531D2 /* CollectionDetailsViewController.m */,
+				17EAF3781513818700D531D2 /* CollectionDetailViewController.m */,
 				17EFE9EB150B27110024A977 /* VocabularyDetailViewController.h */,
 				17EFE9EC150B27110024A977 /* VocabularyDetailViewController.m */,
 				17D6873C14FC13D6001DB847 /* DictionarySearchViewController.h */,
@@ -905,7 +905,7 @@
 				177E2B51150EB3B600B8AEE3 /* TrainerCollectionsTableViewController.m in Sources */,
 				177E2B69150F6C8C00B8AEE3 /* ExercisesTableViewController.m in Sources */,
 				177E2B72150FDF3600B8AEE3 /* Exercise+Extended.m in Sources */,
-				17EAF3791513818800D531D2 /* CollectionDetailsViewController.m in Sources */,
+				17EAF3791513818800D531D2 /* CollectionDetailViewController.m in Sources */,
 				17EAF37D1514086900D531D2 /* CollectionChooserTableViewController.m in Sources */,
 				17AEA0901514F9D2000091BD /* SettingsTableViewController.m in Sources */,
 				17D200E1151D1B5A00285A21 /* TrainingViewController.m in Sources */,

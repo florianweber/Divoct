@@ -187,7 +187,7 @@ TrainingViewController.m
     self.countWrong = [NSNumber numberWithInt:0];
     self.countCorrect = [NSNumber numberWithInt:0];
     self.progessView.progress = 0.0;
-    self.progessView.progressTintColor = [UIColor greenColor];
+    self.progessView.progressTintColor = [UIColor blueColor];
 }
 
 -(void)updateFlagIcon

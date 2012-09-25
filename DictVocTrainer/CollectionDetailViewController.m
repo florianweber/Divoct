@@ -204,7 +204,9 @@ CreateCollectionViewController.m
         
         [textView resignFirstResponder];
         if ([textView isEqual:self.descriptionInputBox]) {
-            [self setViewMovedUp:NO];
+            if ([UIScreen mainScreen].bounds.size.height < 568) {
+                [self setViewMovedUp:NO];
+            }
         }
         
         return FALSE;
@@ -232,13 +234,15 @@ CreateCollectionViewController.m
 
 - (void)keyboardWillShow:(NSNotification *)notif
 {
-    if ([self.descriptionInputBox isFirstResponder] && self.view.frame.origin.y >= 0)
-    {
-        [self setViewMovedUp:YES];
-    }
-    else if (![self.descriptionInputBox isFirstResponder] && self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
+    if ([UIScreen mainScreen].bounds.size.height < 568) {
+        if ([self.descriptionInputBox isFirstResponder] && self.view.frame.origin.y >= 0)
+        {
+            [self setViewMovedUp:YES];
+        }
+        else if (![self.descriptionInputBox isFirstResponder] && self.view.frame.origin.y < 0)
+        {
+            [self setViewMovedUp:NO];
+        }
     }
 }
 

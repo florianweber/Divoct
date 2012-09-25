@@ -1103,7 +1103,7 @@ divocthelp@googlemail.com</string>
                                     </scrollView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" textAlignment="center" minimumFontSize="17" id="Ovi-5R-Jc5">
                                         <rect key="frame" x="20" y="159" width="280" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1403,8 +1403,6 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="finishButtonPressed:"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionInputBox" candidateClass="UITextView"/>
@@ -1423,12 +1421,6 @@ divocthelp@googlemail.com</string>
         <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="assignSelectedRows:"/>
-                <relationship kind="action" name="deleteSelectedRows:"/>
-                <relationship kind="action" name="deselectAllRows:"/>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="selectAllRows:"/>
-                <relationship kind="action" name="startTraining:"/>
                 <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1467,8 +1459,6 @@ divocthelp@googlemail.com</string>
         <class className="PickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="pickButtonPressed:"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
@@ -1483,7 +1473,6 @@ divocthelp@googlemail.com</string>
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
@@ -1500,8 +1489,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="displayResults:"/>
-                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
                 <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
@@ -1534,9 +1521,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stopButtonPressed:"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
@@ -1558,12 +1542,7 @@ divocthelp@googlemail.com</string>
         <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="organizeButtonPressed:"/>
-                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>

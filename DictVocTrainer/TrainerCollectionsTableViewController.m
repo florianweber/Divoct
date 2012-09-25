@@ -31,12 +31,13 @@ TrainerCollectionsTableViewController.m
 #import "CollectionDetailViewController.h"
 #import "FWToastView.h"
 
-@interface TrainerCollectionsTableViewController () <LoadingViewControllerDelegate, CreateCollectionViewControllerDelegate>
+@interface TrainerCollectionsTableViewController () <UITabBarControllerDelegate, LoadingViewControllerDelegate, CreateCollectionViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *collections;
 @property (nonatomic, strong) UIToolbar *editActionBar;
 @property (nonatomic, strong) UIBarButtonItem *deleteButton;
 @property (nonatomic, strong) UIBarButtonItem *leftNavigationItemEditItem;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic) BOOL needsReload;
 @end
 
@@ -46,6 +47,7 @@ TrainerCollectionsTableViewController.m
 @synthesize deleteButton = _deleteButton;
 @synthesize leftNavigationItemEditItem = _leftNavigationItemEditItem;
 @synthesize needsReload = _needsReload;
+@synthesize activityIndicator = _activityIndicator;
 CGRect editBarFrameStore; 
 
 #pragma mark - Getter / Setter
@@ -79,6 +81,14 @@ CGRect editBarFrameStore;
 
 
 #pragma mark - My Messages
+
+-(UIActivityIndicatorView *)createAndDisplayActivityIndicator {
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.activityIndicator setHidesWhenStopped:YES];
+    [self.activityIndicator stopAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_activityIndicator];
+    return _activityIndicator;
+}
 
 -(void)initRightNavigationItemBar
 {
@@ -233,11 +243,23 @@ CGRect editBarFrameStore;
 
 }
 
+#pragma mark - UITabBarController delegate
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([self.activityIndicator isAnimating]) {
+        return NO;
+    }
+    return YES;
+}
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tabBarController setDelegate:self];
     
     if ([[DictVocDictionary instance] firstTimeSetupRequired]) {
         //show activity view
@@ -266,16 +288,13 @@ CGRect editBarFrameStore;
         }];
     } else {
         //init spinner
-        __block UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        spinner.hidesWhenStopped = YES;
-        [spinner startAnimating];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        [self createAndDisplayActivityIndicator];
+        [self.activityIndicator startAnimating];
         
         //init dictionary database
         NSError *error = [[DictVocDictionary instance] openDatabaseWithFileName:DVT_DB_FILE_NAME];
         if (error) {
-            [spinner stopAnimating];
-            spinner = nil;
+            [self.activityIndicator stopAnimating];
             LoadingViewController *loadingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Loading View"];
             loadingViewController.text = [error localizedDescription];
             [self.tabBarController presentViewController:loadingViewController animated:YES completion:nil];
@@ -288,11 +307,10 @@ CGRect editBarFrameStore;
                 loadingViewController.text = [error localizedDescription];
                 [self.tabBarController presentViewController:loadingViewController animated:YES completion:nil];
             } else {
+                [self.activityIndicator stopAnimating];
                 self.collections = [[[DictVocTrainer instance] allCollectionsExceptRecents] mutableCopy];
                 [self showLeftNavigationItemCustomToolbar:YES];
             }
-            [spinner stopAnimating];
-            spinner = nil;
         }];
     }
 }

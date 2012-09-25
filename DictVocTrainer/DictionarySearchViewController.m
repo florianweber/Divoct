@@ -43,7 +43,7 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     (deltaY > threshold && deltaZ > threshold);
 }
 
-@interface DictionarySearchViewController() <LoadingViewControllerDelegate, UISearchBarDelegate, UIAccelerometerDelegate>
+@interface DictionarySearchViewController() <LoadingViewControllerDelegate, UISearchBarDelegate, UIAccelerometerDelegate, UITabBarControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *searchModeButton;
 @property (nonatomic, strong) DictVocDictionary *dictVocDictionary;
@@ -199,6 +199,11 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     [self.tableView reloadData];
 }
 
+-(void)disableTabbar
+{
+    
+}
+
 -(void)addSwipeGestureRecognizer
 {
     UISwipeGestureRecognizer *leftSwiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
@@ -229,24 +234,33 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
 {
     [self.searchTimer invalidate];
     self.searchTimer = nil;
-
     
     NSString *searchString = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    int lengthToStartSearch = DVT_STARTSEARCH_WITH_LENGTH;
+    
     if (![searchString length]) {
         [self resetSearchResults];
-    } else if ([searchString length] < lengthToStartSearch) {
-        [self.activityIndicator stopAnimating];
-    } else if ([searchString length] >= lengthToStartSearch) {
+    } else {
+        int lengthToStartSearch = DVT_STARTSEARCH_WITH_LENGTH;
+        int normalizedSearchStringLength = [searchString length];
         
-        NSDictionary *timerInfo = [NSDictionary dictionaryWithObjectsAndKeys:searchText, @"SEARCHTEXT", nil];
+        if ([searchString hasPrefix:@"to "]) {
+            normalizedSearchStringLength -= 1;
+        }
         
-        NSTimeInterval waitFor = DVT_WAITSECONDS_FOR_USER_INPUT;
-        self.searchTimer = [NSTimer scheduledTimerWithTimeInterval:waitFor 
-                                                            target:self 
-                                                          selector:@selector(searchWordsWithTimer:)  
-                                                          userInfo:timerInfo 
-                                                           repeats:NO];
+        if (normalizedSearchStringLength < lengthToStartSearch) {
+            [self.activityIndicator stopAnimating];
+        } else if (normalizedSearchStringLength >= lengthToStartSearch) {
+            
+            NSDictionary *timerInfo = [NSDictionary dictionaryWithObjectsAndKeys:searchText, @"SEARCHTEXT", nil];
+            
+            NSTimeInterval waitFor = DVT_WAITSECONDS_FOR_USER_INPUT;
+            self.searchTimer = [NSTimer scheduledTimerWithTimeInterval:waitFor
+                                                                target:self
+                                                              selector:@selector(searchWordsWithTimer:)
+                                                              userInfo:timerInfo
+                                                               repeats:NO];
+        }
+     
     }
 }
 
@@ -339,12 +353,23 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     self.lastAcceleration = acceleration;
 }
 
+#pragma mark - UITabBarController delegate
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([self.activityIndicator isAnimating]) {
+        return NO;
+    }
+    return YES;
+}
+
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+    
+    [self.tabBarController setDelegate:self];
     
     if ([self.dictVocDictionary firstTimeSetupRequired]) {
         //show activity view

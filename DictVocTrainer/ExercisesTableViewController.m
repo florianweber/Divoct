@@ -524,13 +524,18 @@ RecentsTableViewController.m
         self.titleViewStore = self.navigationItem.titleView;
         
         int maxHeight = self.navigationController.navigationBar.frame.size.height;
+        if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+            maxHeight -= 20;
+        } else {
+            maxHeight -= 8;
+        }
         int maxWidth = 0;
         for (UIView *navigationBarSubview in self.navigationController.navigationBar.subviews) {
             maxWidth += navigationBarSubview.frame.size.width;
         }
         
         CGRect titleChangeFieldFrame = self.navigationItem.titleView.frame;
-        titleChangeFieldFrame.size = CGSizeMake(maxWidth, maxHeight - 20);
+        titleChangeFieldFrame.size = CGSizeMake(maxWidth, maxHeight);
         
         UITextField *titleChangeField = [[UITextField alloc] initWithFrame:titleChangeFieldFrame];
         titleChangeField.borderStyle = UITextBorderStyleRoundedRect;

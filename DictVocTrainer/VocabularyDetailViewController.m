@@ -582,4 +582,9 @@ VocabularyDetailViewController.m
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self setupVocabularyDetailsView];
+}
+
 @end

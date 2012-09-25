@@ -27,10 +27,14 @@ CreateCollectionViewController.m
 #import "FWToastView.h"
 #import "DictVocTrainer.h"
 
-#define kOFFSET_FOR_KEYBOARD 80.0
+#define kOFFSET_FOR_KEYBOARD_PORTRAIT 80.0
+#define kOFFSET_FOR_KEYBOARD_LANDSCAPE 50.0
 
 @interface CollectionDetailViewController () <UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *titleInputBox;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionInputBox;
 @property (weak, nonatomic) IBOutlet UILabel *errorMessageLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *bottomBarTitleButton;
@@ -51,6 +55,52 @@ CreateCollectionViewController.m
 @synthesize importantChanges = _importantChanges;
 
 #pragma mark - My Messages
+
+- (void)layoutViews
+{
+    BOOL fourInch = ([UIScreen mainScreen].bounds.size.height == 568);
+    
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        
+        CGRect titleLabelFrame = CGRectMake(20, 180, 151, 21);
+        self.titleLabel.frame = titleLabelFrame;
+        self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        
+        CGRect titleInputBoxFrame = CGRectMake(20, 204, 280, 29);
+        self.titleInputBox.frame = titleInputBoxFrame;
+        self.titleInputBox.textAlignment = NSTextAlignmentLeft;
+        
+        CGRect descriptionLabelFrame = CGRectMake(20, 240, 235, 21);
+        self.descriptionLabel.frame = descriptionLabelFrame;
+        self.descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        
+        CGRect descriptionInputBoxFrame = CGRectMake(20, 264, 280, 56);
+        self.descriptionInputBox.frame = descriptionInputBoxFrame;
+        self.descriptionInputBox.textAlignment = NSTextAlignmentLeft;
+        
+    } else {
+        CGRect titleLabelFrame = CGRectMake((fourInch ? 400 : 312), 40, 151, 21);
+        self.titleLabel.frame = titleLabelFrame;
+        self.titleLabel.textAlignment = NSTextAlignmentRight;
+        
+        CGRect titleInputBoxFrame = CGRectMake((fourInch ? 271 : 183), 64, 280, 29);
+        self.titleInputBox.frame = titleInputBoxFrame;
+        self.titleInputBox.textAlignment = NSTextAlignmentRight;
+        
+        CGRect descriptionLabelFrame = CGRectMake((fourInch ? 316 : 228), 100, 235, 21);
+        self.descriptionLabel.frame = descriptionLabelFrame;
+        self.descriptionLabel.textAlignment = NSTextAlignmentRight;
+        
+        CGRect descriptionInputBoxFrame = CGRectMake((fourInch ? 150 : 62), 124, 400, 56);
+        self.descriptionInputBox.frame = descriptionInputBoxFrame;
+        self.descriptionInputBox.textAlignment = NSTextAlignmentRight;
+    }
+    
+    self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    self.titleInputBox.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    self.descriptionLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    self.descriptionInputBox.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+}
 
 - (void)setupTitleInputBox
 {
@@ -90,21 +140,37 @@ CreateCollectionViewController.m
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5]; // if you want to slide up the view
     
-    CGRect rect = self.view.frame;
-    if (movedUp)
-    {
-        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
-        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
-        rect.size.height += kOFFSET_FOR_KEYBOARD;
+    CGRect rect = self.contentView.frame;
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        if (movedUp)
+        {
+            // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
+            // 2. increase the size of the view so that the area behind the keyboard is covered up.
+            rect.origin.y -= kOFFSET_FOR_KEYBOARD_PORTRAIT;
+            rect.size.height += kOFFSET_FOR_KEYBOARD_PORTRAIT;
+        }
+        else
+        {
+            // revert back to the normal state.
+            rect.origin.y += kOFFSET_FOR_KEYBOARD_PORTRAIT;
+            rect.size.height -= kOFFSET_FOR_KEYBOARD_PORTRAIT;
+        }
+    } else {
+        if (movedUp)
+        {
+            // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
+            // 2. increase the size of the view so that the area behind the keyboard is covered up.
+            rect.origin.y -= kOFFSET_FOR_KEYBOARD_LANDSCAPE;
+            rect.size.height += kOFFSET_FOR_KEYBOARD_LANDSCAPE;
+        }
+        else
+        {
+            // revert back to the normal state.
+            rect.origin.y += kOFFSET_FOR_KEYBOARD_LANDSCAPE;
+            rect.size.height -= kOFFSET_FOR_KEYBOARD_LANDSCAPE;
+        }
     }
-    else
-    {
-        // revert back to the normal state.
-        rect.origin.y += kOFFSET_FOR_KEYBOARD;
-        rect.size.height -= kOFFSET_FOR_KEYBOARD;
-    }
-    self.view.frame = rect;
+    self.contentView.frame = rect;
     
     [UIView commitAnimations];
 }
@@ -204,7 +270,11 @@ CreateCollectionViewController.m
         
         [textView resignFirstResponder];
         if ([textView isEqual:self.descriptionInputBox]) {
-            if ([UIScreen mainScreen].bounds.size.height < 568) {
+            if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+                if ([UIScreen mainScreen].bounds.size.height < 568) {
+                    [self setViewMovedUp:NO];
+                }
+            } else {
                 [self setViewMovedUp:NO];
             }
         }
@@ -234,15 +304,27 @@ CreateCollectionViewController.m
 
 - (void)keyboardWillShow:(NSNotification *)notif
 {
-    if ([UIScreen mainScreen].bounds.size.height < 568) {
-        if ([self.descriptionInputBox isFirstResponder] && self.view.frame.origin.y >= 0)
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        if ([UIScreen mainScreen].bounds.size.height < 568) {
+            if ([self.descriptionInputBox isFirstResponder] && self.contentView.frame.origin.y >= 0)
+            {
+                [self setViewMovedUp:YES];
+            }
+            else if (![self.descriptionInputBox isFirstResponder] && self.contentView.frame.origin.y < 0)
+            {
+                [self setViewMovedUp:NO];
+            }
+        }
+    } else {
+        if ([self.descriptionInputBox isFirstResponder] && self.contentView.frame.origin.y >= 0)
         {
             [self setViewMovedUp:YES];
         }
-        else if (![self.descriptionInputBox isFirstResponder] && self.view.frame.origin.y < 0)
+        else if (![self.descriptionInputBox isFirstResponder] && self.contentView.frame.origin.y < 0)
         {
             [self setViewMovedUp:NO];
         }
+
     }
 }
 
@@ -265,6 +347,8 @@ CreateCollectionViewController.m
     [self setupTitleInputBox];
     [self setupDescriptionInputBox];
     
+    [self layoutViews];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
                                                  name:UIKeyboardWillShowNotification object:self.view.window];
 }
@@ -286,6 +370,9 @@ CreateCollectionViewController.m
     [self setBottomBarTitleButton:nil];
     [self setCancelButton:nil];
     [self setFinishButton:nil];
+    [self setTitleLabel:nil];
+    [self setDescriptionLabel:nil];
+    [self setContentView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

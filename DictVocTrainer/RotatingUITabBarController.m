@@ -60,8 +60,8 @@
         }
     }
      */
-    return UIInterfaceOrientationMaskPortrait;
-    //return UIInterfaceOrientationMaskAll;
+    //return UIInterfaceOrientationMaskPortrait;
+    return UIInterfaceOrientationMaskAll;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

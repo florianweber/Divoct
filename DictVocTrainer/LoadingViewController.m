@@ -28,6 +28,7 @@ LoadingViewController.m
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UITextView *infoMessageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 @end
@@ -94,9 +95,26 @@ LoadingViewController.m
     self.infoMessageView.text = self.infoText;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.scrollView.contentSize = CGSizeMake(290, 430);
+}
+
 - (void)viewDidUnload {
     [self setActivityIndicator:nil];
     [self setTextView:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 @end

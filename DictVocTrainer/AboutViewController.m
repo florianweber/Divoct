@@ -23,6 +23,12 @@
 #import "AboutViewController.h"
 #import "FWToastView.h"
 
+@interface AboutViewController()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@end
+
+
 @implementation AboutViewController
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
@@ -50,4 +56,14 @@
     [self addSwipeGestureRecognizer];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.scrollView.contentSize = CGSizeMake(290, 332);
+}
+
+- (void)viewDidUnload {
+    [self setScrollView:nil];
+    [super viewDidUnload];
+}
 @end

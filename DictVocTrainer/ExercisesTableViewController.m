@@ -52,6 +52,7 @@ RecentsTableViewController.m
 @property (nonatomic) NSArray *selectedRowsStore;
 @property (nonatomic) CGRect editBarFrameStore;
 @property (nonatomic) CGRect tableViewFrameStore;
+@property (nonatomic) UIInterfaceOrientation orientationStore;
 
 -(void)updateCountDependentElementsLabel:(BOOL)updateNavigationItem;
 -(void)updateTitleLabelWithText:(NSString *)text;
@@ -260,6 +261,7 @@ RecentsTableViewController.m
         } else {
             self.editActionBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height, self.tableView.frame.size.width, 44)];
         }
+        self.editActionBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.editActionBar.tintColor = [UIColor blackColor];
         
         //Delete
@@ -724,14 +726,22 @@ RecentsTableViewController.m
 
         self.needsReload = NO;
     }
+    
+    //ToDo: Doesn't work completely, but I'm near
+//    if (self.interfaceOrientation != self.orientationStore) {
+//        [self showActionBar:NO];
+//        [self showActionBar:YES];
+//    }
+    
 }
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     if (self.editBarFrameStore.size.width > 0) {
+        self.editBarFrameStore = CGRectMake(self.editBarFrameStore.origin.x, self.editBarFrameStore.origin.y, self.tableView.frame.size.width, 44);
         self.editActionBar.frame = self.editBarFrameStore;
-        self.tableView.frame = self.tableViewFrameStore;
+        //self.tableView.frame = self.tableViewFrameStore;
     }
 }
 
@@ -743,14 +753,32 @@ RecentsTableViewController.m
     if (self.repairEditActionToolbar) {
         self.repairEditActionToolbar = NO;
         [self.tableView.superview addSubview:self.editActionBar];
-        self.editActionBar.frame = self.editBarFrameStore;
-        self.tableView.frame = self.tableViewFrameStore;
+        
+        if (self.interfaceOrientation == self.orientationStore) {
+            self.editActionBar.frame = self.editBarFrameStore;
+            self.tableView.frame = self.tableViewFrameStore;
+        }
         
         for (NSIndexPath *indexPath in self.selectedRowsStore) {
             [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:NO];
         }
         self.selectedRowsStore = nil;
         [self updateSelectedDependentButtons];
+    }
+    
+    //ToDo: Doesn't work completely, but I'm near
+    if (self.tableView.editing && (self.interfaceOrientation != self.orientationStore)) {
+        if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && (self.tableView.frame.size.height != 219)) {
+            [self showActionBar:NO];
+        }
+        if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && ((self.tableView.frame.size.height == 411) || (self.tableView.frame.size.height == 323))) {
+            [self showActionBar:NO];
+        }
+        [self showActionBar:YES];
+        
+        if (self.tableView.frame.size.height != self.editActionBar.frame.origin.y) {
+            self.editActionBar.frame = CGRectMake(self.editActionBar.frame.origin.x, self.tableView.frame.size.height, self.tableView.frame.size.width, 44);
+        }
     }
 }
 
@@ -759,6 +787,7 @@ RecentsTableViewController.m
     [super viewWillDisappear:NO];
     self.viewsHaveBeenSized = NO;
     [self observeDBChanges:YES];
+    self.orientationStore = self.interfaceOrientation;
 }
 
 - (void)viewDidUnload
@@ -771,6 +800,14 @@ RecentsTableViewController.m
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (self.tableView.editing) {
+        [self showActionBar:NO];
+        [self showActionBar:YES];
+    }
 }
 
 #pragma mark - Table view data source

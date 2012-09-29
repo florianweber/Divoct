@@ -12,53 +12,80 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTop.png" id="4Ec-eS-VlC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottom.png" id="lPX-Pl-Xqs" userLabel="BGBottom">
+                                <rect key="frame" x="15" y="445" width="290" height="15"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundCenter.png" id="jVQ-rC-s4g">
-                                <rect key="frame" x="0.0" y="15" width="320" height="430"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTopRight.png" id="ik6-cx-usc" userLabel="BGTopRight">
+                                <rect key="frame" x="305" y="0.0" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottomLeft.png" id="6P6-7W-Dio" userLabel="BGBottomLeft">
+                                <rect key="frame" x="0.0" y="445" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTop.png" id="cZa-hf-ijn" userLabel="BGTop">
+                                <rect key="frame" x="15" y="0.0" width="290" height="15"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottomRight.png" id="3lx-er-ckO" userLabel="BGBottomRight">
+                                <rect key="frame" x="305" y="445" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundCenterLeft.png" id="Y5X-Gh-eN2" userLabel="BGLeft">
+                                <rect key="frame" x="0.0" y="15" width="15" height="430"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTopLeft.png" id="avv-3P-K4p" userLabel="BGTopLeft">
+                                <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundCenterRight.png" id="KFq-09-2Zd" userLabel="BGRight">
+                                <rect key="frame" x="305" y="15" width="15" height="430"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="eet-i2-d7z">
+                                <rect key="frame" x="15" y="15" width="290" height="430"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottom.png" id="9Mp-CH-gnS">
-                                <rect key="frame" x="0.0" y="445" width="320" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tapTwoFinger.png" id="QG6-xB-wY4">
-                                <rect key="frame" x="128" y="340" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading / Error message" textAlignment="center" id="IJo-7Q-UtB">
-                                <rect key="frame" x="0.0" y="93" width="320" height="72"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="NHp-hr-Dd8">
-                                <rect key="frame" x="142" y="179" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </activityIndicatorView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Divoct" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="o3V-n2-C8x">
-                                <rect key="frame" x="118" y="20" width="84" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-BookIta" family="Bodoni 72" pointSize="32"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Info Text" textAlignment="center" id="CHs-OM-ROc">
-                                <rect key="frame" x="20" y="247" width="280" height="81"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading / Error message" textAlignment="center" id="IJo-7Q-UtB">
+                                        <rect key="frame" x="-15" y="79" width="320" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="NHp-hr-Dd8">
+                                        <rect key="frame" x="126" y="196" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Divoct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cp1-X8-kzT">
+                                        <rect key="frame" x="0.0" y="20" width="290" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-BookIta" family="Bodoni 72" pointSize="32"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Info Text" textAlignment="center" id="CHs-OM-ROc">
+                                        <rect key="frame" x="4" y="253" width="280" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tapTwoFinger.png" id="2KC-D3-WiW">
+                                        <rect key="frame" x="103" y="330" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234716892242432" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="NHp-hr-Dd8" id="SUr-UT-1rM"/>
                         <outlet property="infoMessageView" destination="CHs-OM-ROc" id="kBF-5b-2SK"/>
+                        <outlet property="scrollView" destination="eet-i2-d7z" id="XTm-2K-1Hb"/>
                         <outlet property="textView" destination="IJo-7Q-UtB" id="Q1g-KO-SXP"/>
                     </connections>
                 </viewController>
@@ -471,7 +498,7 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="SV3-fq-l5e">
                                                     <rect key="frame" x="216" y="8" width="79" height="27"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="searchCaseSwitchSwitched:" destination="Nhn-tJ-7mM" eventType="valueChanged" id="ZnO-Q8-ZSZ"/>
                                                     </connections>
@@ -616,55 +643,84 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTop.png" id="1dT-pa-QTf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundCenterLeft.png" id="qXt-fI-LZZ" userLabel="BGLeft">
+                                <rect key="frame" x="0.0" y="15" width="15" height="337"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundCenter.png" id="Zrh-xY-kP2">
-                                <rect key="frame" x="0.0" y="15" width="320" height="337"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTopLeft.png" id="hYe-lB-PPX" userLabel="BGTopLeft">
+                                <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottomLeft.png" id="tGF-or-50Y" userLabel="BGBottomLeft">
+                                <rect key="frame" x="0.0" y="352" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottomRight.png" id="N7N-h8-aeo" userLabel="BGBottomRight">
+                                <rect key="frame" x="305" y="352" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTopRight.png" id="wZQ-RR-r4D" userLabel="BGTopRight">
+                                <rect key="frame" x="305" y="0.0" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundTop.png" id="cuD-aH-vb7" userLabel="BGTop">
+                                <rect key="frame" x="15" y="0.0" width="290" height="15"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottom.png" id="po4-jU-7QP" userLabel="BGBottom">
+                                <rect key="frame" x="15" y="352" width="290" height="15"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundCenterRight.png" id="asQ-Z9-VqX" userLabel="BGRight">
+                                <rect key="frame" x="305" y="15" width="15" height="337"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="11K-e0-BZ8">
+                                <rect key="frame" x="15" y="15" width="290" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="SmoothBackgroundBottom.png" id="Teg-8C-LNk">
-                                <rect key="frame" x="0.0" y="352" width="320" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Divoct" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9D6-WQ-6c8">
-                                <rect key="frame" x="108" y="45" width="105" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-BookIta" family="Bodoni 72" pointSize="41"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dictionary Vocabulary Trainer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZQ5-jk-WCz">
-                                <rect key="frame" x="20" y="106" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Version 1.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WXA-G2-nqp">
-                                <rect key="frame" x="20" y="127" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="uQf-VZ-oX6">
-                                <rect key="frame" x="20" y="208" width="280" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Created &amp; Copyright:
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Divoct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9D6-WQ-6c8">
+                                        <rect key="frame" x="5" y="32" width="280" height="53"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-BookIta" family="Bodoni 72" pointSize="41"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dictionary Vocabulary Trainer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZQ5-jk-WCz">
+                                        <rect key="frame" x="5" y="95" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Version 1.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WXA-G2-nqp">
+                                        <rect key="frame" x="5" y="116" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="uQf-VZ-oX6">
+                                        <rect key="frame" x="5" y="187" width="280" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Created &amp; Copyright:
 Florian Weber
 
 Contact:
 divocthelp@googlemail.com</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
-                            </textView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234716892242432" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="6uI-fr-Sat"/>
+                    <connections>
+                        <outlet property="scrollView" destination="11K-e0-BZ8" id="V1g-rq-n0s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZy-ri-lXT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1394,9 +1450,14 @@ divocthelp@googlemail.com</string>
         <image name="RoundRectOne.png" width="50" height="50"/>
         <image name="RoundRectThree.png" width="50" height="50"/>
         <image name="RoundRectTwo.png" width="50" height="50"/>
-        <image name="SmoothBackgroundBottom.png" width="320" height="15"/>
-        <image name="SmoothBackgroundCenter.png" width="320" height="1"/>
-        <image name="SmoothBackgroundTop.png" width="320" height="15"/>
+        <image name="SmoothBackgroundBottom.png" width="1" height="15"/>
+        <image name="SmoothBackgroundBottomLeft.png" width="15" height="15"/>
+        <image name="SmoothBackgroundBottomRight.png" width="15" height="15"/>
+        <image name="SmoothBackgroundCenterLeft.png" width="15" height="1"/>
+        <image name="SmoothBackgroundCenterRight.png" width="15" height="1"/>
+        <image name="SmoothBackgroundTop.png" width="1" height="15"/>
+        <image name="SmoothBackgroundTopLeft.png" width="15" height="15"/>
+        <image name="SmoothBackgroundTopRight.png" width="15" height="15"/>
         <image name="flagGermany.png" width="50" height="30"/>
         <image name="folder.png" width="26" height="26"/>
         <image name="magnifyingglass~iphone.png" width="26" height="26"/>
@@ -1406,6 +1467,9 @@ divocthelp@googlemail.com</string>
     <classes>
         <class className="AboutViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
         </class>
         <class className="CollectionChooserTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionChooserTableViewController.h"/>
@@ -1413,6 +1477,8 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="finishButtonPressed:"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
@@ -1434,6 +1500,12 @@ divocthelp@googlemail.com</string>
         <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="assignSelectedRows:"/>
+                <relationship kind="action" name="deleteSelectedRows:"/>
+                <relationship kind="action" name="deselectAllRows:"/>
+                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="selectAllRows:"/>
+                <relationship kind="action" name="startTraining:"/>
                 <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1460,6 +1532,7 @@ divocthelp@googlemail.com</string>
             <relationships>
                 <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="infoMessageView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
         </class>
@@ -1472,6 +1545,8 @@ divocthelp@googlemail.com</string>
         <class className="PickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:"/>
+                <relationship kind="action" name="pickButtonPressed:"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
@@ -1486,6 +1561,7 @@ divocthelp@googlemail.com</string>
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
@@ -1502,6 +1578,8 @@ divocthelp@googlemail.com</string>
         <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="displayResults:"/>
+                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
                 <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
@@ -1534,6 +1612,9 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
+                <relationship kind="action" name="nextExercise:"/>
+                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="stopButtonPressed:"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>

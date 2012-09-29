@@ -726,18 +726,13 @@ RecentsTableViewController.m
 
         self.needsReload = NO;
     }
-    
-    //ToDo: Doesn't work completely, but I'm near
-//    if (self.interfaceOrientation != self.orientationStore) {
-//        [self showActionBar:NO];
-//        [self showActionBar:YES];
-//    }
-    
 }
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+    
+    //This is definetly not the best way to fix this, but I did not find another way yet
     if (self.editBarFrameStore.size.width > 0) {
         self.editBarFrameStore = CGRectMake(self.editBarFrameStore.origin.x, self.editBarFrameStore.origin.y, self.tableView.frame.size.width, 44);
         self.editActionBar.frame = self.editBarFrameStore;

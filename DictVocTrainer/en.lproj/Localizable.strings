@@ -54,7 +54,7 @@
 "TRAINING_SETTINGS_COUNTPICKER_DESC"        = "Please select how many words you want to exercise.\n\nYour current selection:";
 "TRAINING_SETTINGS_COUNTPICKER_DESC_ALL"    = "Your training will contain all vocabularies in your collection.";
 "TRAINING_SETTINGS_COUNTPICKER_DESC_RAND"   = "You will exercise a random number of your collection.";
-"TRAINING_SETTINGS_COUNTPICKER_DESC_DIFF"   = "Based on your performance so far, you will only get words to translate which you answered more wrong than others.";
+"TRAINING_SETTINGS_COUNTPICKER_DESC_DIFF"   = "Based on your performance so far, you will only get words to translate which you answered wrong more often than others.";
 "TRAINING_SETTINGS_COUNTPICKER_DESC_NUM_1"  = "Your training will contain";
 "TRAINING_SETTINGS_COUNTPICKER_DESC_NUM_2"  = "random vocabularies.";
 "TRANSLATIONS_EDIT_MIN_ONE"                 = "You must have at least one translation.";

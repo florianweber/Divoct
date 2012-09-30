@@ -48,6 +48,19 @@
 
 #pragma mark - My messages
 
+- (void)layoutViews
+{
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        self.descriptionLabel.frame = CGRectMake(0, 48, [UIScreen mainScreen].bounds.size.height, 15);
+        self.selectionDescriptionLabel.frame = CGRectMake(0, 66, [UIScreen mainScreen].bounds.size.height, 15);
+        self.selectionDescriptionLabel.numberOfLines = 1;
+    } else {
+        self.descriptionLabel.frame = CGRectMake(20, 60, 280, 76);
+        self.selectionDescriptionLabel.frame = CGRectMake(20, 140, 280, 80);
+        self.selectionDescriptionLabel.numberOfLines = 4;
+    }
+}
+
 - (void)updateSelectionDescriptionForRow:(NSInteger)row
 {
     NSString* selectionTitle = [self pickerView:self.pickerView titleForRow:row forComponent:0];
@@ -143,6 +156,8 @@
     [self updateSelectionDescriptionForRow:self.preselectedRow];
     
     self.pickedItem = [self pickerView:self.pickerView titleForRow:self.preselectedRow forComponent:0];
+    
+    [self layoutViews];
 }
 
 - (void)viewDidUnload
@@ -157,6 +172,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self layoutViews];
 }
 
 @end

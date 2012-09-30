@@ -22,6 +22,7 @@
 
 @interface TrainingSettingsViewController () <PickerViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelectionControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *wrongAnswerHandlingControl;
 @property (nonatomic, strong) Training *training;
@@ -293,6 +294,12 @@
     [self.modeSelectionControl addTarget:self action:@selector(trainingModeChanged:) forControlEvents:UIControlEventValueChanged];
     [self.wrongAnswerHandlingControl addTarget:self action:@selector(wrongAnswerHandlingModeChanged:) forControlEvents:UIControlEventValueChanged];
     [self addSwipeGestureRecognizer];
+    
+    self.scrollView.contentSize = CGSizeMake(320, 367);
+    
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        [self.scrollView flashScrollIndicators];
+    }
 }
 
 - (void)viewDidUnload
@@ -301,6 +308,7 @@
     [self setWrongAnswerHandlingControl:nil];
     [self setWordCountButton:nil];
     [self setStartTrainingButton:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -308,5 +316,12 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        [self.scrollView flashScrollIndicators];
+    }
 }
 @end

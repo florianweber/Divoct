@@ -59,11 +59,23 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     self.scrollView.contentSize = CGSizeMake(290, 332);
+    
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        [self.scrollView flashScrollIndicators];
+    }
 }
 
 - (void)viewDidUnload {
     [self setScrollView:nil];
     [super viewDidUnload];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        [self.scrollView flashScrollIndicators];
+    }
 }
 @end

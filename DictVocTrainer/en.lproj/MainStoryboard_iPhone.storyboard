@@ -1563,6 +1563,10 @@ divocthelp@googlemail.com</string>
         </class>
         <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="newButtonPressed:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="TrainingResultsDiagramView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>

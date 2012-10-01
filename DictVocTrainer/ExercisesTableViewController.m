@@ -799,6 +799,7 @@ RecentsTableViewController.m
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     if (self.tableView.editing) {
         [self showActionBar:NO];
         [self showActionBar:YES];

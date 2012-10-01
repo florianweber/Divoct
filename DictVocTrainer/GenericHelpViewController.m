@@ -21,6 +21,7 @@ GenericHelpViewController.m
 
 
 #import "GenericHelpViewController.h"
+#import "FWToastView.h"
 
 // -- Generic Help View Controller --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -50,6 +51,11 @@ GenericHelpViewController.m
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [FWToastView dismissAllToasts];
 }
 
 @end
@@ -84,6 +90,11 @@ GenericHelpViewController.m
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [FWToastView dismissAllToasts];
 }
 
 @end

@@ -53,6 +53,8 @@ typedef enum {
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds;
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)closeButton;
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(float)seconds withCloseButton:(BOOL)closeButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction;
++(void)dismissAllToasts;
++(BOOL)isAToastActive;
 
 +(void)parallelMultiToast:(NSArray *)someToastViews; //needs an array of FWToastViews, here is an example:
 

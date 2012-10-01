@@ -259,8 +259,8 @@ VocabularyDetailViewController.m
         
         //change vocabularyDetailView.frame to fit the subviews' size
         CGFloat contentHeight = lastOrigin.y + lastSize.height + 20;
-        if (contentHeight > self.vocabularyDetailView.frame.size.height) {
-            CGSize sizeFittingSubviews = CGSizeMake(self.vocabularyDetailView.frame.size.width, contentHeight);
+        if (contentHeight > self.scrollView.frame.size.height) {
+            CGSize sizeFittingSubviews = CGSizeMake(self.scrollView.frame.size.width, contentHeight);
             
             CGRect newFrame = self.vocabularyDetailView.frame;
             newFrame.size = sizeFittingSubviews;
@@ -584,6 +584,7 @@ VocabularyDetailViewController.m
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     [self setupVocabularyDetailsView];
 }
 

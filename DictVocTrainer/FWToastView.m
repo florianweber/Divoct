@@ -388,4 +388,17 @@ static NSMutableArray *toasts;
     }
 }
 
++ (void)dismissAllToasts
+{
+    for (FWToastView *toast in toasts) {
+        [toast fadeToastOut];
+    }
+}
+
+
++ (BOOL)isAToastActive
+{
+    return ([toasts count] > 0);
+}
+
 @end

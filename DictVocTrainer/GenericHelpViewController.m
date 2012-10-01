@@ -31,10 +31,10 @@ GenericHelpViewController.m
 
 @implementation GenericHelpViewController
 
-- (void)showHelp
-{
-    //overwrite this method to display help messages on the screen
-}
+//- (void)showHelp
+//{
+//    //overwrite this method to display help messages on the screen
+//}
 
 
 - (void)viewDidLoad
@@ -55,7 +55,10 @@ GenericHelpViewController.m
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [FWToastView dismissAllToasts];
+    if ([FWToastView isAToastActive]) {
+        [FWToastView dismissAllToasts];
+        [self performSelector:@selector(showHelp)];
+    }
 }
 
 @end
@@ -70,10 +73,10 @@ GenericHelpViewController.m
 
 @implementation GenericHelpTableViewController
 
-- (void)showHelp
-{
-    //overwrite this method to display help messages on the screen
-}
+//- (void)showHelp
+//{
+//    //overwrite this method to display help messages on the screen
+//}
 
 
 - (void)viewDidLoad
@@ -94,7 +97,10 @@ GenericHelpViewController.m
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [FWToastView dismissAllToasts];
+    if ([FWToastView isAToastActive]) {
+        [FWToastView dismissAllToasts];
+        [self performSelector:@selector(showHelp)];
+    }
 }
 
 @end

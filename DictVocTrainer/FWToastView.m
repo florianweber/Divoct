@@ -338,6 +338,9 @@ static NSMutableArray *toasts;
 	}
 	else {
 		[toasts addObject:view];
+        if ([toasts count] == 1) {
+            [FWToastView nextToastInView:parentView];
+        }
 	}
 }
 
@@ -391,8 +394,11 @@ static NSMutableArray *toasts;
 + (void)dismissAllToasts
 {
     for (FWToastView *toast in toasts) {
-        [toast fadeToastOut];
+        toast.alpha = 0.f;
+        [toast removeFromSuperview];
     }
+    [toasts removeAllObjects];
+    
 }
 
 

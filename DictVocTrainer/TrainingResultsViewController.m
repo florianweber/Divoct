@@ -200,7 +200,7 @@ TrainingResultsViewController.m
     [self setupBarViews];
     
     if (!self.finishedDisplayingResults) {
-        self.titleLabel.text = self.training.title;
+        self.titleLabel.text = [self.training.title  stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
     }
 }
 

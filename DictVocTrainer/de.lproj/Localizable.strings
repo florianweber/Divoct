@@ -48,6 +48,7 @@
 "RECENTS_DESC"                              = "Zuletzt gesuchte Worte";
 "TRAINING"                                  = "Training";
 "TRAINING_TRANS_EDIT_BUTTON_TEXT"           = "Antworten für Training bearbeiten";
+"TRAINING_SETTINGS_COLLECTIONPICKER_EMPTY"  = "Bitte wählen...";
 "TRAINING_SETTINGS_COUNTPICKER_ALL"         = "Alle Vokabeln des Ordners";
 "TRAINING_SETTINGS_COUNTPICKER_RAND"        = "Zufällige Auswahl";
 "TRAINING_SETTINGS_COUNTPICKER_DIFF"        = "Nur schwierige Vokabeln";

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Loading View Controller - Loading View-->
@@ -108,7 +108,8 @@
                         <segue destination="zUK-39-Y3K" kind="modal" identifier="Show Loading" modalTransitionStyle="crossDissolve" id="sTr-xq-efW"/>
                         <segue destination="Se4-bO-agy" kind="relationship" relationship="viewControllers" id="O5X-Ua-tCW"/>
                         <segue destination="BXh-j6-jXs" kind="relationship" relationship="viewControllers" id="kO5-U2-dmK"/>
-                        <segue destination="aGw-cD-xhn" kind="relationship" relationship="viewControllers" id="O69-fI-PhL"/>
+                        <segue destination="FQi-uV-cXM" kind="relationship" relationship="viewControllers" id="B3w-fl-pei"/>
+                        <segue destination="aGw-cD-xhn" kind="relationship" relationship="viewControllers" id="XBt-Lt-VvE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Scj-44-aRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,7 +308,7 @@
             <objects>
                 <tableViewController id="0R9-TW-tRG" customClass="CollectionChooserTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qKV-0h-HVJ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234717153284675" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -607,7 +608,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4J-I0-wHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="2427"/>
+            <point key="canvasLocation" x="1090" y="3087"/>
         </scene>
         <!--License View Controller - License-->
         <scene sceneID="i4o-ED-eQf">
@@ -633,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbs-oq-MXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="2427"/>
+            <point key="canvasLocation" x="1594" y="3087"/>
         </scene>
         <!--About View Controller - About-->
         <scene sceneID="f58-N2-5PU">
@@ -724,7 +725,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZy-ri-lXT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="3030"/>
+            <point key="canvasLocation" x="1594" y="3690"/>
         </scene>
         <!--Navigation Controller - Settings-->
         <scene sceneID="rWx-be-GfW">
@@ -741,7 +742,7 @@ divocthelp@googlemail.com</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOg-hw-00F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="2427"/>
+            <point key="canvasLocation" x="639" y="3087"/>
         </scene>
         <!--Collection Detail View Controller-->
         <scene sceneID="6qI-iA-HYa">
@@ -836,7 +837,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNV-an-Bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="1792"/>
+            <point key="canvasLocation" x="2007" y="525"/>
         </scene>
         <!--Help View Controller - Help-->
         <scene sceneID="Ce0-ZV-uJD">
@@ -862,7 +863,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXA-7e-cOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="1792"/>
+            <point key="canvasLocation" x="1594" y="2452"/>
         </scene>
         <!--Exercises Table View Controller - RECENTS-->
         <scene sceneID="cFt-ve-eVE">
@@ -949,12 +950,30 @@ divocthelp@googlemail.com</string>
                         <outlet property="tableBottomLabel" destination="Qqg-bW-WS4" id="rgo-HO-tJQ"/>
                         <segue destination="imS-Q2-gKR" kind="push" identifier="Show Vocabulary Details" id="zni-li-EDg"/>
                         <segue destination="0R9-TW-tRG" kind="custom" identifier="Organize in Collections" customClass="DivoctSegue" id="wbh-Jw-qgU"/>
-                        <segue destination="TOt-ck-TK1" kind="push" identifier="Show Training" id="CWd-FU-N7h"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjj-V9-S0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1090" y="525"/>
+        </scene>
+        <!--Navigation Controller - Training-->
+        <scene sceneID="g5J-kQ-Xqx">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="FQi-uV-cXM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Training" image="gradhat~iphone.png" id="dOD-w8-T8K"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="r1o-N7-5bD">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TOt-ck-TK1" kind="relationship" relationship="rootViewController" id="QIQ-gB-PKQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pH1-2b-4eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639" y="1823"/>
         </scene>
         <!--Training Settings View Controller - Training-->
         <scene sceneID="FUy-vs-ooK">
@@ -969,33 +988,37 @@ divocthelp@googlemail.com</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectOne.png" id="w1E-8f-Qv7">
-                                        <rect key="frame" x="239" y="24" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectTwo.png" id="gKd-oy-v1E">
-                                        <rect key="frame" x="64" y="134" width="50" height="50"/>
+                                        <rect key="frame" x="74" y="39" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectThree.png" id="2rJ-L9-VmT">
-                                        <rect key="frame" x="207" y="216" width="50" height="50"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectTwo.png" id="gKd-oy-v1E">
+                                        <rect key="frame" x="219" y="96" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How many words do you want to exercise?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DHo-Ob-1aq">
-                                        <rect key="frame" x="20" y="190" width="290" height="21"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectThree.png" id="2rJ-L9-VmT">
+                                        <rect key="frame" x="46" y="190" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleToFill" image="RoundRectFour.png" id="sCs-rg-FKb">
+                                        <rect key="frame" x="195" y="268" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vocabulary selection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DHo-Ob-1aq">
+                                        <rect key="frame" x="20" y="97" width="193" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How would you like to exercise?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HtA-go-hqz">
-                                        <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Exercise mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HtA-go-hqz">
+                                        <rect key="frame" x="20" y="245" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ugz-eA-MDS">
-                                        <rect key="frame" x="20" y="47" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="267" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Multiple Choice"/>
@@ -1003,15 +1026,15 @@ divocthelp@googlemail.com</string>
                                         </segments>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </segmentedControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="What should happen on wrong answers?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="0wl-jh-b6G">
-                                        <rect key="frame" x="20" y="104" width="280" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Wrong answer handling" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="0wl-jh-b6G">
+                                        <rect key="frame" x="20" y="168" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="yCg-by-YWn">
-                                        <rect key="frame" x="20" y="132" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="190" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Repeat Question"/>
@@ -1020,7 +1043,7 @@ divocthelp@googlemail.com</string>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lDO-fI-au5" customClass="MOGlassButton">
-                                        <rect key="frame" x="20" y="212" width="280" height="30"/>
+                                        <rect key="frame" x="18" y="119" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Count">
@@ -1034,31 +1057,43 @@ divocthelp@googlemail.com</string>
                                             <action selector="chooseWordCountButtonPressed:" destination="TOt-ck-TK1" eventType="touchUpInside" id="pas-Vo-rZa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="P1C-gM-YUX" customClass="MOGlassButton">
-                                        <rect key="frame" x="20" y="311" width="280" height="37"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Collections to exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4q1-9r-3za">
+                                        <rect key="frame" x="20" y="17" width="286" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bcx-4j-S7m" customClass="MOGlassButton">
+                                        <rect key="frame" x="20" y="39" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Start Training">
-                                            <color key="titleColor" red="0.25886309677165559" green="0.47661591586827062" blue="0.72556600765306123" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Collection(s)">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="startTrainingButtonPressed:" destination="TOt-ck-TK1" eventType="touchUpInside" id="ie8-iI-H5x"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.94117647058823528" alpha="1" colorSpace="deviceRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Training" id="ao4-fe-as5"/>
+                    <tabBarItem key="tabBarItem" title="Training" image="gradhat~iphone.png" id="gN4-Kv-R6m"/>
+                    <navigationItem key="navigationItem" title="Training" id="ao4-fe-as5">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="6vI-tq-vAy">
+                            <color key="tintColor" red="0.25886309680000003" green="0.47661591590000002" blue="0.72556600770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="startTrainingButtonPressed:" destination="TOt-ck-TK1" id="2FM-Jn-ZYl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="collectionChooserButton" destination="bcx-4j-S7m" id="hwM-cB-Zgt"/>
                         <outlet property="modeSelectionControl" destination="ugz-eA-MDS" id="3RA-vd-bS6"/>
                         <outlet property="scrollView" destination="Eko-na-NLk" id="0uh-3r-3hF"/>
-                        <outlet property="startTrainingButton" destination="P1C-gM-YUX" id="puD-YN-tDn"/>
                         <outlet property="wordCountButton" destination="lDO-fI-au5" id="X3S-ig-oMS"/>
                         <outlet property="wrongAnswerHandlingControl" destination="yCg-by-YWn" id="kQC-A9-ZrA"/>
                         <segue destination="DBP-Ez-FgH" kind="push" identifier="Show Training" id="bc7-6e-O7A"/>
@@ -1067,7 +1102,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSe-Jr-4th" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1566" y="525"/>
+            <point key="canvasLocation" x="1090" y="1823"/>
         </scene>
         <!--Training View Controller - COLLECTIONNAME - Training-->
         <scene sceneID="bra-Yi-nkV">
@@ -1190,7 +1225,8 @@ divocthelp@googlemail.com</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="COLLECTIONNAME - Training" id="TOm-XQ-2gp">
-                        <barButtonItem key="rightBarButtonItem" title="stop" id="7Dh-0Q-s00">
+                        <barButtonItem key="rightBarButtonItem" title="Stop" id="7Dh-0Q-s00">
+                            <color key="tintColor" red="0.81960791349999995" green="0.15294118230000001" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="stopButtonPressed:" destination="DBP-Ez-FgH" id="brd-2i-5YU"/>
                             </connections>
@@ -1215,7 +1251,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyI-6c-qC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2007" y="525"/>
+            <point key="canvasLocation" x="1541" y="1823"/>
         </scene>
         <!--Training Results View Controller - Results-->
         <scene sceneID="7LV-uy-Rem">
@@ -1281,7 +1317,8 @@ divocthelp@googlemail.com</string>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234716892242432" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="DWS-zD-rIk">
-                        <barButtonItem key="rightBarButtonItem" title="retry" id="bwq-Gt-ybA">
+                        <barButtonItem key="rightBarButtonItem" title="Retry" id="bwq-Gt-ybA">
+                            <color key="tintColor" red="0.25886309680000003" green="0.47661591590000002" blue="0.72556600770000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="retryButtonPressed:" destination="w2S-F7-wXV" id="GRk-hh-j80"/>
                             </connections>
@@ -1300,7 +1337,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIP-bO-DGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448" y="525"/>
+            <point key="canvasLocation" x="2017" y="1823"/>
         </scene>
         <!--Exercises Table View Controller - COLLECTION-->
         <scene sceneID="TZg-9h-oZ1">
@@ -1386,7 +1423,6 @@ divocthelp@googlemail.com</string>
                         <outlet property="tableBottomLabel" destination="dJu-ND-pRd" id="sxs-JS-oou"/>
                         <segue destination="imS-Q2-gKR" kind="push" identifier="Show Vocabulary Details" id="0n3-c0-Qed"/>
                         <segue destination="0R9-TW-tRG" kind="custom" identifier="Organize in Collections" customClass="DivoctSegue" id="Ofl-UN-peV"/>
-                        <segue destination="TOt-ck-TK1" kind="push" identifier="Show Training" id="4n2-FM-HKU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYt-JC-LYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1450,10 +1486,11 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIm-kO-hlo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448" y="1170"/>
+            <point key="canvasLocation" x="1090" y="2452"/>
         </scene>
     </scenes>
     <resources>
+        <image name="RoundRectFour.png" width="50" height="50"/>
         <image name="RoundRectOne.png" width="50" height="50"/>
         <image name="RoundRectThree.png" width="50" height="50"/>
         <image name="RoundRectTwo.png" width="50" height="50"/>
@@ -1467,6 +1504,7 @@ divocthelp@googlemail.com</string>
         <image name="SmoothBackgroundTopRight.png" width="15" height="15"/>
         <image name="flagGermany.png" width="50" height="30"/>
         <image name="folder.png" width="26" height="26"/>
+        <image name="gradhat~iphone.png" width="30" height="23"/>
         <image name="magnifyingglass~iphone.png" width="26" height="26"/>
         <image name="preferences~iphone.png" width="26" height="26"/>
         <image name="tapTwoFinger.png" width="100" height="100"/>
@@ -1598,9 +1636,9 @@ divocthelp@googlemail.com</string>
                 <relationship kind="action" name="startTrainingButtonPressed:"/>
                 <relationship kind="action" name="trainingModeChanged:"/>
                 <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
+                <relationship kind="outlet" name="collectionChooserButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="startTrainingButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="wordCountButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="wrongAnswerHandlingControl" candidateClass="UISegmentedControl"/>
             </relationships>
@@ -1652,9 +1690,8 @@ divocthelp@googlemail.com</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4n2-FM-HKU"/>
-        <segue reference="VKl-TW-gIi"/>
-        <segue reference="R6I-c5-KDr"/>
-        <segue reference="M3C-aw-Ko8"/>
+        <segue reference="UvO-6m-vgP"/>
+        <segue reference="0n3-c0-Qed"/>
+        <segue reference="Ofl-UN-peV"/>
     </inferredMetricsTieBreakers>
 </document>

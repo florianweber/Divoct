@@ -13,7 +13,7 @@
 
 @interface Training : NSObject
 
-@property (nonatomic, strong) Collection *collection;
+@property (nonatomic, strong) NSMutableArray *collections;
 @property (nonatomic, strong) NSMutableArray *exercises;
 @property (nonatomic, strong) NSString *title;
 
@@ -23,5 +23,7 @@
 
 @property (nonatomic, strong) TrainingResult *trainingResult;
 @property (nonatomic, strong) NSManagedObjectID *trainingResultsObjectId;
+
+-(int)totalExerciseCountAvailable;
 
 @end

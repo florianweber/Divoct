@@ -142,7 +142,7 @@ TrainingViewController.m
         self.countDone = [NSNumber numberWithInt:0];
         self.exerciseCount = [NSNumber numberWithInt:[self.openExercises count]];
         self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount.intValue];
-        self.title = self.training.title;
+        self.title = [self.training.title stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil) ];
     }
 }
 
@@ -442,7 +442,7 @@ TrainingViewController.m
     }
     
     if (!self.training.trainingResult) {
-        self.training.trainingResult = [[DictVocTrainer instance] insertTrainingResultWithCountWrong:self.countWrong countCorrect:self.countCorrect countWords:self.exerciseCount collection:self.training.collection trainingDate:[NSDate date]];
+        self.training.trainingResult = [[DictVocTrainer instance] insertTrainingResultWithCountWrong:self.countWrong countCorrect:self.countCorrect countWords:self.exerciseCount collection:(([self.training.collections count] > 1) ? nil : self.training.collections[0]) trainingDate:[NSDate date]];
     }
     [self showResults];
 }

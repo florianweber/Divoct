@@ -48,6 +48,7 @@
 "RECENTS_DESC"                              = "History of searched words";
 "TRAINING"                                  = "Training";
 "TRAINING_TRANS_EDIT_BUTTON_TEXT"           = "Edit Answers for Training";
+"TRAINING_SETTINGS_COLLECTIONPICKER_EMPTY"  = "Please choose...";
 "TRAINING_SETTINGS_COUNTPICKER_ALL"         = "All in this collection";
 "TRAINING_SETTINGS_COUNTPICKER_RAND"        = "Random selection";
 "TRAINING_SETTINGS_COUNTPICKER_DIFF"        = "Only difficult words";

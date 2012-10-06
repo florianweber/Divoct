@@ -10,7 +10,7 @@
 
 @implementation Training
 
-@synthesize collection = _collection;
+@synthesize collections = _collections;
 @synthesize exercises = _exercises;
 @synthesize title = _title;
 
@@ -22,16 +22,31 @@
 @synthesize trainingResultsObjectId = _trainingResultsObjectId;
 
 
--(void)setCollection:(Collection *)collection
+-(void)setCollections:(NSMutableArray *)collections
 {
-    _collection = collection;
+    _collections = collections;
     
     //set training title
-    if ([self.collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
-        self.title = [NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil) stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
-    } else {
-        self.title = [self.collection.name stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
+    self.title = @"";
+    for (int i=0; i<collections.count; i++) {
+        if (i>0) {
+            self.title = [self.title stringByAppendingString:@", "];
+        }
+        if ([((Collection *)collections[i]).name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
+            self.title = [self.title stringByAppendingString:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
+        } else {
+            self.title = [self.title stringByAppendingString:((Collection *)collections[i]).name];
+        }
     }
+}
+
+-(int)totalExerciseCountAvailable
+{
+    int totalCount = 0;
+    for (Collection *collection in self.collections) {
+        totalCount += collection.exercises.count;
+    }
+    return totalCount;
 }
 
 @end

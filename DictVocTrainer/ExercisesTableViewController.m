@@ -386,6 +386,21 @@ RecentsTableViewController.m
     self.tableViewFrameStore = self.tableView.frame;
 }
 
+-(void)goToTraining
+{
+    TrainingSettingsViewController *tsvc = (TrainingSettingsViewController *)((UINavigationController *)[self.tabBarController.viewControllers objectAtIndex:3]).topViewController;
+    [tsvc setCollection:self.collection];
+    [self.tabBarController setSelectedIndex:3];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.delegate = self;
+    [self.tabBarController.view.layer addAnimation:transition forKey:nil];
+    
+}
+
 -(void)furtherViewDidLoadSetup
 {
     if (self.loadRecents) {
@@ -444,7 +459,7 @@ RecentsTableViewController.m
     if (self.tableView.editing) {
         [self editButtonPressed:[self.rightNavigationItemToolbar.items objectAtIndex:1]];
     }
-    [self performSegueWithIdentifier:@"Show Training" sender:self];
+    [self goToTraining];
 }
 
 - (IBAction)editButtonPressed:(UIBarButtonItem *)sender {
@@ -607,9 +622,6 @@ RecentsTableViewController.m
     if ([segue.identifier isEqualToString:@"Show Vocabulary Details"]) {
         [segue.destinationViewController setExercise:[self.exercises objectAtIndex:((NSIndexPath *)sender).row]];
         [segue.destinationViewController setEditTrainingTranslationsButtonEnabled:YES];
-        
-    } else if ([segue.identifier isEqualToString:@"Show Training"]) {
-        [segue.destinationViewController setCollection:self.collection];
         
     } else if ([segue.identifier isEqualToString:@"Organize in Collections"]) {
         

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pHN-4D-A7I">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--RotatingUI Tab Bar Controller-->
@@ -18,8 +18,9 @@
                         <segue destination="G2O-PN-e3j" kind="relationship" relationship="viewControllers" id="wyq-ze-2oo"/>
                         <segue destination="Se4-bO-agy" kind="relationship" relationship="viewControllers" id="O5X-Ua-tCW"/>
                         <segue destination="BXh-j6-jXs" kind="relationship" relationship="viewControllers" id="kO5-U2-dmK"/>
-                        <segue destination="aGw-cD-xhn" kind="relationship" relationship="viewControllers" id="O69-fI-PhL"/>
                         <segue destination="4uR-oI-eqT" kind="modal" identifier="Show Loading" modalTransitionStyle="crossDissolve" id="0ug-RL-XWl"/>
+                        <segue destination="2RL-tT-LS7" kind="relationship" relationship="viewControllers" id="tST-NG-Pr2"/>
+                        <segue destination="aGw-cD-xhn" kind="relationship" relationship="viewControllers" id="OUH-lH-xPA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Scj-44-aRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,7 +219,7 @@
             <objects>
                 <tableViewController id="0R9-TW-tRG" customClass="CollectionChooserTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qKV-0h-HVJ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234717153284675" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -403,7 +404,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOg-hw-00F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="2427"/>
+            <point key="canvasLocation" x="639" y="3147"/>
         </scene>
         <!--Collection Detail View Controller-->
         <scene sceneID="6qI-iA-HYa">
@@ -498,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNV-an-Bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="1792"/>
+            <point key="canvasLocation" x="2007" y="525"/>
         </scene>
         <!--Exercises Table View Controller - RECENTS-->
         <scene sceneID="cFt-ve-eVE">
@@ -585,7 +586,6 @@
                         <outlet property="tableBottomLabel" destination="Qqg-bW-WS4" id="rgo-HO-tJQ"/>
                         <segue destination="imS-Q2-gKR" kind="push" identifier="Show Vocabulary Details" id="zni-li-EDg"/>
                         <segue destination="0R9-TW-tRG" kind="custom" identifier="Organize in Collections" customClass="DivoctSegue" id="pIA-2G-s98"/>
-                        <segue destination="Qq0-ie-R87" kind="push" identifier="Show Training" id="UPW-Rn-MNf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjj-V9-S0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,7 +676,6 @@
                         <outlet property="tableBottomLabel" destination="dJu-ND-pRd" id="sxs-JS-oou"/>
                         <segue destination="imS-Q2-gKR" kind="push" identifier="Show Vocabulary Details" id="0n3-c0-Qed"/>
                         <segue destination="0R9-TW-tRG" kind="custom" identifier="Organize in Collections" customClass="DivoctSegue" id="vVF-tq-6Ck"/>
-                        <segue destination="Qq0-ie-R87" kind="push" identifier="Show Training" id="VgN-lO-4o2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYt-JC-LYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -829,7 +828,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ll-7a-64f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2007" y="525"/>
+            <point key="canvasLocation" x="1531" y="1845"/>
         </scene>
         <!--Training Results View Controller - Ergebnis-->
         <scene sceneID="4ml-4n-VHZ">
@@ -914,7 +913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EL2-IG-cgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448" y="525"/>
+            <point key="canvasLocation" x="1972" y="1845"/>
         </scene>
         <!--Loading View Controller - Loading View-->
         <scene sceneID="tpn-Qn-ipb">
@@ -1141,7 +1140,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jy2-SX-86Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="2427"/>
+            <point key="canvasLocation" x="1090" y="3147"/>
         </scene>
         <!--License View Controller - Lizenz-->
         <scene sceneID="4Gh-8c-QxI">
@@ -1167,7 +1166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnE-Jr-nLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="2427"/>
+            <point key="canvasLocation" x="1531" y="3091"/>
         </scene>
         <!--About View Controller - Über-->
         <scene sceneID="fui-2q-352">
@@ -1258,7 +1257,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4c-ZW-5pU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="3030"/>
+            <point key="canvasLocation" x="1531" y="3694"/>
         </scene>
         <!--Help View Controller - Hilfe-->
         <scene sceneID="oYb-la-cmB">
@@ -1284,7 +1283,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUU-Oq-ZsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="1792"/>
+            <point key="canvasLocation" x="1531" y="2454"/>
         </scene>
         <!--Training Settings View Controller - Training-->
         <scene sceneID="Wqb-b4-tOa">
@@ -1364,21 +1363,6 @@ divocthelp@googlemail.com</string>
                                             <action selector="chooseWordCountButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="jj9-ld-fxo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="caj-Tp-ge5" customClass="MOGlassButton">
-                                        <rect key="frame" x="20" y="310" width="280" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Starte Training">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startTrainingButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="8Gg-3O-78i"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -1388,7 +1372,6 @@ divocthelp@googlemail.com</string>
                     <connections>
                         <outlet property="modeSelectionControl" destination="s5Q-4K-TcZ" id="rSc-dn-wgQ"/>
                         <outlet property="scrollView" destination="fV7-6p-o8W" id="MYa-sl-oUq"/>
-                        <outlet property="startTrainingButton" destination="caj-Tp-ge5" id="0iQ-jl-yaC"/>
                         <outlet property="wordCountButton" destination="An8-Kc-VZW" id="3vl-7O-qPM"/>
                         <outlet property="wrongAnswerHandlingControl" destination="pdF-YW-5zM" id="iHb-Vs-Oym"/>
                         <segue destination="dgO-Hg-JLy" kind="push" identifier="Show Training" id="bWJ-iu-UPh"/>
@@ -1397,7 +1380,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQb-zR-Rkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1566" y="525"/>
+            <point key="canvasLocation" x="1090" y="1845"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="K8f-gW-mzZ">
@@ -1456,7 +1439,26 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cy-Q7-C9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448" y="1170"/>
+            <point key="canvasLocation" x="1090" y="2454"/>
+        </scene>
+        <!--Navigation Controller - Training-->
+        <scene sceneID="bNO-EF-qWA">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="2RL-tT-LS7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Training" image="gradhat~iphone.png" id="7C3-1V-NIl"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="waM-PF-fgi">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Qq0-ie-R87" kind="relationship" relationship="rootViewController" id="oPa-gM-pYX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UGa-ls-n4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639" y="1845"/>
         </scene>
     </scenes>
     <resources>
@@ -1473,6 +1475,7 @@ divocthelp@googlemail.com</string>
         <image name="SmoothBackgroundTopRight.png" width="15" height="15"/>
         <image name="flagGermany.png" width="50" height="30"/>
         <image name="folder.png" width="26" height="26"/>
+        <image name="gradhat~iphone.png" width="30" height="23"/>
         <image name="magnifyingglass~iphone.png" width="26" height="26"/>
         <image name="preferences~iphone.png" width="26" height="26"/>
         <image name="tapTwoFinger.png" width="100" height="100"/>
@@ -1569,6 +1572,10 @@ divocthelp@googlemail.com</string>
         </class>
         <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="newButtonPressed:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="TrainingResultsDiagramView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>
@@ -1593,9 +1600,9 @@ divocthelp@googlemail.com</string>
                 <relationship kind="action" name="startTrainingButtonPressed:"/>
                 <relationship kind="action" name="trainingModeChanged:"/>
                 <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
+                <relationship kind="outlet" name="collectionChooserButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="startTrainingButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="wordCountButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="wrongAnswerHandlingControl" candidateClass="UISegmentedControl"/>
             </relationships>
@@ -1644,9 +1651,8 @@ divocthelp@googlemail.com</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UvO-6m-vgP"/>
-        <segue reference="VgN-lO-4o2"/>
+        <segue reference="vVF-tq-6Ck"/>
         <segue reference="0n3-c0-Qed"/>
-        <segue reference="R6I-c5-KDr"/>
+        <segue reference="M3C-aw-Ko8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -305,7 +305,6 @@ CollectionChooserTableViewController.m
             cell.accessoryType = UITableViewCellAccessoryNone;
         } 
     }
-
     
     return cell;
 }

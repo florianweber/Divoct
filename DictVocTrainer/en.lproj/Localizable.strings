@@ -49,7 +49,7 @@
 "TRAINING"                                  = "Training";
 "TRAINING_TRANS_EDIT_BUTTON_TEXT"           = "Edit Answers for Training";
 "TRAINING_SETTINGS_COLLECTIONPICKER_EMPTY"  = "Please choose...";
-"TRAINING_SETTINGS_COUNTPICKER_ALL"         = "All in this collection";
+"TRAINING_SETTINGS_COUNTPICKER_ALL"         = "All";
 "TRAINING_SETTINGS_COUNTPICKER_RAND"        = "Random selection";
 "TRAINING_SETTINGS_COUNTPICKER_DIFF"        = "Only difficult words";
 "TRAINING_SETTINGS_COUNTPICKER_DESC"        = "Please select how many words you want to exercise.\n\nYour current selection:";
@@ -80,10 +80,12 @@
 "HELP_HELP"                                 = "Info messages like this will be shown to help you with the application if you tap with two fingers anywhere.";
 "HELP_LICENSE"                              = "This is where you can read all about the license terms of this app and all works of other authors used in this app.";
 "HELP_ABOUT"                                = "Information about the name, version, author and support mail address of this app.";
-"HELP_TRAININGSETTINGS"                     = "Configure your training according to your needs.\n\nHere are some hints for you:\n- Rotate your device in the \"Type answer\" mode to disburden typing.\n- Change the count of words for your training by pressing the \"All\" button.";
+"HELP_TRAININGSETTINGS"                     = "Configure your training according to your needs.";
+"HELP_TRAININGSETTINGS_NOVOC"               = "Please select one or more collections first.";
 "HELP_TRAINING_MULTIPLE_CHOICE"             = "At least one of these four answers is correct for the word shown above. Always try to press a correct answer button.";
 "HELP_TRAINING_TYPE_ANSWER"                 = "Type in your answer. You don't need to care about capitalization and the part of the answer in brackets. 70% of the correct answer is sufficient.";
 "HELP_TRAINING_RESULTS"                     = "This is your training result. You can repeat the training by pressing the \"retry\" button in the top right corner.";
+"HELP_COLLECTION_PICKER"                    = "Select all collections you want to exercise.";
 "SETTINGS_STATISTICS_RESET_TITLE"           = "Reset all statistics?";
 "SETTINGS_STATISTICS_RESET_MESSAGE"         = "All statistics (used to calculate difficult words) will be reset. Do you want to continue?";
 "SETTINGS_STATISTICS_RESET_CANCEL"          = "Cancel";
@@ -91,3 +93,9 @@
 "SETTINGS_STATISTICS_RESET_CONFIRMATION_TITLE" = "Reset confirmation";
 "SETTINGS_STATISTICS_RESET_CONFIRMATION_MESSAGE" = "All statistics have been reset.";
 "SETTINGS_STATISTICS_RESET_CONFIRMATION_BUTTON" = "OK";
+"COLLECTION_PICKER_COUNT_P1_SL"             = "collection";
+"COLLECTION_PICKER_COUNT_P2_SL"             = "exercise";
+"COLLECTION_PICKER_COUNT_P1_PL"             = "collections";
+"COLLECTION_PICKER_COUNT_P2_PL"             = "exercises";
+"COLLECTION_PICKER_COUNT_P3"                = "w/o duplicates";
+

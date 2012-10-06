@@ -18,9 +18,10 @@
 #import "Training.h"
 #import "PickerViewController.h"
 #import "Logging.h"
+#import "CollectionPickerViewController.h"
 #include <stdlib.h>
 
-@interface TrainingSettingsViewController () <PickerViewControllerDelegate>
+@interface TrainingSettingsViewController () <PickerViewControllerDelegate, CollectionPickerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelectionControl;
@@ -47,7 +48,18 @@
 {
     if(collection) {
         self.training = [[Training alloc] init];
-        self.training.collections = [[NSMutableArray alloc] initWithObjects:collection, nil];
+        self.training.collections = [[NSSet alloc] initWithObjects:collection, nil];
+        [self refreshCollectionChooserButtonTitle];
+    }
+}
+
+-(void)setCollections:(NSMutableSet *)collections
+{
+    if (collections) {
+        if (!self.training) {
+            self.training = [[Training alloc] init];
+        }
+        self.training.collections = collections;
         [self refreshCollectionChooserButtonTitle];
     }
 }
@@ -65,7 +77,7 @@
 
 - (void)refreshCollectionChooserButtonTitle
 {
-    if (self.training.collections) {
+    if (self.training.collections && (self.training.collections.count > 0)) {
         [self.collectionChooserButton setTitle:self.training.title forState:UIControlStateNormal];
     } else {
         [self.collectionChooserButton setTitle:NSLocalizedString(@"TRAINING_SETTINGS_COLLECTIONPICKER_EMPTY", nil) forState:UIControlStateNormal];
@@ -96,87 +108,94 @@
 
 -(void)startTraining
 {
-    //Create Exercises
-    NSString *requestedWordCount = self.wordCountButton.titleLabel.text;
-    
-    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *numberOfWords = [numberFormatter numberFromString:requestedWordCount];
-    
-    if (numberOfWords) {
-        [self createExercises:numberOfWords.intValue];
+    if (self.training.collections.count == 0) {
+        //no collection has been selected yet
+        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAININGSETTINGS_NOVOC", nil) icon:FWToastViewIconAlert duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        
     } else {
-        //All
-        if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)]) {
-            self.training.exercises = [[NSMutableArray alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
-            for (Collection *collection in self.training.collections) {
-                [self.training.exercises addObjectsFromArray:collection.exercises.array];
-            }
-        //Random
-        } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)]) {
-            int randomCount = arc4random_uniform([self.training totalExerciseCountAvailable] - 1);
-            
-            if (randomCount <= 0) {
-                randomCount = 1;
-            }
-            [self createExercises:randomCount];
-        //Difficult
-        } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)]) {
-            //all exercises
-            NSMutableArray *allExercises = [[NSMutableArray alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
-            for (Collection *collection in self.training.collections) {
-                [allExercises addObjectsFromArray:collection.exercises.array];
-            }
-            
-            //calculate statistics
-            NSNumber *sumOfSuccessRates = [NSNumber numberWithFloat:0.0];
-            NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:[self.training totalExerciseCountAvailable]];
-            for (Exercise *exercise in allExercises) {
-                sumOfSuccessRates = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue + exercise.successRate.floatValue)];
-            }
-            NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
-            
-            self.training.exercises = [NSMutableArray array];
-            if (average.floatValue < 1.0) {
-                //if average is lower than 1.0, exercise all words with successrate <= 1.0
+    
+        //Create Exercises
+        NSString *requestedWordCount = self.wordCountButton.titleLabel.text;
+        
+        NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *numberOfWords = [numberFormatter numberFromString:requestedWordCount];
+        
+        if (numberOfWords) {
+            [self createExercises:numberOfWords.intValue];
+        } else {
+            //All
+            if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)]) {
+                self.training.exercises = [[NSMutableSet alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
+                for (Collection *collection in self.training.collections) {
+                    [self.training.exercises addObjectsFromArray:collection.exercises.array];
+                }
+            //Random
+            } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)]) {
+                int randomCount = arc4random_uniform([self.training totalExerciseCountAvailable] - 1);
+                
+                if (randomCount <= 0) {
+                    randomCount = 1;
+                }
+                [self createExercises:randomCount];
+            //Difficult
+            } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)]) {
+                //all exercises
+                NSMutableArray *allExercises = [[NSMutableArray alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
+                for (Collection *collection in self.training.collections) {
+                    [allExercises addObjectsFromArray:collection.exercises.array];
+                }
+                
+                //calculate statistics
+                NSNumber *sumOfSuccessRates = [NSNumber numberWithFloat:0.0];
+                NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:[self.training totalExerciseCountAvailable]];
                 for (Exercise *exercise in allExercises) {
-                    if (exercise.successRate.floatValue <= 1.0) {
-                        [self.training.exercises addObject:exercise];
+                    sumOfSuccessRates = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue + exercise.successRate.floatValue)];
+                }
+                NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
+                
+                self.training.exercises = [NSMutableArray array];
+                if (average.floatValue < 1.0) {
+                    //if average is lower than 1.0, exercise all words with successrate <= 1.0
+                    for (Exercise *exercise in allExercises) {
+                        if (exercise.successRate.floatValue <= 1.0) {
+                            [self.training.exercises addObject:exercise];
+                        }
+                    }
+                } else {
+                    //if average is higher than or equal to 1.0, exercise all words with successrate <= the average
+                    for (Exercise *exercise in allExercises) {
+                        if (exercise.successRate.floatValue <= average.floatValue) {
+                            [self.training.exercises addObject:exercise];
+                        }
                     }
                 }
             } else {
-                //if average is higher than or equal to 1.0, exercise all words with successrate <= the average
-                for (Exercise *exercise in allExercises) {
-                    if (exercise.successRate.floatValue <= average.floatValue) {
-                        [self.training.exercises addObject:exercise];
-                    }
-                }
+                //error
+                LogError(@"Nome weired number of required words appeared");
             }
-        } else {
-            //error
-            LogError(@"Nome weired number of required words appeared");
         }
-    }
-    
-    
-    //Answer Input Mode Selection
-    if (self.modeSelectionControl.selectedSegmentIndex == 0) {
-        self.training.trainingAnswerInputMode = TrainingAnswerInputMode_MultipleChoice;
-    } else if (self.modeSelectionControl.selectedSegmentIndex == 1) {
-        self.training.trainingAnswerInputMode = TrainingAnswerInputMode_TextInput;
-    }
-    
-    //Wrong Answer Handling Mode Selection
-    if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 0) {
-        self.training.trainingWrongAnswerHandlingMode = TrainingWrongAnswerHandlingMode_Repeat;
-    } else if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 1) {
-        self.training.trainingWrongAnswerHandlingMode = TrainingWrongAnswerHandlingMode_Dismiss;
-    }
-    
-    self.training.trainingResult = nil;
-    self.training.trainingResultsObjectId = nil;
+        
+        
+        //Answer Input Mode Selection
+        if (self.modeSelectionControl.selectedSegmentIndex == 0) {
+            self.training.trainingAnswerInputMode = TrainingAnswerInputMode_MultipleChoice;
+        } else if (self.modeSelectionControl.selectedSegmentIndex == 1) {
+            self.training.trainingAnswerInputMode = TrainingAnswerInputMode_TextInput;
+        }
+        
+        //Wrong Answer Handling Mode Selection
+        if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 0) {
+            self.training.trainingWrongAnswerHandlingMode = TrainingWrongAnswerHandlingMode_Repeat;
+        } else if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 1) {
+            self.training.trainingWrongAnswerHandlingMode = TrainingWrongAnswerHandlingMode_Dismiss;
+        }
+        
+        self.training.trainingResult = nil;
+        self.training.trainingResultsObjectId = nil;
 
-    [self performSegueWithIdentifier:@"Show Training" sender:self];
+        [self performSegueWithIdentifier:@"Show Training" sender:self];
+    }
 }
 
 -(void)loadSavedSettings
@@ -260,6 +279,11 @@
     [self performSegueWithIdentifier:@"Show WordCount Picker" sender:sender];
 }
 
+- (IBAction)chooseCollectionsButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"Show Collection Picker" sender:sender];
+}
+
+
 - (IBAction)startTrainingButtonPressed:(id)sender {
     [self startTraining];
 }
@@ -270,6 +294,16 @@
 {
     if (value != nil) {
         [self.wordCountButton setTitle:value forState:UIControlStateNormal];
+    }
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Collection Picker View Controller Delegate
+
+-(void)collectionPickerViewController:(CollectionPickerViewController *)collectionPickerViewController pickedCollections:(NSMutableSet *)collections
+{
+    if (collections != nil) {
+        [self setCollections:collections];
     }
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -298,6 +332,9 @@
         [segue.destinationViewController setPreselectedRow:preselectedIndex];
         
         [segue.destinationViewController setDescription:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DESC", nil)];
+    } else if ([segue.identifier isEqualToString:@"Show Collection Picker"]) {
+        [segue.destinationViewController setDelegate:self];
+        [segue.destinationViewController setSelectedCollections:[self.training.collections mutableCopy]];
     }
 }
 

@@ -404,7 +404,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOg-hw-00F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="3147"/>
+            <point key="canvasLocation" x="639" y="3679"/>
         </scene>
         <!--Collection Detail View Controller-->
         <scene sceneID="6qI-iA-HYa">
@@ -805,6 +805,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="COLLECTIONNAME - Training" id="HmG-zs-Ncj">
                         <barButtonItem key="rightBarButtonItem" title="Stop" id="dDF-13-Qnl">
+                            <color key="tintColor" red="0.81960791349999995" green="0.15294118230000001" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="stopButtonPressed:" destination="dgO-Hg-JLy" id="wXt-Es-ZjA"/>
                             </connections>
@@ -828,7 +829,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ll-7a-64f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531" y="1845"/>
+            <point key="canvasLocation" x="1531" y="2377"/>
         </scene>
         <!--Training Results View Controller - Ergebnis-->
         <scene sceneID="4ml-4n-VHZ">
@@ -895,6 +896,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ergebnis" id="rG7-kB-V6c">
                         <barButtonItem key="rightBarButtonItem" title="nochmal" id="v97-4f-Ik5">
+                            <color key="tintColor" red="0.25886309680000003" green="0.47661591590000002" blue="0.72556600770000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="retryButtonPressed:" destination="isC-1Q-On4" id="uAG-Du-NET"/>
                             </connections>
@@ -913,7 +915,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EL2-IG-cgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1972" y="1845"/>
+            <point key="canvasLocation" x="1972" y="2377"/>
         </scene>
         <!--Loading View Controller - Loading View-->
         <scene sceneID="tpn-Qn-ipb">
@@ -1140,7 +1142,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jy2-SX-86Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="3147"/>
+            <point key="canvasLocation" x="1090" y="3679"/>
         </scene>
         <!--License View Controller - Lizenz-->
         <scene sceneID="4Gh-8c-QxI">
@@ -1166,7 +1168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnE-Jr-nLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531" y="3091"/>
+            <point key="canvasLocation" x="1531" y="3623"/>
         </scene>
         <!--About View Controller - Über-->
         <scene sceneID="fui-2q-352">
@@ -1257,7 +1259,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4c-ZW-5pU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531" y="3694"/>
+            <point key="canvasLocation" x="1531" y="4226"/>
         </scene>
         <!--Help View Controller - Hilfe-->
         <scene sceneID="oYb-la-cmB">
@@ -1283,7 +1285,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUU-Oq-ZsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531" y="2454"/>
+            <point key="canvasLocation" x="1531" y="2986"/>
         </scene>
         <!--Training Settings View Controller - Training-->
         <scene sceneID="Wqb-b4-tOa">
@@ -1298,33 +1300,37 @@ divocthelp@googlemail.com</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectOne.png" id="O7P-dc-Kxq">
-                                        <rect key="frame" x="207" y="22" width="50" height="50"/>
+                                        <rect key="frame" x="214" y="22" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectTwo.png" id="hf0-B6-5fu">
-                                        <rect key="frame" x="58" y="136" width="50" height="50"/>
+                                        <rect key="frame" x="50" y="118" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" alpha="0.30000000000000004" contentMode="scaleToFill" image="RoundRectThree.png" id="5op-wr-7bH">
-                                        <rect key="frame" x="207" y="219" width="50" height="50"/>
+                                        <rect key="frame" x="195" y="202" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Wie viele Worte möchtest Du trainieren?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WC7-kf-bkP">
-                                        <rect key="frame" x="20" y="190" width="290" height="21"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleToFill" image="RoundRectFour.png" id="eGe-oC-g9v">
+                                        <rect key="frame" x="65" y="282" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Wie viele / welche Vokabeln?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WC7-kf-bkP">
+                                        <rect key="frame" x="20" y="94" width="290" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Wie möchtest Du trainieren?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cHH-m5-K0w">
-                                        <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                        <rect key="frame" x="20" y="253" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="s5Q-4K-TcZ">
-                                        <rect key="frame" x="20" y="47" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="280" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Multiple Choice"/>
@@ -1333,14 +1339,14 @@ divocthelp@googlemail.com</string>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </segmentedControl>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Was soll bei falschen Antworten passieren?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pQM-lS-s3J">
-                                        <rect key="frame" x="20" y="104" width="280" height="21"/>
+                                        <rect key="frame" x="20" y="173" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="pdF-YW-5zM">
-                                        <rect key="frame" x="20" y="132" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="201" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Frage wiederholen"/>
@@ -1349,7 +1355,7 @@ divocthelp@googlemail.com</string>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="An8-Kc-VZW" customClass="MOGlassButton">
-                                        <rect key="frame" x="20" y="214" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="118" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <state key="normal" title="Count">
@@ -1363,24 +1369,55 @@ divocthelp@googlemail.com</string>
                                             <action selector="chooseWordCountButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="jj9-ld-fxo"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welche Ordner?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="huT-J2-cGa">
+                                        <rect key="frame" x="20" y="20" width="286" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i6u-c1-LqT" customClass="MOGlassButton">
+                                        <rect key="frame" x="20" y="43" width="280" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Collection(s)">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chooseCollectionsButtonPressed:" destination="Qq0-ie-R87" eventType="touchUpInside" id="fRW-Uy-Mzf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Training" id="Cid-aq-mki"/>
+                    <navigationItem key="navigationItem" title="Training" id="Cid-aq-mki">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="15H-xY-uJK">
+                            <color key="tintColor" red="0.25886309680000003" green="0.47661591590000002" blue="0.72556600770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="startTrainingButtonPressed:" destination="Qq0-ie-R87" id="HMx-P0-ag7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="collectionChooserButton" destination="i6u-c1-LqT" id="fb8-Rv-0Cx"/>
                         <outlet property="modeSelectionControl" destination="s5Q-4K-TcZ" id="rSc-dn-wgQ"/>
                         <outlet property="scrollView" destination="fV7-6p-o8W" id="MYa-sl-oUq"/>
                         <outlet property="wordCountButton" destination="An8-Kc-VZW" id="3vl-7O-qPM"/>
                         <outlet property="wrongAnswerHandlingControl" destination="pdF-YW-5zM" id="iHb-Vs-Oym"/>
                         <segue destination="dgO-Hg-JLy" kind="push" identifier="Show Training" id="bWJ-iu-UPh"/>
                         <segue destination="FEd-zF-U5m" kind="modal" identifier="Show WordCount Picker" id="v7P-0S-VZz"/>
+                        <segue destination="jDY-o4-bzB" kind="modal" identifier="Show Collection Picker" id="kLz-fj-kB7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQb-zR-Rkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="1845"/>
+            <point key="canvasLocation" x="1090" y="2377"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="K8f-gW-mzZ">
@@ -1439,7 +1476,7 @@ divocthelp@googlemail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cy-Q7-C9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="2454"/>
+            <point key="canvasLocation" x="1090" y="2986"/>
         </scene>
         <!--Navigation Controller - Training-->
         <scene sceneID="bNO-EF-qWA">
@@ -1458,10 +1495,140 @@ divocthelp@googlemail.com</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGa-ls-n4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="1845"/>
+            <point key="canvasLocation" x="639" y="2377"/>
+        </scene>
+        <!--Collection Picker View Controller-->
+        <scene sceneID="rX1-g9-3M0">
+            <objects>
+                <viewController id="jDY-o4-bzB" customClass="CollectionPickerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="StV-p1-96y">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="suo-NX-cMT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <barButtonItem title="Abbrechen" id="tgJ-4W-2PX">
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="jDY-o4-bzB" id="5qw-Ot-fWX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0p6-Td-FQA"/>
+                                    <barButtonItem title="Auswahl" style="plain" id="aAG-1t-y4K"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0K4-hG-5Zi"/>
+                                    <barButtonItem title="Fertig" id="ODG-nr-0Gb">
+                                        <connections>
+                                            <action selector="pickButtonPressed:" destination="jDY-o4-bzB" id="oCo-bc-0GW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0rS-Uw-pga">
+                                <rect key="frame" x="0.0" y="44" width="320" height="372"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Default" textLabel="Wdp-e2-FYE" detailTextLabel="v65-Ca-wWN" style="IBUITableViewCellStyleSubtitle" id="cNN-Ar-kOM">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wdp-e2-FYE">
+                                                    <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v65-Ca-wWN">
+                                                    <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Name Desc Count" id="taS-Gk-zkh">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="20" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="uue-WG-ULv">
+                                                    <rect key="frame" x="12" y="4" width="240" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="21" contentMode="left" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="GXU-eL-Egk">
+                                                    <rect key="frame" x="12" y="21" width="240" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                                    <color key="textColor" red="0.52156865600000002" green="0.52156865600000002" blue="0.52156865600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="22" contentMode="left" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pdn-mR-D8f">
+                                                    <rect key="frame" x="207" y="11" width="75" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jDY-o4-bzB" id="hgT-Cx-NCC"/>
+                                    <outlet property="delegate" destination="jDY-o4-bzB" id="zzs-ha-dby"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="niY-Pc-zbm">
+                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Counter" style="plain" id="8JJ-Po-fRt"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eZ0-wW-ENL"/>
+                                    <barButtonItem title="Alle" width="33" id="sfb-Ud-5iR">
+                                        <connections>
+                                            <action selector="allButtonPressed:" destination="jDY-o4-bzB" id="eOm-R6-6VT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Keine" width="44" id="B8e-HN-VlO">
+                                        <connections>
+                                            <action selector="noneButtonPressed:" destination="jDY-o4-bzB" id="HcP-70-ykX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="allBarButtonItem" destination="sfb-Ud-5iR" id="O42-dB-wgv"/>
+                        <outlet property="counterBarButtonItem" destination="8JJ-Po-fRt" id="2qA-hT-kSf"/>
+                        <outlet property="noneBarButtonItem" destination="B8e-HN-VlO" id="siW-tO-MZ3"/>
+                        <outlet property="tableView" destination="0rS-Uw-pga" id="gIr-wL-0sd"/>
+                        <outlet property="toolbarBottom" destination="niY-Pc-zbm" id="OCj-Hc-vK2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbd-Lb-Oeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1090" y="1769"/>
         </scene>
     </scenes>
     <resources>
+        <image name="RoundRectFour.png" width="50" height="50"/>
         <image name="RoundRectOne.png" width="50" height="50"/>
         <image name="RoundRectThree.png" width="50" height="50"/>
         <image name="RoundRectTwo.png" width="50" height="50"/>
@@ -1493,6 +1660,8 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="finishButtonPressed:"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
@@ -1502,6 +1671,20 @@ divocthelp@googlemail.com</string>
                 <relationship kind="outlet" name="finishButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="titleInputBox" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CollectionPickerViewController" superclassName="GenericHelpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionPickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="allButtonPressed:"/>
+                <relationship kind="action" name="cancelButtonPressed:"/>
+                <relationship kind="action" name="noneButtonPressed:"/>
+                <relationship kind="action" name="pickButtonPressed:"/>
+                <relationship kind="outlet" name="allBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="counterBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="noneBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolbarBottom" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="DictionarySearchViewController" superclassName="GenericHelpTableViewController">
@@ -1553,6 +1736,8 @@ divocthelp@googlemail.com</string>
         <class className="PickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:"/>
+                <relationship kind="action" name="pickButtonPressed:"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
@@ -1583,6 +1768,8 @@ divocthelp@googlemail.com</string>
         <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="displayResults:"/>
+                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
                 <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
@@ -1596,10 +1783,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingSettingsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="chooseWordCountButtonPressed:"/>
-                <relationship kind="action" name="startTrainingButtonPressed:"/>
-                <relationship kind="action" name="trainingModeChanged:"/>
-                <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
                 <relationship kind="outlet" name="collectionChooserButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
@@ -1637,7 +1820,12 @@ divocthelp@googlemail.com</string>
         <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="organizeButtonPressed:"/>
+                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>

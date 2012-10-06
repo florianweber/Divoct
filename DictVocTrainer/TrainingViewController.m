@@ -138,7 +138,7 @@ TrainingViewController.m
 {
     if (training) {
         _training = training;
-        self.openExercises = [training.exercises mutableCopy];
+        self.openExercises = [[training.exercises allObjects] mutableCopy];
         self.countDone = [NSNumber numberWithInt:0];
         self.exerciseCount = [NSNumber numberWithInt:[self.openExercises count]];
         self.completionLabel.text = [NSString stringWithFormat:@"0 / %i", self.exerciseCount.intValue];
@@ -442,7 +442,7 @@ TrainingViewController.m
     }
     
     if (!self.training.trainingResult) {
-        self.training.trainingResult = [[DictVocTrainer instance] insertTrainingResultWithCountWrong:self.countWrong countCorrect:self.countCorrect countWords:self.exerciseCount collection:(([self.training.collections count] > 1) ? nil : self.training.collections[0]) trainingDate:[NSDate date]];
+        self.training.trainingResult = [[DictVocTrainer instance] insertTrainingResultWithCountWrong:self.countWrong countCorrect:self.countCorrect countWords:self.exerciseCount collection:(([self.training.collections count] > 1) ? nil : [self.training.collections anyObject]) trainingDate:[NSDate date]];
     }
     [self showResults];
 }

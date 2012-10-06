@@ -13,8 +13,8 @@
 
 @interface Training : NSObject
 
-@property (nonatomic, strong) NSMutableArray *collections;
-@property (nonatomic, strong) NSMutableArray *exercises;
+@property (nonatomic, strong) NSSet *collections;
+@property (nonatomic, strong) NSMutableSet *exercises;
 @property (nonatomic, strong) NSString *title;
 
 @property (nonatomic) TrainingAnswerInputMode trainingAnswerInputMode;

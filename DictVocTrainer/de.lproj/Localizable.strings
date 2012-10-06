@@ -49,7 +49,7 @@
 "TRAINING"                                  = "Training";
 "TRAINING_TRANS_EDIT_BUTTON_TEXT"           = "Antworten für Training bearbeiten";
 "TRAINING_SETTINGS_COLLECTIONPICKER_EMPTY"  = "Bitte wählen...";
-"TRAINING_SETTINGS_COUNTPICKER_ALL"         = "Alle Vokabeln des Ordners";
+"TRAINING_SETTINGS_COUNTPICKER_ALL"         = "Alle";
 "TRAINING_SETTINGS_COUNTPICKER_RAND"        = "Zufällige Auswahl";
 "TRAINING_SETTINGS_COUNTPICKER_DIFF"        = "Nur schwierige Vokabeln";
 "TRAINING_SETTINGS_COUNTPICKER_DESC"        = "Hier kannst Du auswählen, wie viele Vokabeln Du trainieren möchtest.";
@@ -80,10 +80,12 @@
 "HELP_HELP"                                 = "Ein Hilfsfenster wie dieses hier wird angezeigt, wenn Du irgendwo in der Anwendung mit zwei Fingern gleichzeitig den Bildschirm kurz berührst.";
 "HELP_LICENSE"                              = "Hier erhältst Du Lizenzinformationen über diese App und allen darin enthaltenen Werken anderer Autoren sowie deren Lizenzbestimmungen.";
 "HELP_ABOUT"                                = "Informationen über diese App, wie Version, Copyrightholder und Support E-Mail.";
-"HELP_TRAININGSETTINGS"                     = "Hier kannst Du Art und Umfang Deines Vokabeltrainings individuell gestalten.\n\nTipps:\n- Bei der Direkteingabe kannst Du Dein Handy auch quer halten.\n- Wenn Du auf den Button für die Anzahl der Worte drückst, erscheint ein neues Fenster für die Auswahl.";
+"HELP_TRAININGSETTINGS"                     = "Hier kannst Du Art und Umfang Deines Vokabeltrainings individuell gestalten.";
+"HELP_TRAININGSETTINGS_NOVOC"               = "Bitte wähle zuerst einen oder mehrere Ordner zum Trainieren aus.";
 "HELP_TRAINING_MULTIPLE_CHOICE"             = "Mindestens eine dieser vier Antworten ist die richtige Übersetzung zum gezeigten Wort. Versuche, immer eine richtige Antwort anzutippen.";
 "HELP_TRAINING_TYPE_ANSWER"                 = "Gib hier die Antwort ein. Groß- und Kleinschreibung spielen keine Rolle. Es reichen 70% des Wortes ohne das, was evtl. in Klammern steht.";
 "HELP_TRAINING_RESULTS"                     = "Dies ist Dein Trainingsergebnis. Mit dem \"nochmal\" Knopf rechts oben kannst Du das Training wiederholen.";
+"HELP_COLLECTION_PICKER"                    = "Wähle alle Ordner aus, aus denen Du Vokabeln trainieren möchtest.";
 "SETTINGS_STATISTICS_RESET_TITLE"           = "Alle Statistiken zurücksetzen?";
 "SETTINGS_STATISTICS_RESET_MESSAGE"         = "Achtung, alle Statistiken (verwendet zur Berechnung schwieriger Vokabeln) werden zurückgesetzt.";
 "SETTINGS_STATISTICS_RESET_CANCEL"          = "Abbrechen";
@@ -91,3 +93,8 @@
 "SETTINGS_STATISTICS_RESET_CONFIRMATION_TITLE" = "Bestätigung";
 "SETTINGS_STATISTICS_RESET_CONFIRMATION_MESSAGE" = "Alle Statistiken wurden zurückgesetzt.";
 "SETTINGS_STATISTICS_RESET_CONFIRMATION_BUTTON" = "OK";
+"COLLECTION_PICKER_COUNT_P1_SL"             = "Ordner";
+"COLLECTION_PICKER_COUNT_P2_SL"             = "Vokabel";
+"COLLECTION_PICKER_COUNT_P1_PL"             = "Ordner";
+"COLLECTION_PICKER_COUNT_P2_PL"             = "Vokabeln";
+"COLLECTION_PICKER_COUNT_P3"                = "ohne Duplikate";

@@ -22,21 +22,27 @@
 @synthesize trainingResultsObjectId = _trainingResultsObjectId;
 
 
--(void)setCollections:(NSMutableArray *)collections
+-(void)setCollections:(NSMutableSet *)collections
 {
     _collections = collections;
     
     //set training title
     self.title = @"";
-    for (int i=0; i<collections.count; i++) {
-        if (i>0) {
+    
+    NSEnumerator *collectionsEnumerator = [collections objectEnumerator];
+    Collection *collection;
+    
+    BOOL addComma = NO;
+    while ((collection = [collectionsEnumerator nextObject])) {
+        if (addComma) {
             self.title = [self.title stringByAppendingString:@", "];
         }
-        if ([((Collection *)collections[i]).name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
+        if ([collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) {
             self.title = [self.title stringByAppendingString:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)];
         } else {
-            self.title = [self.title stringByAppendingString:((Collection *)collections[i]).name];
+            self.title = [self.title stringByAppendingString:collection.name];
         }
+        addComma = YES;
     }
 }
 

@@ -24,6 +24,7 @@
 
 #define DVT_DB_FILE_NAME @"dvtDatabase.sqlite"
 #define DVT_TRAINER_DB_FILE_NAME @"trainerDatabase.coredata"
+#define DVT_TRAINER_DB_IMPORT_FILE_NAME @"persistentStore"
 #define DVT_NSUSERDEFAULTS_SEARCHMODE @"dvt_searchMode"
 #define DVT_NSUSERDEFAULTS_TRAININGMODE @"dvt_trainingMode"
 #define DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE @"dvt_wrongAnswerHandlingMode"

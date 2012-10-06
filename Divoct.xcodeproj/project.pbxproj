@@ -622,7 +622,6 @@
 		17D6870714FC1165001DB847 = {
 			isa = PBXGroup;
 			children = (
-				17544662160BC14100B04CE9 /* Default-568h@2x.png */,
 				173579C615BD5C8D00C27D7D /* Icon-144.png */,
 				17A5DAE11547C7B500802696 /* Icon.png */,
 				17A5DAE21547C7B500802696 /* Icon@2x.png */,
@@ -630,6 +629,7 @@
 				17A5DADF1547C7B500802696 /* Icon-Small.png */,
 				17A5DADE1547C7B500802696 /* Icon-Small-50.png */,
 				17A5DAE01547C7B500802696 /* Icon-Small@2x.png */,
+				17544662160BC14100B04CE9 /* Default-568h@2x.png */,
 				17A5DAD31546A65600802696 /* Default@2x.png */,
 				17A5DAD11546A64F00802696 /* Default.png */,
 				17D6871C14FC1166001DB847 /* DictVocTrainer */,

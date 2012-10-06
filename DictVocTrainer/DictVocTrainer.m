@@ -45,6 +45,7 @@ static DictVocTrainer *singleton;
     {
         initialized = YES;
         singleton = [[DictVocTrainer alloc] init];
+        [singleton importPersistentStore];
     }
 }
 
@@ -190,6 +191,30 @@ static DictVocTrainer *singleton;
         completionBlock(error);
 
     }
+}
+
+-(NSError *)importPersistentStore
+{
+    NSURL *documentsDirURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *dictVocTrainerDBURL = [documentsDirURL URLByAppendingPathComponent:DVT_TRAINER_DB_FILE_NAME];
+    NSURL *destinationURL = [dictVocTrainerDBURL URLByAppendingPathComponent:@"StoreContent/persistentStore"];
+    NSURL *importFileURL = [documentsDirURL URLByAppendingPathComponent:DVT_TRAINER_DB_IMPORT_FILE_NAME];
+    
+    NSError *error;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[importFileURL path]]) {
+        
+        if ([[NSFileManager defaultManager] removeItemAtPath:destinationURL.path error:&error]) {
+            
+            if ([[NSFileManager defaultManager] moveItemAtPath:importFileURL.path toPath:destinationURL.path error:&error] != YES) {
+                LogError(@"Unable to move file to path: %@\n%@", destinationURL.path, [error localizedDescription]);
+            } else {
+                LogInfo(@"Import successful at path: %@", destinationURL.path);
+            }
+            
+        }
+        
+    }
+    return error;
 }
 
 #pragma mark - My messages - Collections

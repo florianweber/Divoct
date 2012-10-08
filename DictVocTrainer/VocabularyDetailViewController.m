@@ -178,7 +178,7 @@ VocabularyDetailViewController.m
             buttonFrame.origin = CGPointMake(self.vocabularyDetailView.frame.size.width - buttonFrame.size.width - descStart.x, descStart.y + 4);
             
             //adjust wordLabel.frame (make it shorter)
-            maxFrameSizeWithEditButton = CGSizeMake(self.vocabularyDetailView.frame.size.width - descStart.x - self.editTranslationsButton.frame.size.width - descStart.x, 20000);
+            maxFrameSizeWithEditButton = CGSizeMake(self.vocabularyDetailView.frame.size.width - descStart.x - buttonFrame.size.width - descStart.x, 20000);
             wordFrame.size = [wordLabel.text sizeWithFont:wordLabel.font constrainedToSize:maxFrameSizeWithEditButton lineBreakMode:wordLabel.lineBreakMode];
             wordLabel.frame = wordFrame;
             lastSize = wordFrame.size;

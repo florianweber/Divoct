@@ -155,21 +155,13 @@
                 NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
                 
                 self.training.exercises = [NSMutableArray array];
-                if (average.floatValue < 1.0) {
-                    //if average is lower than 1.0, exercise all words with successrate <= 1.0
-                    for (Exercise *exercise in allExercises) {
-                        if (exercise.successRate.floatValue <= 1.0) {
-                            [self.training.exercises addObject:exercise];
-                        }
-                    }
-                } else {
-                    //if average is higher than or equal to 1.0, exercise all words with successrate <= the average
-                    for (Exercise *exercise in allExercises) {
-                        if (exercise.successRate.floatValue <= average.floatValue) {
-                            [self.training.exercises addObject:exercise];
-                        }
+                for (Exercise *exercise in allExercises) {
+                    //exercise all words where the successrate is lower than average
+                    if (exercise.successRate.floatValue <= average.floatValue) {
+                        [self.training.exercises addObject:exercise];
                     }
                 }
+
             } else {
                 //error
                 LogError(@"Nome weired number of required words appeared");

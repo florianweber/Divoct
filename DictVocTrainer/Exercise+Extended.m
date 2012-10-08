@@ -35,28 +35,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -(NSNumber *)successRate
 {
-    NSNumber *successRate = [NSNumber numberWithFloat:0.0];
+    NSNumber *successRate;
     
-    if ((self.countWrong.floatValue > 0.0) && (self.countCorrect.floatValue > 0.0))
-    {
-        successRate = [NSNumber numberWithFloat:(self.countCorrect.floatValue / self.countWrong.floatValue)];
-        
-    } else if (self.countWrong.floatValue > 0.0 && self.countCorrect.floatValue <= 0.0) {
-        successRate = [NSNumber numberWithFloat:(0.0 - self.countWrong.floatValue)];
-        
-    } else if (self.countWrong.floatValue <= 0 && self.countCorrect.floatValue > 0) {
-        successRate = self.countCorrect;
-        
-    } else {
+    if (self.countCorrect.intValue == 0) {
         successRate = [NSNumber numberWithFloat:0.0];
+    } else if ((self.countCorrect.intValue - self.countWrong.intValue) >= 2) {
+        successRate = [NSNumber numberWithFloat:1.0];
+    } else {
+        successRate = [NSNumber numberWithFloat:(self.countCorrect.floatValue / self.exerciseCount.floatValue)];
     }
-    
     
     return successRate;
 }
 
 -(NSString *) description {
-    return [NSString stringWithFormat:@"Word name: %@, Exercise count: %i, Count correct: %i, Count wrong: %i  ", self.word.name, self.exerciseCount.intValue, self.countCorrect.intValue, self.countWrong.intValue];
+    return [NSString stringWithFormat:@"Word name: %@, Exercise count: %i, Count correct: %i, Count wrong: %i, SuccessRate: %f", self.word.name, self.exerciseCount.intValue, self.countCorrect.intValue, self.countWrong.intValue, self.successRate.floatValue];
 }
 
 

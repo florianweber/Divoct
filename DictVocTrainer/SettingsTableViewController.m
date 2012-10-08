@@ -159,7 +159,7 @@ SettingsTableViewController.m
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == 2) && (indexPath.row == 0)) {
+    if ((indexPath.section == 1) && (indexPath.row == 0)) {
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_TITLE", nil)
                                                           message:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_MESSAGE", nil)
                                                          delegate:self

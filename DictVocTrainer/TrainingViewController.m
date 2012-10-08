@@ -209,18 +209,20 @@ TrainingViewController.m
 {
     if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_MultipleChoice) {
         if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
-            //Todo: layout buttons 2x2
+            //layout buttons 2x2
             int widthOfButtons = (self.trainingView.frame.size.width - ((40) + 8)) / 2;
             self.optionOneButton.frame = CGRectMake(20, 120, widthOfButtons, HEIGHT_OF_ANSWERBUTTONS);
             self.optionTwoButton.frame = CGRectMake(self.optionOneButton.frame.origin.x + widthOfButtons + 8, self.optionOneButton.frame.origin.y, widthOfButtons, HEIGHT_OF_ANSWERBUTTONS);
             self.optionThreeButton.frame = CGRectMake(self.optionOneButton.frame.origin.x, self.optionOneButton.frame.origin.y + HEIGHT_OF_ANSWERBUTTONS + 8, widthOfButtons, HEIGHT_OF_ANSWERBUTTONS);
             self.optionFourButton.frame = CGRectMake(self.optionTwoButton.frame.origin.x, self.optionTwoButton.frame.origin.y + HEIGHT_OF_ANSWERBUTTONS + 8, widthOfButtons, HEIGHT_OF_ANSWERBUTTONS);
+            self.questionScrollView.frame = CGRectMake(20, 55, self.trainingView.frame.size.width - 40, 31);
         } else {
             //layout buttons 1x4 from bottom
             self.optionFourButton.frame = CGRectMake(20, self.trainingView.frame.size.height - HEIGHT_OF_ANSWERBUTTONS - 20, self.trainingView.frame.size.width - 40, HEIGHT_OF_ANSWERBUTTONS);
             self.optionThreeButton.frame = CGRectMake(20, self.optionFourButton.frame.origin.y - HEIGHT_OF_ANSWERBUTTONS - 8, self.optionFourButton.frame.size.width, HEIGHT_OF_ANSWERBUTTONS);
             self.optionTwoButton.frame = CGRectMake(20, self.optionThreeButton.frame.origin.y - HEIGHT_OF_ANSWERBUTTONS - 8, self.optionFourButton.frame.size.width, HEIGHT_OF_ANSWERBUTTONS);
             self.optionOneButton.frame = CGRectMake(20, self.optionTwoButton.frame.origin.y - HEIGHT_OF_ANSWERBUTTONS - 8, self.optionFourButton.frame.size.width, HEIGHT_OF_ANSWERBUTTONS);
+            self.questionScrollView.frame = CGRectMake(20, ([UIScreen mainScreen].bounds.size.height == 568 ? 112 : 54), 280, 106);
         }
     } else if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
         if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
@@ -228,7 +230,7 @@ TrainingViewController.m
             self.questionScrollView.frame = CGRectMake(20, 35, self.trainingView.frame.size.width - 40, 31);
         } else {
             self.answerTextField.frame = CGRectMake(20, ([UIScreen mainScreen].bounds.size.height == 568 ? 248 : 160), 280, 30);
-            self.questionScrollView.frame = CGRectMake(20, ([UIScreen mainScreen].bounds.size.height == 568 ? 132 : 44), 280, 116);
+            self.questionScrollView.frame = CGRectMake(20, ([UIScreen mainScreen].bounds.size.height == 568 ? 112 : 54), 280, 106);
         }
     }
     

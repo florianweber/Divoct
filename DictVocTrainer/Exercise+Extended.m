@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "Exercise+Extended.h"
 #import "SQLiteWord.h"
 #import "DictVocDictionary.h"
+#import "GlobalDefinitions.h"
 
 @implementation Exercise (Extended)
 @dynamic word;
@@ -35,11 +36,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -(NSNumber *)successRate
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *perfectSuccessRateKey = DVT_PERFECT_SUCCESSRATE_SETTING;
+    NSNumber *perfectSuccessRateSetting = (NSNumber *)[defaults objectForKey:perfectSuccessRateKey];
+    
     NSNumber *successRate;
     
     if (self.countCorrect.intValue == 0) {
         successRate = [NSNumber numberWithFloat:0.0];
-    } else if ((self.countCorrect.intValue - self.countWrong.intValue) >= 2) {
+    } else if ((self.countCorrect.intValue - self.countWrong.intValue) >= perfectSuccessRateSetting.intValue) {
         successRate = [NSNumber numberWithFloat:1.0];
     } else {
         successRate = [NSNumber numberWithFloat:(self.countCorrect.floatValue / self.exerciseCount.floatValue)];

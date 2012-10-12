@@ -39,6 +39,7 @@ TrainingResultsViewController.m
 @property (weak, nonatomic) IBOutlet UILabel *correctCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic) BOOL finishedDisplayingResults;
+@property (nonatomic) BOOL returningFromOtherView;
 
 @end
 
@@ -197,7 +198,10 @@ TrainingResultsViewController.m
 {
     [super viewWillAppear:animated];
     
-    [self setupBarViews];
+    if (!self.returningFromOtherView) {
+        self.returningFromOtherView = NO;
+        [self setupBarViews];
+    }
     
     if (!self.finishedDisplayingResults) {
         self.titleLabel.text = [self.training.title  stringByAppendingFormat:@" - %@", NSLocalizedString(@"TRAINING", nil)];
@@ -211,6 +215,13 @@ TrainingResultsViewController.m
     if (!self.finishedDisplayingResults) {
         [self performSelector:@selector(displayResults:) withObject:nil afterDelay:0.5];
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.returningFromOtherView = YES;
+    
 }
 
 - (void)viewDidUnload

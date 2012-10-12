@@ -98,27 +98,6 @@
     self.allCollections = [[[DictVocTrainer instance] allCollections] mutableCopy];
 }
 
--(void)checkCellAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    [self.selectedCollections addObject:self.allCollections[indexPath.row]];
-    [self updateCountLabel];
-}
-
--(void)uncheckCellAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    for (Collection *collection in self.selectedCollections) {
-        if ([collection.name isEqualToString:((UILabel *)([cell viewWithTag:20])).text] || (([collection.name isEqualToString:NSLocalizedString(@"RECENTS_TITLE", nil)]) && [((UILabel *)([cell viewWithTag:20])).text isEqualToString:NSLocalizedString(@"RECENTS_DISPLAY_TITLE", nil)])) {
-            [self.selectedCollections removeObject:collection];
-            break;
-        }
-    }
-    [self updateCountLabel];
-}
-
 -(void)switchCheckmarkInCellAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -167,25 +146,16 @@
 }
 
 - (IBAction)allButtonPressed:(id)sender {
-    NSMutableArray *allIndexPaths = [[NSMutableArray alloc] initWithCapacity:[self.allCollections count]];
-    for (int i=0; i<[self.allCollections count]; i++) {
-        [allIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-    }
-    
-    for (NSIndexPath *indexPath in allIndexPaths) {
-        [self checkCellAtIndexPath:indexPath];
-    }
+    [self.selectedCollections removeAllObjects];
+    [self.selectedCollections addObjectsFromArray:self.allCollections];
+    [self.tableView reloadData];
+    [self updateCountLabel];
 }
 
 - (IBAction)noneButtonPressed:(id)sender {
-    NSMutableArray *allIndexPaths = [[NSMutableArray alloc] initWithCapacity:[self.allCollections count]];
-    for (int i=0; i<[self.allCollections count]; i++) {
-        [allIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-    }
-    
-    for (NSIndexPath *indexPath in allIndexPaths) {
-        [self uncheckCellAtIndexPath:indexPath];
-    }
+    [self.selectedCollections removeAllObjects];
+    [self.tableView reloadData];
+    [self updateCountLabel];
 }
 
 
@@ -281,6 +251,8 @@
 
     if ([self.selectedCollections containsObject:collection]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
     return cell;

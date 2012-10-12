@@ -46,39 +46,12 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    /* Todo: iOS 6 will not rotate back automatically from training as it did in iOS 5, so I will have to make all views compatible with landscape mode first
-    //only rotate in TrainingViewController and TrainingResultsViewController
-    if((self.selectedIndex == 1) || (self.selectedIndex == 2)) {
-        if([[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController] isKindOfClass:[TrainingViewController class]]) {
-            if (((TrainingViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
-                return UIInterfaceOrientationMaskAll;
-            }
-        } else if ([[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController] isKindOfClass:[TrainingResultsViewController class]]){
-            if (((TrainingResultsViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
-                return UIInterfaceOrientationMaskAll;
-            }
-        }
-    }
-     */
-    //return UIInterfaceOrientationMaskPortrait;
-    return UIInterfaceOrientationMaskAll;
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    //only rotate in TrainingViewController and TrainingResultsViewController
-    if((self.selectedIndex == 1) || (self.selectedIndex == 2)) {
-        if([[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController] isKindOfClass:[TrainingViewController class]]) {
-            if (((TrainingViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
-                return YES;
-            }
-        } else if ([[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController] isKindOfClass:[TrainingResultsViewController class]]){
-            if (((TrainingResultsViewController *)[[self.viewControllers objectAtIndex:self.selectedIndex] visibleViewController]).training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
-                return YES;
-            }
-        }
-    }
-   return (interfaceOrientation == UIInterfaceOrientationPortrait);
+   return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

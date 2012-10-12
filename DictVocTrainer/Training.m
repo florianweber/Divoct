@@ -55,4 +55,13 @@
     return totalCount;
 }
 
+-(int)totalExerciseCountAvailableWithoutDuplicates
+{
+    NSMutableSet *allExercisesWoDuplicates = [NSMutableSet set];
+    for (Collection *collection in self.collections) {
+        [allExercisesWoDuplicates addObjectsFromArray:collection.exercises.array];
+    }
+    return allExercisesWoDuplicates.count;
+}
+
 @end

@@ -25,5 +25,6 @@
 @property (nonatomic, strong) NSManagedObjectID *trainingResultsObjectId;
 
 -(int)totalExerciseCountAvailable;
+-(int)totalExerciseCountAvailableWithoutDuplicates;
 
 @end

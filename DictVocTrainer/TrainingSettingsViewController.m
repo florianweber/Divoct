@@ -87,21 +87,23 @@
 -(void)createExercises:(int)count
 {
     //create self.exercises
-    self.training.exercises = [NSMutableArray arrayWithCapacity:count];
+    self.training.exercises = [NSMutableSet setWithCapacity:count];
     
     //copy all available exercises and reduce this new array by the amount of count
-    NSMutableArray *availableExercises = [[NSMutableArray alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
+    NSMutableSet *availableExercises = [[NSMutableSet alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
     for (Collection *collection in self.training.collections) {
         [availableExercises addObjectsFromArray:collection.exercises.array];
     }
     
+    NSMutableArray *availableExercisesArray = [[NSMutableArray alloc] initWithArray:availableExercises.allObjects];
+    
     int randomIndex;
     int upperBoundIndex;
     while (count > 0) {
-        upperBoundIndex = [availableExercises count] - 1;
+        upperBoundIndex = [availableExercisesArray count] - 1;
         randomIndex = arc4random_uniform(upperBoundIndex);
-        [self.training.exercises addObject:[availableExercises objectAtIndex:randomIndex]];
-        [availableExercises removeObjectAtIndex:randomIndex];
+        [self.training.exercises addObject:[availableExercisesArray objectAtIndex:randomIndex]];
+        [availableExercisesArray removeObjectAtIndex:randomIndex];
         count--;
     }
 }
@@ -132,7 +134,7 @@
                 }
             //Random
             } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)]) {
-                int randomCount = arc4random_uniform([self.training totalExerciseCountAvailable] - 1);
+                int randomCount = arc4random_uniform([self.training totalExerciseCountAvailableWithoutDuplicates] - 1);
                 
                 if (randomCount <= 0) {
                     randomCount = 1;
@@ -141,7 +143,7 @@
             //Difficult
             } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)]) {
                 //all exercises
-                NSMutableArray *allExercises = [[NSMutableArray alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
+                NSMutableSet *allExercises = [[NSMutableSet alloc] init];
                 for (Collection *collection in self.training.collections) {
                     [allExercises addObjectsFromArray:collection.exercises.array];
                 }
@@ -154,7 +156,7 @@
                 }
                 NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
                 
-                self.training.exercises = [NSMutableArray array];
+                self.training.exercises = [NSMutableSet set];
                 for (Exercise *exercise in allExercises) {
                     //exercise all words where the successrate is lower than average
                     if (exercise.successRate.floatValue <= average.floatValue) {
@@ -219,7 +221,7 @@
     [wordCountPickerItems addObject:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_RAND", nil)];
     [wordCountPickerItems addObject:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)];
     
-    int totalCountOfAvailableExercises = [self.training totalExerciseCountAvailable];
+    int totalCountOfAvailableExercises = [self.training totalExerciseCountAvailableWithoutDuplicates];
     for (int i=10; i<=totalCountOfAvailableExercises; i+=10) {
         [wordCountPickerItems addObject:[NSString stringWithFormat:@"%d", i]];
     }

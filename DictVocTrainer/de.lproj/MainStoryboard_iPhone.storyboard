@@ -1796,10 +1796,6 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="descriptionFieldTapped:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="action" name="finishButtonPressed:"/>
-                <relationship kind="action" name="titleFieldTapped:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
@@ -1832,7 +1828,7 @@ divocthelp@googlemail.com</string>
                 <relationship kind="outlet" name="searchModeButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
-        <class className="DifficultWordsSettingsViewController" superclassName="UIViewController">
+        <class className="DifficultWordsSettingsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DifficultWordsSettingsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="numberLabel" candidateClass="UILabel"/>
@@ -1880,10 +1876,13 @@ divocthelp@googlemail.com</string>
         <class className="MOGlassButton" superclassName="MOButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MOGlassButton.h"/>
         </class>
-        <class className="PickerViewController" superclassName="UIViewController">
+        <class className="PickerViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:"/>
+                <relationship kind="action" name="pickButtonPressed:"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
             </relationships>
@@ -1897,7 +1896,6 @@ divocthelp@googlemail.com</string>
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
@@ -1923,6 +1921,11 @@ divocthelp@googlemail.com</string>
         <class className="TrainingSettingsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="chooseCollectionsButtonPressed:"/>
+                <relationship kind="action" name="chooseWordCountButtonPressed:"/>
+                <relationship kind="action" name="startTrainingButtonPressed:"/>
+                <relationship kind="action" name="trainingModeChanged:"/>
+                <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
                 <relationship kind="outlet" name="collectionChooserButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
@@ -1939,9 +1942,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stopButtonPressed:"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>

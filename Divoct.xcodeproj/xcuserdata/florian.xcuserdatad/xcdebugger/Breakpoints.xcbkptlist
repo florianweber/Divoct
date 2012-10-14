@@ -16,5 +16,18 @@
          landmarkName = "-descriptionFieldTapped:"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "DictVocTrainer/FWToastView.m"
+         timestampString = "371922565.030547"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "257"
+         endingLineNumber = "257"
+         landmarkName = "-initWithText:parentView:icon:duration:withCloseButton:pointingToView:fromDirection:triangleViewWidth:triangleViewHeight:"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

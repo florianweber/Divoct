@@ -90,6 +90,8 @@
 "HELP_TRAINING_TYPE_ANSWER"                 = "Gib hier die Antwort ein. Groß- und Kleinschreibung spielen keine Rolle. Es reichen 70% des Wortes ohne das, was evtl. in Klammern steht.";
 "HELP_TRAINING_RESULTS"                     = "Dies ist Dein Trainingsergebnis. Mit dem \"nochmal\" Knopf rechts oben kannst Du das Training wiederholen.";
 "HELP_COLLECTION_PICKER"                    = "Wähle alle Ordner aus, aus denen Du Vokabeln trainieren möchtest.";
+"HELP_SETTINS_DIFFICULT_WORDS"              = "Hier kannst Du Einstellungen ändern, um das Training schwieriger Vokabeln zu beeinflussen.";
+"HELP_VOCABULARY_PICKER"                    = "Hiermit kannst Du Anzahl der zu trainierenden Vokabeln einschränken.";
 "SETTINGS_STATISTICS_RESET_TITLE"           = "Alle Statistiken zurücksetzen?";
 "SETTINGS_STATISTICS_RESET_MESSAGE"         = "Achtung, alle Statistiken (verwendet zur Berechnung schwieriger Vokabeln) werden zurückgesetzt.";
 "SETTINGS_STATISTICS_RESET_CANCEL"          = "Abbrechen";

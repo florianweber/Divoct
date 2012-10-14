@@ -90,6 +90,8 @@
 "HELP_TRAINING_TYPE_ANSWER"                 = "Type in your answer. You don't need to care about capitalization and the part of the answer in brackets. 70% of the correct answer is sufficient.";
 "HELP_TRAINING_RESULTS"                     = "This is your training result. You can repeat the training by pressing the \"retry\" button in the top right corner.";
 "HELP_COLLECTION_PICKER"                    = "Select all collections you want to exercise.";
+"HELP_SETTINS_DIFFICULT_WORDS"              = "Adjust these settings to change the behaviour of a difficult words training.";
+"HELP_VOCABULARY_PICKER"                    = "Choose all vocabularies or a subset for your training.";
 "SETTINGS_STATISTICS_RESET_TITLE"           = "Reset all statistics?";
 "SETTINGS_STATISTICS_RESET_MESSAGE"         = "All statistics (used to calculate difficult words) will be reset. Do you want to continue?";
 "SETTINGS_STATISTICS_RESET_CANCEL"          = "Cancel";

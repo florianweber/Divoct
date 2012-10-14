@@ -9,6 +9,7 @@
 #import "PickerViewController.h"
 
 @interface PickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, strong) NSString *pickedItem;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -86,7 +87,6 @@
         }
     }
 }
-
 
 #pragma mark - Target / Action
 

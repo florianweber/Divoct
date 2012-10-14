@@ -120,6 +120,29 @@
 				<img src="en-04-changeTranslations.png" width="91" height="137" alt="Change Translation"/>
 			</td>
 		</tr>
+        <tr>
+			<td align="center" style="padding-top:10px; padding-bottom:10px">
+				<hr noshade width="75%"/>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" style="padding-bottom:10px">
+				<big>
+					<span style="font-family: Helvetica,Arial,sans-serif; font-weight: bold;">Backup / Restore (experimental)</span>
+				</big>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				Warning: This is an experimental feature in version 1.1 and something might go wrong.<br/>
+                You can backup your whole database using iTunes File Sharing. Open iTunes, select your device, go to the Apps tab and select "Divoct" on the left hand side.
+                There should be one document called trainerDatabase.coredata. This is your vocabulary database (recents, collections, training data, ...).
+                You can save it anywhere you want to have a backup.
+                To restore your database, you have to drill down into the folders of the backup until you see a file named "persistentStore". Just add that to the documents folder of Divoct in iTunes, then
+                close the app on your device (also in the multitasking menu). Press the sync button in iTunes and open Divoct again. Now, the imported database should be active.
+                Be aware of the fact, that there will be no merge of the data you imported and the one you had on your device. All data on the device will be lost, if you don't have a backup. This feature can also be used to transfer the user data from one device to another. iCloud support is planned for a future version.
+			</td>
+		</tr>
 	</table>
 </span>
   </body>

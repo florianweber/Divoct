@@ -64,7 +64,7 @@ static NSMutableArray *toasts;
 
 - (id)initWithText:(NSString *)text parentView:(UIView *)parentView icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)withCloseButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction triangleViewWidth:(int)triangleViewWidth triangleViewHeight:(int)triangleViewHeight {
 	if ((self = [self initWithFrame:CGRectZero])) {
-        
+
         //-- configure items ------------------------------------------------------------------------------------------------
         //set parent view
         self.parentView = parentView;
@@ -141,7 +141,6 @@ static NSMutableArray *toasts;
         int xStartPosition = 0;
         int yStartPosition = 0;
         
-        //todo: this currently calculates the position of triangleView in parentview, not in self!! (must use it and then convert it back later)
         //size and position point to view
         if (pointToView) {
             CGRect positionOfPointToViewInParentView = [pointToView convertRect:pointToView.bounds toView:parentView];

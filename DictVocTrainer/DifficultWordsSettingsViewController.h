@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GenericHelpViewController.h"
 
-@interface DifficultWordsSettingsViewController : UIViewController
+@interface DifficultWordsSettingsViewController : GenericHelpViewController
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DifficultWordsSettingsViewController.h"
 #import "GlobalDefinitions.h"
+#import "FWToastView.h"
 
 @interface DifficultWordsSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
@@ -84,6 +85,11 @@
     }
     
     [defaults synchronize];
+}
+
+-(void)showHelp
+{
+    [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_SETTINS_DIFFICULT_WORDS", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
 }
 
 - (void)viewDidLoad

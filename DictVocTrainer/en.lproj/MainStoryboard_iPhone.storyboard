@@ -308,7 +308,7 @@
             <objects>
                 <tableViewController id="0R9-TW-tRG" customClass="CollectionChooserTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qKV-0h-HVJ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234717153284675" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -648,7 +648,7 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Calculation of difficult words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGr-Ai-bxH">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Well-known words handling" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGr-Ai-bxH">
                                                     <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -662,14 +662,14 @@
                                             <segue destination="a60-Jn-EMO" kind="push" id="3bG-lW-iSx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="oKz-f3-7fU" style="IBUITableViewCellStyleDefault" id="3mr-db-7OP">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="0fr-do-U07" style="IBUITableViewCellStyleDefault" id="Yei-H0-aRf">
                                         <rect key="frame" x="0.0" y="183" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Reset all statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oKz-f3-7fU">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Reset all statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fr-do-U07">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -760,7 +760,7 @@
             </objects>
             <point key="canvasLocation" x="1090" y="3767"/>
         </scene>
-        <!--Difficult Words Settings View Controller - Difficult words calculation-->
+        <!--Difficult Words Settings View Controller - Well-known words-->
         <scene sceneID="Qlb-fc-t3B">
             <objects>
                 <viewController id="a60-Jn-EMO" customClass="DifficultWordsSettingsViewController" sceneMemberID="viewController">
@@ -768,46 +768,92 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" id="yI9-XA-pWM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">While you do vocabulary exercises, Divoct automatically tracks your success. 
-
-If you select the option "Only difficult words" in the training settings, Divoct will only show you words where your success rate is worse than the average success rate of all words in the current training session. 
-
-With this setting, you can define when a word will get the best success rate based on the number of correct answers minus the number of wrong answers. In other words: How many times do you need to translate a word more correct than wrong. This value influences the vocabulary selection for the "Only difficult words" training mode.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="13" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cql-F3-cAZ">
-                                <rect key="frame" x="122" y="320" width="76" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="Ys9-pD-jkl">
-                                <rect key="frame" x="206" y="320" width="94" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <action selector="stepperValueChanged:" destination="a60-Jn-EMO" eventType="valueChanged" id="RDq-xe-m1L"/>
-                                </connections>
-                            </stepper>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="iHS-i1-8yo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="Following settings adjust the handling of well known words for the &quot;Only difficult words&quot; training option." id="yI9-XA-pWM">
+                                        <rect key="frame" x="10" y="28" width="300" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cql-F3-cAZ">
+                                        <rect key="frame" x="138" y="220" width="49" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="Ys9-pD-jkl">
+                                        <rect key="frame" x="206" y="220" width="94" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="stepperValueChanged:" destination="a60-Jn-EMO" eventType="valueChanged" id="RDq-xe-m1L"/>
+                                        </connections>
+                                    </stepper>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackDot.png" id="XFq-Ge-LNh">
+                                        <rect key="frame" x="10" y="107" width="300" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackDot.png" id="mCu-aE-bqh">
+                                        <rect key="frame" x="10" y="259" width="300" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" id="wzf-bZ-rdr">
+                                        <rect key="frame" x="10" y="137" width="300" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <string key="text">A word in Divoct is defined as well known, if you have given a certain amount of correct answers more than wrong answers. You can adjust this amount here:</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Calculation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o5r-Zn-fdL">
+                                        <rect key="frame" x="10" y="111" width="300" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="About these settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OfA-vx-Pnz">
+                                        <rect key="frame" x="10" y="5" width="300" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Only well-known words warning" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pDW-JF-rV7">
+                                        <rect key="frame" x="10" y="268" width="300" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" id="fXd-Pb-LRS">
+                                        <rect key="frame" x="10" y="291" width="300" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Set this switch to ON, if you want to get a warning if ALL words you selected for training are well-known. Otherwise, the training will automatically include all selected words, as there are no difficult ones anymore.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="zGs-cF-CA3">
+                                        <rect key="frame" x="223" y="400" width="79" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="wellKnownWarningSwitchChanged:" destination="a60-Jn-EMO" eventType="valueChanged" id="fVx-H8-9NI"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.94234717150000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Difficult words calculation" id="g1L-0D-cTp"/>
+                    <navigationItem key="navigationItem" title="Well-known words" id="g1L-0D-cTp"/>
                     <connections>
                         <outlet property="numberLabel" destination="cql-F3-cAZ" id="7Qo-Tl-qCn"/>
+                        <outlet property="scrollView" destination="iHS-i1-8yo" id="WtO-5T-GFB"/>
                         <outlet property="stepper" destination="Ys9-pD-jkl" id="Pkg-XS-FAe"/>
+                        <outlet property="wellKnownWarningSwitch" destination="zGs-cF-CA3" id="3rZ-8O-bTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izQ-Vd-WOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -920,7 +966,7 @@ divocthelp@googlemail.com</string>
                                 </subviews>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.94234716892242432" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="6uI-fr-Sat"/>
                     <connections>
@@ -996,22 +1042,26 @@ divocthelp@googlemail.com</string>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your Description" id="Reu-Uz-u2s">
                                         <rect key="frame" x="20" y="255" width="280" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="mhc-TP-hpt" id="NKJ-Zp-f1o"/>
+                                            <outletCollection property="gestureRecognizers" destination="jHM-n9-uV9" appends="YES" id="pIK-dX-MMg"/>
                                         </connections>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your Title" id="gQG-d3-MOL">
                                         <rect key="frame" x="20" y="189" width="280" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="mhc-TP-hpt" id="uE3-Wi-O04"/>
+                                            <outletCollection property="gestureRecognizers" destination="1PH-Sl-cue" appends="YES" id="C8M-Od-gKl"/>
                                         </connections>
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="kEE-Ef-b6E">
@@ -1040,6 +1090,16 @@ divocthelp@googlemail.com</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNV-an-Bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jHM-n9-uV9" userLabel="DescriptionTapGestureRecognizer">
+                    <connections>
+                        <action selector="descriptionFieldTapped:" destination="mhc-TP-hpt" id="yDM-Ro-Gox"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="1PH-Sl-cue" userLabel="TitleTapGestureRecognizer">
+                    <connections>
+                        <action selector="titleFieldTapped:" destination="mhc-TP-hpt" id="YwB-K9-z3U"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2007" y="525"/>
         </scene>
@@ -1710,6 +1770,7 @@ divocthelp@googlemail.com</string>
         <image name="SmoothBackgroundTop.png" width="1" height="15"/>
         <image name="SmoothBackgroundTopLeft.png" width="15" height="15"/>
         <image name="SmoothBackgroundTopRight.png" width="15" height="15"/>
+        <image name="blackDot.png" width="1" height="1"/>
         <image name="flagGermany.png" width="50" height="30"/>
         <image name="folder.png" width="26" height="26"/>
         <image name="gradhat~iphone.png" width="30" height="23"/>
@@ -1730,6 +1791,10 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="descriptionFieldTapped:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="finishButtonPressed:"/>
+                <relationship kind="action" name="titleFieldTapped:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
@@ -1765,9 +1830,10 @@ divocthelp@googlemail.com</string>
         <class className="DifficultWordsSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DifficultWordsSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="stepperValueChanged:" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="numberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="wellKnownWarningSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
@@ -1812,8 +1878,6 @@ divocthelp@googlemail.com</string>
         <class className="PickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="pickButtonPressed:"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
@@ -1833,10 +1897,6 @@ divocthelp@googlemail.com</string>
         </class>
         <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="newButtonPressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="TrainingResultsDiagramView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>
@@ -1857,11 +1917,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingSettingsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="chooseCollectionsButtonPressed:"/>
-                <relationship kind="action" name="chooseWordCountButtonPressed:"/>
-                <relationship kind="action" name="startTrainingButtonPressed:"/>
-                <relationship kind="action" name="trainingModeChanged:"/>
-                <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
                 <relationship kind="outlet" name="collectionChooserButton" candidateClass="MOGlassButton"/>
                 <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
@@ -1913,8 +1968,8 @@ divocthelp@googlemail.com</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UvO-6m-vgP"/>
-        <segue reference="Ofl-UN-peV"/>
         <segue reference="0n3-c0-Qed"/>
+        <segue reference="R6I-c5-KDr"/>
+        <segue reference="M3C-aw-Ko8"/>
     </inferredMetricsTieBreakers>
 </document>

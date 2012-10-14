@@ -115,6 +115,8 @@
         [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_TRAININGSETTINGS_NOVOC", nil) icon:FWToastViewIconAlert duration:FWToastViewDurationUnlimited withCloseButton:YES];
         
     } else {
+        //Warning for Difficult words, if there are no difficult words anymore
+        BOOL showWarning = NO;
     
         //Create Exercises
         NSString *requestedWordCount = self.wordCountButton.titleLabel.text;
@@ -156,6 +158,30 @@
                 }
                 NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
                 
+                //warn for well known words
+                if (average.intValue == 1) {
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    NSString *warnForWellKnownOnlyKey = DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY;
+                    NSNumber *warnForWellKnownOnlyMode = (NSNumber *)[defaults objectForKey:warnForWellKnownOnlyKey];
+                    if (warnForWellKnownOnlyMode) {
+                        showWarning = [warnForWellKnownOnlyMode boolValue];
+                    } else {
+                        switch (DVT_DEFAULT_WARN_WELLKNOWN_ONLY) {
+                            case 0:
+                                showWarning = NO;
+                                break;
+                                
+                            case 1:
+                                showWarning = YES;
+                                break;
+                                
+                            default:
+                                showWarning = NO;
+                                break;
+                        }
+                    }
+                }
+                
                 self.training.exercises = [NSMutableSet set];
                 for (Exercise *exercise in allExercises) {
                     //exercise all words where the successrate is lower than average
@@ -188,8 +214,24 @@
         self.training.trainingResult = nil;
         self.training.trainingResultsObjectId = nil;
 
-        [self performSegueWithIdentifier:@"Show Training" sender:self];
+        if (showWarning) {
+            [self showAlert];
+        } else {
+            [self performSegueWithIdentifier:@"Show Training" sender:self];
+        }
+        
     }
+}
+
+-(void)showAlert
+{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TRAINING_ALL_WORDS_WELLKNOWN_WARN_TITLE", nil)
+                                                      message:NSLocalizedString(@"TRAINING_ALL_WORDS_WELLKNOWN_WARN_MESSAGE", nil)
+                                                     delegate:self
+                                            cancelButtonTitle:NSLocalizedString(@"TRAINING_ALL_WORDS_WELLKNOWN_WARN_NO", nil)
+                                            otherButtonTitles:NSLocalizedString(@"TRAINING_ALL_WORDS_WELLKNOWN_WARN_YES", nil),nil];
+    
+    [message show];
 }
 
 -(void)loadSavedSettings
@@ -332,7 +374,27 @@
     }
 }
 
-#pragma mark - View lifecycle
+#pragma mark - Alert View Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        LogDebug(@"Cancel Button was selected.");
+    }
+    else if (buttonIndex == 1)
+    {
+        LogDebug(@"Confirm Button was selected.");
+        [self performSegueWithIdentifier:@"Show Training" sender:self];
+    }
+    else
+    {
+        LogDebug(@"Unknown Button was selected.");
+    }
+    
+}
+
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {

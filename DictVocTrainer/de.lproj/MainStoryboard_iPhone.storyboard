@@ -436,20 +436,24 @@
                                         <rect key="frame" x="20" y="243" width="280" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="mhc-TP-hpt" id="NKJ-Zp-f1o"/>
+                                            <outletCollection property="gestureRecognizers" destination="DSp-1X-Ndn" appends="YES" id="ak9-mj-zdo"/>
                                         </connections>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Dein Titel" id="gQG-d3-MOL">
                                         <rect key="frame" x="20" y="182" width="280" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="mhc-TP-hpt" id="uE3-Wi-O04"/>
+                                            <outletCollection property="gestureRecognizers" destination="ggp-zS-wnp" appends="YES" id="tOm-nu-4La"/>
                                         </connections>
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="kEE-Ef-b6E">
@@ -498,6 +502,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNV-an-Bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ggp-zS-wnp" userLabel="TitleTapGestureRecognizer">
+                    <connections>
+                        <action selector="titleFieldTapped:" destination="mhc-TP-hpt" id="Z5c-ao-dbW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="DSp-1X-Ndn" userLabel="DescriptionTapGestureRecognizer">
+                    <connections>
+                        <action selector="descriptionFieldTapped:" destination="mhc-TP-hpt" id="v5D-BI-qFA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2007" y="525"/>
         </scene>
@@ -1053,7 +1067,7 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Berechnung schwieriger Worte" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n02-SF-L42">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Perfekte Vokabeln" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n02-SF-L42">
                                                     <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1647,7 +1661,7 @@ divocthelp@googlemail.com</string>
             </objects>
             <point key="canvasLocation" x="1090" y="1769"/>
         </scene>
-        <!--Difficult Words Settings View Controller - Berechnung schwieriger Worte-->
+        <!--Difficult Words Settings View Controller - Perfekte Vokabeln-->
         <scene sceneID="jrg-9f-pde">
             <objects>
                 <viewController id="zja-JM-D0V" customClass="DifficultWordsSettingsViewController" sceneMemberID="viewController">
@@ -1655,46 +1669,92 @@ divocthelp@googlemail.com</string>
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" id="EoI-tV-Gw9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Während Du trainierst, wird Dein Erfolg gemessen.
-
-Wenn Du als Trainingsoption "Nur schwierige Vokabeln" auswählst, wirst Du nur nach Worten gefragt, bei denen Du im Schnitt schlechter abgeschnitten hast, als bei den anderen im aktuellen Training. 
-
-Mit dieser Einstellung kannst Du festlegen, ab wann Dein Erfolg beim Übersetzen einer Vokabel genau so gut eingestuft werden soll, als hättest Du sie stets richtig beantwortet. Die Zahl gibt an, wie viel öfter Du die Vokabel richtig als falsch beantwortet haben musst, um sie "perfekt" zu können. Der Wert beeinflusst die Vokabelauswahl im Modus "Nur schwierige Vokabeln".</string>
-                                        <attributes>
-                                            <font key="NSFont" size="13" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5M4-XJ-Bgo">
-                                <rect key="frame" x="122" y="320" width="76" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="glT-NH-lVo">
-                                <rect key="frame" x="206" y="320" width="94" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <action selector="stepperValueChanged:" destination="zja-JM-D0V" eventType="valueChanged" id="Sxs-HZ-mjc"/>
-                                </connections>
-                            </stepper>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3bL-pN-zx1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="glT-NH-lVo">
+                                        <rect key="frame" x="214" y="220" width="94" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="stepperValueChanged:" destination="zja-JM-D0V" eventType="valueChanged" id="Sxs-HZ-mjc"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5M4-XJ-Bgo">
+                                        <rect key="frame" x="130" y="220" width="69" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="Hier kann für den Trainingsmodus &quot;Nur schwierige Vokabeln&quot; das Verhalten für perfekt gekonnte Vokabeln eingstellt werden." id="4LZ-T7-T7q">
+                                        <rect key="frame" x="10" y="28" width="300" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackDot.png" id="JQ8-Ya-j4r">
+                                        <rect key="frame" x="10" y="107" width="300" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackDot.png" id="G6T-uc-LnS">
+                                        <rect key="frame" x="10" y="259" width="300" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" id="RgD-ua-7n3">
+                                        <rect key="frame" x="10" y="132" width="300" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Eine Vokabel wird als perfekt gekonnt eingestuft, falls man das Wort eine bestimmte Anzahl öfters korrekt als falsch beantwortet hat. Dieser Wert kann hier verändert werden.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Berechnung" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o7W-FE-SOO">
+                                        <rect key="frame" x="10" y="111" width="300" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Über diese Einstellungen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FJP-sv-3ve">
+                                        <rect key="frame" x="10" y="5" width="300" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Warnung bei nur perfekten Vokabeln" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wa1-A6-ofi">
+                                        <rect key="frame" x="10" y="268" width="300" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" id="xlp-Lr-MqW">
+                                        <rect key="frame" x="10" y="291" width="300" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Wenn diese Einstellung aktiviert ist, bekommst Du eine Warnung zum Start des Trainings, falls alle ausgewählten Vokabeln als perfekt gekonnt eingestuft sind. Andernfalls werden automatisch alle aus- gewählten Vokabeln trainiert.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="BaS-Ae-vlZ">
+                                        <rect key="frame" x="223" y="400" width="79" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="wellKnownWarningSwitchChanged:" destination="zja-JM-D0V" eventType="valueChanged" id="3e7-lj-moa"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.94234717150000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Berechnung schwieriger Worte" id="73l-BD-zpH"/>
+                    <navigationItem key="navigationItem" title="Perfekte Vokabeln" id="73l-BD-zpH"/>
                     <connections>
                         <outlet property="numberLabel" destination="5M4-XJ-Bgo" id="eFQ-cf-BLb"/>
+                        <outlet property="scrollView" destination="3bL-pN-zx1" id="cGQ-VS-PQ9"/>
                         <outlet property="stepper" destination="glT-NH-lVo" id="jnD-IV-8eP"/>
+                        <outlet property="wellKnownWarningSwitch" destination="BaS-Ae-vlZ" id="GGX-xv-8ci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXe-rv-dpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1715,6 +1775,7 @@ Mit dieser Einstellung kannst Du festlegen, ab wann Dein Erfolg beim Übersetzen
         <image name="SmoothBackgroundTop.png" width="1" height="15"/>
         <image name="SmoothBackgroundTopLeft.png" width="15" height="15"/>
         <image name="SmoothBackgroundTopRight.png" width="15" height="15"/>
+        <image name="blackDot.png" width="1" height="1"/>
         <image name="flagGermany.png" width="50" height="30"/>
         <image name="folder.png" width="26" height="26"/>
         <image name="gradhat~iphone.png" width="30" height="23"/>
@@ -1735,6 +1796,10 @@ Mit dieser Einstellung kannst Du festlegen, ab wann Dein Erfolg beim Übersetzen
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="descriptionFieldTapped:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="finishButtonPressed:"/>
+                <relationship kind="action" name="titleFieldTapped:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
@@ -1771,7 +1836,9 @@ Mit dieser Einstellung kannst Du festlegen, ab wann Dein Erfolg beim Übersetzen
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DifficultWordsSettingsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="numberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="wellKnownWarningSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
@@ -1830,6 +1897,7 @@ Mit dieser Einstellung kannst Du festlegen, ab wann Dein Erfolg beim Übersetzen
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
@@ -1871,6 +1939,9 @@ Mit dieser Einstellung kannst Du festlegen, ab wann Dein Erfolg beim Übersetzen
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
+                <relationship kind="action" name="nextExercise:"/>
+                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="stopButtonPressed:"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>

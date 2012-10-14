@@ -95,11 +95,6 @@ CreateCollectionViewController.m
         self.descriptionInputBox.frame = descriptionInputBoxFrame;
         self.descriptionInputBox.textAlignment = NSTextAlignmentRight;
     }
-    
-    self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-    self.titleInputBox.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-    self.descriptionLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-    self.descriptionInputBox.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 }
 
 - (void)setupTitleInputBox
@@ -249,6 +244,15 @@ CreateCollectionViewController.m
 {
     [self.delegate collectionDetailViewControllerGotCanceled:self];
 }
+
+- (IBAction)titleFieldTapped:(UITapGestureRecognizer *)sender {
+    [self.titleInputBox becomeFirstResponder];
+}
+
+- (IBAction)descriptionFieldTapped:(UITapGestureRecognizer *)sender {
+    [self.descriptionInputBox becomeFirstResponder];
+}
+
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
     if (recognizer.direction == UISwipeGestureRecognizerDirectionRight || recognizer.direction == UISwipeGestureRecognizerDirectionDown) {

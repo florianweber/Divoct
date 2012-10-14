@@ -12,6 +12,8 @@
 @interface DifficultWordsSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UISwitch *wellKnownWarningSwitch;
 
 @end
 
@@ -20,6 +22,7 @@
 
 - (void)loadDefaults
 {
+    //Success rate amount
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *perfectSuccessRateKey = DVT_PERFECT_SUCCESSRATE_SETTING;
     NSNumber *perfectSuccessRateSetting = (NSNumber *)[defaults objectForKey:perfectSuccessRateKey];
@@ -33,6 +36,28 @@
     
     self.numberLabel.text = [NSString stringWithFormat:@"%d", currentSetting];
     self.stepper.value = currentSetting;
+    
+    //Warn for well-known words only
+    NSString *warnForWellKnownOnlyKey = DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY;
+    NSNumber *warnForWellKnownOnlyMode = (NSNumber *)[defaults objectForKey:warnForWellKnownOnlyKey];
+    if (warnForWellKnownOnlyMode) {
+        self.wellKnownWarningSwitch.on = [warnForWellKnownOnlyMode boolValue];
+    } else {
+        switch (DVT_DEFAULT_WARN_WELLKNOWN_ONLY) {
+            case 0:
+                self.wellKnownWarningSwitch.on = NO;
+                break;
+                
+            case 1:
+                self.wellKnownWarningSwitch.on = YES;
+                break;
+                
+            default:
+                self.wellKnownWarningSwitch.on = NO;
+                break;
+        }
+        ;
+    }
 }
 
 - (IBAction)stepperValueChanged:(UIStepper *)sender {
@@ -46,6 +71,20 @@
     [defaults synchronize];
 }
 
+- (IBAction)wellKnownWarningSwitchChanged:(UISwitch *)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *warnForWellKnownOnlyKey = DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY;
+    
+    if (sender.on) {
+        //set to case insensitive
+        [defaults setObject:[NSNumber numberWithInt:1] forKey:warnForWellKnownOnlyKey];
+    } else {
+        //set to case sensitive
+        [defaults setObject:[NSNumber numberWithInt:0] forKey:warnForWellKnownOnlyKey];
+    }
+    
+    [defaults synchronize];
+}
 
 - (void)viewDidLoad
 {
@@ -57,11 +96,28 @@
 {
     [super viewWillAppear:animated];
     [self loadDefaults];
+    
+    self.scrollView.contentSize = CGSizeMake(320, 440);
+    
+    if (self.scrollView.contentSize.height > self.scrollView.frame.size.height) {
+        [self.scrollView flashScrollIndicators];
+    }
+
 }
 
 - (void)viewDidUnload {
     [self setNumberLabel:nil];
     [self setStepper:nil];
+    [self setScrollView:nil];
+    [self setWellKnownWarningSwitch:nil];
     [super viewDidUnload];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    if (self.scrollView.contentSize.height > self.scrollView.frame.size.height) {
+        [self.scrollView flashScrollIndicators];
+    }
 }
 @end

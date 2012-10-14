@@ -48,6 +48,10 @@
 "RECENTS_DESC"                              = "History of searched words";
 "TRAINING"                                  = "Training";
 "TRAINING_TRANS_EDIT_BUTTON_TEXT"           = "Edit Answers for Training";
+"TRAINING_ALL_WORDS_WELLKNOWN_WARN_TITLE"   = "Warning";
+"TRAINING_ALL_WORDS_WELLKNOWN_WARN_MESSAGE" = "There are no more difficult words in you selection. Do you want to exercise all instead?";
+"TRAINING_ALL_WORDS_WELLKNOWN_WARN_NO"      = "No";
+"TRAINING_ALL_WORDS_WELLKNOWN_WARN_YES"     = "Yes";
 "TRAINING_SETTINGS_COLLECTIONPICKER_EMPTY"  = "Please choose...";
 "TRAINING_SETTINGS_COUNTPICKER_ALL"         = "All";
 "TRAINING_SETTINGS_COUNTPICKER_RAND"        = "Random selection";

@@ -7,6 +7,7 @@
 //
 
 #import "PickerViewController.h"
+#import "FWToastView.h"
 
 @interface PickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -86,6 +87,11 @@
             self.selectionDescriptionLabel.text = @"";
         }
     }
+}
+
+-(void)showHelp
+{
+    [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_VOCABULARY_PICKER", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES forceLandscape:UIInterfaceOrientationIsLandscape(self.interfaceOrientation)];
 }
 
 #pragma mark - Target / Action

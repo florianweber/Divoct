@@ -40,6 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     NSString *perfectSuccessRateKey = DVT_PERFECT_SUCCESSRATE_SETTING;
     NSNumber *perfectSuccessRateSetting = (NSNumber *)[defaults objectForKey:perfectSuccessRateKey];
     
+    if (!perfectSuccessRateSetting) {
+        perfectSuccessRateSetting = [NSNumber numberWithInt:DVT_DEFAULT_PERFECT_SUCCESSRATE];
+    }
+    
     NSNumber *successRate;
     
     if (self.countCorrect.intValue == 0) {

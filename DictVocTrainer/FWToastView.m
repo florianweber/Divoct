@@ -62,9 +62,22 @@ static NSMutableArray *toasts;
 
 #pragma mark - Init
 
-- (id)initWithText:(NSString *)text parentView:(UIView *)parentView icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)withCloseButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction triangleViewWidth:(int)triangleViewWidth triangleViewHeight:(int)triangleViewHeight {
+- (id)initWithText:(NSString *)text parentView:(UIView *)parentView icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)withCloseButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction triangleViewWidth:(int)triangleViewWidth triangleViewHeight:(int)triangleViewHeight forceLandscape:(BOOL)forceLandscape {
 	if ((self = [self initWithFrame:CGRectZero])) {
 
+        int parentViewWidth, parentViewHeight, parentViewCenterX, parentViewCenterY;
+        if (forceLandscape) {
+            parentViewWidth = [UIScreen mainScreen].bounds.size.height;
+            parentViewHeight = [UIScreen mainScreen].bounds.size.width;
+            parentViewCenterX = parentViewWidth / 2;
+            parentViewCenterY = parentViewHeight / 2;
+        } else {
+            parentViewWidth = parentView.frame.size.width;
+            parentViewHeight = parentView.frame.size.height;
+            parentViewCenterX = parentView.center.x;
+            parentViewCenterY = parentView.center.y;
+        }
+        
         //-- configure items ------------------------------------------------------------------------------------------------
         //set parent view
         self.parentView = parentView;
@@ -199,18 +212,18 @@ static NSMutableArray *toasts;
             CGRect positionOfPointToViewInParentView = [pointToView convertRect:pointToView.bounds toView:parentView];
             
             if (direction == FWToastViewPointingFromDirectionLeft) {
-                pointToViewWidthReduce = self.triangleView.frame.size.width + positionOfPointToViewInParentView.size.width + (parentView.frame.size.width - positionOfPointToViewInParentView.origin.x);
+                pointToViewWidthReduce = self.triangleView.frame.size.width + positionOfPointToViewInParentView.size.width + (parentViewWidth - positionOfPointToViewInParentView.origin.x);
             } else if (direction == FWToastViewPointingFromDirectionRight) {
                 pointToViewWidthReduce = self.triangleView.frame.size.width + positionOfPointToViewInParentView.origin.x + positionOfPointToViewInParentView.size.width;
             } else if (direction == FWToastViewPointingFromDirectionTop) {
-                pointToViewHeightReduce = self.triangleView.frame.size.height + positionOfPointToViewInParentView.size.height + (parentView.frame.size.height - positionOfPointToViewInParentView.origin.y);
+                pointToViewHeightReduce = self.triangleView.frame.size.height + positionOfPointToViewInParentView.size.height + (parentViewHeight - positionOfPointToViewInParentView.origin.y);
             } else if (direction == FWToastViewPointingFromDirectionBottom) {
                 pointToViewHeightReduce = self.triangleView.frame.size.height + positionOfPointToViewInParentView.size.height + positionOfPointToViewInParentView.origin.y;
             }
         }
         
-        int textMaxWidth = parentView.frame.size.width - xStartPosition - (self.closeButton ? (self.closeButton.frame.size.width + 7) : 0) - 10 - pointToViewWidthReduce - 10;
-        int textMaxHeight = parentView.frame.size.height - pointToViewHeightReduce;
+        int textMaxWidth = parentViewWidth - xStartPosition - (self.closeButton ? (self.closeButton.frame.size.width + 7) : 0) - 10 - pointToViewWidthReduce - 10;
+        int textMaxHeight = parentViewHeight - pointToViewHeightReduce;
         
         self.textLabel.frame = CGRectOffset(self.textLabel.frame, xStartPosition, yStartPosition);
         CGRect textLabelFrame = self.textLabel.frame;
@@ -254,7 +267,7 @@ static NSMutableArray *toasts;
         
         //-- main View -----------------------------------------------------------------------------------------------
         //size and position own frame
-        self.frame = CGRectMake(parentView.center.x - (xMax / 2), parentView.center.y - (yMax / 2), xMax, yMax);
+        self.frame = CGRectMake(parentViewCenterX - (xMax / 2), parentViewCenterY - (yMax / 2), xMax, yMax);
         self.frame = CGRectIntegral(self.frame);
         self.alpha = 0.0f;
         
@@ -308,7 +321,17 @@ static NSMutableArray *toasts;
     [FWToastView toastInView:parentView withText:text icon:icon duration:seconds withCloseButton:closeButton pointingToView:nil fromDirection:FWToastViewPointingFromDirectionNone];
 }
 
++(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)closeButton forceLandscape:(BOOL)forceLandscape
+{
+    [FWToastView toastInView:parentView withText:text icon:icon duration:seconds withCloseButton:closeButton pointingToView:nil fromDirection:FWToastViewPointingFromDirectionNone forceLandscape:forceLandscape];
+}
+
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)withCloseButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction
+{
+    [FWToastView toastInView:parentView withText:text icon:icon duration:seconds withCloseButton:withCloseButton pointingToView:pointToView fromDirection:FWToastViewPointingFromDirectionNone forceLandscape:NO];
+}
+
++(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)withCloseButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction forceLandscape:(BOOL)forceLandscape
 {
     //don't add the same toast multiple times
     if ([toasts count]) {
@@ -326,7 +349,7 @@ static NSMutableArray *toasts;
         triangleViewHeight = FWToastViewDefaultTriangleHeight - 10;
     }
     
-    FWToastView *view = [[FWToastView alloc] initWithText:text parentView:parentView icon:icon duration:seconds withCloseButton:withCloseButton pointingToView:pointToView fromDirection:direction triangleViewWidth:triangleViewWidth triangleViewHeight:triangleViewHeight];
+    FWToastView *view = [[FWToastView alloc] initWithText:text parentView:parentView icon:icon duration:seconds withCloseButton:withCloseButton pointingToView:pointToView fromDirection:direction triangleViewWidth:triangleViewWidth triangleViewHeight:triangleViewHeight forceLandscape:forceLandscape];
     
     
     //add new instance to queue

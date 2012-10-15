@@ -1049,7 +1049,6 @@ divocthelp@googlemail.com</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="mhc-TP-hpt" id="NKJ-Zp-f1o"/>
-                                            <outletCollection property="gestureRecognizers" destination="jHM-n9-uV9" appends="YES" id="pIK-dX-MMg"/>
                                         </connections>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your Title" id="gQG-d3-MOL">
@@ -1061,14 +1060,13 @@ divocthelp@googlemail.com</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="mhc-TP-hpt" id="uE3-Wi-O04"/>
-                                            <outletCollection property="gestureRecognizers" destination="1PH-Sl-cue" appends="YES" id="C8M-Od-gKl"/>
                                         </connections>
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="kEE-Ef-b6E">
-                                        <rect key="frame" x="19" y="337" width="280" height="50"/>
+                                        <rect key="frame" x="20" y="337" width="280" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.64723996350364965" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1090,16 +1088,6 @@ divocthelp@googlemail.com</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNV-an-Bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="jHM-n9-uV9" userLabel="DescriptionTapGestureRecognizer">
-                    <connections>
-                        <action selector="descriptionFieldTapped:" destination="mhc-TP-hpt" id="yDM-Ro-Gox"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="1PH-Sl-cue" userLabel="TitleTapGestureRecognizer">
-                    <connections>
-                        <action selector="titleFieldTapped:" destination="mhc-TP-hpt" id="YwB-K9-z3U"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2007" y="525"/>
         </scene>
@@ -1778,221 +1766,6 @@ divocthelp@googlemail.com</string>
         <image name="preferences~iphone.png" width="26" height="26"/>
         <image name="tapTwoFinger.png" width="100" height="100"/>
     </resources>
-    <classes>
-        <class className="AboutViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="CollectionChooserTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionChooserTableViewController.h"/>
-        </class>
-        <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="descriptionFieldTapped:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="action" name="finishButtonPressed:"/>
-                <relationship kind="action" name="titleFieldTapped:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="descriptionInputBox" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="errorMessageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="titleInputBox" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CollectionPickerViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionPickerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="allButtonPressed:"/>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="noneButtonPressed:"/>
-                <relationship kind="action" name="pickButtonPressed:"/>
-                <relationship kind="outlet" name="allBarButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="counterBarButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="noneBarButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toolbarBottom" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="DictionarySearchViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DictionarySearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="searchModeButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="DifficultWordsSettingsViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DifficultWordsSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="stepperValueChanged:" candidateClass="UIStepper"/>
-                <relationship kind="action" name="wellKnownWarningSwitchChanged:" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="numberLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="wellKnownWarningSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="assignSelectedRows:"/>
-                <relationship kind="action" name="deleteSelectedRows:"/>
-                <relationship kind="action" name="deselectAllRows:"/>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="selectAllRows:"/>
-                <relationship kind="action" name="startTraining:"/>
-                <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GenericHelpTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GenericHelpTableViewController.h"/>
-        </class>
-        <class className="GenericHelpViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GenericHelpViewController.h"/>
-        </class>
-        <class className="HelpViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="LicenseViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LicenseViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="LoadingViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="infoMessageView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="MOButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MOButton.h"/>
-        </class>
-        <class className="MOGlassButton" superclassName="MOButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MOGlassButton.h"/>
-        </class>
-        <class className="PickerViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="pickButtonPressed:"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="QuestionView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuestionView.h"/>
-        </class>
-        <class className="RotatingUITabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingUITabBarController.h"/>
-        </class>
-        <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="newButtonPressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="TrainingResultsDiagramView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>
-        </class>
-        <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="displayResults:"/>
-                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
-                <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="greenBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="redBarLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="redBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="wrongCountLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TrainingSettingsViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="chooseCollectionsButtonPressed:"/>
-                <relationship kind="action" name="chooseWordCountButtonPressed:"/>
-                <relationship kind="action" name="startTrainingButtonPressed:"/>
-                <relationship kind="action" name="trainingModeChanged:"/>
-                <relationship kind="action" name="wrongAnswerHandlingModeChanged:"/>
-                <relationship kind="outlet" name="collectionChooserButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="modeSelectionControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="wordCountButton" candidateClass="MOGlassButton"/>
-                <relationship kind="outlet" name="wrongAnswerHandlingControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="TrainingStatusView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingStatusView.h"/>
-        </class>
-        <class className="TrainingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingView.h"/>
-        </class>
-        <class className="TrainingViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stopButtonPressed:"/>
-                <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="optionOneButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="optionThreeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="optionTwoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="progessView" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="questionFlagIconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="questionScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="questionView" candidateClass="QuestionView"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="trainingStatusView" candidateClass="TrainingStatusView"/>
-                <relationship kind="outlet" name="trainingView" candidateClass="TrainingView"/>
-            </relationships>
-        </class>
-        <class className="VocabularyDetailView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailView.h"/>
-        </class>
-        <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
-                <relationship kind="action" name="organizeButtonPressed:"/>
-                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="vocabularyDetailView" candidateClass="VocabularyDetailView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

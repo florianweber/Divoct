@@ -46,13 +46,15 @@ typedef enum {
 
 @interface FWToastView : UIView
 
-- (id)initWithText:(NSString *)text parentView:(UIView *)parentView icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)withCloseButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction triangleViewWidth:(int)triangleViewWidth triangleViewHeight:(int)triangleViewHeight;
+- (id)initWithText:(NSString *)text parentView:(UIView *)parentView icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)withCloseButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction triangleViewWidth:(int)triangleViewWidth triangleViewHeight:(int)triangleViewHeight forceLandscape:(BOOL)forceLandscape;
 
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text;
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon;
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds;
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)closeButton;
++(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(CGFloat)seconds withCloseButton:(BOOL)closeButton forceLandscape:(BOOL)forceLandscape;
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(float)seconds withCloseButton:(BOOL)closeButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction;
++(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(float)seconds withCloseButton:(BOOL)closeButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction forceLandscape:(BOOL)forceLandscape;
 +(void)dismissAllToasts;
 +(BOOL)isAToastActive;
 

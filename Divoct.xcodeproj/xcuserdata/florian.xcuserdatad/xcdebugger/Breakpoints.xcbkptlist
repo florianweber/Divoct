@@ -7,26 +7,26 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "DictVocTrainer/CollectionDetailViewController.m"
-         timestampString = "371913525.445831"
+         filePath = "DictVocTrainer/FWToastView.m"
+         timestampString = "371988272.097445"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "253"
-         endingLineNumber = "253"
-         landmarkName = "-descriptionFieldTapped:"
+         startingLineNumber = "270"
+         endingLineNumber = "270"
+         landmarkName = "-initWithText:parentView:icon:duration:withCloseButton:pointingToView:fromDirection:triangleViewWidth:triangleViewHeight:forceLandscape:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "DictVocTrainer/FWToastView.m"
-         timestampString = "371922565.030547"
+         filePath = "DictVocTrainer/TrainingSettingsViewController.m"
+         timestampString = "371928114.507215"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "257"
-         endingLineNumber = "257"
-         landmarkName = "-initWithText:parentView:icon:duration:withCloseButton:pointingToView:fromDirection:triangleViewWidth:triangleViewHeight:"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
+         landmarkName = "-startTraining"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

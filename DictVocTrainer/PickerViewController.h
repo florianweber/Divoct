@@ -18,7 +18,7 @@
 @end
 
 
-@interface PickerViewController : UIViewController
+@interface PickerViewController : GenericHelpViewController
 
 @property (nonatomic, strong) NSArray *pickList;
 @property (nonatomic) NSInteger preselectedRow;

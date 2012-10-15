@@ -40,6 +40,7 @@ CreateCollectionViewController.m
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *bottomBarTitleButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *finishButton;
+@property (nonatomic) BOOL viewIsMovedUp;
 
 @end
 
@@ -53,6 +54,7 @@ CreateCollectionViewController.m
 @synthesize delegate = _delegate;
 @synthesize collection = _collection;
 @synthesize importantChanges = _importantChanges;
+@synthesize viewIsMovedUp = _viewIsMovedUp;
 
 #pragma mark - My Messages
 
@@ -64,36 +66,44 @@ CreateCollectionViewController.m
         
         CGRect titleLabelFrame = CGRectMake(20, 180, 151, 21);
         self.titleLabel.frame = titleLabelFrame;
-        self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        self.titleLabel.textAlignment = UITextAlignmentLeft;
         
         CGRect titleInputBoxFrame = CGRectMake(20, 204, 280, 29);
         self.titleInputBox.frame = titleInputBoxFrame;
-        self.titleInputBox.textAlignment = NSTextAlignmentLeft;
+        self.titleInputBox.textAlignment = UITextAlignmentLeft;
         
         CGRect descriptionLabelFrame = CGRectMake(20, 240, 235, 21);
         self.descriptionLabel.frame = descriptionLabelFrame;
-        self.descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        self.descriptionLabel.textAlignment = UITextAlignmentLeft;
         
         CGRect descriptionInputBoxFrame = CGRectMake(20, 264, 280, 56);
         self.descriptionInputBox.frame = descriptionInputBoxFrame;
-        self.descriptionInputBox.textAlignment = NSTextAlignmentLeft;
+        self.descriptionInputBox.textAlignment = UITextAlignmentLeft;
+        
+        CGRect errorMessageLabelFrame = CGRectMake(20, 337, 280, 50);
+        self.errorMessageLabel.frame = errorMessageLabelFrame;
+        self.errorMessageLabel.textAlignment = UITextAlignmentCenter;
         
     } else {
         CGRect titleLabelFrame = CGRectMake((fourInch ? 400 : 312), 40, 151, 21);
         self.titleLabel.frame = titleLabelFrame;
-        self.titleLabel.textAlignment = NSTextAlignmentRight;
+        self.titleLabel.textAlignment = UITextAlignmentRight;
         
         CGRect titleInputBoxFrame = CGRectMake((fourInch ? 271 : 183), 64, 280, 29);
         self.titleInputBox.frame = titleInputBoxFrame;
-        self.titleInputBox.textAlignment = NSTextAlignmentRight;
+        self.titleInputBox.textAlignment = UITextAlignmentRight;
         
         CGRect descriptionLabelFrame = CGRectMake((fourInch ? 316 : 228), 100, 235, 21);
         self.descriptionLabel.frame = descriptionLabelFrame;
-        self.descriptionLabel.textAlignment = NSTextAlignmentRight;
+        self.descriptionLabel.textAlignment = UITextAlignmentRight;
         
         CGRect descriptionInputBoxFrame = CGRectMake((fourInch ? 150 : 62), 124, 400, 56);
         self.descriptionInputBox.frame = descriptionInputBoxFrame;
-        self.descriptionInputBox.textAlignment = NSTextAlignmentRight;
+        self.descriptionInputBox.textAlignment = UITextAlignmentRight;
+        
+        CGRect errorMessageLabelFrame = CGRectMake((fourInch ? 150 : 62), 185, 400, 50);
+        self.errorMessageLabel.frame = errorMessageLabelFrame;
+        self.errorMessageLabel.textAlignment = UITextAlignmentRight;
     }
 }
 
@@ -143,12 +153,14 @@ CreateCollectionViewController.m
             // 2. increase the size of the view so that the area behind the keyboard is covered up.
             rect.origin.y -= kOFFSET_FOR_KEYBOARD_PORTRAIT;
             rect.size.height += kOFFSET_FOR_KEYBOARD_PORTRAIT;
+            self.viewIsMovedUp = YES;
         }
         else
         {
             // revert back to the normal state.
             rect.origin.y += kOFFSET_FOR_KEYBOARD_PORTRAIT;
             rect.size.height -= kOFFSET_FOR_KEYBOARD_PORTRAIT;
+            self.viewIsMovedUp = NO;
         }
     } else {
         if (movedUp)
@@ -157,12 +169,14 @@ CreateCollectionViewController.m
             // 2. increase the size of the view so that the area behind the keyboard is covered up.
             rect.origin.y -= kOFFSET_FOR_KEYBOARD_LANDSCAPE;
             rect.size.height += kOFFSET_FOR_KEYBOARD_LANDSCAPE;
+            self.viewIsMovedUp = YES;
         }
         else
         {
             // revert back to the normal state.
             rect.origin.y += kOFFSET_FOR_KEYBOARD_LANDSCAPE;
             rect.size.height -= kOFFSET_FOR_KEYBOARD_LANDSCAPE;
+            self.viewIsMovedUp = NO;
         }
     }
     self.contentView.frame = rect;
@@ -186,9 +200,9 @@ CreateCollectionViewController.m
 -(void)showHelp
 {
     if (self.collection) {
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTION_DETAIL_EDIT", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTION_DETAIL_EDIT", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES forceLandscape:UIInterfaceOrientationIsLandscape(self.interfaceOrientation)];
     } else {
-        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTION_DETAIL_CREATE", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+        [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTION_DETAIL_CREATE", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES forceLandscape:UIInterfaceOrientationIsLandscape(self.interfaceOrientation)];
     }
     
 }
@@ -245,14 +259,6 @@ CreateCollectionViewController.m
     [self.delegate collectionDetailViewControllerGotCanceled:self];
 }
 
-- (IBAction)titleFieldTapped:(UITapGestureRecognizer *)sender {
-    [self.titleInputBox becomeFirstResponder];
-}
-
-- (IBAction)descriptionFieldTapped:(UITapGestureRecognizer *)sender {
-    [self.descriptionInputBox becomeFirstResponder];
-}
-
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
     if (recognizer.direction == UISwipeGestureRecognizerDirectionRight || recognizer.direction == UISwipeGestureRecognizerDirectionDown) {
@@ -273,15 +279,21 @@ CreateCollectionViewController.m
     if ([text isEqualToString:@"\n"]) {
         
         [textView resignFirstResponder];
-        if ([textView isEqual:self.descriptionInputBox]) {
-            if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-                if ([UIScreen mainScreen].bounds.size.height < 568) {
-                    [self setViewMovedUp:NO];
-                }
-            } else {
-                [self setViewMovedUp:NO];
-            }
+        
+        if (self.viewIsMovedUp) {
+            [self setViewMovedUp:NO];
         }
+        
+        
+//        if ([textView isEqual:self.descriptionInputBox]) {
+//            if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+//                if ([UIScreen mainScreen].bounds.size.height < 568) {
+//                    [self setViewMovedUp:NO];
+//                }
+//            } else {
+//                [self setViewMovedUp:NO];
+//            }
+//        }
         
         return FALSE;
     
@@ -290,12 +302,16 @@ CreateCollectionViewController.m
         NSUInteger newLength = [textView.text length] + [text length] - range.length;
         if ([textView isEqual:self.titleInputBox]) {
             if (newLength > DVT_MAX_COLLECTION_NAME_LENGTH) {
-                [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"TITLE_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_NAME_LENGTH, NSLocalizedString(@"TITLE_TOO_LONG_P2", nil)] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
+                if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+                    [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"TITLE_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_NAME_LENGTH, NSLocalizedString(@"TITLE_TOO_LONG_P2", nil)] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
+                }
                 return NO;
             }
         } else if ([textView isEqual:self.descriptionInputBox]) {
             if (newLength > DVT_MAX_COLLECTION_DESC_LENGTH) {
-                [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"DESC_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_DESC_LENGTH, NSLocalizedString(@"DESC_TOO_LONG_P2", nil)] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
+                if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+                    [FWToastView toastInView:self.view.superview withText:[NSString stringWithFormat:@"%@ %i %@.", NSLocalizedString(@"DESC_TOO_LONG_P1", nil), DVT_MAX_COLLECTION_DESC_LENGTH, NSLocalizedString(@"DESC_TOO_LONG_P2", nil)] icon:FWToastViewIconWarning duration:FWToastViewDurationDefault withCloseButton:YES];
+                }
                 return NO;
             }
         }

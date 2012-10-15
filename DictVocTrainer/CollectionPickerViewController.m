@@ -118,7 +118,7 @@
 
 -(void)showHelp
 {
-    [FWToastView toastInView:self.tableView withText:NSLocalizedString(@"HELP_COLLECTION_PICKER", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES];
+    [FWToastView toastInView:self.view withText:NSLocalizedString(@"HELP_COLLECTION_PICKER", nil) icon:FWToastViewIconInfo duration:FWToastViewDurationUnlimited withCloseButton:YES forceLandscape:UIInterfaceOrientationIsLandscape(self.interfaceOrientation)];
 }
 
 

@@ -90,7 +90,7 @@
     self.training.exercises = [NSMutableSet setWithCapacity:count];
     
     //copy all available exercises and reduce this new array by the amount of count
-    NSMutableSet *availableExercises = [[NSMutableSet alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
+    NSMutableSet *availableExercises = [NSMutableSet set];
     for (Collection *collection in self.training.collections) {
         [availableExercises addObjectsFromArray:collection.exercises.array];
     }
@@ -130,7 +130,7 @@
         } else {
             //All
             if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_ALL", nil)]) {
-                self.training.exercises = [[NSMutableSet alloc] initWithCapacity:self.training.totalExerciseCountAvailable];
+                self.training.exercises = [NSMutableSet set];
                 for (Collection *collection in self.training.collections) {
                     [self.training.exercises addObjectsFromArray:collection.exercises.array];
                 }
@@ -145,21 +145,21 @@
             //Difficult
             } else if ([requestedWordCount isEqualToString:NSLocalizedString(@"TRAINING_SETTINGS_COUNTPICKER_DIFF", nil)]) {
                 //all exercises
-                NSMutableSet *allExercises = [[NSMutableSet alloc] init];
+                NSMutableSet *allExercises = [NSMutableSet set];
                 for (Collection *collection in self.training.collections) {
                     [allExercises addObjectsFromArray:collection.exercises.array];
                 }
                 
                 //calculate statistics
                 NSNumber *sumOfSuccessRates = [NSNumber numberWithFloat:0.0];
-                NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:[self.training totalExerciseCountAvailable]];
+                NSNumber *exerciseCount = [NSNumber numberWithUnsignedInteger:[self.training totalExerciseCountAvailableWithoutDuplicates]];
                 for (Exercise *exercise in allExercises) {
                     sumOfSuccessRates = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue + exercise.successRate.floatValue)];
                 }
                 NSNumber *average = [NSNumber numberWithFloat:(sumOfSuccessRates.floatValue / exerciseCount.floatValue)];
                 
                 //warn for well known words
-                if (average.intValue == 1) {
+                if (average.intValue == 2) {
                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                     NSString *warnForWellKnownOnlyKey = DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY;
                     NSNumber *warnForWellKnownOnlyMode = (NSNumber *)[defaults objectForKey:warnForWellKnownOnlyKey];
@@ -216,6 +216,8 @@
 
         if (showWarning) {
             [self showAlert];
+        } else if (self.training.exercises.count == 0) {
+            [FWToastView toastInView:self.view withText:NSLocalizedString(@"TRAINING_NO_WORDS_WARNING", nil) icon:FWToastViewIconWarning duration:FWToastViewDurationUnlimited withCloseButton:YES];
         } else {
             [self performSegueWithIdentifier:@"Show Training" sender:self];
         }

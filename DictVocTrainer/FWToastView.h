@@ -57,6 +57,7 @@ typedef enum {
 +(void)toastInView:(UIView *)parentView withText:(NSString *)text icon:(FWToastViewIcon)icon duration:(float)seconds withCloseButton:(BOOL)closeButton pointingToView:(UIView *)pointToView fromDirection:(FWToastViewPointingFromDirection)direction forceLandscape:(BOOL)forceLandscape;
 +(void)dismissAllToasts;
 +(BOOL)isAToastActive;
++(void)recalculateActiveToastAndShowAgain:(BOOL)inModalViewController interfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
 +(void)parallelMultiToast:(NSArray *)someToastViews; //needs an array of FWToastViews, here is an example:
 

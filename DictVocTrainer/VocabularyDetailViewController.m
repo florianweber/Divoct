@@ -120,9 +120,7 @@ VocabularyDetailViewController.m
 -(void)setupVocabularyDetailsView
 {
     //remove all subviews in case this viewController instance has been used before
-    for (UIView *subview in self.vocabularyDetailView.subviews) {
-        [subview removeFromSuperview];
-    }
+    [self.vocabularyDetailView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.translationLabels removeAllObjects];
     
     [self addLabels];
@@ -284,76 +282,120 @@ VocabularyDetailViewController.m
 {
     //hide editing view
     if (self.editTranslationsButton.selected) {
-        
-        CGSize maxFrameSizeWoEditButton     = CGSizeMake(self.vocabularyDetailView.frame.size.width - 10, 20000);
-        CGSize maxFrameSizeWithEditButton   = CGSizeMake(self.vocabularyDetailView.frame.size.width - 10 - self.editTranslationsButton.frame.size.width - 10, 20000);
-        
-        for (UIButton *button in self.translationButtons) {
-            NSUInteger index = [self.translationButtons indexOfObject:button];
-            UILabel *translationLabel = [self.translationLabels objectAtIndex:index];
-            translationLabel.lineBreakMode = UILineBreakModeWordWrap;
-            CGRect translationFrame = translationLabel.frame;
-            translationFrame.size = [translationLabel.text sizeWithFont:translationLabel.font constrainedToSize:maxFrameSizeWoEditButton lineBreakMode:UILineBreakModeWordWrap];
-            if (CGRectIntersectsRect(translationFrame, self.editTranslationsButton.frame)) {
-                translationFrame.size = [translationLabel.text sizeWithFont:translationLabel.font constrainedToSize:maxFrameSizeWithEditButton lineBreakMode:translationLabel.lineBreakMode];
-            }
-            
-            translationLabel.frame = translationFrame;
-            [button removeFromSuperview];
-        }
-        [self.translationButtons removeAllObjects];
-        
+        [self hideEditing];
+    
     //show editing view
     } else {
-    
-        if (![self.exercise.trainingTranslations count]) {
-            for (SQLiteWord *translationWord in self.word.translations) {
-                Translation *translation = [[DictVocTrainer instance] translationWithUniqueId:translationWord.uniqueId]; 
-                [translation addExercisesObject:self.exercise];
-            }
-            [[DictVocTrainer instance] saveDictVocTrainerDBUsingBlock:^(NSError *error){}];
-        }        
-        
-        int checkmarkButtonWidth = 20;
-        int buttonStartX = 0;
-        for (UILabel *label in self.translationLabels) {
-            buttonStartX = MAX(buttonStartX, (label.frame.origin.x + label.frame.size.width));
-        }
-        buttonStartX += 20;
-        if (buttonStartX > self.vocabularyDetailView.frame.size.width - 10 - checkmarkButtonWidth) {
-            buttonStartX = self.vocabularyDetailView.frame.size.width - 10 - checkmarkButtonWidth;
-        }
-        
-        for (UILabel *label in self.translationLabels) {
-            //prepare checkmark
-            UIButton *checkmarkButton = [[UIButton alloc] init];
-            [checkmarkButton addTarget:self action:@selector(toggleTrainerTranslation:) forControlEvents:UIControlEventTouchUpInside];
-            [checkmarkButton setImage:[UIImage imageNamed:@"ios_checkmark_checked.png"] forState:UIControlStateSelected];
-            [checkmarkButton setImage:[UIImage imageNamed:@"ios_checkmark_empty.png"] forState:UIControlStateNormal];            
-            CGRect checkmarkButtonFrame = CGRectMake(buttonStartX, label.frame.origin.y, checkmarkButtonWidth, checkmarkButtonWidth);
-            checkmarkButton.frame = checkmarkButtonFrame;
+        [self showEditing];
+    }
+}
 
-            //select button (or not)
-            Translation *translation = [[DictVocTrainer instance] translationWithUniqueId:((SQLiteWord *)[self.word.translations objectAtIndex:[self.translationLabels indexOfObject:label]]).uniqueId];
-            if ([self.exercise.trainingTranslations containsObject:translation]) {
-                checkmarkButton.selected = YES;
-            }
-            
-            [self.translationButtons addObject:checkmarkButton];
-            
-            //prepare label frame changes
-            label.lineBreakMode = UILineBreakModeTailTruncation;
-            int labelAbsoluteMaxX = label.frame.origin.x + label.frame.size.width + 10;
-            CGRect newLabelFrame = label.frame;
-            if (labelAbsoluteMaxX > checkmarkButton.frame.origin.x) {
-                newLabelFrame.size = CGSizeMake(labelAbsoluteMaxX - (labelAbsoluteMaxX - checkmarkButton.frame.origin.x) - label.frame.origin.x, label.frame.size.height);
-            }
-            
-            //apply to view
-            label.frame = newLabelFrame;
-            [self.vocabularyDetailView addSubview:checkmarkButton];
-            
+-(void)hideEditing
+{
+    CGSize maxFrameSizeWoEditButton     = CGSizeMake(self.vocabularyDetailView.frame.size.width - 10, 20000);
+    CGSize maxFrameSizeWithEditButton   = CGSizeMake(self.vocabularyDetailView.frame.size.width - 10 - self.editTranslationsButton.frame.size.width - 10, 20000);
+    
+    for (UIButton *button in self.translationButtons) {
+        NSUInteger index = [self.translationButtons indexOfObject:button];
+        UILabel *translationLabel = [self.translationLabels objectAtIndex:index];
+        translationLabel.lineBreakMode = UILineBreakModeWordWrap;
+        CGRect translationFrame = translationLabel.frame;
+        translationFrame.size = [translationLabel.text sizeWithFont:translationLabel.font constrainedToSize:maxFrameSizeWoEditButton lineBreakMode:UILineBreakModeWordWrap];
+        if (CGRectIntersectsRect(translationFrame, self.editTranslationsButton.frame)) {
+            translationFrame.size = [translationLabel.text sizeWithFont:translationLabel.font constrainedToSize:maxFrameSizeWithEditButton lineBreakMode:translationLabel.lineBreakMode];
         }
+        
+        translationLabel.frame = translationFrame;
+        [button removeFromSuperview];
+    }
+    [self.translationButtons removeAllObjects];
+}
+
+-(void)showEditing
+{
+    if (![self.exercise.trainingTranslations count]) {
+        for (SQLiteWord *translationWord in self.word.translations) {
+            Translation *translation = [[DictVocTrainer instance] translationWithUniqueId:translationWord.uniqueId];
+            [translation addExercisesObject:self.exercise];
+        }
+        [[DictVocTrainer instance] saveDictVocTrainerDBUsingBlock:^(NSError *error){}];
+    }
+    
+    int checkmarkButtonWidth = 20;
+    int buttonStartX = 0;
+    for (UILabel *label in self.translationLabels) {
+        buttonStartX = MAX(buttonStartX, (label.frame.origin.x + label.frame.size.width));
+    }
+    buttonStartX += 20;
+    if (buttonStartX > self.vocabularyDetailView.frame.size.width - 10 - checkmarkButtonWidth) {
+        buttonStartX = self.vocabularyDetailView.frame.size.width - 10 - checkmarkButtonWidth;
+    }
+    
+    for (UILabel *label in self.translationLabels) {
+        //prepare checkmark
+        UIButton *checkmarkButton = [[UIButton alloc] init];
+        [checkmarkButton addTarget:self action:@selector(toggleTrainerTranslation:) forControlEvents:UIControlEventTouchUpInside];
+        [checkmarkButton setImage:[UIImage imageNamed:@"ios_checkmark_checked.png"] forState:UIControlStateSelected];
+        [checkmarkButton setImage:[UIImage imageNamed:@"ios_checkmark_empty.png"] forState:UIControlStateNormal];
+        CGRect checkmarkButtonFrame = CGRectMake(buttonStartX, label.frame.origin.y, checkmarkButtonWidth, checkmarkButtonWidth);
+        checkmarkButton.frame = checkmarkButtonFrame;
+        
+        //select button (or not)
+        Translation *translation = [[DictVocTrainer instance] translationWithUniqueId:((SQLiteWord *)[self.word.translations objectAtIndex:[self.translationLabels indexOfObject:label]]).uniqueId];
+        if ([self.exercise.trainingTranslations containsObject:translation]) {
+            checkmarkButton.selected = YES;
+        }
+        
+        [self.translationButtons addObject:checkmarkButton];
+        
+        //prepare label frame changes
+        label.lineBreakMode = UILineBreakModeTailTruncation;
+        int labelAbsoluteMaxX = label.frame.origin.x + label.frame.size.width + 10;
+        CGRect newLabelFrame = label.frame;
+        if (labelAbsoluteMaxX > checkmarkButton.frame.origin.x) {
+            newLabelFrame.size = CGSizeMake(labelAbsoluteMaxX - (labelAbsoluteMaxX - checkmarkButton.frame.origin.x) - label.frame.origin.x, label.frame.size.height);
+        }
+        
+        //apply to view
+        label.frame = newLabelFrame;
+        [self.vocabularyDetailView addSubview:checkmarkButton];
+        
+    }
+}
+
+-(void)layoutEditButtons
+{
+    int checkmarkButtonWidth = 20;
+    int buttonStartX = 0;
+    for (UILabel *label in self.translationLabels) {
+        buttonStartX = MAX(buttonStartX, (label.frame.origin.x + label.frame.size.width));
+    }
+    buttonStartX += 20;
+    if (buttonStartX > self.vocabularyDetailView.frame.size.width - 10 - checkmarkButtonWidth) {
+        buttonStartX = self.vocabularyDetailView.frame.size.width - 10 - checkmarkButtonWidth;
+    }
+    
+    
+    for (int i=0; i<self.translationButtons.count; i++) {
+        
+        UILabel *label = self.translationLabels[i];
+        UIButton *checkmarkButton = self.translationButtons[i];
+        
+        //change checkmark button frame
+        CGRect checkmarkButtonFrame = CGRectMake(buttonStartX, label.frame.origin.y, checkmarkButtonWidth, checkmarkButtonWidth);
+        checkmarkButton.frame = checkmarkButtonFrame;
+        if(!checkmarkButton.superview) {
+            [self.vocabularyDetailView addSubview:checkmarkButton];
+        }
+
+        //prepare label frame changes
+        label.lineBreakMode = UILineBreakModeTailTruncation;
+        int labelAbsoluteMaxX = label.frame.origin.x + label.frame.size.width + 10;
+        CGRect newLabelFrame = label.frame;
+        if (labelAbsoluteMaxX > checkmarkButton.frame.origin.x) {
+            newLabelFrame.size = CGSizeMake(labelAbsoluteMaxX - (labelAbsoluteMaxX - checkmarkButton.frame.origin.x) - label.frame.origin.x, label.frame.size.height);
+        }
+        label.frame = newLabelFrame; 
     }
 }
 
@@ -579,13 +621,17 @@ VocabularyDetailViewController.m
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     [self setupVocabularyDetailsView];
+    if (self.editTranslationsButton.selected) {
+        [self layoutEditButtons];
+    }
+    
 }
 
 @end

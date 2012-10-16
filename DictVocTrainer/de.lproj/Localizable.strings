@@ -52,6 +52,7 @@
 "TRAINING_ALL_WORDS_WELLKNOWN_WARN_MESSAGE" = "Es gibt keine schwierigen Vokabeln mehr. Möchtest du stattdessen alle trainineren?";
 "TRAINING_ALL_WORDS_WELLKNOWN_WARN_NO"      = "Nein";
 "TRAINING_ALL_WORDS_WELLKNOWN_WARN_YES"     = "Ja";
+"TRAINING_NO_WORDS_WARNING"                 = "In Deiner Auswahl befinden sich keine Vokabeln. Es tut mir Leid, aber unter diesen Umständen kann das Training nicht gestartet werden.";
 "TRAINING_SETTINGS_COLLECTIONPICKER_EMPTY"  = "Bitte wählen...";
 "TRAINING_SETTINGS_COUNTPICKER_ALL"         = "Alle";
 "TRAINING_SETTINGS_COUNTPICKER_RAND"        = "Zufällige Auswahl";

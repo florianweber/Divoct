@@ -7,26 +7,39 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "DictVocTrainer/FWToastView.m"
-         timestampString = "371988272.097445"
+         filePath = "DictVocTrainer/GenericHelpViewController.m"
+         timestampString = "372078943.358755"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "270"
-         endingLineNumber = "270"
-         landmarkName = "-initWithText:parentView:icon:duration:withCloseButton:pointingToView:fromDirection:triangleViewWidth:triangleViewHeight:forceLandscape:"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "-willAnimateRotationToInterfaceOrientation:duration:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "DictVocTrainer/TrainingSettingsViewController.m"
-         timestampString = "371928114.507215"
+         filePath = "DictVocTrainer/VocabularyDetailViewController.m"
+         timestampString = "372084203.226574"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
-         landmarkName = "-startTraining"
+         startingLineNumber = "379"
+         endingLineNumber = "379"
+         landmarkName = "-layoutEditButtons"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "DictVocTrainer/VocabularyDetailViewController.m"
+         timestampString = "372084203.226574"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "631"
+         endingLineNumber = "631"
+         landmarkName = "-willAnimateRotationToInterfaceOrientation:duration:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

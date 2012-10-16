@@ -26,4 +26,6 @@
 
 @property (nonatomic) FWToastViewPointingFromDirection direction;
 
+- (id)initWithFrame:(CGRect)frame direction:(FWToastViewPointingFromDirection)direction;
+
 @end

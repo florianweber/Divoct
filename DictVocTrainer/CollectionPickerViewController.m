@@ -195,6 +195,21 @@
     [self initCountBarButtonItem];
 }
 
+
+- (void)viewDidUnload {
+    [self setTableView:nil];
+    [self setToolbarBottom:nil];
+    [self setNoneBarButtonItem:nil];
+    [self setAllBarButtonItem:nil];
+    [self setCounterBarButtonItem:nil];
+    [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -265,12 +280,4 @@
     [self switchCheckmarkInCellAtIndexPath:indexPath];
 }
 
-- (void)viewDidUnload {
-    [self setTableView:nil];
-    [self setToolbarBottom:nil];
-    [self setNoneBarButtonItem:nil];
-    [self setAllBarButtonItem:nil];
-    [self setCounterBarButtonItem:nil];
-    [super viewDidUnload];
-}
 @end

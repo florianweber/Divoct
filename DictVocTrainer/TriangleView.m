@@ -33,15 +33,22 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame direction:(FWToastViewPointingFromDirection)direction
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.direction = direction;
+    }
+    
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     //CGContextSetLineWidth(ctx, 1.0);
     //[[UIColor blueColor] setStroke];
-    
-    
-    
     
     CGContextBeginPath(ctx);
     

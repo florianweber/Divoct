@@ -140,7 +140,7 @@ VocabularyDetailViewController.m
     descStart.x = 10;
     descStart.y = 10;
     
-    CGSize maxFrameSizeWoEditButton     = CGSizeMake(self.vocabularyDetailView.frame.size.width - descStart.x, 20000);
+    CGSize maxFrameSizeWoEditButton     = CGSizeMake(self.vocabularyDetailView.frame.size.width - (descStart.x * 2), 20000);
     CGSize maxFrameSizeWithEditButton   = maxFrameSizeWoEditButton;
     
     //Title (searched word)
@@ -292,7 +292,7 @@ VocabularyDetailViewController.m
 
 -(void)hideEditing
 {
-    CGSize maxFrameSizeWoEditButton     = CGSizeMake(self.vocabularyDetailView.frame.size.width - 10, 20000);
+    CGSize maxFrameSizeWoEditButton     = CGSizeMake(self.vocabularyDetailView.frame.size.width - 20, 20000);
     CGSize maxFrameSizeWithEditButton   = CGSizeMake(self.vocabularyDetailView.frame.size.width - 10 - self.editTranslationsButton.frame.size.width - 10, 20000);
     
     for (UIButton *button in self.translationButtons) {

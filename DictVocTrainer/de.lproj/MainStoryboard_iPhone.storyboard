@@ -972,14 +972,46 @@
                                             <segue destination="zja-JM-D0V" kind="push" id="0Py-iN-16E"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="kUh-0n-mCj" style="IBUITableViewCellStyleDefault" id="eRH-LT-bGl">
-                                        <rect key="frame" x="0.0" y="183" width="320" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eRH-LT-bGl">
+                                        <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Alle Statistiken zurücksetzen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kUh-0n-mCj">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Autokorrektur" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xEu-yA-od5">
+                                                    <rect key="frame" x="11" y="4" width="180" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="vHE-jj-KRn">
+                                                    <rect key="frame" x="216" y="8" width="79" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="trainingAutocorrectionSwitchValueChanged:" destination="W2g-vd-Md9" eventType="valueChanged" id="9kK-Tj-Rxt"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="21" contentMode="left" text="für Texteingabe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="l0P-aF-pY3">
+                                                    <rect key="frame" x="11" y="20" width="180" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                                    <color key="textColor" red="0.52156865600000002" green="0.52156865600000002" blue="0.52156865600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="8Mz-iv-PoQ" style="IBUITableViewCellStyleDefault" id="Dxe-gN-amC">
+                                        <rect key="frame" x="0.0" y="227" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Alle Statistiken zurücksetzen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Mz-iv-PoQ">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -995,7 +1027,7 @@
                             <tableViewSection headerTitle="Hilfe und Info" footerTitle="Erstellt von Florian Weber" id="MvG-6b-Tx7">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1Op-bG-APk" style="IBUITableViewCellStyleDefault" id="vwo-kL-XhJ">
-                                        <rect key="frame" x="0.0" y="274" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="318" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -1016,7 +1048,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="XHO-Uw-so9" style="IBUITableViewCellStyleDefault" id="cVO-zh-wQT">
-                                        <rect key="frame" x="0.0" y="319" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="363" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -1037,7 +1069,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="wu3-wP-zKg" style="IBUITableViewCellStyleDefault" id="N2w-0G-aHd">
-                                        <rect key="frame" x="0.0" y="363" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="407" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -1064,6 +1096,7 @@
                     <navigationItem key="navigationItem" title="Einstellungen" id="gE9-DV-hg4"/>
                     <connections>
                         <outlet property="caseSwitch" destination="NWg-pZ-rTo" id="XHv-CA-Rn3"/>
+                        <outlet property="trainingAutocorrectionSwitch" destination="vHE-jj-KRn" id="WkA-Sh-JMN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jy2-SX-86Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1881,7 +1914,10 @@ divocthelp@googlemail.com</string>
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="trainingAutocorrectionSwitchValueChanged:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="trainingAutocorrectionSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
@@ -1948,12 +1984,7 @@ divocthelp@googlemail.com</string>
         <class className="VocabularyDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VocabularyDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="editTrainingTranslationsButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="labelPressed:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="organizeButtonPressed:"/>
-                <relationship kind="action" name="searchGoogleButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="searchWikiButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="toggleTrainerTranslation:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="searchGoogleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchWikipediaButton" candidateClass="UIButton"/>
@@ -1969,6 +2000,6 @@ divocthelp@googlemail.com</string>
     <inferredMetricsTieBreakers>
         <segue reference="VKl-TW-gIi"/>
         <segue reference="R6I-c5-KDr"/>
-        <segue reference="LC7-RM-zzS"/>
+        <segue reference="wdW-WX-zpJ"/>
     </inferredMetricsTieBreakers>
 </document>

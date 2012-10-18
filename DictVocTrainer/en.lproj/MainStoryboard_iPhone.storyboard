@@ -662,14 +662,46 @@
                                             <segue destination="a60-Jn-EMO" kind="push" id="3bG-lW-iSx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="0fr-do-U07" style="IBUITableViewCellStyleDefault" id="Yei-H0-aRf">
-                                        <rect key="frame" x="0.0" y="183" width="320" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Yei-H0-aRf">
+                                        <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Reset all statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fr-do-U07">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Autocorrection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xs9-IV-9mr">
+                                                    <rect key="frame" x="11" y="4" width="180" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="al7-qQ-JPb">
+                                                    <rect key="frame" x="216" y="8" width="79" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="trainingAutocorrectionSwitchValueChanged:" destination="Nhn-tJ-7mM" eventType="valueChanged" id="FqI-gt-yry"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="21" contentMode="left" text="for text input" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="C4Y-7e-SJB">
+                                                    <rect key="frame" x="11" y="20" width="180" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                                    <color key="textColor" red="0.52156865600000002" green="0.52156865600000002" blue="0.52156865600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="0Uy-T2-bTV" style="IBUITableViewCellStyleDefault" id="KCp-ym-qJc">
+                                        <rect key="frame" x="0.0" y="227" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Reset all statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Uy-T2-bTV">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -685,7 +717,7 @@
                             <tableViewSection headerTitle="Help" footerTitle="Created by Florian Weber" id="HKC-c9-dha">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="dPH-bI-n0f" style="IBUITableViewCellStyleDefault" id="ESh-vC-XdZ">
-                                        <rect key="frame" x="0.0" y="274" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="318" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -706,7 +738,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="5xY-Mn-SR0" style="IBUITableViewCellStyleDefault" id="H84-Ei-DE9">
-                                        <rect key="frame" x="0.0" y="319" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="363" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -727,7 +759,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="RaI-t2-9BH" style="IBUITableViewCellStyleDefault" id="Fa7-if-8lT">
-                                        <rect key="frame" x="0.0" y="363" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="407" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -754,6 +786,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="YEl-sK-oIc"/>
                     <connections>
                         <outlet property="caseSwitch" destination="SV3-fq-l5e" id="HWL-1f-d0g"/>
+                        <outlet property="trainingAutocorrectionSwitch" destination="al7-qQ-JPb" id="xkp-bR-Ead"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4J-I0-wHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1779,7 +1812,6 @@ divocthelp@googlemail.com</string>
         <class className="CollectionDetailViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CollectionDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="finishButtonPressed:"/>
                 <relationship kind="outlet" name="bottomBarTitleButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
@@ -1815,8 +1847,6 @@ divocthelp@googlemail.com</string>
         <class className="DifficultWordsSettingsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DifficultWordsSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="stepperValueChanged:" candidateClass="UIStepper"/>
-                <relationship kind="action" name="wellKnownWarningSwitchChanged:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="numberLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
@@ -1826,12 +1856,6 @@ divocthelp@googlemail.com</string>
         <class className="ExercisesTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExercisesTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="assignSelectedRows:"/>
-                <relationship kind="action" name="deleteSelectedRows:"/>
-                <relationship kind="action" name="deselectAllRows:"/>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="selectAllRows:"/>
-                <relationship kind="action" name="startTraining:"/>
                 <relationship kind="outlet" name="tableBottomLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1871,8 +1895,6 @@ divocthelp@googlemail.com</string>
         <class className="PickerViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:"/>
-                <relationship kind="action" name="pickButtonPressed:"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="selectionDescriptionLabel" candidateClass="UILabel"/>
@@ -1887,16 +1909,12 @@ divocthelp@googlemail.com</string>
         <class className="SettingsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="searchCaseSwitchSwitched:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="caseSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="trainingAutocorrectionSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="TrainerCollectionsTableViewController" superclassName="GenericHelpTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainerCollectionsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="newButtonPressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="TrainingResultsDiagramView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsDiagramView.h"/>
@@ -1904,8 +1922,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingResultsViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingResultsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="displayResults:"/>
-                <relationship kind="action" name="retryButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="correctCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="diagramView" candidateClass="TrainingResultsDiagramView"/>
                 <relationship kind="outlet" name="greenBarLabel" candidateClass="UILabel"/>
@@ -1940,9 +1956,6 @@ divocthelp@googlemail.com</string>
         <class className="TrainingViewController" superclassName="GenericHelpViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrainingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="nextExercise:"/>
-                <relationship kind="action" name="optionButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stopButtonPressed:"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="completionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="optionFourButton" candidateClass="UIButton"/>
@@ -1978,8 +1991,8 @@ divocthelp@googlemail.com</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="VKl-TW-gIi"/>
         <segue reference="wbh-Jw-qgU"/>
-        <segue reference="zni-li-EDg"/>
         <segue reference="M3C-aw-Ko8"/>
     </inferredMetricsTieBreakers>
 </document>

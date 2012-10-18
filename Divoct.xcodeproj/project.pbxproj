@@ -15,6 +15,7 @@
 		1705664A15528083007A1D50 /* en-tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705664415528083007A1D50 /* en-tap.png */; };
 		1705664D15528149007A1D50 /* swipe_en.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705664C15528149007A1D50 /* swipe_en.png */; };
 		1717D15015D3F0F400E3C1DF /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1717D14F15D3F0F400E3C1DF /* PickerViewController.m */; };
+		171B5C2C163000EB000748C9 /* DictVocSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 171B5C2B163000EB000748C9 /* DictVocSettings.m */; };
 		17322BB0162AD307004EE05B /* blackDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 17322BAF162AD307004EE05B /* blackDot.png */; };
 		173579C715BD5C8D00C27D7D /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 173579C615BD5C8D00C27D7D /* Icon-144.png */; };
 		17522D45160C772400E9FE46 /* SmoothBackgroundBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 17522D3F160C772400E9FE46 /* SmoothBackgroundBottom.png */; };
@@ -172,6 +173,8 @@
 		1705664C15528149007A1D50 /* swipe_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swipe_en.png; sourceTree = "<group>"; };
 		1717D14E15D3F0F400E3C1DF /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		1717D14F15D3F0F400E3C1DF /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
+		171B5C2A163000EB000748C9 /* DictVocSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictVocSettings.h; sourceTree = "<group>"; };
+		171B5C2B163000EB000748C9 /* DictVocSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictVocSettings.m; sourceTree = "<group>"; };
 		17322BAF162AD307004EE05B /* blackDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackDot.png; sourceTree = "<group>"; };
 		173579C615BD5C8D00C27D7D /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
 		17522D3F160C772400E9FE46 /* SmoothBackgroundBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmoothBackgroundBottom.png; sourceTree = "<group>"; };
@@ -769,6 +772,8 @@
 				177E2B4D150E814F00B8AEE3 /* DictVocTrainer.m */,
 				178D8E8015CBDFCB00A87394 /* Training.h */,
 				178D8E8115CBDFCB00A87394 /* Training.m */,
+				171B5C2A163000EB000748C9 /* DictVocSettings.h */,
+				171B5C2B163000EB000748C9 /* DictVocSettings.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -994,6 +999,7 @@
 				1717D15015D3F0F400E3C1DF /* PickerViewController.m in Sources */,
 				17EC2481162057A8003CB122 /* CollectionPickerViewController.m in Sources */,
 				177329291624A833003016BD /* DifficultWordsSettingsViewController.m in Sources */,
+				171B5C2C163000EB000748C9 /* DictVocSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

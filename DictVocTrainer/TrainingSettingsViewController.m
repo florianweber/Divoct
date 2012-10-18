@@ -19,6 +19,7 @@
 #import "PickerViewController.h"
 #import "Logging.h"
 #import "CollectionPickerViewController.h"
+#import "DictVocSettings.h"
 #include <stdlib.h>
 
 @interface TrainingSettingsViewController () <PickerViewControllerDelegate, CollectionPickerViewControllerDelegate>
@@ -160,26 +161,7 @@
                 
                 //warn for well known words
                 if (average.intValue == 2) {
-                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    NSString *warnForWellKnownOnlyKey = DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY;
-                    NSNumber *warnForWellKnownOnlyMode = (NSNumber *)[defaults objectForKey:warnForWellKnownOnlyKey];
-                    if (warnForWellKnownOnlyMode) {
-                        showWarning = [warnForWellKnownOnlyMode boolValue];
-                    } else {
-                        switch (DVT_DEFAULT_WARN_WELLKNOWN_ONLY) {
-                            case 0:
-                                showWarning = NO;
-                                break;
-                                
-                            case 1:
-                                showWarning = YES;
-                                break;
-                                
-                            default:
-                                showWarning = NO;
-                                break;
-                        }
-                    }
+                    showWarning = [DictVocSettings instance].trainingWarnWellKnownOnly;
                 }
                 
                 self.training.exercises = [NSMutableSet set];
@@ -244,18 +226,12 @@
 
 -(void)loadPreviousTrainingMode
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *trainingModeKey = DVT_NSUSERDEFAULTS_TRAININGMODE;
-    NSNumber *userDefaultsTrainingMode = (NSNumber *)[defaults objectForKey:trainingModeKey];
-    [self.modeSelectionControl setSelectedSegmentIndex:userDefaultsTrainingMode.integerValue];
+    [self.modeSelectionControl setSelectedSegmentIndex:[DictVocSettings instance].trainingAnswerInputMode];
 }
 
 -(void)loadPreviousWrongAnswerHandlingMode
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *wrongAnswerHandlingModeKey = DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE;
-    NSNumber *userDefaultsWrongAnswerHandlingMode = (NSNumber *)[defaults objectForKey:wrongAnswerHandlingModeKey];
-    [self.wrongAnswerHandlingControl setSelectedSegmentIndex:userDefaultsWrongAnswerHandlingMode.integerValue];
+    [self.wrongAnswerHandlingControl setSelectedSegmentIndex:[DictVocSettings instance].trainingWrongAnswerHandling];
 }
 
 -(NSArray *)pickerItemsForWordCount
@@ -295,21 +271,19 @@
 #pragma mark - Target / Action
 
 - (IBAction)trainingModeChanged:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *trainingModeKey = DVT_NSUSERDEFAULTS_TRAININGMODE;
-    
-    [defaults setObject:[NSNumber numberWithInt:self.modeSelectionControl.selectedSegmentIndex] forKey:trainingModeKey];
-    
-    [defaults synchronize];
+    if (self.modeSelectionControl.selectedSegmentIndex == 0) {
+        [DictVocSettings instance].trainingAnswerInputMode = TrainingAnswerInputMode_MultipleChoice;
+    } else if (self.modeSelectionControl.selectedSegmentIndex == 1) {
+        [DictVocSettings instance].trainingAnswerInputMode = TrainingAnswerInputMode_TextInput;
+    }
 }
 
 - (IBAction)wrongAnswerHandlingModeChanged:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *trainingModeKey = DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE;
-    
-    [defaults setObject:[NSNumber numberWithInt:self.wrongAnswerHandlingControl.selectedSegmentIndex] forKey:trainingModeKey];
-    
-    [defaults synchronize];
+    if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 0) {
+        [DictVocSettings instance].trainingWrongAnswerHandling = TrainingWrongAnswerHandlingMode_Repeat;
+    } else if (self.wrongAnswerHandlingControl.selectedSegmentIndex == 1) {
+        [DictVocSettings instance].trainingWrongAnswerHandling = TrainingWrongAnswerHandlingMode_Dismiss;
+    }
 }
 
 - (IBAction)chooseWordCountButtonPressed:(id)sender {

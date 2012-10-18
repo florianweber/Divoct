@@ -9,6 +9,7 @@
 #import "DifficultWordsSettingsViewController.h"
 #import "GlobalDefinitions.h"
 #import "FWToastView.h"
+#import "DictVocSettings.h"
 
 @interface DifficultWordsSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
@@ -24,41 +25,12 @@
 - (void)loadDefaults
 {
     //Success rate amount
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *perfectSuccessRateKey = DVT_PERFECT_SUCCESSRATE_SETTING;
-    NSNumber *perfectSuccessRateSetting = (NSNumber *)[defaults objectForKey:perfectSuccessRateKey];
-    
-    int currentSetting;
-    if (perfectSuccessRateSetting) {
-        currentSetting = perfectSuccessRateSetting.intValue;
-    } else {
-        currentSetting = DVT_DEFAULT_PERFECT_SUCCESSRATE;
-    }
-    
-    self.numberLabel.text = [NSString stringWithFormat:@"%d", currentSetting];
-    self.stepper.value = currentSetting;
+    int perfectSuccessRate = [DictVocSettings instance].trainingPerfectSuccessRate;
+    self.numberLabel.text = [NSString stringWithFormat:@"%d", perfectSuccessRate];
+    self.stepper.value = perfectSuccessRate;
     
     //Warn for well-known words only
-    NSString *warnForWellKnownOnlyKey = DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY;
-    NSNumber *warnForWellKnownOnlyMode = (NSNumber *)[defaults objectForKey:warnForWellKnownOnlyKey];
-    if (warnForWellKnownOnlyMode) {
-        self.wellKnownWarningSwitch.on = [warnForWellKnownOnlyMode boolValue];
-    } else {
-        switch (DVT_DEFAULT_WARN_WELLKNOWN_ONLY) {
-            case 0:
-                self.wellKnownWarningSwitch.on = NO;
-                break;
-                
-            case 1:
-                self.wellKnownWarningSwitch.on = YES;
-                break;
-                
-            default:
-                self.wellKnownWarningSwitch.on = NO;
-                break;
-        }
-        ;
-    }
+    self.wellKnownWarningSwitch.on = [DictVocSettings instance].trainingWarnWellKnownOnly;
 }
 
 - (IBAction)stepperValueChanged:(UIStepper *)sender {
@@ -66,25 +38,25 @@
     int stepperValue = (int)[sender value];
     self.numberLabel.text = [NSString stringWithFormat:@"%d", stepperValue];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *perfectSuccessRateKey = DVT_PERFECT_SUCCESSRATE_SETTING;
-    [defaults setObject:[NSNumber numberWithInt:stepperValue] forKey:perfectSuccessRateKey];
-    [defaults synchronize];
+    [DictVocSettings instance].trainingPerfectSuccessRate = stepperValue;
 }
 
 - (IBAction)wellKnownWarningSwitchChanged:(UISwitch *)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *warnForWellKnownOnlyKey = DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY;
-    
-    if (sender.on) {
-        //set to case insensitive
-        [defaults setObject:[NSNumber numberWithInt:1] forKey:warnForWellKnownOnlyKey];
-    } else {
-        //set to case sensitive
-        [defaults setObject:[NSNumber numberWithInt:0] forKey:warnForWellKnownOnlyKey];
+    [DictVocSettings instance].trainingWarnWellKnownOnly = sender.on;
+}
+
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        [[self navigationController] popViewControllerAnimated:YES];
     }
-    
-    [defaults synchronize];
+}
+
+-(void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *rightSwiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                      action:@selector(handleSwipeFrom:)];
+    rightSwiper.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:rightSwiper];
 }
 
 -(void)showHelp
@@ -95,7 +67,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self addSwipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -25,11 +25,12 @@
 #define DVT_DB_FILE_NAME @"dvtDatabase.sqlite"
 #define DVT_TRAINER_DB_FILE_NAME @"trainerDatabase.coredata"
 #define DVT_TRAINER_DB_IMPORT_FILE_NAME @"persistentStore"
-#define DVT_NSUSERDEFAULTS_SEARCHMODE @"dvt_searchMode"
-#define DVT_NSUSERDEFAULTS_TRAININGMODE @"dvt_trainingMode"
-#define DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE @"dvt_wrongAnswerHandlingMode"
-#define DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY @"dvt_warnWellKnownOnly"
-#define DVT_PERFECT_SUCCESSRATE_SETTING @"dvt_perfectSuccessrateSetting"
+#define DVT_NSUSERDEFAULTS_SEARCHMODE_KEY @"dvt_searchMode"
+#define DVT_NSUSERDEFAULTS_TRAININGMODE_KEY @"dvt_trainingMode"
+#define DVT_NSUSERDEFAULTS_WRONGANSWERHANDLINGMODE_KEY @"dvt_wrongAnswerHandlingMode"
+#define DVT_NSUSERDEFAULTS_WARN_WELLKNOWN_ONLY_KEY @"dvt_warnWellKnownOnly"
+#define DVT_NSUSERDEFAULTS_PERFECT_SUCCESSRATE_SETTING_KEY @"dvt_perfectSuccessrateSetting"
+#define DVT_NSUSERDEFAULTS_TRAINING_TEXTINPUT_AUTOCORRECTION_KEY @"dvt_trainingTextInputAutoCorrection"
 #define DVT_MAX_COLLECTION_NAME_LENGTH 30
 #define DVT_MAX_COLLECTION_DESC_LENGTH 90
 #define DVT_WAITSECONDS_FOR_USER_INPUT 0.3
@@ -38,8 +39,11 @@
 #define DVT_BACKGROUND_FETCH_PRIORITY 0.3
 #define DVT_STARTSEARCH_WITH_LENGTH 4
 #define DVT_DEFAULTSEARCHMODE 1 //you also need to change the default button title in storyboard if you change this value
+#define DVT_DEFAULT_TRAINING_ANSWER_INPUT_MODE 0
+#define DVT_DEFAULT_TRAINING_WRONG_ANSWER_HANDLING_MODE 0
 #define DVT_DEFAULT_PERFECT_SUCCESSRATE 2
-#define DVT_DEFAULT_WARN_WELLKNOWN_ONLY 1
+#define DVT_DEFAULT_WARN_WELLKNOWN_ONLY YES
+#define DVT_DEFAULT_TEXTINPUT_AUTOCORRECTION NO
 #define DVT_MAX_RESULTS_TO_SORT 5000
 #define DVT_MIN_WORDLENGTH_CORRECT_PERCENTAGE 0.7
 #define DVT_SETTINGS_NOTIFICATION_SEARCHCASESWITCHED @"SEARCH_CASE_SWITCHED"
@@ -52,8 +56,6 @@
 
 
 #endif
-
-
 typedef enum {
     DictionarySearchMode_TermBeginsWithCaseSensitive = 0,
     DictionarySearchMode_TermBeginsWithCaseInsensitive = 1
@@ -68,12 +70,3 @@ typedef enum {
     TrainingWrongAnswerHandlingMode_Repeat = 0,
     TrainingWrongAnswerHandlingMode_Dismiss = 1
 } TrainingWrongAnswerHandlingMode;
-
-typedef enum {
-    TrainingCode_Collection = 0,
-    TrainingCode_Ten = 1,
-    TrainingCode_TwentyFive = 2,
-    TrainingCode_Fifty = 3,
-    TrainingCode_Random = 4,
-    TrainingCode_Difficult = 5
-}TrainingCode;

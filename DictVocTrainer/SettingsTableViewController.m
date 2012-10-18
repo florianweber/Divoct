@@ -25,9 +25,11 @@ SettingsTableViewController.m
 #import "FWToastView.h"
 #import "Logging.h"
 #import "DictVocTrainer.h"
+#import "DictVocSettings.h"
 
 @interface SettingsTableViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UISwitch *caseSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *trainingAutocorrectionSwitch;
 
 @end
 
@@ -37,31 +39,16 @@ SettingsTableViewController.m
 
 - (void)loadAndDisplaySettings
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *searchModeKey = DVT_NSUSERDEFAULTS_SEARCHMODE;
-    NSNumber *userDefaultsSearchMode = (NSNumber *)[defaults objectForKey:searchModeKey];
-    if (userDefaultsSearchMode) {
-        if ([userDefaultsSearchMode intValue] == DictionarySearchMode_TermBeginsWithCaseSensitive) {
-            self.caseSwitch.on = NO;
-        } else if ([userDefaultsSearchMode intValue] == DictionarySearchMode_TermBeginsWithCaseInsensitive) {
-            self.caseSwitch.on = YES;
-        }
-    } else {
-        switch (DVT_DEFAULTSEARCHMODE) {
-            case DictionarySearchMode_TermBeginsWithCaseSensitive:
-                self.caseSwitch.on = NO;
-                break;
-                
-            case DictionarySearchMode_TermBeginsWithCaseInsensitive:
-                self.caseSwitch.on = YES;
-                break;
-                
-            default:
-                self.caseSwitch.on = NO;
-                break;
-        }
-        ;
+    //searchMode
+    int searchMode = [DictVocSettings instance].searchMode;
+    if (searchMode == DictionarySearchMode_TermBeginsWithCaseSensitive) {
+        self.caseSwitch.on = NO;
+    } else if (searchMode == DictionarySearchMode_TermBeginsWithCaseInsensitive) {
+        self.caseSwitch.on = YES;
     }
+    
+    //Training Autocorrection
+    self.trainingAutocorrectionSwitch.on = [DictVocSettings instance].trainingTextInputAutoCorrection;
 }
 
 -(void)showHelp 
@@ -74,22 +61,19 @@ SettingsTableViewController.m
 
 - (IBAction)searchCaseSwitchSwitched:(UISwitch *)sender {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *searchModeKey = DVT_NSUSERDEFAULTS_SEARCHMODE;
-    
     if (sender.on) {
         //set to case insensitive
-        [defaults setObject:[NSNumber numberWithInt:DictionarySearchMode_TermBeginsWithCaseInsensitive] forKey:searchModeKey];
+        [DictVocSettings instance].searchMode = DictionarySearchMode_TermBeginsWithCaseInsensitive;
     } else {
         //set to case sensitive
-        [defaults setObject:[NSNumber numberWithInt:DictionarySearchMode_TermBeginsWithCaseSensitive] forKey:searchModeKey];
+        [DictVocSettings instance].searchMode = DictionarySearchMode_TermBeginsWithCaseSensitive;
     }
-    
-    [defaults synchronize];
-    
-    NSNotification *searchCaseSwitchedNotification = [NSNotification notificationWithName:DVT_SETTINGS_NOTIFICATION_SEARCHCASESWITCHED object:nil];
-    [[NSNotificationCenter defaultCenter] postNotification:searchCaseSwitchedNotification];
 }
+
+- (IBAction)trainingAutocorrectionSwitchValueChanged:(UISwitch *)sender {
+    [DictVocSettings instance].trainingTextInputAutoCorrection = sender.on;
+}
+
 
 
 #pragma mark - Alert View Delegate
@@ -144,6 +128,7 @@ SettingsTableViewController.m
 - (void)viewDidUnload
 {
     [self setCaseSwitch:nil];
+    [self setTrainingAutocorrectionSwitch:nil];
     [super viewDidUnload];
 }
 
@@ -159,7 +144,7 @@ SettingsTableViewController.m
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == 1) && (indexPath.row == 1)) {
+    if ((indexPath.section == 1) && (indexPath.row == 2)) {
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_TITLE", nil)
                                                           message:NSLocalizedString(@"SETTINGS_STATISTICS_RESET_MESSAGE", nil)
                                                          delegate:self

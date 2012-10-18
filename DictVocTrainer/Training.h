@@ -19,7 +19,6 @@
 
 @property (nonatomic) TrainingAnswerInputMode trainingAnswerInputMode;
 @property (nonatomic) TrainingWrongAnswerHandlingMode trainingWrongAnswerHandlingMode;
-@property (nonatomic) TrainingCode trainingCode;
 
 @property (nonatomic, strong) TrainingResult *trainingResult;
 @property (nonatomic, strong) NSManagedObjectID *trainingResultsObjectId;

@@ -34,6 +34,7 @@ TrainingViewController.m
 #import "Translation.h"
 #import "FWToastView.h"
 #import "Logging.h"
+#import "DictVocSettings.h"
 
 #define HEIGHT_OF_ANSWERBUTTONS 37
 
@@ -455,6 +456,7 @@ TrainingViewController.m
  *************************************/
 -(void)updateTextInputForNewQuestion
 {
+    self.answerTextField.autocorrectionType = ([DictVocSettings instance].trainingTextInputAutoCorrection) ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
     self.answerTextField.textColor = [UIColor blackColor];
     self.answerTextField.font = [UIFont systemFontOfSize:17.0];
     self.answerTextField.enabled = YES;

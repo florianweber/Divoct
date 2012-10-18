@@ -30,6 +30,7 @@ DictionarySearchViewController.m
 #import "VocabularyDetailViewController.h"
 #import "FWToastView.h"
 #import "DictVocTrainer.h"
+#import "DictVocSettings.h"
 
 static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* current, double threshold) {
     double
@@ -75,18 +76,6 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
 
 #pragma mark - Getter / Setter
 
-- (DictionarySearchMode)searchMode
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *searchModeKey = DVT_NSUSERDEFAULTS_SEARCHMODE;
-    NSNumber *userDefaultsSearchMode = (NSNumber *)[defaults objectForKey:searchModeKey];
-    if (userDefaultsSearchMode) {
-        return [userDefaultsSearchMode intValue];
-    } else {
-        return DVT_DEFAULTSEARCHMODE;
-    }
-}
-
 - (DictVocDictionary *)dictVocDictionary 
 {
     if (!_dictVocDictionary) {
@@ -114,7 +103,7 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
 -(void)filterCurrentSearchResults
 {
     NSPredicate *filter;
-    switch ([self searchMode]) {
+    switch ([DictVocSettings instance].searchMode) {
         case DictionarySearchMode_TermBeginsWithCaseSensitive:
             filter = [NSPredicate predicateWithFormat:@"name contains %@", self.currentSearchTerm];
             break;
@@ -150,7 +139,7 @@ static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
         }];
         
         //sort by case match (beispiel garten)
-        if ([self searchMode] == DictionarySearchMode_TermBeginsWithCaseInsensitive) {
+        if ([DictVocSettings instance].searchMode == DictionarySearchMode_TermBeginsWithCaseInsensitive) {
             self.currentSearchResults = [self.currentSearchResults sortedArrayUsingComparator:^(id a, id b) {
                 
                 if ([((SQLiteWord *)a).name rangeOfString:self.currentSearchTerm].location != NSNotFound) {

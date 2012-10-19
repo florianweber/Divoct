@@ -413,9 +413,9 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         [self.scrollView flashScrollIndicators];
     }
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 @end

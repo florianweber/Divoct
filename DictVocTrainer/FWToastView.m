@@ -37,6 +37,7 @@ static NSMutableArray *toasts;
 
 @property (nonatomic, strong) TriangleView *triangleView;
 @property (nonatomic, strong) UIView *messageView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UIButton *closeButton;
@@ -64,6 +65,7 @@ static NSMutableArray *toasts;
 
 @synthesize triangleView = _triangleView;
 @synthesize messageView = _messageView;
+@synthesize scrollView = _scrollView;
 @synthesize textLabel = _textLabel;
 @synthesize iconImageView = _iconImageView;
 @synthesize closeButton = _closeButton;
@@ -161,6 +163,10 @@ static NSMutableArray *toasts;
         [self.messageView addSubview:self.iconImageView];
     }
     
+    //configure scrollview
+    self.scrollView = [[UIScrollView alloc] init];
+    [self.messageView addSubview:self.scrollView];
+    
     //configure label
     self.textLabel = [[UILabel alloc] init];
     self.textLabel.text = self.text;
@@ -170,7 +176,7 @@ static NSMutableArray *toasts;
     self.textLabel.textColor = [UIColor whiteColor];
     self.textLabel.backgroundColor = [UIColor clearColor];
     self.textLabel.layer.shouldRasterize = NO;
-    [self.messageView addSubview:self.textLabel];
+    [self.scrollView addSubview:self.textLabel];
     
     //configure close button todo
     if (self.withCloseButton) {
@@ -266,26 +272,29 @@ static NSMutableArray *toasts;
     int textMaxWidth = parentViewWidth - xStartPosition - (self.closeButton ? (self.closeButton.frame.size.width + 7) : 0) - 10 - pointToViewWidthReduce - 10;
     int textMaxHeight = parentViewHeight - pointToViewHeightReduce;
     
-    self.textLabel.frame = CGRectOffset(self.textLabel.frame, xStartPosition, yStartPosition);
-    CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.size = [self.textLabel.text sizeWithFont:self.textLabel.font constrainedToSize:CGSizeMake(textMaxWidth, textMaxHeight) lineBreakMode:UILineBreakModeWordWrap];
-    self.textLabel.frame = textLabelFrame;
+    //calculate optimal size for scrollview
+    CGSize notRestrainedTextLabelSize = [self.textLabel.text sizeWithFont:self.textLabel.font constrainedToSize:CGSizeMake(textMaxWidth, 20000) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize restrainedTextLabelSize = [self.textLabel.text sizeWithFont:self.textLabel.font constrainedToSize:CGSizeMake(textMaxWidth, textMaxHeight) lineBreakMode:UILineBreakModeWordWrap];
     
-    xStartPosition += textLabelFrame.size.width + 7;
-    xMax = MAX(xMax, self.textLabel.frame.origin.x + self.textLabel.frame.size.width);
-    yMax = MAX(yMax, self.textLabel.frame.origin.y + self.textLabel.frame.size.height);
+    self.scrollView.frame = CGRectMake(xStartPosition, yStartPosition, restrainedTextLabelSize.width, restrainedTextLabelSize.height);
+    self.textLabel.frame = CGRectMake(0, 0, notRestrainedTextLabelSize.width, notRestrainedTextLabelSize.height);
+    self.scrollView.contentSize = self.textLabel.frame.size;
+    
+    xStartPosition += self.scrollView.frame.size.width + 7;
+    xMax = MAX(xMax, self.scrollView.frame.origin.x + self.scrollView.frame.size.width);
+    yMax = MAX(yMax, self.scrollView.frame.origin.y + self.scrollView.frame.size.height);
     
     //reposition icon
     if (self.iconImageView) {
         CGRect imageViewFrame = self.iconImageView.frame;
-        imageViewFrame.origin.y = self.textLabel.frame.origin.y + (self.textLabel.frame.size.height / 2) - (imageViewFrame.size.height / 2);
+        imageViewFrame.origin.y = self.scrollView.frame.origin.y + (self.scrollView.frame.size.height / 2) - (imageViewFrame.size.height / 2);
         self.iconImageView.frame = imageViewFrame;
     }
     
     //size and position close Button
     if (self.closeButton) {
         CGRect closeButtonFrame = self.closeButton.frame;
-        closeButtonFrame.origin = CGPointMake(xStartPosition, self.textLabel.frame.origin.y + (self.textLabel.frame.size.height / 2) - (closeButtonFrame.size.height / 2));
+        closeButtonFrame.origin = CGPointMake(xStartPosition, self.scrollView.frame.origin.y + (self.scrollView.frame.size.height / 2) - (closeButtonFrame.size.height / 2));
         self.closeButton.frame = closeButtonFrame;
         
         xMax = MAX(xMax, self.closeButton.frame.origin.x + self.closeButton.frame.size.width);
@@ -407,6 +416,9 @@ static NSMutableArray *toasts;
     [UIView animateWithDuration:.2  delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
         self.alpha = 1.0;
     } completion:^(BOOL finished){
+        if (self.scrollView.contentSize.height > self.scrollView.frame.size.height) {
+            [self.scrollView flashScrollIndicators];
+        }
     }];
     
     // Fade out with timer

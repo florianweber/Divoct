@@ -456,7 +456,6 @@ TrainingViewController.m
  *************************************/
 -(void)updateTextInputForNewQuestion
 {
-    self.answerTextField.autocorrectionType = ([DictVocSettings instance].trainingTextInputAutoCorrection) ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
     self.answerTextField.textColor = [UIColor blackColor];
     self.answerTextField.font = [UIFont systemFontOfSize:17.0];
     self.answerTextField.enabled = YES;
@@ -780,6 +779,7 @@ TrainingViewController.m
         self.answerTextField.hidden = YES;
         self.answerTextField.enabled = NO;
     } else if (self.training.trainingAnswerInputMode == TrainingAnswerInputMode_TextInput) {
+        self.answerTextField.autocorrectionType = ([DictVocSettings instance].trainingTextInputAutoCorrection) ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
         for (UIButton *answerButton in self.answerButtons) {
             answerButton.hidden = YES;
             self.answerTextField.enabled = YES;
@@ -828,8 +828,8 @@ TrainingViewController.m
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     [self layoutViews];
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
 @end

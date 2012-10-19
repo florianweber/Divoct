@@ -626,11 +626,11 @@ VocabularyDetailViewController.m
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     [self setupVocabularyDetailsView];
     if (self.editTranslationsButton.selected) {
         [self layoutEditButtons];
     }
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     
 }
 

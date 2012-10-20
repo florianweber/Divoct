@@ -236,7 +236,6 @@ dispatch_queue_t queryQueue;
     {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             SQLiteWord *translation = [[SQLiteWord alloc] init];
-            translation = [[SQLiteWord alloc] init];
             translation.uniqueId = [NSNumber numberWithInt:sqlite3_column_int(statement, 0)];
             translation.name = [[NSString alloc] initWithBytes:sqlite3_column_text(statement, 1) length:sqlite3_column_bytes(statement, 1) encoding:NSUTF8StringEncoding];
             translation.languageCode =  [NSNumber numberWithInt:sqlite3_column_int(statement, 2)];
@@ -269,7 +268,6 @@ dispatch_queue_t queryQueue;
     {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             SQLiteWord *translation = [[SQLiteWord alloc] init];
-            translation = [[SQLiteWord alloc] init];
             translation.uniqueId = [NSNumber numberWithInt:sqlite3_column_int(statement, 0)];
             translation.name = [[NSString alloc] initWithBytes:sqlite3_column_text(statement, 1) length:sqlite3_column_bytes(statement, 1) encoding:NSUTF8StringEncoding];
             translation.languageCode =  [NSNumber numberWithInt:sqlite3_column_int(statement, 2)];
@@ -304,7 +302,6 @@ dispatch_queue_t queryQueue;
         {
             while (sqlite3_step(statement) == SQLITE_ROW) {
                 SQLiteWord *word = [[SQLiteWord alloc] init];
-                word = [[SQLiteWord alloc] init];
                 word.uniqueId = [NSNumber numberWithInt:sqlite3_column_int(statement, 0)];
                 word.name = [[NSString alloc] initWithBytes:sqlite3_column_text(statement, 1) length:sqlite3_column_bytes(statement, 1) encoding:NSUTF8StringEncoding];
                 word.languageCode =  [NSNumber numberWithInt:sqlite3_column_int(statement, 2)];
@@ -408,7 +405,6 @@ dispatch_queue_t queryQueue;
             {
                 while (sqlite3_step(statement) == SQLITE_ROW) {
                     SQLiteWord *word = [[SQLiteWord alloc] init];
-                    word = [[SQLiteWord alloc] init];
                     word.uniqueId = [NSNumber numberWithInt:sqlite3_column_int(statement, 0)];
                     word.name = [[NSString alloc] initWithBytes:sqlite3_column_text(statement, 1) length:sqlite3_column_bytes(statement, 1) encoding:NSUTF8StringEncoding];
                     word.languageCode =  [NSNumber numberWithInt:sqlite3_column_int(statement, 2)];
@@ -452,7 +448,6 @@ dispatch_queue_t queryQueue;
             {
                 while (sqlite3_step(statement) == SQLITE_ROW) {
                     SQLiteWord *word = [[SQLiteWord alloc] init];
-                    word = [[SQLiteWord alloc] init];
                     word.uniqueId = [NSNumber numberWithInt:sqlite3_column_int(statement, 0)];
                     word.name = [[NSString alloc] initWithBytes:sqlite3_column_text(statement, 1) length:sqlite3_column_bytes(statement, 1) encoding:NSUTF8StringEncoding];
                     word.languageCode =  [NSNumber numberWithInt:sqlite3_column_int(statement, 2)];
